@@ -8,7 +8,6 @@
 
 #import "QuestionsFormViewController.h"
 #import <CoreData+MagicalRecord.h>
-#import "Question.h"
 #import "QuestionDetail.h"
 @interface QuestionsFormViewController ()
 
@@ -18,6 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if(self.question){
+        self.questionTitle.text = self.question.title;
+        self.questionText.text = self.question.questionDetail.text;
+    }
     
     // Do any additional setup after loading the view.
 }
@@ -53,5 +56,6 @@
 }
 
 - (IBAction)hideForm:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

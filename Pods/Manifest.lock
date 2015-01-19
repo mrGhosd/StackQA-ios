@@ -2,11 +2,14 @@ PODS:
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
+  - SWTableViewCell (0.3.7)
 
 DEPENDENCIES:
   - MagicalRecord
+  - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
+  SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
 
 COCOAPODS: 0.34.4

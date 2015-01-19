@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface QuestionsViewController : UITableViewController
+#import "SWTableViewCell.h"
+@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate>
 @property(strong)NSMutableArray *questions;
 @end

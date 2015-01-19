@@ -7,8 +7,12 @@
 //
 
 #import "QuestionsViewController.h"
+#import "QuestionDetailViewController.h"
+#import "QuestionsFormViewController.h"
 #import <CoreData+MagicalRecord.h>
+#import "QuestionsTableViewCell.h"
 #import "Question.h"
+
 @interface QuestionsViewController ()
 
 @end
@@ -52,14 +56,41 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"questionCell" forIndexPath:indexPath];
     Question *questionItem = [self.questions objectAtIndex:indexPath.row];
-    cell.textLabel.text = questionItem.title;
-    cell.detailTextLabel.text = questionItem.created_at;
+    static NSString *CellIdentifier = @"questionCell";
+    QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    if (cell == nil){
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionsTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
+    cell.questionTitle.text = questionItem.title;
+    cell.questionDate.text = [NSString stringWithFormat:@"%@", questionItem.created_at];
+    
     return cell;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
 
-
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showQuestion"]) {
+        Question *question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        QuestionDetailViewController *detail = segue.destinationViewController;
+        detail.question = question;
+    }
+    if([[segue identifier] isEqualToString:@"showQuestionForm"]){
+        Question *question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        QuestionsFormViewController *form = segue.destinationViewController;
+        form.question = question;
+    }
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"showQuestion" sender:self];
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -5,6 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'StackQA' do
 pod 'MagicalRecord'
+pod 'SWTableViewCell', '~> 0.3.7'
 end
 
 target 'StackQATests' do

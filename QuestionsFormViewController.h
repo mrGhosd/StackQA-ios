@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Question.h"
 
 @interface QuestionsFormViewController : UIViewController
+@property(strong) Question *question;
 @property (strong, nonatomic) IBOutlet UITextField *questionTitle;
 @property (strong, nonatomic) IBOutlet UITextView *questionText;
 - (IBAction)saveQuestion:(id)sender;
