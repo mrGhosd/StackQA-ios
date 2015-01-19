@@ -11,7 +11,7 @@
 #import "Question.h"
 #import "QuestionDetail.h"
 
-@interface QuestionDetailViewController : UIViewController
+@interface QuestionDetailViewController : UIViewController <UITextViewDelegate>
 @property(nonatomic, strong) NSDictionary *dict;
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;

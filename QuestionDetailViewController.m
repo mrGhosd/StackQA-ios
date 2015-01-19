@@ -12,7 +12,7 @@
 
 @end
 
-@implementation QuestionDetailViewController
+@implementation QuestionDetailViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,6 +27,21 @@
 - (void) initQuestionData{
     self.questionTitle.text = self.question.title;
     self.questionText.text = self.question.questionDetail.text;
+}
+
+- (BOOL)textView:(UITextView *)tView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    CGRect textRect = [tView.layoutManager usedRectForTextContainer:tView.textContainer];
+    CGFloat sizeAdjustment = tView.font.lineHeight * [UIScreen mainScreen].scale;
+    
+    if (textRect.size.height >= tView.frame.size.height - tView.contentInset.bottom - sizeAdjustment) {
+        if ([text isEqualToString:@"\n"]) {
+            [UIView animateWithDuration:0.2 animations:^{
+                [tView setContentOffset:CGPointMake(tView.contentOffset.x, tView.contentOffset.y + sizeAdjustment)];
+            }];
+        }
+    }
+    
+    return YES;
 }
 /*
 #pragma mark - Navigation

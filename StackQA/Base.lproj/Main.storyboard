@@ -121,26 +121,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label awdaw" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2P-w2-mVy">
-                                <rect key="frame" x="16" y="28" width="550" height="103"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label awdaw" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2P-w2-mVy">
+                                <rect key="frame" x="16" y="64" width="568" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zY-XA-UbG">
+                                <rect key="frame" x="534" y="104" width="32" height="32"/>
+                                <state key="normal" image="chat-32.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJB-tj-6fc">
+                                <rect key="frame" x="475" y="104" width="32" height="32"/>
+                                <state key="normal" image="ask_question-32.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JnK-FV-cr1">
-                                <rect key="frame" x="16" y="139" width="568" height="441"/>
+                                <rect key="frame" x="7" y="144" width="568" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="0zY-XA-UbG" firstAttribute="leading" secondItem="NJB-tj-6fc" secondAttribute="trailing" constant="27" id="0Ze-c6-W86"/>
                             <constraint firstItem="JnK-FV-cr1" firstAttribute="trailing" secondItem="ALP-UC-2EU" secondAttribute="trailingMargin" id="7Sl-k1-DCA"/>
-                            <constraint firstItem="r2P-w2-mVy" firstAttribute="leading" secondItem="ALP-UC-2EU" secondAttribute="leadingMargin" id="bPJ-XN-FB6"/>
+                            <constraint firstItem="r2P-w2-mVy" firstAttribute="leading" secondItem="ALP-UC-2EU" secondAttribute="leadingMargin" id="BDC-IS-kj8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0zY-XA-UbG" secondAttribute="trailing" constant="18" id="Bzx-yK-5yr"/>
+                            <constraint firstItem="JnK-FV-cr1" firstAttribute="top" secondItem="NJB-tj-6fc" secondAttribute="bottom" constant="8" id="Er2-rT-GnT"/>
                             <constraint firstItem="JnK-FV-cr1" firstAttribute="leading" secondItem="ALP-UC-2EU" secondAttribute="leadingMargin" id="rJF-eZ-u5s"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="r2P-w2-mVy" secondAttribute="trailing" constant="18" id="ybW-XX-IPc"/>
+                            <constraint firstItem="r2P-w2-mVy" firstAttribute="trailing" secondItem="ALP-UC-2EU" secondAttribute="trailingMargin" id="zOh-7c-cGZ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -150,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX7-Zd-dFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1482" y="811"/>
+            <point key="canvasLocation" x="1487" y="811"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vp4-YP-QvJ">
@@ -171,4 +185,8 @@
             <point key="canvasLocation" x="-144" y="364"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ask_question-32.png" width="32" height="32"/>
+        <image name="chat-32.png" width="32" height="32"/>
+    </resources>
 </document>
