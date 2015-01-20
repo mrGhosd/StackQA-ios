@@ -67,14 +67,18 @@
     self.questionTitle.text = self.question.title;
     self.questionText.text = self.question.questionDetail.text;
     [self.questionText sizeToFit];
+//    self.webViewHeightConstraint.constant = self.questionText.frame.size.height + 200;
 //    [self.questionText layoutIfNeeded];
+    self.nestedView.translatesAutoresizingMaskIntoConstraints = YES;
+    self.nestedView.frame = CGRectMake(0, 0, 320, 25000);
     self.questionText.scrollEnabled = NO;
     [self textViewDidChange:self.questionText];
+
 //    self.questionText.frame = CGRectMake(self.questionText.frame.origin.x, self.questionText.frame.origin.y, self.questionText.frame.size.width, 25000.0);
 //    self.questionText.contentSize = CGSizeMake(320, 25000.0);
 //    [self textViewDidChange:self.questionText];
 //    self.questionText.scrollEnabled = NO;
-//    UIView *view = [self.scrollView.subviews firstObject];
+    
 //    self.scrollView.frame = CGRectMake(0, 0, 320, 25000);
 //    self.scrollView.contentSize = CGSizeMake(320, 25000);
 //    view.frame = CGRectMake(0,0, 320,250000);

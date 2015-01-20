@@ -160,9 +160,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="rZu-AQ-IS5" firstAttribute="top" secondItem="3dJ-OF-4i7" secondAttribute="bottom" id="450-FD-St9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3dJ-OF-4i7" secondAttribute="trailing" constant="-16" id="K9a-ru-krA"/>
                             <constraint firstItem="3dJ-OF-4i7" firstAttribute="top" secondItem="Q6L-4v-wbL" secondAttribute="topMargin" id="dhK-Kq-hYk"/>
-                            <constraint firstItem="rZu-AQ-IS5" firstAttribute="top" secondItem="3dJ-OF-4i7" secondAttribute="bottom" id="kTV-yb-1Fs"/>
                             <constraint firstItem="3dJ-OF-4i7" firstAttribute="leading" secondItem="Q6L-4v-wbL" secondAttribute="leadingMargin" constant="-16" id="ypY-De-aVf"/>
                         </constraints>
                     </view>
@@ -170,6 +170,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
+                        <outlet property="nestedView" destination="IX7-Tk-v1S" id="Xch-4j-IIi"/>
                         <outlet property="questionText" destination="gCo-SG-ExN" id="Zxc-YX-bf7"/>
                         <outlet property="questionTitle" destination="CHX-6o-f0R" id="hdw-ev-TjM"/>
                         <outlet property="scrollView" destination="3dJ-OF-4i7" id="O6f-fg-OcN"/>
