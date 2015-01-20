@@ -17,9 +17,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initQuestionData];
-    // Do any additional setup after loading the view.
-}
+    
+//    UIScrollView *scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y,
+//                                                                          self.view.frame.size.width, self.view.frame.size.height)];
+//    UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(10, 100, 320, 800)];
+//    UIView *nestedView = [[UIView alloc] init];
+//    [self.view addSubview:scroll];
+//    [scroll addSubview:text];
+//    
+//    scroll.translatesAutoresizingMaskIntoConstraints  = NO;
+//    text.translatesAutoresizingMaskIntoConstraints = NO;
+//    
+//
+//    
+//    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(scroll, text);
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scroll]|" options:0 metrics: 0 views:viewsDictionary]];
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[scroll]|" options:0 metrics: 0 views:viewsDictionary]];
+//    [scroll addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[text]|" options:0 metrics: 0 views:viewsDictionary]];
+//    [scroll addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[text]|" options:0 metrics: 0 views:viewsDictionary]];
+//    
+//    text.text = self.question.questionDetail.text;
+//    [scroll layoutIfNeeded];
+//    [text sizeToFit];
 
+//    float sizeOfContent = 0;
+////    UIView *lLast = [self.scrollView.subviews firstObject];
+//    NSInteger wd = view.frame.origin.y;
+//    NSInteger ht = view.frame.size.height;
+//
+//    self.scrollView.translatesAutoresizingMaskIntoConstraints = YES;
+//    lLast.translatesAutoresizingMaskIntoConstraints = YES;
+//    
+//    sizeOfContent = wd+ht;
+//    self.questionText.scrollEnabled = NO;
+//    self.questionText.frame = CGRectMake(0, 0, self.scrollView.frame.size.width, sizeOfContent);
+//    CGRect frame = text.frame;
+//    self.scrollView.frame = CGRectMake(0, 0, 320, 600);
+//    lLast.frame = CGRectMake(0, 0, 320, self.scrollView.frame.size.height + 1000);
+//    self.scrollView.contentSize = CGSizeMake(320, 1800);
+//    frame.size.height = text.contentSize.height;
+
+//    [self initQuestionData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -27,21 +66,38 @@
 - (void) initQuestionData{
     self.questionTitle.text = self.question.title;
     self.questionText.text = self.question.questionDetail.text;
+    [self.questionText sizeToFit];
+//    [self.questionText layoutIfNeeded];
+    self.questionText.scrollEnabled = NO;
+    [self textViewDidChange:self.questionText];
+//    self.questionText.frame = CGRectMake(self.questionText.frame.origin.x, self.questionText.frame.origin.y, self.questionText.frame.size.width, 25000.0);
+//    self.questionText.contentSize = CGSizeMake(320, 25000.0);
+//    [self textViewDidChange:self.questionText];
+//    self.questionText.scrollEnabled = NO;
+//    UIView *view = [self.scrollView.subviews firstObject];
+//    self.scrollView.frame = CGRectMake(0, 0, 320, 25000);
+//    self.scrollView.contentSize = CGSizeMake(320, 25000);
+//    view.frame = CGRectMake(0,0, 320,250000);
+//    self.view.frame = CGRectMake(0, 0, 320, 25000);
+//    NSDictionary *viewsDictionary = @{@"scroll":self.scrollView, @"view": view};
+//    self.scrollView. = self.view.frame.size.height;
+    
+//    self.bottomConstraint.constant = 1000.0;
+    
+    [self textViewDidChange:self.questionText];
+}
+- (void)textViewDidChange:(UITextView *)textView
+{
+    CGFloat fixedWidth = textView.frame.size.width;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = textView.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    textView.frame = newFrame;
+    
 }
 
-- (BOOL)textView:(UITextView *)tView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    CGRect textRect = [tView.layoutManager usedRectForTextContainer:tView.textContainer];
-    CGFloat sizeAdjustment = tView.font.lineHeight * [UIScreen mainScreen].scale;
+-(void) viewDidAppear:(BOOL)animated{
     
-    if (textRect.size.height >= tView.frame.size.height - tView.contentInset.bottom - sizeAdjustment) {
-        if ([text isEqualToString:@"\n"]) {
-            [UIView animateWithDuration:0.2 animations:^{
-                [tView setContentOffset:CGPointMake(tView.contentOffset.x, tView.contentOffset.y + sizeAdjustment)];
-            }];
-        }
-    }
-    
-    return YES;
 }
 /*
 #pragma mark - Navigation
