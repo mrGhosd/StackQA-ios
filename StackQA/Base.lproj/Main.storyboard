@@ -148,14 +148,25 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88A-qi-0Wf">
+                                                <rect key="frame" x="406" y="284" width="32" height="32"/>
+                                                <state key="normal" image="edit-32.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="L2G-jD-e0s" kind="presentation" identifier="updateQuestion" id="NtT-bV-v57"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="lJ4-uj-JMZ" firstAttribute="leading" secondItem="88A-qi-0Wf" secondAttribute="trailing" constant="25" id="3GS-V3-a6d"/>
                                             <constraint firstAttribute="trailing" secondItem="CHX-6o-f0R" secondAttribute="trailing" constant="4" id="9BE-YD-vzq"/>
                                             <constraint firstItem="5i1-Uv-49n" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="9Bq-wE-QYB"/>
                                             <constraint firstItem="CHX-6o-f0R" firstAttribute="leading" secondItem="IX7-Tk-v1S" secondAttribute="leading" constant="20" id="Aca-yN-g2k"/>
                                             <constraint firstAttribute="trailing" secondItem="5i1-Uv-49n" secondAttribute="trailing" constant="31" id="H8m-Yh-aax"/>
                                             <constraint firstItem="lJ4-uj-JMZ" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="OtP-tR-Cpw"/>
+                                            <constraint firstItem="88A-qi-0Wf" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="42" id="Thi-q2-BuD"/>
                                             <constraint firstItem="CHX-6o-f0R" firstAttribute="top" secondItem="IX7-Tk-v1S" secondAttribute="top" constant="69" id="Vpc-Wc-dWu"/>
                                             <constraint firstAttribute="trailing" secondItem="gCo-SG-ExN" secondAttribute="trailing" id="bQP-F3-NIl"/>
                                             <constraint firstItem="gCo-SG-ExN" firstAttribute="top" secondItem="CHX-6o-f0R" secondAttribute="bottom" constant="2" id="fMd-8U-VTX"/>
@@ -196,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX7-Zd-dFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1880" y="1472"/>
+            <point key="canvasLocation" x="1935" y="1472"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vp4-YP-QvJ">
@@ -220,5 +231,9 @@
     <resources>
         <image name="ask_question-32.png" width="32" height="32"/>
         <image name="chat-32.png" width="32" height="32"/>
+        <image name="edit-32.png" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="NtT-bV-v57"/>
+    </inferredMetricsTieBreakers>
 </document>

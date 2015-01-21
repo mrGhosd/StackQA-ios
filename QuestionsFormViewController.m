@@ -42,17 +42,25 @@
 
 - (IBAction)saveQuestion:(id)sender {
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
-    Question *question = [Question MR_createInContext:localContext];
-    question.questionDetail = [QuestionDetail MR_createInContext:localContext];
-    if(self.questionTitle.text != @"" || self.questionText.text != @""){
+    if (self.question) {
+        Question *question = [Question MR_findFirstByAttribute:@"title" withValue:self.question.title inContext:localContext];
         question.title = self.questionTitle.text;
-        question.created_at = [NSDate date];
         question.questionDetail.text = self.questionText.text;
-        [localContext MR_save];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        NSLog(@"Error!");
     }
+    else {
+        
+        Question *question = [Question MR_createInContext:localContext];
+        question.questionDetail = [QuestionDetail MR_createInContext:localContext];
+        if([self.questionTitle.text isEqual: @""] || ![self.questionText.text  isEqual: @""]){
+            question.title = self.questionTitle.text;
+            question.created_at = [NSDate date];
+            question.questionDetail.text = self.questionText.text;
+        } else {
+            NSLog(@"Error!");
+        }
+    }
+    [localContext MR_save];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)hideForm:(id)sender {
