@@ -157,6 +157,12 @@
                                                     <segue destination="L2G-jD-e0s" kind="presentation" identifier="updateQuestion" id="NtT-bV-v57"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FyE-GN-sOo">
+                                                <rect key="frame" x="352" y="284" width="32" height="32"/>
+                                                <state key="normal" image="delete_sign-32.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -165,11 +171,13 @@
                                             <constraint firstItem="5i1-Uv-49n" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="9Bq-wE-QYB"/>
                                             <constraint firstItem="CHX-6o-f0R" firstAttribute="leading" secondItem="IX7-Tk-v1S" secondAttribute="leading" constant="20" id="Aca-yN-g2k"/>
                                             <constraint firstAttribute="trailing" secondItem="5i1-Uv-49n" secondAttribute="trailing" constant="31" id="H8m-Yh-aax"/>
+                                            <constraint firstItem="FyE-GN-sOo" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="42" id="Luh-AJ-G5V"/>
                                             <constraint firstItem="lJ4-uj-JMZ" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="OtP-tR-Cpw"/>
                                             <constraint firstItem="88A-qi-0Wf" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="42" id="Thi-q2-BuD"/>
                                             <constraint firstItem="CHX-6o-f0R" firstAttribute="top" secondItem="IX7-Tk-v1S" secondAttribute="top" constant="69" id="Vpc-Wc-dWu"/>
                                             <constraint firstAttribute="trailing" secondItem="gCo-SG-ExN" secondAttribute="trailing" id="bQP-F3-NIl"/>
                                             <constraint firstItem="gCo-SG-ExN" firstAttribute="top" secondItem="CHX-6o-f0R" secondAttribute="bottom" constant="2" id="fMd-8U-VTX"/>
+                                            <constraint firstItem="88A-qi-0Wf" firstAttribute="leading" secondItem="FyE-GN-sOo" secondAttribute="trailing" constant="22" id="mTT-dj-ivU"/>
                                             <constraint firstItem="gCo-SG-ExN" firstAttribute="leading" secondItem="IX7-Tk-v1S" secondAttribute="leading" constant="16" id="qHf-Ix-2Iq"/>
                                             <constraint firstItem="5i1-Uv-49n" firstAttribute="leading" secondItem="lJ4-uj-JMZ" secondAttribute="trailing" constant="38" id="tAO-UM-M2H"/>
                                         </constraints>
@@ -231,6 +239,7 @@
     <resources>
         <image name="ask_question-32.png" width="32" height="32"/>
         <image name="chat-32.png" width="32" height="32"/>
+        <image name="delete_sign-32.png" width="32" height="32"/>
         <image name="edit-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
