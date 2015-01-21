@@ -162,6 +162,9 @@
                                                 <state key="normal" image="delete_sign-32.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="deleteQuestion:" destination="pFr-hn-FVY" eventType="touchUpInside" id="z8U-Hl-g1c"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,7 +218,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BX7-Zd-dFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1935" y="1472"/>
+            <point key="canvasLocation" x="1519" y="936"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vp4-YP-QvJ">

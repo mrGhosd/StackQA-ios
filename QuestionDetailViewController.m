@@ -8,6 +8,7 @@
 
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
+#import "QuestionsViewController.h"
 
 @interface QuestionDetailViewController ()
 
@@ -50,7 +51,17 @@
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     textView.frame = newFrame;
-    
+}
+
+-(void) findQuestionAndDelete{
+    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
+    if(self.question){
+        [self.question MR_deleteEntity];
+        [localContext MR_save];
+    }
+    else{
+        [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Данный вопрос не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    }
 }
 
 
@@ -62,11 +73,22 @@
         QuestionsFormViewController *form = segue.destinationViewController;
         form.question = self.question;
     }
+    if([[segue identifier] isEqualToString:@"afterDeleteQuestion"]){
+        QuestionsViewController *view = segue.destinationViewController;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-
-
-- (IBAction)editQuestion:(id)sender {
+-(IBAction)deleteQuestion:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Сообшение" message:@"Вы действительно хотите удалить вопрос?" delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
+    [alert show];
+}
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch(buttonIndex){
+            case 1:
+            [self findQuestionAndDelete];
+            break;
+    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
