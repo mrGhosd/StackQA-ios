@@ -123,26 +123,44 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IX7-Tk-v1S">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHX-6o-f0R">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CHX-6o-f0R">
                                                 <rect key="frame" x="20" y="69" width="576" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCo-SG-ExN">
-                                                <rect key="frame" x="16" y="111" width="584" height="293"/>
+                                                <rect key="frame" x="8" y="107" width="584" height="135"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5i1-Uv-49n">
+                                                <rect key="frame" x="522" y="284" width="32" height="32"/>
+                                                <state key="normal" image="ask_question-32.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJ4-uj-JMZ">
+                                                <rect key="frame" x="463" y="284" width="32" height="32"/>
+                                                <state key="normal" image="chat-32.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="CHX-6o-f0R" secondAttribute="trailing" constant="4" id="9BE-YD-vzq"/>
+                                            <constraint firstItem="5i1-Uv-49n" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="9Bq-wE-QYB"/>
                                             <constraint firstItem="CHX-6o-f0R" firstAttribute="leading" secondItem="IX7-Tk-v1S" secondAttribute="leading" constant="20" id="Aca-yN-g2k"/>
+                                            <constraint firstAttribute="trailing" secondItem="5i1-Uv-49n" secondAttribute="trailing" constant="31" id="H8m-Yh-aax"/>
+                                            <constraint firstItem="lJ4-uj-JMZ" firstAttribute="top" secondItem="gCo-SG-ExN" secondAttribute="bottom" constant="36" id="OtP-tR-Cpw"/>
+                                            <constraint firstItem="CHX-6o-f0R" firstAttribute="top" secondItem="IX7-Tk-v1S" secondAttribute="top" constant="69" id="Vpc-Wc-dWu"/>
                                             <constraint firstAttribute="trailing" secondItem="gCo-SG-ExN" secondAttribute="trailing" id="bQP-F3-NIl"/>
+                                            <constraint firstItem="gCo-SG-ExN" firstAttribute="top" secondItem="CHX-6o-f0R" secondAttribute="bottom" constant="2" id="fMd-8U-VTX"/>
                                             <constraint firstItem="gCo-SG-ExN" firstAttribute="leading" secondItem="IX7-Tk-v1S" secondAttribute="leading" constant="16" id="qHf-Ix-2Iq"/>
+                                            <constraint firstItem="5i1-Uv-49n" firstAttribute="leading" secondItem="lJ4-uj-JMZ" secondAttribute="trailing" constant="38" id="tAO-UM-M2H"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -199,4 +217,8 @@
             <point key="canvasLocation" x="-144" y="363.99999999999989"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ask_question-32.png" width="32" height="32"/>
+        <image name="chat-32.png" width="32" height="32"/>
+    </resources>
 </document>

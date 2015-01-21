@@ -70,9 +70,9 @@
 //    self.webViewHeightConstraint.constant = self.questionText.frame.size.height + 200;
 //    [self.questionText layoutIfNeeded];
     self.nestedView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.nestedView.frame = CGRectMake(0, 0, 320, 25000);
     self.questionText.scrollEnabled = NO;
     [self textViewDidChange:self.questionText];
+    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + 450);
 
 //    self.questionText.frame = CGRectMake(self.questionText.frame.origin.x, self.questionText.frame.origin.y, self.questionText.frame.size.width, 25000.0);
 //    self.questionText.contentSize = CGSizeMake(320, 25000.0);
@@ -87,12 +87,10 @@
 //    self.scrollView. = self.view.frame.size.height;
     
 //    self.bottomConstraint.constant = 1000.0;
-    
-    [self textViewDidChange:self.questionText];
 }
 - (void)textViewDidChange:(UITextView *)textView
 {
-    CGFloat fixedWidth = textView.frame.size.width;
+    CGFloat fixedWidth = 320;
     CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
