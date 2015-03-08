@@ -8,7 +8,10 @@
 
 #import "SidebarViewController.h"
 
-@interface SidebarViewController ()
+@interface SidebarViewController (){
+    NSArray *menuItems;
+    NSArray *menuIcons;
+}
 
 @end
 
@@ -16,6 +19,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
+    menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
+//    self.tableView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
 
@@ -24,6 +31,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return menuItems.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text = menuItems[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+    return cell;
+}
 /*
 #pragma mark - Navigation
 
