@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <CoreData+MagicalRecord.h>
+#import "Api.h"
 @interface AppDelegate ()
 
 @end

@@ -13,8 +13,12 @@
 #import "QuestionsTableViewCell.h"
 #import "Question.h"
 #import "SWRevealViewController.h"
+#import "Api.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface QuestionsViewController ()
+@interface QuestionsViewController (){
+    Api *api;
+}
 
 @end
 
@@ -23,6 +27,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self defineNavigationPanel];
+    api = [Api sharedManager];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [api getData:@"/questions" andComplition:^(id data, BOOL result){
+        if(result){
+            NSLog(@"data is %@", data);
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        } else {
+            NSLog(@"data is %@", data);
+        }
+    }];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -40,7 +55,9 @@
         
     }
 }
-
+- (void) parseQuestionsData:(id) data{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
