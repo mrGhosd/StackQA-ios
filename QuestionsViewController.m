@@ -12,6 +12,7 @@
 #import <CoreData+MagicalRecord.h>
 #import "QuestionsTableViewCell.h"
 #import "Question.h"
+#import "SWRevealViewController.h"
 
 @interface QuestionsViewController ()
 
@@ -21,12 +22,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self defineNavigationPanel];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void) defineNavigationPanel{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
 @interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate>
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property(strong)NSMutableArray *questions;
 @end

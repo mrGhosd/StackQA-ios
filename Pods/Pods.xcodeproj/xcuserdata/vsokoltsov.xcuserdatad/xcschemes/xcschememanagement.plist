@@ -4,12 +4,27 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-StackQA-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StackQA-MagicalRecord.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-StackQA-SWTableViewCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-UICKeyChainStore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,17 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>612CF3DFE981AF8E71EBF31E</key>
+		<key>05BD393D05C9A1E9F287FD49</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C703181A5E9F602B24405FFD</key>
+		<key>16730BD12128F2DBFFC89D51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D0816EEF77F11644E156A770</key>
+		<key>305FF6619ABE1ABB34B68771</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31B3006E2B0277691BDB6F75</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>48DFC41863716C4AB4B51814</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5CCC1A1930F3E43417CCA0E3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

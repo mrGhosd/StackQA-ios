@@ -41,7 +41,7 @@
     self.nestedView.translatesAutoresizingMaskIntoConstraints = YES;
     self.questionText.scrollEnabled = NO;
     [self textViewDidChange:self.questionText];
-    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + 450);
+    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + self.questionTitle.frame.size.height + 450);
 }
 
 - (void)textViewDidChange:(UITextView *)textView
