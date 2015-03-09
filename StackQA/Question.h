@@ -9,13 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class QuestionDetail;
+@interface Question : NSManagedObject{
+   }
 
-@interface Question : NSManagedObject
-
+@property (nonatomic, retain) NSNumber * object_id;
+@property (nonatomic, retain) NSNumber * category_id;
+@property (nonatomic) BOOL is_closed;
+@property (nonatomic, retain) NSNumber * rate;
+@property (nonatomic, retain) NSNumber * views;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSNumber * user_id;
-@property (nonatomic, retain) QuestionDetail *questionDetail;
 
+- (BOOL) create:(id) attributes;
 @end

@@ -32,7 +32,7 @@
 }
 - (void) initQuestionData{
     self.questionTitle.text = self.question.title;
-    self.questionText.text = self.question.questionDetail.text;
+    self.questionText.text = self.question.text;
     
 }
 

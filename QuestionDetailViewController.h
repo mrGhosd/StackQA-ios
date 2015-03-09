@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreData+MagicalRecord.h>
 #import "Question.h"
-#import "QuestionDetail.h"
 
 @interface QuestionDetailViewController : UIViewController <UITextViewDelegate>
 @property (strong) Question *question;

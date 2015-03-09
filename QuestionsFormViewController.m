@@ -8,7 +8,6 @@
 
 #import "QuestionsFormViewController.h"
 #import <CoreData+MagicalRecord.h>
-#import "QuestionDetail.h"
 @interface QuestionsFormViewController ()
 
 @end
@@ -19,7 +18,7 @@
     [super viewDidLoad];
     if(self.question){
         self.questionTitle.text = self.question.title;
-        self.questionText.text = self.question.questionDetail.text;
+        self.questionText.text = self.question.text;
     }
     
     // Do any additional setup after loading the view.
@@ -45,16 +44,15 @@
     if (self.question) {
         Question *question = [Question MR_findFirstByAttribute:@"title" withValue:self.question.title inContext:localContext];
         question.title = self.questionTitle.text;
-        question.questionDetail.text = self.questionText.text;
+        question.text = self.questionText.text;
     }
     else {
         
         Question *question = [Question MR_createInContext:localContext];
-        question.questionDetail = [QuestionDetail MR_createInContext:localContext];
         if([self.questionTitle.text isEqual: @""] || ![self.questionText.text  isEqual: @""]){
             question.title = self.questionTitle.text;
             question.created_at = [NSDate date];
-            question.questionDetail.text = self.questionText.text;
+            question.text = self.questionText.text;
         } else {
             NSLog(@"Error!");
         }

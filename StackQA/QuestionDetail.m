@@ -12,6 +12,5 @@
 @implementation QuestionDetail
 
 @dynamic text;
-@dynamic question;
 
 @end

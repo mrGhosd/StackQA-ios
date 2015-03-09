@@ -7,6 +7,7 @@
 //
 
 #import "QuestionsViewController.h"
+#import "AppDelegate.h"
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
 #import <CoreData+MagicalRecord.h>
@@ -18,6 +19,7 @@
 
 @interface QuestionsViewController (){
     Api *api;
+    UIApplication *app;
 }
 
 @end
@@ -32,7 +34,7 @@
                          animated:YES];
     [api getData:@"/questions" andComplition:^(id data, BOOL result){
         if(result){
-            NSLog(@"data is %@", data);
+            [self parseQuestionsData:data];
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         } else {
             NSLog(@"data is %@", data);
@@ -56,7 +58,41 @@
     }
 }
 - (void) parseQuestionsData:(id) data{
-    
+    NSMutableArray *questions = data[@"questions"];
+    for(NSDictionary *question in questions){
+        app = [UIApplication sharedApplication];
+        AppDelegate *app_delegate = [app delegate];
+        __block UIBackgroundTaskIdentifier bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
+            [app endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        }];
+//        Question *q = [[Question alloc] initWithEntity:[NSEntityDescription entityForName:@"Question" inManagedObjectContext:[app_delegate managedObjectContext]] insertIntoManagedObjectContext:localContext];
+//        q.object_id = question[@"id"];
+//        q.user_id = question[@"user_id"];
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext){
+            Question *q = [Question MR_createInContext:localContext];
+            q.object_id = question[@"id"];
+            q.user_id = question[@"user_id"];
+            q.title = question[@"title"];
+            [localContext MR_save];
+        } completion:^(BOOL success, NSError *error){
+            [app endBackgroundTask:bgTask];
+            bgTask = UIBackgroundTaskInvalid;
+        }
+         ];
+         //        BOOL result = [q create:question];
+//        if(result){
+//            [localContext MR_save];
+//        }
+//        q.object_id = question[@"id"];
+//        q.user_id = question[@"user_id"];
+//        q.category_id = question[@"category_id"];
+//        q.rate = question[@"rate"];
+//        q.title = question[@"title"];
+//        q.created_at = [self correctConvertOfDate:question[@"created_at"]];
+//        q.text = question[@"text"];
+        
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -65,7 +101,6 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.questions = [Question MR_findAll];
-    
     [self.tableView reloadData];
 }
 
@@ -117,8 +152,17 @@
         form.question = question;
     }
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"showQuestion" sender:self];
+}
+- (NSDate *) correctConvertOfDate:(NSString *) date{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *correctDate = [dateFormat dateFromString:date];
+    //    [dateFormat setDateFormat:@"dd.MM.YYYY HH:mm:SS"];
+    //    NSString *finalDate = [dateFormat stringFromDate:correctDate];
+    return correctDate;
 }
 /*
 // Override to support conditional editing of the table view.

@@ -13,6 +13,5 @@
 @interface QuestionDetail : NSManagedObject
 
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSManagedObject *question;
 
 @end

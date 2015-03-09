@@ -191,7 +191,6 @@
 		6428B0BE1AAC68F500110D62 /* question */ = {
 			isa = PBXGroup;
 			children = (
-				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
 				64C69EEA1A6C52C2006AB0AC /* Question.h */,
 				64C69EEB1A6C52C2006AB0AC /* Question.m */,
 				64C69EE71A6C52C1006AB0AC /* QuestionDetail.h */,
@@ -258,6 +257,14 @@
 			name = API;
 			sourceTree = "<group>";
 		};
+		6428B0E81AAD0C3D00110D62 /* db */ = {
+			isa = PBXGroup;
+			children = (
+				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
 		64C69EAC1A6C4F01006AB0AC = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +288,7 @@
 		64C69EB71A6C4F01006AB0AC /* StackQA */ = {
 			isa = PBXGroup;
 			children = (
+				6428B0E81AAD0C3D00110D62 /* db */,
 				6428B0BC1AAC68CB00110D62 /* models */,
 				6428B0BD1AAC68D400110D62 /* views */,
 				6428B0BB1AAC68C300110D62 /* controllers */,
