@@ -12,6 +12,10 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.questionRate.backgroundColor = [UIColor lightGrayColor];
+    self.questionRate.textColor = [UIColor whiteColor];
+    self.questionRate.clipsToBounds = YES;
+    self.questionRate.layer.cornerRadius = 30;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

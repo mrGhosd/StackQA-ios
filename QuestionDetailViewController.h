@@ -17,7 +17,9 @@
 @property (strong, nonatomic) IBOutlet UIView *nestedView;
 @property (strong, nonatomic) IBOutlet UITextView *questionText;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeightConstraint;
-- (IBAction)deleteQuestion:(id)sender;
+//- (IBAction)deleteQuestion:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *questionDate;
+@property (strong, nonatomic) IBOutlet UILabel *questionCategory;
 
 
 @end

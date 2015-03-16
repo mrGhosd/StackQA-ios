@@ -9,31 +9,107 @@
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
 #import "QuestionsViewController.h"
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "AppDelegate.h"
+#import "Api.h"
 
-@interface QuestionDetailViewController ()
+@interface QuestionDetailViewController (){
+    Api *api;
+    AppDelegate *app;
+    NSManagedObjectContext *localContext;
+}
 
 @end
 
-@implementation QuestionDetailViewController 
+@implementation QuestionDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initQuestionData];
-    [self viewSizeSettings];
+    [self.scrollView addConstraint:[NSLayoutConstraint
+                              constraintWithItem:self.scrollView
+                              attribute:NSLayoutAttributeHeight
+                              relatedBy:NSLayoutRelationEqual
+                              toItem:self.scrollView
+                              attribute:NSLayoutAttributeHeight
+                              multiplier:0.5
+                              constant:10000.0]];
+        [self.nestedView addConstraint:[NSLayoutConstraint
+                                  constraintWithItem:self.nestedView
+                                  attribute:NSLayoutAttributeHeight
+                                  relatedBy:NSLayoutRelationEqual
+                                  toItem:self.nestedView
+                                  attribute:NSLayoutAttributeHeight
+                                  multiplier:0.5
+                                  constant:10000.0]];
+    
+    [self.questionText addConstraint:[NSLayoutConstraint
+                                    constraintWithItem:self.questionText
+                                    attribute:NSLayoutAttributeHeight
+                                    relatedBy:NSLayoutRelationEqual
+                                    toItem:self.questionText
+                                    attribute:NSLayoutAttributeHeight
+                                    multiplier:0.5
+                                    constant:10000.0]];
+//    [self.questionText sizeToFit];
+//    self.nestedView.translatesAutoresizingMaskIntoConstraints = NO;
+
+    
+//    [self viewSizeSettings];
+//    [self uploadQuestionData];
+//    [self.questionText.layoutManager ensureLayoutForTextContainer:self.questionText.textContainer];
     
 }
--(void) viewDidAppear:(BOOL)animated{
-    [self initQuestionData];
-    [self viewSizeSettings];
+- (void) uploadQuestionData{
+    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    
+    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    api = [Api sharedManager];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    
+    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.object_id] andComplition:^(id data, BOOL result){
+        if(result){
+            [self parseQuestionData:data];
+        } else {
+            NSLog(@"data is %@", data);
+        }
+    }];
 }
+-(void) viewDidAppear:(BOOL)animated{
+//    [self viewSizeSettings];
+}
+
+- (void) parseQuestionData:(id) data{
+    NSMutableDictionary *question = data;
+    Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"] inContext:localContext];
+    if(qw){
+        Question *q = qw;
+//        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+//            Question *q = [Question MR_createInContext:localContext];
+        q.category = [SQACategory MR_createInContext:localContext];
+        q.category.title = question[@"category"][@"title"];
+        q.text = question[@"text"];
+    
+        [localContext MR_save];
+//        [self initQuestionData:q];
+//        }];
+    }
+    
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (void) initQuestionData{
-    self.questionTitle.text = self.question.title;
+//    self.questionTitle.text = self.question.title;
     self.questionText.text = self.question.text;
-    
+//    self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.created_at];
+//    self.questionCategory.text = self.question.category.title;
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    [self viewSizeSettings];
 }
 
 - (void) viewSizeSettings{
@@ -41,7 +117,8 @@
     self.nestedView.translatesAutoresizingMaskIntoConstraints = YES;
     self.questionText.scrollEnabled = NO;
     [self textViewDidChange:self.questionText];
-    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + self.questionTitle.frame.size.height + 450);
+//    self.questionText.contentSize.height
+    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + 450);
 }
 
 - (void)textViewDidChange:(UITextView *)textView

@@ -72,6 +72,12 @@
 #define COCOAPODS_VERSION_MINOR_SWTableViewCell 3
 #define COCOAPODS_VERSION_PATCH_SWTableViewCell 7
 
+// SocketRocket
+#define COCOAPODS_POD_AVAILABLE_SocketRocket
+#define COCOAPODS_VERSION_MAJOR_SocketRocket 0
+#define COCOAPODS_VERSION_MINOR_SocketRocket 3
+#define COCOAPODS_VERSION_PATCH_SocketRocket 1
+
 // UICKeyChainStore
 #define COCOAPODS_POD_AVAILABLE_UICKeyChainStore
 #define COCOAPODS_VERSION_MAJOR_UICKeyChainStore 2

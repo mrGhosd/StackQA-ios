@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-StackQA-SocketRocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StackQA-UICKeyChainStore.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,32 +42,37 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05BD393D05C9A1E9F287FD49</key>
+		<key>0F6A1104551DAC5E6C1F7738</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>16730BD12128F2DBFFC89D51</key>
+		<key>21BCB5E5879B5914D814E97B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>305FF6619ABE1ABB34B68771</key>
+		<key>2E8E189436B62FC16B57CA58</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31B3006E2B0277691BDB6F75</key>
+		<key>6C30CF4413AB8FAD88E6D16D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>48DFC41863716C4AB4B51814</key>
+		<key>DB1F54C88F6213D3C44A9792</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CCC1A1930F3E43417CCA0E3</key>
+		<key>EAB495D8453D364CB8809236</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F78FFA425F03C18937209A58</key>
 		<dict>
 			<key>primary</key>
 			<true/>

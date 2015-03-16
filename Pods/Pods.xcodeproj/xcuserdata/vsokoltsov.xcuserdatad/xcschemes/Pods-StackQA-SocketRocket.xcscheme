@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EAB495D8453D364CB8809236"
-               BuildableName = "libPods-StackQA-AFNetworking.a"
-               BlueprintName = "Pods-StackQA-AFNetworking"
+               BlueprintIdentifier = "F78FFA425F03C18937209A58"
+               BuildableName = "libPods-StackQA-SocketRocket.a"
+               BlueprintName = "Pods-StackQA-SocketRocket"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -7,6 +7,7 @@
 //
 
 #import "Question.h"
+#import "AppDelegate.h"
 #import <CoreData+MagicalRecord.h>
 
 
@@ -21,33 +22,31 @@
 @dynamic created_at;
 @dynamic user_id;
 @dynamic text;
+@dynamic answers_count;
+@dynamic comments_count;
 
-- (BOOL) create:(id) attributes{
-    @try {
-        NSDictionary *questionJSON = [NSDictionary dictionaryWithDictionary:[attributes copy]];
+- (void) create:(id) attributes{
+    Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:attributes[@"id"]];
+    if(!question){
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext){
+            Question *q = [Question MR_createInContext:localContext];
+            q.object_id = attributes[@"id"];
+            q.user_id = attributes[@"user_id"];
+            q.category_id = attributes[@"category_id"];
+            q.rate = attributes[@"rate"];
+            q.title = attributes[@"title"];
+            q.created_at = [Question correctConvertOfDate:attributes[@"created_at"]];
+            q.text = attributes[@"text"];
+            [localContext MR_save];
+        }];
+    }
 
-//        question.questionDetail = [QuestionDetail MR_createInContext:context];
-        self.object_id = questionJSON[@"id"];
-        self.user_id = questionJSON[@"user_id"];
-        self.category_id = questionJSON[@"category_id"];
-        self.rate = questionJSON[@"rate"];
-        self.title = questionJSON[@"title"];
-        self.created_at = [self correctConvertOfDate:questionJSON[@"created_at"]];
-        self.text = questionJSON[@"text"];
-        return true;
-    }
-    @catch(NSException *e){
-        return false;
-    }
-    
 }
 
-- (NSDate *) correctConvertOfDate:(NSString *) date{
++ (NSDate *) correctConvertOfDate:(NSString *) date{
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *correctDate = [dateFormat dateFromString:date];
-//    [dateFormat setDateFormat:@"dd.MM.YYYY HH:mm:SS"];
-//    NSString *finalDate = [dateFormat stringFromDate:correctDate];
     return correctDate;
 }
 

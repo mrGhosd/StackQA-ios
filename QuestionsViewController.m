@@ -16,10 +16,10 @@
 #import "SWRevealViewController.h"
 #import "Api.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-
 @interface QuestionsViewController (){
     Api *api;
     UIApplication *app;
+    NSArray *questionsArray;
 }
 
 @end
@@ -28,24 +28,46 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    questionsArray = [Question MR_findAll];
     [self defineNavigationPanel];
-    api = [Api sharedManager];
-    [MBProgressHUD showHUDAddedTo:self.view
-                         animated:YES];
-    [api getData:@"/questions" andComplition:^(id data, BOOL result){
-        if(result){
-            [self parseQuestionsData:data];
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        } else {
-            NSLog(@"data is %@", data);
-        }
-    }];
+    [self showQuestions];
+    self.questions = [Question MR_findAll];
+    [self.tableView reloadData];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (void) showQuestions{
+    [self loadQuestions];
+}
+- (BOOL) questionsExists{
+    if(questionsArray.count > 0){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+- (void) loadQuestions{
+    api = [Api sharedManager];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    
+    [api getData:@"/questions" andComplition:^(id data, BOOL result){
+        if(result){
+            [self parseQuestionsData:data];
+        } else {
+            NSLog(@"data is %@", data);
+            questionsArray = [NSArray arrayWithArray:data[@"questions"]];
+        }
+    }];
+    self.questions = [Question MR_findAll];
+    [self.tableView reloadData];
+}
+
 -(void) defineNavigationPanel{
     SWRevealViewController *revealViewController = self.revealViewController;
     if ( revealViewController )
@@ -60,39 +82,28 @@
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary *question in questions){
-        app = [UIApplication sharedApplication];
-        AppDelegate *app_delegate = [app delegate];
-        __block UIBackgroundTaskIdentifier bgTask = [app beginBackgroundTaskWithExpirationHandler:^{
-            [app endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
-        }];
-//        Question *q = [[Question alloc] initWithEntity:[NSEntityDescription entityForName:@"Question" inManagedObjectContext:[app_delegate managedObjectContext]] insertIntoManagedObjectContext:localContext];
-//        q.object_id = question[@"id"];
-//        q.user_id = question[@"user_id"];
-        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext){
-            Question *q = [Question MR_createInContext:localContext];
-            q.object_id = question[@"id"];
-            q.user_id = question[@"user_id"];
-            q.title = question[@"title"];
-            [localContext MR_save];
-        } completion:^(BOOL success, NSError *error){
-            [app endBackgroundTask:bgTask];
-            bgTask = UIBackgroundTaskInvalid;
+        Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"]];
+        if(!qw){
+            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+                Question *q = [Question MR_createInContext:localContext];
+                q.object_id = question[@"id"];
+                q.user_id = question[@"user_id"];
+                q.category_id = question[@"category_id"];
+                q.rate = question[@"rate"];
+                q.title = question[@"title"];
+                q.created_at = [self correctConvertOfDate:question[@"created_at"]];
+                q.answers_count = question[@"answers_count"];
+                q.comments_count = question[@"comments_count"];
+                q.text = question[@"text"];
+                [localContext MR_save];
+            }];
         }
-         ];
-         //        BOOL result = [q create:question];
-//        if(result){
-//            [localContext MR_save];
-//        }
-//        q.object_id = question[@"id"];
-//        q.user_id = question[@"user_id"];
-//        q.category_id = question[@"category_id"];
-//        q.rate = question[@"rate"];
-//        q.title = question[@"title"];
-//        q.created_at = [self correctConvertOfDate:question[@"created_at"]];
-//        q.text = question[@"text"];
-        
+
     }
+//    [NSThread sleepForTimeInterval:2.0]
+    self.questions = [NSArray arrayWithArray:[Question MR_findAll]];
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -129,14 +140,18 @@
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionsTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     }
-    cell.questionTitle.text = questionItem.title;
-    cell.questionDate.text = [NSString stringWithFormat:@"%@", questionItem.created_at];
+    cell.questionTitle.text = (Question *)questionItem.title;
+    cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
+    cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
+    cell.viewsCount.text = [NSString stringWithFormat:@"%@", questionItem.views];
+    cell.answersCount.text = [NSString stringWithFormat:@"%@", questionItem.answers_count];
+    cell.commentsCount.text = [NSString stringWithFormat:@"%@", questionItem.comments_count];
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 100;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -156,14 +171,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self performSegueWithIdentifier:@"showQuestion" sender:self];
 }
+
 - (NSDate *) correctConvertOfDate:(NSString *) date{
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *correctDate = [dateFormat dateFromString:date];
-    //    [dateFormat setDateFormat:@"dd.MM.YYYY HH:mm:SS"];
-    //    NSString *finalDate = [dateFormat stringFromDate:correctDate];
     return correctDate;
 }
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
