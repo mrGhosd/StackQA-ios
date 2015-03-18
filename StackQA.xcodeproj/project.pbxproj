@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64124A1A1AB987230009C034 /* move9.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124A191AB987230009C034 /* move9.png */; };
 		6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C21AAC73ED00110D62 /* SWRevealViewController.m */; };
 		6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C51AAC777900110D62 /* SidebarViewController.m */; };
 		6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C91AAC77A100110D62 /* RightPanelViewController.m */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.debug.xcconfig"; sourceTree = "<group>"; };
+		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		6428B0C11AAC73ED00110D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6428B0C21AAC73ED00110D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6428B0C41AAC777900110D62 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		6428B0BA1AAC68BB00110D62 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64124A191AB987230009C034 /* move9.png */,
 				6428B0E91AAE0AF500110D62 /* eye110.png */,
 				6428B0E21AACF3DF00110D62 /* news-32.png */,
 				6428B0E01AACF2D200110D62 /* feedback-32.png */,
@@ -440,6 +443,7 @@
 			files = (
 				6428B0E31AACF3DF00110D62 /* news-32.png in Resources */,
 				6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */,
+				64124A1A1AB987230009C034 /* move9.png in Resources */,
 				6469F9B61A70592500E837E3 /* Main.storyboard in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
 				64C69EF41A6C6FFA006AB0AC /* QuestionsTableViewCell.xib in Resources */,
