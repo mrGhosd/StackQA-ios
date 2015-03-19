@@ -26,31 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initQuestionData];
-    [self.scrollView addConstraint:[NSLayoutConstraint
-                              constraintWithItem:self.scrollView
-                              attribute:NSLayoutAttributeHeight
-                              relatedBy:NSLayoutRelationEqual
-                              toItem:self.scrollView
-                              attribute:NSLayoutAttributeHeight
-                              multiplier:0.5
-                              constant:10000.0]];
-        [self.nestedView addConstraint:[NSLayoutConstraint
-                                  constraintWithItem:self.nestedView
-                                  attribute:NSLayoutAttributeHeight
-                                  relatedBy:NSLayoutRelationEqual
-                                  toItem:self.nestedView
-                                  attribute:NSLayoutAttributeHeight
-                                  multiplier:0.5
-                                  constant:10000.0]];
+    self.questionText.layoutManager.allowsNonContiguousLayout = NO;
+    [self resizeView];
     
-    [self.questionText addConstraint:[NSLayoutConstraint
-                                    constraintWithItem:self.questionText
-                                    attribute:NSLayoutAttributeHeight
-                                    relatedBy:NSLayoutRelationEqual
-                                    toItem:self.questionText
-                                    attribute:NSLayoutAttributeHeight
-                                    multiplier:0.5
-                                    constant:10000.0]];
 //    [self.questionText sizeToFit];
 //    self.nestedView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -59,6 +37,50 @@
 //    [self uploadQuestionData];
 //    [self.questionText.layoutManager ensureLayoutForTextContainer:self.questionText.textContainer];
     
+}
+
+- (void) resizeView{
+
+//    [self.questionText setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    CGSize size_view = [self.webView.scrollView sizeThatFits:CGSizeMake(self.questionText.frame.size.width, FLT_MAX)];
+    self.webView.opaque = NO;
+    self.webView.backgroundColor = [UIColor clearColor];
+    [self.webView.scrollView sizeThatFits:CGSizeMake(self.questionText.frame.size.width, FLT_MAX)].height;
+    CGSize size = [self.question.text sizeWithAttributes:nil];
+    float viewHeight;
+    float height_diff = self.view.frame.size.height - size.width;
+    if(height_diff < 0){
+        viewHeight = size.width / 20.615 - 2000;
+    } else {
+        viewHeight = height_diff / 3;
+    }
+    self.webView.scrollView.scrollEnabled = NO;
+//    [self.webView sizeToFit];
+//    [self.scrollView addConstraint:[NSLayoutConstraint
+//                                    constraintWithItem:self.scrollView
+//                                    attribute:NSLayoutAttributeHeight
+//                                    relatedBy:NSLayoutRelationEqual
+//                                    toItem:self.scrollView
+//                                    attribute:NSLayoutAttributeHeight
+//                                    multiplier:0.5
+//                                    constant:viewHeight]];
+//    [self.nestedView addConstraint:[NSLayoutConstraint
+//                                    constraintWithItem:self.nestedView
+//                                    attribute:NSLayoutAttributeHeight
+//                                    relatedBy:NSLayoutRelationEqual
+//                                    toItem:self.nestedView
+//                                    attribute:NSLayoutAttributeHeight
+//                                    multiplier:0.5
+//                                    constant:viewHeight]];
+    
+    [self.webView addConstraint:[NSLayoutConstraint
+                                      constraintWithItem:self.webView
+                                      attribute:NSLayoutAttributeHeight
+                                      relatedBy:NSLayoutRelationEqual
+                                      toItem:self.webView
+                                      attribute:NSLayoutAttributeHeight
+                                      multiplier:0.5
+                                      constant:viewHeight]];
 }
 - (void) uploadQuestionData{
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -104,10 +126,12 @@
     // Dispose of any resources that can be recreated.
 }
 - (void) initQuestionData{
-//    self.questionTitle.text = self.question.title;
-    self.questionText.text = self.question.text;
-//    self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.created_at];
-//    self.questionCategory.text = self.question.category.title;
+    self.questionTitle.text = self.question.title;
+    [self.webView loadHTMLString:self.question.text baseURL:nil];
+    self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.created_at];
+    self.questionCategory.text = self.question.category.title;
+    [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
+    [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 //    [self viewSizeSettings];
 }

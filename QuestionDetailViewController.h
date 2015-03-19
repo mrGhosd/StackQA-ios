@@ -20,6 +20,9 @@
 //- (IBAction)deleteQuestion:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *questionDate;
 @property (strong, nonatomic) IBOutlet UILabel *questionCategory;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) IBOutlet UIButton *commentsCount;
+@property (strong, nonatomic) IBOutlet UIButton *answersCount;
 
 
 @end

@@ -121,19 +121,12 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XB-m5-DFp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8XB-m5-DFp">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-4z-TZV">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-4z-TZV">
                                         <rect key="frame" x="-8" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFJ-uY-vLq">
-                                                <rect key="frame" x="19" y="113" width="573" height="137"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24y-Tb-Rwe">
                                                 <rect key="frame" x="342" y="8" width="250" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -152,20 +145,27 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-lL-WR9">
+                                                <rect key="frame" x="19" y="113" width="573" height="91"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="91" id="oo2-7Z-jGG"/>
+                                                </constraints>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="24y-Tb-Rwe" secondAttribute="trailing" constant="8" id="2Jd-8f-ibD"/>
-                                            <constraint firstItem="WFJ-uY-vLq" firstAttribute="top" secondItem="Dof-xd-zbV" secondAttribute="bottom" constant="8" id="2jb-GO-scC"/>
+                                            <constraint firstAttribute="trailing" secondItem="u1a-lL-WR9" secondAttribute="trailing" constant="8" id="2e0-Cr-pPs"/>
                                             <constraint firstItem="Dof-xd-zbV" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="4iW-bH-j9k"/>
-                                            <constraint firstAttribute="trailing" secondItem="WFJ-uY-vLq" secondAttribute="trailing" constant="8" id="9b0-3v-KUn"/>
                                             <constraint firstItem="sWv-HT-xfO" firstAttribute="top" secondItem="24y-Tb-Rwe" secondAttribute="bottom" constant="17" id="BAm-gO-iIn"/>
+                                            <constraint firstAttribute="bottom" secondItem="u1a-lL-WR9" secondAttribute="bottom" constant="60" id="OGx-wH-Hxq"/>
                                             <constraint firstItem="sWv-HT-xfO" firstAttribute="top" secondItem="24y-Tb-Rwe" secondAttribute="bottom" constant="17" id="Tov-Zk-7Xa"/>
                                             <constraint firstItem="sWv-HT-xfO" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="Wge-is-24S"/>
                                             <constraint firstItem="24y-Tb-Rwe" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" constant="8" id="Z9C-bC-YHb"/>
-                                            <constraint firstItem="WFJ-uY-vLq" firstAttribute="top" secondItem="Dof-xd-zbV" secondAttribute="bottom" constant="8" id="bWr-ST-9HL"/>
-                                            <constraint firstItem="WFJ-uY-vLq" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="kzd-2c-w7s"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="Dof-xd-zbV" secondAttribute="bottom" constant="8" id="ej9-Sr-3UZ"/>
                                             <constraint firstItem="Dof-xd-zbV" firstAttribute="top" secondItem="sWv-HT-xfO" secondAttribute="bottom" constant="17" id="qP7-du-otk"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="spA-Mt-0Pb"/>
                                             <constraint firstItem="Dof-xd-zbV" firstAttribute="top" secondItem="sWv-HT-xfO" secondAttribute="bottom" constant="17" id="wYZ-Jf-tbR"/>
                                         </constraints>
                                     </view>
@@ -229,14 +229,19 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="answersCount" destination="Tuj-Gd-gTz" id="nRn-MQ-dVl"/>
+                        <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
-                        <outlet property="questionText" destination="WFJ-uY-vLq" id="VAv-Ev-o9S"/>
+                        <outlet property="questionCategory" destination="Dof-xd-zbV" id="UbB-ng-Pcp"/>
+                        <outlet property="questionDate" destination="24y-Tb-Rwe" id="QpL-DM-51s"/>
+                        <outlet property="questionTitle" destination="sWv-HT-xfO" id="xKR-4h-gpd"/>
                         <outlet property="scrollView" destination="8XB-m5-DFp" id="GbP-kP-txq"/>
+                        <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-ye-tND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1915" y="1284"/>
+            <point key="canvasLocation" x="1802" y="1284"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="TC2-OV-4BK">
