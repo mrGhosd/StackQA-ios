@@ -192,4 +192,26 @@
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+- (IBAction)questionPopupView:(id)sender {
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:
+                                @"+1",
+                                @"-1",
+                                @"Редактировать",
+                                @"Удалить",
+                                nil];
+        popup.tag = 1;
+        [popup showInView:self.nestedView];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    switch(buttonIndex)
+    {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+    }
+}
 @end

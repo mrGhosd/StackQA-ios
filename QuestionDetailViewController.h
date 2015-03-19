@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *commentsCount;
 @property (strong, nonatomic) IBOutlet UIButton *answersCount;
+- (IBAction)questionPopupView:(id)sender;
 
 
 @end
