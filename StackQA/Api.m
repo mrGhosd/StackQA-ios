@@ -7,11 +7,11 @@
 //
 
 #import "Api.h"
+#import <Foundation/Foundation.h>
 
 @implementation Api
 
 static Api *sharedSingleton_ = nil;
-
 
 @synthesize completed = _completed;
 @synthesize errored = _errored;
@@ -60,6 +60,7 @@ static Api *sharedSingleton_ = nil;
     
     [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         response(responseObject, YES);
+        self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         response(error, NO);
     }];

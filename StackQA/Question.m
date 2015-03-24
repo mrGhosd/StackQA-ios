@@ -24,6 +24,7 @@
 @dynamic text;
 @dynamic answers_count;
 @dynamic comments_count;
+@dynamic answers_list;
 
 - (void) create:(id) attributes{
     Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:attributes[@"id"]];

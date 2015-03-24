@@ -16,6 +16,7 @@ typedef void(^requestErrorBlock)(NSError *);
 
 @property (nonatomic, copy) requestCompletedBlock completed;
 @property (nonatomic, copy) requestErrorBlock errored;
+@property (nonatomic, copy) NSDate *lastSyncDate;
 
 + (id) sharedManager;
 - (void) getTokenWithClientID:(NSString *) clientId andSecretID:(NSString *) secretID andComplition:(ResponseCopmlition) complition;

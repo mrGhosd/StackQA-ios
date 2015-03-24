@@ -9,6 +9,7 @@
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
 #import "QuestionsViewController.h"
+#import "AnswersViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "Api.h"
@@ -17,6 +18,7 @@
     Api *api;
     AppDelegate *app;
     NSManagedObjectContext *localContext;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -25,27 +27,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self uploadQuestionData];
+    self.webView.delegate = self;
+    [self refreshInit];
     [self initQuestionData];
     self.questionText.layoutManager.allowsNonContiguousLayout = NO;
     [self resizeView];
-    
-//    [self.questionText sizeToFit];
-//    self.nestedView.translatesAutoresizingMaskIntoConstraints = NO;
-
-    
-//    [self viewSizeSettings];
-//    [self uploadQuestionData];
-//    [self.questionText.layoutManager ensureLayoutForTextContainer:self.questionText.textContainer];
-    
+}
+- (void) webViewDidFinishLoad:(UIWebView *)webView{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (void) resizeView{
-
-//    [self.questionText setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    CGSize size_view = [self.webView.scrollView sizeThatFits:CGSizeMake(self.questionText.frame.size.width, FLT_MAX)];
     self.webView.opaque = NO;
     self.webView.backgroundColor = [UIColor clearColor];
-    [self.webView.scrollView sizeThatFits:CGSizeMake(self.questionText.frame.size.width, FLT_MAX)].height;
     CGSize size = [self.question.text sizeWithAttributes:nil];
     float viewHeight;
     float height_diff = self.view.frame.size.height - size.width;
@@ -55,24 +50,6 @@
         viewHeight = height_diff / 3;
     }
     self.webView.scrollView.scrollEnabled = NO;
-//    [self.webView sizeToFit];
-//    [self.scrollView addConstraint:[NSLayoutConstraint
-//                                    constraintWithItem:self.scrollView
-//                                    attribute:NSLayoutAttributeHeight
-//                                    relatedBy:NSLayoutRelationEqual
-//                                    toItem:self.scrollView
-//                                    attribute:NSLayoutAttributeHeight
-//                                    multiplier:0.5
-//                                    constant:viewHeight]];
-//    [self.nestedView addConstraint:[NSLayoutConstraint
-//                                    constraintWithItem:self.nestedView
-//                                    attribute:NSLayoutAttributeHeight
-//                                    relatedBy:NSLayoutRelationEqual
-//                                    toItem:self.nestedView
-//                                    attribute:NSLayoutAttributeHeight
-//                                    multiplier:0.5
-//                                    constant:viewHeight]];
-    
     [self.webView addConstraint:[NSLayoutConstraint
                                       constraintWithItem:self.webView
                                       attribute:NSLayoutAttributeHeight
@@ -99,7 +76,6 @@
     }];
 }
 -(void) viewDidAppear:(BOOL)animated{
-//    [self viewSizeSettings];
 }
 
 - (void) parseQuestionData:(id) data{
@@ -107,18 +83,15 @@
     Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"] inContext:localContext];
     if(qw){
         Question *q = qw;
-//        [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-//            Question *q = [Question MR_createInContext:localContext];
         q.category = [SQACategory MR_createInContext:localContext];
+//        q.title = 
         q.category.title = question[@"category"][@"title"];
         q.text = question[@"text"];
     
         [localContext MR_save];
-//        [self initQuestionData:q];
-//        }];
     }
-    
-    
+    [self initQuestionData];
+    [refreshControl endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -132,7 +105,7 @@
     self.questionCategory.text = self.question.category.title;
     [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
 //    [self viewSizeSettings];
 }
 
@@ -177,6 +150,10 @@
     if([[segue identifier] isEqualToString:@"afterDeleteQuestion"]){
         QuestionsViewController *view = segue.destinationViewController;
     }
+    if ([[segue identifier] isEqualToString:@"answers_list"]) {
+        AnswersViewController *detail = segue.destinationViewController;
+        detail.question = self.question;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -213,5 +190,33 @@
         case 2:
             break;
     }
+}
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.scrollView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(uploadQuestionData) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void)reloadData
+{
+    if (refreshControl) {
+        
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM d, h:mm a"];
+        NSString *title = [NSString stringWithFormat:@"Последнее обновление: %@", [formatter stringFromDate:[NSDate date]]];
+        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                    forKey:NSForegroundColorAttributeName];
+        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+        refreshControl.attributedTitle = attributedTitle;
+        
+        [refreshControl endRefreshing];
+    }
+    [self initQuestionData];
 }
 @end

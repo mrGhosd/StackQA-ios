@@ -24,6 +24,7 @@ PODS:
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9.1)
+  - RDRStickyKeyboardView (0.0.2)
   - SocketRocket (0.3.1-beta2)
   - SWTableViewCell (0.3.7)
   - UICKeyChainStore (2.0.4)
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - AFNetworking
   - MagicalRecord
   - MBProgressHUD
+  - RDRStickyKeyboardView
   - SocketRocket
   - SWTableViewCell (~> 0.3.7)
   - UICKeyChainStore
@@ -40,6 +42,7 @@ SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
+  RDRStickyKeyboardView: 52f8380fe05eb8bff6b55d367232fa607772658b
   SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304
   SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
   UICKeyChainStore: 2399076d0950e20fe859b8f817548cf6ca542dd7

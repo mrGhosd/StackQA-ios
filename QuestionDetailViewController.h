@@ -10,7 +10,7 @@
 #import <CoreData+MagicalRecord.h>
 #import "Question.h"
 
-@interface QuestionDetailViewController : UIViewController <UITextViewDelegate>
+@interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate>
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

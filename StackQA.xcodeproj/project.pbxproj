@@ -22,6 +22,10 @@
 		6428B0E31AACF3DF00110D62 /* news-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E21AACF3DF00110D62 /* news-32.png */; };
 		6428B0E71AACF4B200110D62 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0E61AACF4B200110D62 /* Api.m */; };
 		6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E91AAE0AF500110D62 /* eye110.png */; };
+		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
+		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
+		644B46591AC0BFE6002CF50C /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644B46571AC0BFE6002CF50C /* AnswerTableViewCell.xib */; };
+		644B465C1AC0C6B1002CF50C /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B465B1AC0C6B1002CF50C /* Answer.m */; };
 		6469F9B01A7049B300E837E3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9AF1A7049B300E837E3 /* edit-32.png */; };
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
@@ -79,6 +83,13 @@
 		6428B0E51AACF4B200110D62 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
 		6428B0E61AACF4B200110D62 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		6428B0E91AAE0AF500110D62 /* eye110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye110.png; sourceTree = "<group>"; };
+		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
+		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
+		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
+		644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTableViewCell.m; sourceTree = "<group>"; };
+		644B46571AC0BFE6002CF50C /* AnswerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerTableViewCell.xib; sourceTree = "<group>"; };
+		644B465A1AC0C6B1002CF50C /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		644B465B1AC0C6B1002CF50C /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		6469F9AF1A7049B300E837E3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
@@ -172,6 +183,7 @@
 		6428B0BB1AAC68C300110D62 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				644B464E1AC0AC02002CF50C /* answers */,
 				6428B0C71AAC778200110D62 /* sidebar */,
 				6428B0C01AAC6AEC00110D62 /* SWRevealViewController */,
 				6428B0BF1AAC6AE000110D62 /* questions */,
@@ -182,6 +194,7 @@
 		6428B0BC1AAC68CB00110D62 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				644B465D1AC0C6DB002CF50C /* answers */,
 				646DDEFC1AB4D8670066F75A /* category */,
 				6428B0E41AACF49500110D62 /* API */,
 				6428B0BE1AAC68F500110D62 /* question */,
@@ -192,6 +205,7 @@
 		6428B0BD1AAC68D400110D62 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				644B46541AC0BFBF002CF50C /* answers */,
 				6428B0CE1AACB5F100110D62 /* questions */,
 				6428B0CD1AACB5E900110D62 /* sidebar */,
 			);
@@ -271,15 +285,43 @@
 			isa = PBXGroup;
 			children = (
 				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
-				646DDF031AB4D9650066F75A /* SQACategory.h */,
-				646DDF041AB4D9650066F75A /* SQACategory.m */,
 			);
 			name = db;
+			sourceTree = "<group>";
+		};
+		644B464E1AC0AC02002CF50C /* answers */ = {
+			isa = PBXGroup;
+			children = (
+				644B464F1AC0AC28002CF50C /* AnswersViewController.h */,
+				644B46501AC0AC28002CF50C /* AnswersViewController.m */,
+			);
+			name = answers;
+			sourceTree = "<group>";
+		};
+		644B46541AC0BFBF002CF50C /* answers */ = {
+			isa = PBXGroup;
+			children = (
+				644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */,
+				644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */,
+				644B46571AC0BFE6002CF50C /* AnswerTableViewCell.xib */,
+			);
+			name = answers;
+			sourceTree = "<group>";
+		};
+		644B465D1AC0C6DB002CF50C /* answers */ = {
+			isa = PBXGroup;
+			children = (
+				644B465A1AC0C6B1002CF50C /* Answer.h */,
+				644B465B1AC0C6B1002CF50C /* Answer.m */,
+			);
+			name = answers;
 			sourceTree = "<group>";
 		};
 		646DDEFC1AB4D8670066F75A /* category */ = {
 			isa = PBXGroup;
 			children = (
+				646DDF031AB4D9650066F75A /* SQACategory.h */,
+				646DDF041AB4D9650066F75A /* SQACategory.m */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -450,6 +492,7 @@
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
 				6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */,
 				64C69ECC1A6C4F01006AB0AC /* LaunchScreen.xib in Resources */,
+				644B46591AC0BFE6002CF50C /* AnswerTableViewCell.xib in Resources */,
 				6428B0D91AACF24D00110D62 /* ask_question-32.png in Resources */,
 				64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */,
 				6428B0DB1AACF25C00110D62 /* answers-32.png in Resources */,
@@ -514,9 +557,12 @@
 			files = (
 				64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */,
 				64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */,
+				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
+				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
 				646DDF051AB4D9650066F75A /* SQACategory.m in Sources */,
+				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,
 				64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */,
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,

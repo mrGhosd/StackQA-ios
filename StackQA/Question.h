@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "SQACategory.h"
+#import "Answer.h"
 
 @interface Question : NSManagedObject{
    }
@@ -24,7 +25,9 @@
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) NSNumber * answers_count;
 @property (nonatomic, retain) NSNumber * comments_count;
+@property (nonatomic, retain) NSMutableArray * answers_list;
 @property (nonatomic, retain) SQACategory *category;
+@property (nonatomic, retain) Answer *answers;
 
 - (BOOL) create:(id) attributes;
 + (NSDate *) correctConvertOfDate:(NSString *) date;

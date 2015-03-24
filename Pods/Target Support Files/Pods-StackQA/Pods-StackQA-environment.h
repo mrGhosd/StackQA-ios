@@ -66,6 +66,12 @@
 #define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
 #define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
 
+// RDRStickyKeyboardView
+#define COCOAPODS_POD_AVAILABLE_RDRStickyKeyboardView
+#define COCOAPODS_VERSION_MAJOR_RDRStickyKeyboardView 0
+#define COCOAPODS_VERSION_MINOR_RDRStickyKeyboardView 0
+#define COCOAPODS_VERSION_PATCH_RDRStickyKeyboardView 2
+
 // SWTableViewCell
 #define COCOAPODS_POD_AVAILABLE_SWTableViewCell
 #define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0

@@ -10,6 +10,7 @@ pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'UICKeyChainStore'
 pod 'SocketRocket'
+pod 'RDRStickyKeyboardView'
 end
 
 target 'StackQATests' do
