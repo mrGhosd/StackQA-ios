@@ -15,5 +15,5 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewBottom;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewBottom;
 @property (strong, nonatomic) IBOutlet UIView *actionView;
-- (IBAction)textOptions:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextView *actionViewText;
 @end

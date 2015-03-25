@@ -12,6 +12,7 @@
 #import <MBProgressHUD.h>
 
 @interface AnswersViewController (){
+    int selectedIndex;
     Api *api;
     NSManagedObjectContext *localContext;
     NSMutableArray *answersList;
@@ -23,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    selectedIndex = -1;
+    [self setActionViewBorder];
+    [self setActionViewTextBorder];
     self.tableView.delegate = self;
     [self loadAnswersList];
     
@@ -88,6 +92,11 @@
 }
 - (void) keyboardWillHide:(NSNotification *) notification{
     self.textViewBottom.constant = 0.0;
+    self.tableViewBottom.constant = self.actionView.frame.size.height;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 - (void) parseAnswerData:(id) data{
@@ -97,6 +106,24 @@
     [self.tableView reloadData];
 
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
+    if(selectedIndex == indexPath.row){
+        selectedIndex = -1;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
+    
+    if(selectedIndex != -1){
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        selectedIndex = indexPath.row;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    selectedIndex = indexPath.row;
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *answerItem = [answersList objectAtIndex:indexPath.row];
@@ -126,9 +153,43 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    if(selectedIndex == indexPath.row){
+        return 350;
+    } else {
+        return 100;
+    }
+    
+}
+- (void) setActionViewBorder{
+    CGSize mainViewSize = self.view.bounds.size;
+    CGFloat borderWidth = 1;
+    UIColor *borderColor = [UIColor lightGrayColor];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, mainViewSize.width, borderWidth)];
+    topView.opaque = YES;
+    topView.backgroundColor = borderColor;
+    topView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+    [self.actionView addSubview:topView];
+}
+- (float) setAnswerTextHeight:(NSDictionary *) answer{
+    CGSize size = [answer[@"text"] sizeWithAttributes:nil];
+    float viewHeight;
+    float height_diff = self.view.frame.size.height - size.width;
+    if(height_diff < 0){
+        viewHeight = size.width / 20.615 - 2000;
+    } else {
+        viewHeight = height_diff / 3;
+    }
+    return viewHeight;
 }
 
+- (void) setActionViewTextBorder{
+    [self.actionViewText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [self.actionViewText.layer setBorderWidth:2.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    self.actionViewText.layer.cornerRadius = 5;
+    self.actionViewText.clipsToBounds = YES;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -143,8 +204,4 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)textOptions:(id)sender {
-    self.textViewBottom.constant = 200.0;
-}
 @end
