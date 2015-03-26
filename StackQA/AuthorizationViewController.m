@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self defineNavigationPanel];
+    [self setSegmentValue];
     // Do any additional setup after loading the view.
 }
 
@@ -31,6 +32,10 @@
         revealViewController.rightViewController = nil;
         
     }
+}
+
+-(void) setSegmentValue{
+    [self.actionSegment setSelectedSegmentIndex:self.firstView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,4 +53,6 @@
 }
 */
 
+- (IBAction)switchViews:(id)sender {
+}
 @end

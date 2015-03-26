@@ -397,6 +397,7 @@
                         <segue destination="KLZ-vb-tiT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="q7s-0n-Fwe"/>
                         <segue destination="fQr-vx-mrk" kind="custom" identifier="login" customClass="SWRevealViewControllerSeguePushController" id="4oy-yi-Vs6"/>
                         <segue destination="KLZ-vb-tiT" kind="custom" identifier="questions" customClass="SWRevealViewControllerSeguePushController" id="Ogc-fD-TQd"/>
+                        <segue destination="fQr-vx-mrk" kind="custom" identifier="registration" customClass="SWRevealViewControllerSeguePushController" id="7vt-ty-iqG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8R-NH-903" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -414,18 +415,36 @@
                     <view key="view" contentMode="scaleToFill" id="zzd-DF-Omf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DDn-r6-mWG">
+                                <rect key="frame" x="69" y="113" width="462" height="29"/>
+                                <segments>
+                                    <segment title="Логин"/>
+                                    <segment title="Регистрация"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchViews:" destination="ch4-W7-k0g" eventType="valueChanged" id="cvb-Jr-CGV"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DDn-r6-mWG" firstAttribute="top" secondItem="izy-c1-Ffa" secondAttribute="bottom" constant="50" id="14z-49-XOV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DDn-r6-mWG" secondAttribute="trailing" constant="53" id="Hhu-cG-bwG"/>
+                            <constraint firstItem="DDn-r6-mWG" firstAttribute="leading" secondItem="zzd-DF-Omf" secondAttribute="leadingMargin" constant="53" id="zPv-t4-BK8"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yY7-3l-Ko6">
                         <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="Ecd-Ll-nUl"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="actionSegment" destination="DDn-r6-mWG" id="eX0-KS-uWe"/>
                         <outlet property="sidebarButton" destination="Ecd-Ll-nUl" id="OIt-UN-o94"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPY-0T-DcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="-1109"/>
+            <point key="canvasLocation" x="1006" y="-1109"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="F2t-O3-bA9">
@@ -517,6 +536,7 @@
         <image name="plus-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7vt-ty-iqG"/>
         <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>
 </document>

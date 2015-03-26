@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface AuthorizationViewController : UIViewController
-@property(nonatomic, retain) NSString *firstView;
+@property (nonatomic) NSInteger *firstView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *actionSegment;
+- (IBAction)switchViews:(id)sender;
 @end

@@ -36,8 +36,7 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *touched = menuID[indexPath.row];
-    [self
-     performSegueWithIdentifier:touched sender:self];
+    [self performSegueWithIdentifier:touched sender:self];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -53,7 +52,15 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"login"]){
-        AuthorizationViewController *view = segue.destinationViewController;
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        AuthorizationViewController *controller = (AuthorizationViewController *)navController.topViewController;
+        controller.firstView = 0;
+//        view.firstView = @"Auth";
+    }
+    if([[segue identifier] isEqualToString:@"registration"]){
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        AuthorizationViewController *controller = (AuthorizationViewController *)navController.topViewController;
+        controller.firstView = 1;
     }
     if([[segue identifier] isEqualToString:@"questions"]){
         QuestionsViewController *view = segue.destinationViewController;
