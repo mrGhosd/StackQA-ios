@@ -19,6 +19,7 @@
     [super viewDidLoad];
     [self defineNavigationPanel];
     [self setSegmentValue];
+    [self setCurrentView:self.firstView];
     // Do any additional setup after loading the view.
 }
 
@@ -31,6 +32,16 @@
         [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
         revealViewController.rightViewController = nil;
         
+    }
+}
+
+- (void) setCurrentView:(NSInteger *)index{
+    if(index == 0){
+        [self.loginView setHidden:NO];
+        [self.registrationView setHidden:YES];
+    } else if(index == 1){
+        [self.loginView setHidden:YES];
+        [self.registrationView setHidden:NO];
     }
 }
 
@@ -54,5 +65,12 @@
 */
 
 - (IBAction)switchViews:(id)sender {
+    NSInteger selectedSegment = self.actionSegment.selectedSegmentIndex;
+    
+    if (selectedSegment == 0) {
+        [self setCurrentView:0];
+    } else if(selectedSegment == 1){
+        [self setCurrentView:1];
+    }
 }
 @end

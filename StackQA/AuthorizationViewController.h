@@ -13,4 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *actionSegment;
 - (IBAction)switchViews:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *registrationView;
+@property (strong, nonatomic) IBOutlet UIView *loginView;
 @end
