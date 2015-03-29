@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		64124A1A1AB987230009C034 /* move9.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124A191AB987230009C034 /* move9.png */; };
 		64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B851AC82C1E00E0E401 /* AuthorizationManager.m */; };
+		64157B891AC8440300E0E401 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B881AC8440300E0E401 /* Authorization.m */; };
+		64157B8C1AC8620500E0E401 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B8B1AC8620500E0E401 /* User.m */; };
+		64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B8F1AC8728400E0E401 /* ProfileViewController.m */; };
 		6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C21AAC73ED00110D62 /* SWRevealViewController.m */; };
 		6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C51AAC777900110D62 /* SidebarViewController.m */; };
 		6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C91AAC77A100110D62 /* RightPanelViewController.m */; };
@@ -69,6 +72,12 @@
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		64157B841AC82C1E00E0E401 /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationManager.h; sourceTree = "<group>"; };
 		64157B851AC82C1E00E0E401 /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
+		64157B871AC8440300E0E401 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Authorization.h; path = ../Authorization.h; sourceTree = "<group>"; };
+		64157B881AC8440300E0E401 /* Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Authorization.m; path = ../Authorization.m; sourceTree = "<group>"; };
+		64157B8A1AC8620500E0E401 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		64157B8B1AC8620500E0E401 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		64157B8E1AC8728400E0E401 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		64157B8F1AC8728400E0E401 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		6428B0C11AAC73ED00110D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		6428B0C21AAC73ED00110D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		6428B0C41AAC777900110D62 /* SidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewController.h; sourceTree = "<group>"; };
@@ -165,10 +174,30 @@
 		64157B831AC82C0200E0E401 /* authorization */ = {
 			isa = PBXGroup;
 			children = (
+				64157B871AC8440300E0E401 /* Authorization.h */,
+				64157B881AC8440300E0E401 /* Authorization.m */,
 				64157B841AC82C1E00E0E401 /* AuthorizationManager.h */,
 				64157B851AC82C1E00E0E401 /* AuthorizationManager.m */,
 			);
 			name = authorization;
+			sourceTree = "<group>";
+		};
+		64157B8D1AC8726A00E0E401 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				64157B8E1AC8728400E0E401 /* ProfileViewController.h */,
+				64157B8F1AC8728400E0E401 /* ProfileViewController.m */,
+			);
+			name = profile;
+			sourceTree = "<group>";
+		};
+		64157B911AC8729C00E0E401 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				64157B8A1AC8620500E0E401 /* User.h */,
+				64157B8B1AC8620500E0E401 /* User.m */,
+			);
+			name = user;
 			sourceTree = "<group>";
 		};
 		6428B0BA1AAC68BB00110D62 /* images */ = {
@@ -198,6 +227,7 @@
 		6428B0BB1AAC68C300110D62 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64157B8D1AC8726A00E0E401 /* profile */,
 				647C55C01AC36D6D0011D5FA /* authorization */,
 				644B464E1AC0AC02002CF50C /* answers */,
 				6428B0C71AAC778200110D62 /* sidebar */,
@@ -210,6 +240,7 @@
 		6428B0BC1AAC68CB00110D62 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				64157B911AC8729C00E0E401 /* user */,
 				64157B831AC82C0200E0E401 /* authorization */,
 				644B465D1AC0C6DB002CF50C /* answers */,
 				646DDEFC1AB4D8670066F75A /* category */,
@@ -586,6 +617,9 @@
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
+				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
+				64157B8C1AC8620500E0E401 /* User.m in Sources */,
+				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
 				646DDF051AB4D9650066F75A /* SQACategory.m in Sources */,
 				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,

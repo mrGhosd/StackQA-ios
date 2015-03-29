@@ -9,8 +9,10 @@
 #import "SidebarViewController.h"
 #import "AuthorizationViewController.h"
 #import "QuestionsViewController.h"
+#import "AuthorizationManager.h"
 
 @interface SidebarViewController (){
+    AuthorizationManager *auth;
     NSArray *menuID;
     NSArray *menuItems;
     NSArray *menuIcons;
@@ -22,10 +24,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
+    if(auth.currentUser){
+        menuID = @[@"logo"];
+        menuItems = @[@"StackQ&A"];
+        menuIcons = @[@""];
+    } else {
+        menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
+        menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
+        menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
+    }
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
-    menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
-    menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
+    
 //    self.tableView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }

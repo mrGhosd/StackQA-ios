@@ -8,8 +8,11 @@
 
 #import "Api.h"
 #import <Foundation/Foundation.h>
+#import "AuthorizationManager.h"
 
-@implementation Api
+@implementation Api{
+    AuthorizationManager *auth;
+}
 
 static Api *sharedSingleton_ = nil;
 
@@ -25,32 +28,18 @@ static Api *sharedSingleton_ = nil;
     return api;
 }
 
-- (void) getTokenWithClientID:(NSString *) clientId andSecretID:(NSString *) secretID andComplition:(ResponseCopmlition) complition{
-    ResponseCopmlition response = [complition copy];
-    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
-                                                                           URLString:@"http://localhost:3000/oauth/token"
-                                                                          parameters:@{@"grant_type": @"password", @"email": @"vforvad@gmail.com", @"password": @"Altair_69"}
-                                                                               error:nil] mutableCopy];
-    
-    AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
-    serializer.readingOptions = NSJSONReadingAllowFragments;
-    requestAPI.responseSerializer = serializer;
-    
-    [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        response(responseObject, YES);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        response(error, NO);
-    }];
-    
-    [requestAPI start];
-}
-
 - (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition{
+    auth = [AuthorizationManager sharedInstance];
+    NSDictionary *params = [[NSDictionary alloc] init];
+    if(auth.currentAuthorization){
+        params = @{@"access_token": auth.currentAuthorization.access_token};
+    } else {
+        params = nil;
+    }
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"GET"
                                                                            URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
-                                                                          parameters: nil
+                                                                          parameters: params
                                                                                error:nil] mutableCopy];
     
     AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
@@ -72,6 +61,27 @@ static Api *sharedSingleton_ = nil;
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
                                                                            URLString:[NSString stringWithFormat: @"http://localhost:3000%@", url]
+                                                                          parameters: params
+                                                                               error:nil] mutableCopy];
+    
+    AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
+    serializer.readingOptions = NSJSONReadingAllowFragments;
+    requestAPI.responseSerializer = serializer;
+    
+    [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        response(responseObject, YES);
+        self.lastSyncDate = [NSDate date];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        response(error, NO);
+    }];
+    
+    [requestAPI start];
+}
+- (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition{
+    ResponseCopmlition response = [complition copy];
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
+                                                                           URLString:@"http://localhost:3000/oauth/token"
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     

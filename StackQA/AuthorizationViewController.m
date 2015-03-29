@@ -80,6 +80,7 @@
 }
 
 - (IBAction)loginButton:(id)sender {
-    [[AuthorizationManager sharedInstance] signInUserWithLogin:self.emailField.text andPassword:self.passwordField.text];
+    [[AuthorizationManager sharedInstance] signInUserWithEmail:self.emailField.text andPassword:self.passwordField.text];
+    [self performSegueWithIdentifier:@"profile_view" sender:self ];
 }
 @end

@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Authorization.h"
+#import "User.h"
 
 @interface AuthorizationManager : NSObject
+@property(strong, nonatomic) User *currentUser;
+@property(strong, nonatomic) Authorization *currentAuthorization;
 + (id) sharedInstance;
-- (void) signInUserWithLogin:(NSString *)email andPassword: (NSString *) password;
+- (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password;
 @end
