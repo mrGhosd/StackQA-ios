@@ -15,4 +15,8 @@
 - (IBAction)switchViews:(id)sender;
 @property (strong, nonatomic) IBOutlet UIView *registrationView;
 @property (strong, nonatomic) IBOutlet UIView *loginView;
+- (IBAction)registrationButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *emailField;
+@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+- (IBAction)loginButton:(id)sender;
 @end

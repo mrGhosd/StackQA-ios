@@ -455,6 +455,9 @@
                                                         <state key="normal" title="Button">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="registrationButton:" destination="ch4-W7-k0g" eventType="touchUpInside" id="M7J-jc-Edx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -491,6 +494,9 @@
                                                         <state key="normal" title="Button">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="loginButton:" destination="ch4-W7-k0g" eventType="touchUpInside" id="X1V-JT-4ZG"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -545,7 +551,9 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="actionSegment" destination="EGY-Im-9NZ" id="Dct-Ug-hr8"/>
+                        <outlet property="emailField" destination="YyG-qh-Lhj" id="1Py-RT-Awj"/>
                         <outlet property="loginView" destination="TxU-Od-UJR" id="Upk-YI-uWk"/>
+                        <outlet property="passwordField" destination="jTy-sy-Gvk" id="r4f-f4-SKs"/>
                         <outlet property="registrationView" destination="McY-mg-Gcn" id="RQD-oT-okA"/>
                         <outlet property="sidebarButton" destination="Ecd-Ll-nUl" id="OIt-UN-o94"/>
                     </connections>

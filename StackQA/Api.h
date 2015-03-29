@@ -21,4 +21,5 @@ typedef void(^requestErrorBlock)(NSError *);
 + (id) sharedManager;
 - (void) getTokenWithClientID:(NSString *) clientId andSecretID:(NSString *) secretID andComplition:(ResponseCopmlition) complition;
 - (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition;
+- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params andComplition:(ResponseCopmlition) complition;
 @end

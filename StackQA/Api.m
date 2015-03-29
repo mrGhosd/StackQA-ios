@@ -67,4 +67,26 @@ static Api *sharedSingleton_ = nil;
     
     [requestAPI start];
 }
+
+- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params andComplition:(ResponseCopmlition) complition{
+    ResponseCopmlition response = [complition copy];
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
+                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000%@", url]
+                                                                          parameters: params
+                                                                               error:nil] mutableCopy];
+    
+    AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
+    serializer.readingOptions = NSJSONReadingAllowFragments;
+    requestAPI.responseSerializer = serializer;
+    
+    [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        response(responseObject, YES);
+        self.lastSyncDate = [NSDate date];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        response(error, NO);
+    }];
+    
+    [requestAPI start];
+}
 @end

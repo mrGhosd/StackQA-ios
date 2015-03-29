@@ -8,8 +8,11 @@
 
 #import "AuthorizationViewController.h"
 #import "SWRevealViewController.h"
+#import "AuthorizationManager.h"
 
-@interface AuthorizationViewController ()
+@interface AuthorizationViewController (){
+    AuthorizationManager *auth;
+}
 
 @end
 
@@ -72,5 +75,11 @@
     } else if(selectedSegment == 1){
         [self setCurrentView:1];
     }
+}
+- (IBAction)registrationButton:(id)sender {
+}
+
+- (IBAction)loginButton:(id)sender {
+    [[AuthorizationManager sharedInstance] signInUserWithLogin:self.emailField.text andPassword:self.passwordField.text];
 }
 @end
