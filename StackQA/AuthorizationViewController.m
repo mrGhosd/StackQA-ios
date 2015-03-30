@@ -9,9 +9,11 @@
 #import "AuthorizationViewController.h"
 #import "SWRevealViewController.h"
 #import "AuthorizationManager.h"
+#import <UICKeyChainStore.h>
 
 @interface AuthorizationViewController (){
     AuthorizationManager *auth;
+    UICKeyChainStore *store;
 }
 
 @end
@@ -20,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    store = [UICKeyChainStore keyChainStore];
     [self defineNavigationPanel];
     [self setSegmentValue];
     [self setCurrentView:self.firstView];
@@ -80,7 +83,10 @@
 }
 
 - (IBAction)loginButton:(id)sender {
+    [store setString:self.emailField.text forKey:@"email"];
+    [store setString:self.passwordField.text forKey:@"password"];
+    [store synchronize];
     [[AuthorizationManager sharedInstance] signInUserWithEmail:self.emailField.text andPassword:self.passwordField.text];
-    [self performSegueWithIdentifier:@"profile_view" sender:self ];
+//    [self performSegueWithIdentifier:@"profile_view" sender:self ];
 }
 @end

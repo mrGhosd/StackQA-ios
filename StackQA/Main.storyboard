@@ -398,11 +398,12 @@
                         <segue destination="fQr-vx-mrk" kind="custom" identifier="login" customClass="SWRevealViewControllerSeguePushController" id="4oy-yi-Vs6"/>
                         <segue destination="KLZ-vb-tiT" kind="custom" identifier="questions" customClass="SWRevealViewControllerSeguePushController" id="Ogc-fD-TQd"/>
                         <segue destination="fQr-vx-mrk" kind="custom" identifier="registration" customClass="SWRevealViewControllerSeguePushController" id="7vt-ty-iqG"/>
+                        <segue destination="Xe2-Wi-8QZ" kind="show" identifier="profile" id="5Em-mt-R6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8R-NH-903" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-496" y="-534"/>
+            <point key="canvasLocation" x="-198" y="-594"/>
         </scene>
         <!--Authorization View Controller-->
         <scene sceneID="ejL-tO-JwY">
@@ -561,7 +562,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPY-0T-DcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="951" y="-1194"/>
+            <point key="canvasLocation" x="1111" y="-2046"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jh1-Qg-Efd">
@@ -675,7 +676,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wdr-di-6l9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="-1109"/>
+            <point key="canvasLocation" x="306" y="-2033"/>
         </scene>
     </scenes>
     <resources>
@@ -686,6 +687,7 @@
         <image name="plus-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="5Em-mt-R6W"/>
         <segue reference="7vt-ty-iqG"/>
         <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>

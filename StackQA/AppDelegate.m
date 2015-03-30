@@ -8,8 +8,12 @@
 
 #import "AppDelegate.h"
 #import <CoreData+MagicalRecord.h>
+#import <UICKeyChainStore.h>
+#import "AuthorizationManager.h"
 #import "Api.h"
-@interface AppDelegate ()
+@interface AppDelegate (){
+    UICKeyChainStore *store;
+}
 
 @end
 
@@ -19,6 +23,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [MagicalRecord setupCoreDataStackWithStoreNamed:@"StackQA"];
+    store = [UICKeyChainStore keyChainStore];
+    if([store objectForKeyedSubscript:@"email"] && [store objectForKeyedSubscript:@"password"]){
+        [[AuthorizationManager sharedInstance] signInUserWithEmail:[store objectForKeyedSubscript:@"email"] andPassword:[store objectForKeyedSubscript:@"password"]];
+    }
     return YES;
 }
 

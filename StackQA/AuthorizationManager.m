@@ -9,10 +9,12 @@
 #import "AuthorizationManager.h"
 #import <Foundation/Foundation.h>
 #import <CoreData+MagicalRecord.h>
+#import <UICKeyChainStore.h>
 #import "Api.h"
 
 @implementation AuthorizationManager{
     Api *api;
+    UICKeyChainStore *store;
 }
 
 static AuthorizationManager *sharedSingleton_ = nil;
@@ -32,21 +34,11 @@ static AuthorizationManager *sharedSingleton_ = nil;
 }
 
 - (void) getTokenWithEmail:(NSString *) email andPassword: (NSString *)password{
+    store = [UICKeyChainStore keyChainStore];
     [[Api sharedManager] getTokenWithParameters: @{@"grant_type":@"password",
     @"email": email, @"password": password} andComplition:^(id data, BOOL success){
     if(success){
-        if([[Authorization MR_findAll] count] > 0){
-            [Authorization MR_truncateAll];
-        }
-        [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext){
-         Authorization *authorization = [Authorization MR_createInContext:localContext];
-         authorization.access_token = data[@"access_token"];
-         authorization.created_at = data[@"created_at"];
-         authorization.expires_in = data[@"expires_in"];
-         authorization.token_type = data[@"token_type"];
-         self.currentAuthorization = authorization;
-         [localContext MR_saveOnlySelfAndWait];
-        }];
+            [store setString:data[@"access_token"] forKey:@"access_token"];
         } else {
                                                            
         }

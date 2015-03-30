@@ -10,6 +10,7 @@
 #import "AuthorizationViewController.h"
 #import "QuestionsViewController.h"
 #import "AuthorizationManager.h"
+#import "ProfileViewController.h"
 
 @interface SidebarViewController (){
     AuthorizationManager *auth;
@@ -26,9 +27,9 @@
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
-        menuID = @[@"logo"];
-        menuItems = @[@"StackQ&A"];
-        menuIcons = @[@""];
+        menuID = @[@"logo", @"profile"];
+        menuItems = @[@"StackQ&A", @"Профиль"];
+        menuIcons = @[@"", @""];
     } else {
         menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
         menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
@@ -74,6 +75,9 @@
     }
     if([[segue identifier] isEqualToString:@"questions"]){
         QuestionsViewController *view = segue.destinationViewController;
+    }
+    if([[segue identifier] isEqualToString:@"profile"]){
+        ProfileViewController *view = segue.destinationViewController;
     }
 }
 /*

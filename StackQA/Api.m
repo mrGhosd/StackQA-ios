@@ -9,9 +9,11 @@
 #import "Api.h"
 #import <Foundation/Foundation.h>
 #import "AuthorizationManager.h"
+#import <UICKeyChainStore.h>
 
 @implementation Api{
     AuthorizationManager *auth;
+    UICKeyChainStore *store;
 }
 
 static Api *sharedSingleton_ = nil;
@@ -29,10 +31,10 @@ static Api *sharedSingleton_ = nil;
 }
 
 - (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition{
-    auth = [AuthorizationManager sharedInstance];
+    store = [UICKeyChainStore keyChainStore];
     NSDictionary *params = [[NSDictionary alloc] init];
-    if(auth.currentAuthorization){
-        params = @{@"access_token": auth.currentAuthorization.access_token};
+    if([store objectForKeyedSubscript:@"access_token"]){
+        params = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
     } else {
         params = nil;
     }
