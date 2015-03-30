@@ -18,7 +18,10 @@
 }
 
 static AuthorizationManager *sharedSingleton_ = nil;
-
+- (id) init{
+    
+    return self;
+}
 + (id) sharedInstance{
     static AuthorizationManager *auth = nil;
     static dispatch_once_t onceToken;
@@ -31,6 +34,10 @@ static AuthorizationManager *sharedSingleton_ = nil;
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password{
     [self getTokenWithEmail:email andPassword:password];
     [self getCurrentUserProfileWithEmail:email andPassword:password];
+}
+
+- (void) currentUserValue{
+
 }
 
 - (void) getTokenWithEmail:(NSString *) email andPassword: (NSString *)password{
@@ -54,10 +61,15 @@ static AuthorizationManager *sharedSingleton_ = nil;
                 current_user.surname = data[@"surname"];
                 self.currentUser = current_user;
                 [localContext MR_saveOnlySelfAndWait];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"getCurrentUser"
+                 object:self];
             }];
         } else {
             [self signInUserWithEmail:email andPassword:password];
         }
     }];
+    
+
 }
 @end

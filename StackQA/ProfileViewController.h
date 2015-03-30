@@ -11,4 +11,6 @@
 @interface ProfileViewController : ViewController
 
 @property (strong, nonatomic) IBOutlet UILabel *userEmail;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+- (IBAction)logOut:(id)sender;
 @end

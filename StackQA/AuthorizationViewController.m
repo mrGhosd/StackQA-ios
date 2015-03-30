@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
     store = [UICKeyChainStore keyChainStore];
     [self defineNavigationPanel];
     [self setSegmentValue];
@@ -79,14 +80,18 @@
         [self setCurrentView:1];
     }
 }
+-(void) currentUserValue{
+    [self performSegueWithIdentifier:@"profile_view" sender:self ];
+}
 - (IBAction)registrationButton:(id)sender {
 }
 
 - (IBAction)loginButton:(id)sender {
-    [store setString:self.emailField.text forKey:@"email"];
-    [store setString:self.passwordField.text forKey:@"password"];
-    [store synchronize];
-    [[AuthorizationManager sharedInstance] signInUserWithEmail:self.emailField.text andPassword:self.passwordField.text];
-//    [self performSegueWithIdentifier:@"profile_view" sender:self ];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [store setString:self.emailField.text forKey:@"email"];
+        [store setString:self.passwordField.text forKey:@"password"];
+        [store synchronize];
+        [[AuthorizationManager sharedInstance] signInUserWithEmail:self.emailField.text andPassword:self.passwordField.text];
+    });
 }
 @end

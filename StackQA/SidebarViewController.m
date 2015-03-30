@@ -25,17 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    auth = [AuthorizationManager sharedInstance];
-    if(auth.currentUser){
-        menuID = @[@"logo", @"profile"];
-        menuItems = @[@"StackQ&A", @"Профиль"];
-        menuIcons = @[@"", @""];
-    } else {
-        menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
-        menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
-        menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
-    }
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 //    self.tableView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
@@ -79,6 +69,19 @@
     if([[segue identifier] isEqualToString:@"profile"]){
         ProfileViewController *view = segue.destinationViewController;
     }
+}
+- (void) viewDidAppear:(BOOL)animated{
+    auth = [AuthorizationManager sharedInstance];
+    if(auth.currentUser){
+        menuID = @[@"logo", @"profile"];
+        menuItems = @[@"StackQ&A", @"Профиль"];
+        menuIcons = @[@"", @""];
+    } else {
+        menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
+        menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
+        menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
+    }
+    [self.tableView reloadData];
 }
 /*
 #pragma mark - Navigation

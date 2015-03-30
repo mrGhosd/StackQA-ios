@@ -398,7 +398,7 @@
                         <segue destination="fQr-vx-mrk" kind="custom" identifier="login" customClass="SWRevealViewControllerSeguePushController" id="4oy-yi-Vs6"/>
                         <segue destination="KLZ-vb-tiT" kind="custom" identifier="questions" customClass="SWRevealViewControllerSeguePushController" id="Ogc-fD-TQd"/>
                         <segue destination="fQr-vx-mrk" kind="custom" identifier="registration" customClass="SWRevealViewControllerSeguePushController" id="7vt-ty-iqG"/>
-                        <segue destination="Xe2-Wi-8QZ" kind="show" identifier="profile" id="5Em-mt-R6W"/>
+                        <segue destination="DnZ-FH-myX" kind="custom" identifier="profile" customClass="SWRevealViewControllerSeguePushController" id="5Em-mt-R6W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8R-NH-903" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -557,12 +557,12 @@
                         <outlet property="passwordField" destination="jTy-sy-Gvk" id="r4f-f4-SKs"/>
                         <outlet property="registrationView" destination="McY-mg-Gcn" id="RQD-oT-okA"/>
                         <outlet property="sidebarButton" destination="Ecd-Ll-nUl" id="OIt-UN-o94"/>
-                        <segue destination="Xe2-Wi-8QZ" kind="show" identifier="profile_view" id="j2K-an-z6G"/>
+                        <segue destination="DnZ-FH-myX" kind="show" identifier="profile_view" id="j2K-an-z6G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPY-0T-DcY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1111" y="-2046"/>
+            <point key="canvasLocation" x="1325" y="-2052"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jh1-Qg-Efd">
@@ -582,20 +582,36 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ty-dk-S2N">
+                                <rect key="frame" x="16" y="124" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="Xe2-Wi-8QZ" eventType="touchUpInside" id="32l-Pd-3Yq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="51c-2G-4L8" firstAttribute="top" secondItem="o2S-SC-OAf" secondAttribute="bottom" constant="8" id="9Tw-BT-INZ"/>
+                            <constraint firstItem="0ty-dk-S2N" firstAttribute="top" secondItem="51c-2G-4L8" secondAttribute="bottom" constant="8" id="9m8-ic-rqj"/>
                             <constraint firstItem="51c-2G-4L8" firstAttribute="leading" secondItem="MSf-7H-ps0" secondAttribute="leadingMargin" id="UaB-Hw-bho"/>
+                            <constraint firstItem="0ty-dk-S2N" firstAttribute="leading" secondItem="MSf-7H-ps0" secondAttribute="leadingMargin" id="oB3-QH-NOi"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hhY-Sb-Uhm">
+                        <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="Sui-qw-sU9"/>
+                    </navigationItem>
                     <connections>
+                        <outlet property="sidebarButton" destination="Sui-qw-sU9" id="wbp-Kf-8lK"/>
                         <outlet property="userEmail" destination="51c-2G-4L8" id="caj-2f-VDc"/>
+                        <segue destination="ch4-W7-k0g" kind="show" identifier="logOut" id="jdO-yh-WYz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656" y="-1187"/>
+            <point key="canvasLocation" x="2516" y="-1187"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="F2t-O3-bA9">
@@ -678,6 +694,24 @@
             </objects>
             <point key="canvasLocation" x="306" y="-2033"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vMc-qc-jz8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DnZ-FH-myX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Kpc-iu-285">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Xe2-Wi-8QZ" kind="relationship" relationship="rootViewController" id="Xg7-7q-VeD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7N-77-3eZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1656" y="-1187"/>
+        </scene>
     </scenes>
     <resources>
         <image name="answers-32.png" width="32" height="32"/>
@@ -687,8 +721,9 @@
         <image name="plus-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Em-mt-R6W"/>
-        <segue reference="7vt-ty-iqG"/>
+        <segue reference="j2K-an-z6G"/>
+        <segue reference="jdO-yh-WYz"/>
         <segue reference="Ogc-fD-TQd"/>
+        <segue reference="4oy-yi-Vs6"/>
     </inferredMetricsTieBreakers>
 </document>

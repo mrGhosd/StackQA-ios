@@ -8,9 +8,12 @@
 
 #import "ProfileViewController.h"
 #import "AuthorizationManager.h"
+#import <UICKeyChainStore.h>
+#import "SWRevealViewController.h"
 
 @interface ProfileViewController (){
     AuthorizationManager *auth;
+    UICKeyChainStore *store;
 }
 
 @end
@@ -21,7 +24,21 @@
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
     self.userEmail.text = auth.currentUser.email;
+    store = [UICKeyChainStore keyChainStore];
+    [self defineNavigationPanel];
     // Do any additional setup after loading the view.
+}
+
+-(void) defineNavigationPanel{
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+        revealViewController.rightViewController = nil;
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,4 +56,10 @@
 }
 */
 
+- (IBAction)logOut:(id)sender {
+    auth.currentUser = nil;
+    [store removeItemForKey:@"email"];
+    [store removeItemForKey:@"password"];
+    [self performSegueWithIdentifier:@"logOut" sender:self];
+}
 @end
