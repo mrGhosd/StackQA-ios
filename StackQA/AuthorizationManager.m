@@ -58,9 +58,20 @@ static AuthorizationManager *sharedSingleton_ = nil;
     [[Api sharedManager] getData:@"/profiles/me" andComplition:^(id data, BOOL success){
         if(success){
             [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext){
-                User *current_user = [User MR_createInContext:localContext];
+                User *current_user;
+                User *user = [User MR_findFirstByAttribute:@"email" withValue:data[@"email"]];
+                if(user){
+                    current_user = user;
+                } else {
+                    current_user = [User MR_createInContext:localContext];
+                }
+                
                 current_user.email = data[@"email"];
                 current_user.surname = [NSString stringWithFormat:@"%@", data[@"surname"]];
+                current_user.name = [NSString stringWithFormat:@"%@", data[@"name"]];
+                current_user.correct_naming = data[@"correct_naming"];
+                current_user.rate = data[@"rate"];
+                current_user.avatar_url = [NSString stringWithFormat:@"%@", data[@"avatar"][@"url"]];
                 self.currentUser = current_user;
                 [localContext MR_saveOnlySelfAndWait];
                 [[NSNotificationCenter defaultCenter]

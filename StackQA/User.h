@@ -8,11 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import <UIKit/UIKit.h>
 
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * surname;
+@property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSString * avatar_url;
+@property (nonatomic, retain) NSString * correct_naming;
+@property (nonatomic, retain) NSNumber * rate;
 
+- (UIImage *) profileImage;
 @end

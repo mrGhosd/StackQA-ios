@@ -26,6 +26,12 @@
 		6428B0E31AACF3DF00110D62 /* news-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E21AACF3DF00110D62 /* news-32.png */; };
 		6428B0E71AACF4B200110D62 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0E61AACF4B200110D62 /* Api.m */; };
 		6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E91AAE0AF500110D62 /* eye110.png */; };
+		643874181ACAF3820059EBEC /* user7.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874171ACAF3820059EBEC /* user7.png */; };
+		6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */; };
+		643874201ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6438741E1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib */; };
+		643874221ACAFCD00059EBEC /* mark1.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874211ACAFCD00059EBEC /* mark1.png */; };
+		643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */; };
+		6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */; };
 		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644B46591AC0BFE6002CF50C /* AnswerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644B46571AC0BFE6002CF50C /* AnswerTableViewCell.xib */; };
@@ -96,6 +102,14 @@
 		6428B0E51AACF4B200110D62 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
 		6428B0E61AACF4B200110D62 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		6428B0E91AAE0AF500110D62 /* eye110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye110.png; sourceTree = "<group>"; };
+		643874171ACAF3820059EBEC /* user7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user7.png; sourceTree = "<group>"; };
+		6438741C1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSidebarTableViewCell.h; sourceTree = "<group>"; };
+		6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSidebarTableViewCell.m; sourceTree = "<group>"; };
+		6438741E1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSidebarTableViewCell.xib; sourceTree = "<group>"; };
+		643874211ACAFCD00059EBEC /* mark1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark1.png; sourceTree = "<group>"; };
+		643874261ACB13BD0059EBEC /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
+		643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
+		643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTableViewCell.xib; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -203,6 +217,8 @@
 		6428B0BA1AAC68BB00110D62 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				643874211ACAFCD00059EBEC /* mark1.png */,
+				643874171ACAF3820059EBEC /* user7.png */,
 				64124A191AB987230009C034 /* move9.png */,
 				6428B0E91AAE0AF500110D62 /* eye110.png */,
 				6428B0E21AACF3DF00110D62 /* news-32.png */,
@@ -253,6 +269,7 @@
 		6428B0BD1AAC68D400110D62 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				6438741B1ACAFBDB0059EBEC /* profile */,
 				644B46541AC0BFBF002CF50C /* answers */,
 				6428B0CE1AACB5F100110D62 /* questions */,
 				6428B0CD1AACB5E900110D62 /* sidebar */,
@@ -307,6 +324,9 @@
 		6428B0CD1AACB5E900110D62 /* sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				643874261ACB13BD0059EBEC /* SidebarTableViewCell.h */,
+				643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */,
+				643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */,
 			);
 			name = sidebar;
 			sourceTree = "<group>";
@@ -335,6 +355,16 @@
 				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
 			);
 			name = db;
+			sourceTree = "<group>";
+		};
+		6438741B1ACAFBDB0059EBEC /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				6438741C1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.h */,
+				6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */,
+				6438741E1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib */,
+			);
+			name = profile;
 			sourceTree = "<group>";
 		};
 		644B464E1AC0AC02002CF50C /* answers */ = {
@@ -546,10 +576,13 @@
 				6469F9B61A70592500E837E3 /* Main.storyboard in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
 				64C69EF41A6C6FFA006AB0AC /* QuestionsTableViewCell.xib in Resources */,
+				6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */,
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
+				643874181ACAF3820059EBEC /* user7.png in Resources */,
 				6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */,
 				64C69ECC1A6C4F01006AB0AC /* LaunchScreen.xib in Resources */,
 				644B46591AC0BFE6002CF50C /* AnswerTableViewCell.xib in Resources */,
+				643874221ACAFCD00059EBEC /* mark1.png in Resources */,
 				6428B0D91AACF24D00110D62 /* ask_question-32.png in Resources */,
 				64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */,
 				6428B0DB1AACF25C00110D62 /* answers-32.png in Resources */,
@@ -559,6 +592,7 @@
 				64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */,
 				6428B0CC1AAC78A900110D62 /* menu-32.png in Resources */,
 				6428B0D71AACF1E300110D62 /* login17.png in Resources */,
+				643874201ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib in Resources */,
 				6428B0DD1AACF28E00110D62 /* category.png in Resources */,
 				6469F9B01A7049B300E837E3 /* edit-32.png in Resources */,
 				64C69EC91A6C4F01006AB0AC /* Images.xcassets in Resources */,
@@ -618,6 +652,7 @@
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
+				6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */,
 				64157B8C1AC8620500E0E401 /* User.m in Sources */,
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
@@ -627,6 +662,7 @@
 				64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */,
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
+				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
 				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,
 				64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */,

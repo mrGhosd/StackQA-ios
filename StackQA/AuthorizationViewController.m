@@ -82,11 +82,13 @@
     }
 }
 -(void) currentUserValue{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self performSegueWithIdentifier:@"profile_view" sender:self ];
 }
 - (void) errorUserProfileDownload{
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой пользователь не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (IBAction)registrationButton:(id)sender {
 }
