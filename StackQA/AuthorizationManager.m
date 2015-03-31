@@ -33,7 +33,6 @@ static AuthorizationManager *sharedSingleton_ = nil;
 }
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password{
     [self getTokenWithEmail:email andPassword:password];
-    [self getCurrentUserProfileWithEmail:email andPassword:password];
 }
 
 - (void) currentUserValue{
@@ -46,8 +45,11 @@ static AuthorizationManager *sharedSingleton_ = nil;
     @"email": email, @"password": password} andComplition:^(id data, BOOL success){
     if(success){
             [store setString:data[@"access_token"] forKey:@"access_token"];
+            [self getCurrentUserProfileWithEmail:email andPassword:password];
         } else {
-                                                           
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"errorUserProfileDownloadMessage"
+             object:self];
         }
     }];
 }
@@ -58,7 +60,7 @@ static AuthorizationManager *sharedSingleton_ = nil;
             [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext){
                 User *current_user = [User MR_createInContext:localContext];
                 current_user.email = data[@"email"];
-                current_user.surname = data[@"surname"];
+                current_user.surname = [NSString stringWithFormat:@"%@", data[@"surname"]];
                 self.currentUser = current_user;
                 [localContext MR_saveOnlySelfAndWait];
                 [[NSNotificationCenter defaultCenter]
@@ -66,10 +68,10 @@ static AuthorizationManager *sharedSingleton_ = nil;
                  object:self];
             }];
         } else {
-            [self signInUserWithEmail:email andPassword:password];
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"errorUserProfileDownloadMessage"
+             object:self];
         }
     }];
-    
-
 }
 @end

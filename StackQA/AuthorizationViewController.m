@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(errorUserProfileDownload) name:@"errorUserProfileDownloadMessage" object:nil];
     store = [UICKeyChainStore keyChainStore];
     [self defineNavigationPanel];
     [self setSegmentValue];
@@ -83,10 +84,15 @@
 -(void) currentUserValue{
     [self performSegueWithIdentifier:@"profile_view" sender:self ];
 }
+- (void) errorUserProfileDownload{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой пользователь не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [av show];
+}
 - (IBAction)registrationButton:(id)sender {
 }
 
 - (IBAction)loginButton:(id)sender {
+    [store removeItemForKey:@"access_token"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [store setString:self.emailField.text forKey:@"email"];
         [store setString:self.passwordField.text forKey:@"password"];

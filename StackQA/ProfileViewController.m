@@ -60,6 +60,7 @@
     auth.currentUser = nil;
     [store removeItemForKey:@"email"];
     [store removeItemForKey:@"password"];
+    [store removeItemForKey:@"access_token"];
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 @end
