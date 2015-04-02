@@ -20,6 +20,6 @@ typedef void(^requestErrorBlock)(NSError *);
 
 + (id) sharedManager;
 - (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition;
-- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params andComplition:(ResponseCopmlition) complition;
+- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition;
 - (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition;
 @end

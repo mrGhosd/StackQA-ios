@@ -35,7 +35,7 @@ static AuthorizationManager *sharedSingleton_ = nil;
     return auth;
 }
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password{
-    [self getTokenAndAuthorizetWithEmail:email andPassword:password andComplition:^(id data, BOOL success){
+    [self getTokenWithEmail:email andPassword:password andComplition:^(id data, BOOL success){
         if(success){
             [self getCurrentUserProfileWithEmail:email andPassword:password];
         } else {
@@ -46,8 +46,17 @@ static AuthorizationManager *sharedSingleton_ = nil;
         
     }];
 }
+- (void) signUpWithParams:(NSDictionary *) params andComplition:(ResponseCopmlition) complition{
+    [[Api sharedManager] sendDataToURL:@"/api/v1/users" parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self signInUserWithEmail:params[@"user"][@"email"] andPassword:params[@"user"][@"password"]];
+        } else {
+            NSError *error = (NSError *) data;
+        }
+    }];
+}
 
-- (void) getTokenAndAuthorizetWithEmail:(NSString *) email andPassword: (NSString *)password andComplition: (ResponseCopmlition) complition{
+- (void) getTokenWithEmail:(NSString *) email andPassword: (NSString *)password andComplition: (ResponseCopmlition) complition{
     store = [UICKeyChainStore keyChainStore];
     ResponseCopmlition response = [complition copy];
     [[Api sharedManager] getTokenWithParameters: @{@"grant_type":@"password",
@@ -60,10 +69,6 @@ static AuthorizationManager *sharedSingleton_ = nil;
         }
     }];
 }
-- (void) getTokenWithEmail:(NSString *)email andPassword:(NSString *)password{
-    
-}
-
 - (void) getCurrentUserProfileWithEmail:(NSString *)email andPassword: (NSString *)password{
     [[Api sharedManager] getData:@"/profiles/me" andComplition:^(id data, BOOL success){
         if(success){

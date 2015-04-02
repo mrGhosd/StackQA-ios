@@ -59,9 +59,9 @@ static Api *sharedSingleton_ = nil;
     [requestAPI start];
 }
 
-- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params andComplition:(ResponseCopmlition) complition{
+- (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
-    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
                                                                            URLString:[NSString stringWithFormat: @"http://localhost:3000%@", url]
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
@@ -80,6 +80,7 @@ static Api *sharedSingleton_ = nil;
     
     [requestAPI start];
 }
+
 - (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"

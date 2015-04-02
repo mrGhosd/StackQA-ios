@@ -90,7 +90,20 @@
     [av show];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 - (IBAction)registrationButton:(id)sender {
+    NSMutableDictionary *users = @{@"email": self.regEmailField.text,
+                             @"password": self.regPasswordField.text,
+                             @"password_confirmation": self.regPasswordConfirmationField.text};
+    
+    [[AuthorizationManager sharedInstance] signUpWithParams:@{@"user": users} andComplition:^(id data, BOOL success){
+        if(success){
+        
+        } else {
+        
+        }
+    }];
 }
 
 - (IBAction)loginButton:(id)sender {

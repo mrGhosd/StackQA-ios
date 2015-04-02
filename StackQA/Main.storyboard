@@ -555,6 +555,9 @@
                         <outlet property="emailField" destination="YyG-qh-Lhj" id="1Py-RT-Awj"/>
                         <outlet property="loginView" destination="TxU-Od-UJR" id="Upk-YI-uWk"/>
                         <outlet property="passwordField" destination="jTy-sy-Gvk" id="r4f-f4-SKs"/>
+                        <outlet property="regEmailField" destination="wlL-i8-gge" id="MDf-UR-wbo"/>
+                        <outlet property="regPasswordConfirmationField" destination="N4j-7p-FDp" id="dF8-bE-rmw"/>
+                        <outlet property="regPasswordField" destination="Ib0-cY-Sdt" id="LHs-bb-0IX"/>
                         <outlet property="registrationView" destination="McY-mg-Gcn" id="RQD-oT-okA"/>
                         <outlet property="sidebarButton" destination="Ecd-Ll-nUl" id="OIt-UN-o94"/>
                         <segue destination="DnZ-FH-myX" kind="show" identifier="profile_view" id="j2K-an-z6G"/>

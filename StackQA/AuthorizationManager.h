@@ -22,4 +22,5 @@ typedef void(^requestErrorBlock)(NSError *);
 @property(strong, nonatomic) Authorization *currentAuthorization;
 + (id) sharedInstance;
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password;
+- (void) signUpWithParams:(NSDictionary *) params andComplition:(ResponseCopmlition) complition;
 @end
