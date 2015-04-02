@@ -16,6 +16,9 @@
     Api *api;
     UICKeyChainStore *store;
 }
+@synthesize completed = _completed;
+@synthesize errored = _errored;
+
 
 static AuthorizationManager *sharedSingleton_ = nil;
 - (id) init{
@@ -32,26 +35,33 @@ static AuthorizationManager *sharedSingleton_ = nil;
     return auth;
 }
 - (void) signInUserWithEmail:(NSString *)email andPassword: (NSString *) password{
-    [self getTokenWithEmail:email andPassword:password];
-}
-
-- (void) currentUserValue{
-
-}
-
-- (void) getTokenWithEmail:(NSString *) email andPassword: (NSString *)password{
-    store = [UICKeyChainStore keyChainStore];
-    [[Api sharedManager] getTokenWithParameters: @{@"grant_type":@"password",
-    @"email": email, @"password": password} andComplition:^(id data, BOOL success){
-    if(success){
-            [store setString:data[@"access_token"] forKey:@"access_token"];
+    [self getTokenAndAuthorizetWithEmail:email andPassword:password andComplition:^(id data, BOOL success){
+        if(success){
             [self getCurrentUserProfileWithEmail:email andPassword:password];
         } else {
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"errorUserProfileDownloadMessage"
              object:self];
         }
+        
     }];
+}
+
+- (void) getTokenAndAuthorizetWithEmail:(NSString *) email andPassword: (NSString *)password andComplition: (ResponseCopmlition) complition{
+    store = [UICKeyChainStore keyChainStore];
+    ResponseCopmlition response = [complition copy];
+    [[Api sharedManager] getTokenWithParameters: @{@"grant_type":@"password",
+    @"email": email, @"password": password} andComplition:^(id data, BOOL success){
+    if(success){
+            [store setString:data[@"access_token"] forKey:@"access_token"];
+        response(data, success);
+        } else {
+            response(data, success);
+        }
+    }];
+}
+- (void) getTokenWithEmail:(NSString *)email andPassword:(NSString *)password{
+    
 }
 
 - (void) getCurrentUserProfileWithEmail:(NSString *)email andPassword: (NSString *)password{
