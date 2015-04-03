@@ -50,13 +50,15 @@
         viewHeight = height_diff / 3;
     }
     self.webView.scrollView.scrollEnabled = NO;
+    float fullViewHeight = viewHeight + self.questionTitle.frame.size.height + self.questionDate.frame.size.height + self.questionCategory.frame.size.height + 10000;
+    self.viewAndScrollViewHeight.constant = fullViewHeight;
     [self.webView addConstraint:[NSLayoutConstraint
                                       constraintWithItem:self.webView
                                       attribute:NSLayoutAttributeHeight
                                       relatedBy:NSLayoutRelationEqual
                                       toItem:self.webView
                                       attribute:NSLayoutAttributeHeight
-                                      multiplier:0.5
+                                      multiplier:1.0
                                       constant:viewHeight]];
 }
 - (void) uploadQuestionData{
@@ -84,7 +86,6 @@
     if(qw){
         Question *q = qw;
         q.category = [SQACategory MR_createInContext:localContext];
-//        q.title = 
         q.category.title = question[@"category"][@"title"];
         q.text = question[@"text"];
     

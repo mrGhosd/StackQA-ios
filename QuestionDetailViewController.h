@@ -23,6 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *commentsCount;
 @property (strong, nonatomic) IBOutlet UIButton *answersCount;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewAndScrollViewHeight;
 - (IBAction)questionPopupView:(id)sender;
 
 
