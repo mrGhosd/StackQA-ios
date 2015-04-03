@@ -60,6 +60,8 @@
 		64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF91A6C726B006AB0AC /* ask_question-32.png */; };
 		64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EFA1A6C726B006AB0AC /* chat-32.png */; };
 		64F567961ACE9FA90084AED4 /* ServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F567951ACE9FA90084AED4 /* ServerError.m */; };
+		64F5679E1ACF07820084AED4 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5679D1ACF07820084AED4 /* ImageView.m */; };
+		64F567A01ACF07910084AED4 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F5679F1ACF07910084AED4 /* ImageView.xib */; };
 		85DE37E0200C23155A10D8FE /* libPods-StackQA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +159,9 @@
 		64C69EFA1A6C726B006AB0AC /* chat-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-32.png"; path = "../chat-32.png"; sourceTree = "<group>"; };
 		64F567941ACE9FA90084AED4 /* ServerError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerError.h; sourceTree = "<group>"; };
 		64F567951ACE9FA90084AED4 /* ServerError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerError.m; sourceTree = "<group>"; };
+		64F5679C1ACF07820084AED4 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
+		64F5679D1ACF07820084AED4 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
+		64F5679F1ACF07910084AED4 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
 		9282C7A4F351AC4371BB6A4C /* Pods-StackQA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.release.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -368,6 +373,9 @@
 				6438741C1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.h */,
 				6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */,
 				6438741E1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib */,
+				64F5679C1ACF07820084AED4 /* ImageView.h */,
+				64F5679D1ACF07820084AED4 /* ImageView.m */,
+				64F5679F1ACF07910084AED4 /* ImageView.xib */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -580,6 +588,7 @@
 				64124A1A1AB987230009C034 /* move9.png in Resources */,
 				6469F9B61A70592500E837E3 /* Main.storyboard in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
+				64F567A01ACF07910084AED4 /* ImageView.xib in Resources */,
 				64C69EF41A6C6FFA006AB0AC /* QuestionsTableViewCell.xib in Resources */,
 				6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */,
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
@@ -667,6 +676,7 @@
 				64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */,
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
+				64F5679E1ACF07820084AED4 /* ImageView.m in Sources */,
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
 				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,

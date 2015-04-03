@@ -12,6 +12,7 @@
 #import "ServerError.h"
 #import <QuartzCore/QuartzCore.h>
 #import <UICKeyChainStore.h>
+#import "ProfileViewController.h"
 
 @interface AuthorizationViewController (){
     AuthorizationManager *auth;
@@ -163,5 +164,11 @@
             [self handleRegistrationError:error];
         }
     }];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"profile_view"]){
+        ProfileViewController *view = segue.destinationViewController;
+        view.user = auth.currentUser;
+    }
 }
 @end

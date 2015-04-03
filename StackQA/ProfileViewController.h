@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import <CoreData+MagicalRecord.h>
+#import "User.h"
 
 @interface ProfileViewController : ViewController
-
-@property (strong, nonatomic) IBOutlet UILabel *userEmail;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-- (IBAction)logOut:(id)sender;
+@property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
+@property (strong) User *user;
+@property (strong, nonatomic) IBOutlet UILabel *userFullName;
 @end

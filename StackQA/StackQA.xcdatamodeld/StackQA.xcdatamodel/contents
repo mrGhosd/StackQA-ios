@@ -48,8 +48,8 @@
     <elements>
         <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
         <element name="Authorization" positionX="-1523" positionY="-277" width="128" height="103"/>
-        <element name="Question" positionX="-1773" positionY="-540" width="128" height="253"/>
+        <element name="Question" positionX="-1746" positionY="-478" width="128" height="253"/>
         <element name="SQACategory" positionX="-1559" positionY="-544" width="128" height="73"/>
-        <element name="User" positionX="-1791" positionY="-135" width="128" height="135"/>
+        <element name="User" positionX="-1521" positionY="-162" width="128" height="135"/>
     </elements>
 </model>

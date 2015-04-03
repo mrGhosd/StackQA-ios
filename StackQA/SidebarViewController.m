@@ -63,10 +63,6 @@
     } else {
         static NSString *CellIdentifier = @"Cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//        if (cell == nil){
-//            NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SidebarTableViewCell" owner:self options:nil];
-//            cell = [nib objectAtIndex:0];
-//        }
         cell.textLabel.text = menuItems[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
         return cell;
@@ -88,7 +84,9 @@
         QuestionsViewController *view = segue.destinationViewController;
     }
     if([[segue identifier] isEqualToString:@"profile"]){
-        ProfileViewController *view = segue.destinationViewController;
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfileViewController *controller = (ProfileViewController *)navController.topViewController;
+        controller.user = auth.currentUser;
     }
 }
 - (void) viewDidAppear:(BOOL)animated{
