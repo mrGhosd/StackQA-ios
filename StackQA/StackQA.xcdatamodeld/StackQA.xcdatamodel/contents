@@ -11,6 +11,12 @@
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" syncable="YES"/>
     </entity>
+    <entity name="Authorization" representedClassName="Authorization" syncable="YES">
+        <attribute name="access_token" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="expires_in" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="token_type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="answers_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="answers_list" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -31,9 +37,19 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="category" inverseEntity="Question" syncable="YES"/>
     </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="avatar_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="correct_naming" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
+        <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
+        <element name="Authorization" positionX="-1523" positionY="-277" width="128" height="103"/>
         <element name="Question" positionX="-1773" positionY="-540" width="128" height="253"/>
         <element name="SQACategory" positionX="-1559" positionY="-544" width="128" height="73"/>
-        <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
+        <element name="User" positionX="-1791" positionY="-135" width="128" height="135"/>
     </elements>
 </model>

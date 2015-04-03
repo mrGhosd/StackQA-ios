@@ -39,12 +39,12 @@ DEPENDENCIES:
   - UICKeyChainStore
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
-  RDRStickyKeyboardView: 52f8380fe05eb8bff6b55d367232fa607772658b
-  SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304
-  SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
-  UICKeyChainStore: 2399076d0950e20fe859b8f817548cf6ca542dd7
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
+  SocketRocket: 7284ab9370a06c99aba92b2fe3a32aedd0f9a6fa
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
+  UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
 
 COCOAPODS: 0.34.4

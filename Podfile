@@ -11,6 +11,7 @@ pod 'MBProgressHUD'
 pod 'UICKeyChainStore'
 pod 'SocketRocket'
 pod 'RDRStickyKeyboardView'
+pod 'UICKeyChainStore'
 end
 
 target 'StackQATests' do

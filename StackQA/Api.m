@@ -8,8 +8,13 @@
 
 #import "Api.h"
 #import <Foundation/Foundation.h>
+#import "AuthorizationManager.h"
+#import <UICKeyChainStore.h>
 
-@implementation Api
+@implementation Api{
+    AuthorizationManager *auth;
+    UICKeyChainStore *store;
+}
 
 static Api *sharedSingleton_ = nil;
 
@@ -25,11 +30,18 @@ static Api *sharedSingleton_ = nil;
     return api;
 }
 
-- (void) getTokenWithClientID:(NSString *) clientId andSecretID:(NSString *) secretID andComplition:(ResponseCopmlition) complition{
+- (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition{
+    store = [UICKeyChainStore keyChainStore];
+    NSDictionary *params = [[NSDictionary alloc] init];
+    if([store objectForKeyedSubscript:@"access_token"]){
+        params = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
+    } else {
+        params = nil;
+    }
     ResponseCopmlition response = [complition copy];
-    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
-                                                                           URLString:@"http://localhost:3000/oauth/token"
-                                                                          parameters:@{@"grant_type": @"password", @"email": @"vforvad@gmail.com", @"password": @"Altair_69"}
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"GET"
+                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
+                                                                          parameters: params
                                                                                error:nil] mutableCopy];
     
     AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
@@ -39,6 +51,7 @@ static Api *sharedSingleton_ = nil;
     
     [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         response(responseObject, YES);
+        self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         response(error, NO);
     }];
@@ -46,11 +59,33 @@ static Api *sharedSingleton_ = nil;
     [requestAPI start];
 }
 
-- (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition{
+- (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
-    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"GET"
-                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
-                                                                          parameters: nil
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
+                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000%@", url]
+                                                                          parameters: params
+                                                                               error:nil] mutableCopy];
+    
+    AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
+    serializer.readingOptions = NSJSONReadingAllowFragments;
+    requestAPI.responseSerializer = serializer;
+    
+    [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        response(responseObject, YES);
+        self.lastSyncDate = [NSDate date];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        response(error, NO);
+    }];
+    
+    [requestAPI start];
+}
+
+- (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition{
+    ResponseCopmlition response = [complition copy];
+    NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
+                                                                           URLString:@"http://localhost:3000/oauth/token"
+                                                                          parameters: params
                                                                                error:nil] mutableCopy];
     
     AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];

@@ -2,49 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>SchemeUserState</key>
-	<dict>
-		<key>Pods-StackQA-AFNetworking.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-MagicalRecord.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-RDRStickyKeyboardView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-SWTableViewCell.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-SocketRocket.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-UICKeyChainStore.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>020923B35926DEE95C59BD7D</key>
@@ -62,21 +19,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1F1EE5806A7785FEC35A0174</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>21E4E89E9C0E9AD6B990C425</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>291BA36FCD8930D91326EEEE</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4092448ACAAADB60D142E399</key>
 		<dict>
 			<key>primary</key>
@@ -87,37 +29,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>60AA9A794DC36283FCED4F05</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6DD1B76F3BE835BFA96F7C2C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>899F1B831EB1BC600F7ED917</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9EC7AD11E4DF517645BAB994</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B647783E71E93AC479750802</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C8B180526C8A750EB2CA1544</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EB1928F602FEC32CC0FB026D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

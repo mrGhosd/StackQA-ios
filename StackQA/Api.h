@@ -19,6 +19,7 @@ typedef void(^requestErrorBlock)(NSError *);
 @property (nonatomic, copy) NSDate *lastSyncDate;
 
 + (id) sharedManager;
-- (void) getTokenWithClientID:(NSString *) clientId andSecretID:(NSString *) secretID andComplition:(ResponseCopmlition) complition;
 - (void) getData: (NSString *) url andComplition:(ResponseCopmlition) complition;
+- (void) sendDataToURL:(NSString *) url parameters: (NSDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition;
+- (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition;
 @end
