@@ -59,6 +59,7 @@
 		64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF71A6C71D7006AB0AC /* group-32.png */; };
 		64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF91A6C726B006AB0AC /* ask_question-32.png */; };
 		64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EFA1A6C726B006AB0AC /* chat-32.png */; };
+		64F567961ACE9FA90084AED4 /* ServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F567951ACE9FA90084AED4 /* ServerError.m */; };
 		85DE37E0200C23155A10D8FE /* libPods-StackQA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */; };
 /* End PBXBuildFile section */
 
@@ -154,6 +155,8 @@
 		64C69EF71A6C71D7006AB0AC /* group-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "group-32.png"; path = "../group-32.png"; sourceTree = "<group>"; };
 		64C69EF91A6C726B006AB0AC /* ask_question-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ask_question-32.png"; path = "../ask_question-32.png"; sourceTree = "<group>"; };
 		64C69EFA1A6C726B006AB0AC /* chat-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-32.png"; path = "../chat-32.png"; sourceTree = "<group>"; };
+		64F567941ACE9FA90084AED4 /* ServerError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerError.h; sourceTree = "<group>"; };
+		64F567951ACE9FA90084AED4 /* ServerError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerError.m; sourceTree = "<group>"; };
 		9282C7A4F351AC4371BB6A4C /* Pods-StackQA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.release.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -262,6 +265,8 @@
 				646DDEFC1AB4D8670066F75A /* category */,
 				6428B0E41AACF49500110D62 /* API */,
 				6428B0BE1AAC68F500110D62 /* question */,
+				64F567941ACE9FA90084AED4 /* ServerError.h */,
+				64F567951ACE9FA90084AED4 /* ServerError.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -669,6 +674,7 @@
 				64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */,
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,
+				64F567961ACE9FA90084AED4 /* ServerError.m in Sources */,
 				64C69EBB1A6C4F01006AB0AC /* main.m in Sources */,
 				647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */,
 			);

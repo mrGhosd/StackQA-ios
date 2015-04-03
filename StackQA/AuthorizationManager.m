@@ -47,11 +47,13 @@ static AuthorizationManager *sharedSingleton_ = nil;
     }];
 }
 - (void) signUpWithParams:(NSDictionary *) params andComplition:(ResponseCopmlition) complition{
+    ResponseCopmlition response = [complition copy];
     [[Api sharedManager] sendDataToURL:@"/api/v1/users" parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             [self signInUserWithEmail:params[@"user"][@"email"] andPassword:params[@"user"][@"password"]];
+            complition(data, YES);
         } else {
-            NSError *error = (NSError *) data;
+            complition(data, NO);
         }
     }];
 }

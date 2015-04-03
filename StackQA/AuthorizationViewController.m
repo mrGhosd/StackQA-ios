@@ -9,6 +9,8 @@
 #import "AuthorizationViewController.h"
 #import "SWRevealViewController.h"
 #import "AuthorizationManager.h"
+#import "ServerError.h"
+#import <QuartzCore/QuartzCore.h>
 #import <UICKeyChainStore.h>
 
 @interface AuthorizationViewController (){
@@ -93,19 +95,49 @@
 
 
 - (IBAction)registrationButton:(id)sender {
+    self.regEmailField.layer.borderColor = [[UIColor clearColor]CGColor];
+    self.regPasswordField.layer.borderColor = [[UIColor clearColor]CGColor];
+    self.regPasswordConfirmationField.layer.borderColor = [[UIColor clearColor]CGColor];
     NSMutableDictionary *users = @{@"email": self.regEmailField.text,
                              @"password": self.regPasswordField.text,
                              @"password_confirmation": self.regPasswordConfirmationField.text};
     
     [[AuthorizationManager sharedInstance] signUpWithParams:@{@"user": users} andComplition:^(id data, BOOL success){
         if(success){
-        
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:@"Спасибо за регистрацию!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
         } else {
-        
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            [self handleRegistrationError:error];
         }
     }];
 }
-
+- (void) handleRegistrationError:(ServerError *) error{
+    NSString *fullMessage = @"";
+    if(error.message[@"email"]){
+        [self markFieldAsError:self.regEmailField];
+        NSString *message = [NSString stringWithFormat:@"email %@", error.message[@"email"][0]];
+        fullMessage = [NSString stringWithFormat:@"%@", message];
+    }
+    if(error.message[@"password"]){
+        [self markFieldAsError:self.regPasswordField];
+        NSString *message = [NSString stringWithFormat:@"password %@", error.message[@"password"][0]];
+        fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
+    }
+    if(error.message[@"password_confirmation"]){
+        [self markFieldAsError:self.regPasswordConfirmationField];
+        NSString *message = [NSString stringWithFormat:@"password_confirmation %@", error.message[@"password confirmation"][0]];
+        fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
+    }
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [av show];
+}
+- (void) markFieldAsError:(UITextView *) field{
+    field.layer.cornerRadius=4.0f;
+    field.layer.masksToBounds=YES;
+    field.layer.borderColor=[[UIColor redColor]CGColor];
+    field.layer.borderWidth= 1.0f;
+}
 - (IBAction)loginButton:(id)sender {
     [store removeItemForKey:@"access_token"];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
