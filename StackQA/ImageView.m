@@ -17,6 +17,21 @@
     // Drawing code
 }
 */
+- (id) init{
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    [self.mainImage setUserInteractionEnabled:YES];
+    [self.mainImage addGestureRecognizer:singleTap];
+    return self;
+}
+
+- (void) tapDetected{
+    if(self.actionView.hidden){
+        self.actionView.hidden = NO;
+    } else {
+        self.actionView.hidden = YES;
+    }
+}
 
 - (IBAction)removeImageView:(id)sender {
     [[NSNotificationCenter defaultCenter]

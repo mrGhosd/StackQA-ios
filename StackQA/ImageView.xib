@@ -12,30 +12,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBy-jF-EHW">
-                    <rect key="frame" x="8" y="71" width="584" height="521"/>
+                    <rect key="frame" x="8" y="8" width="584" height="584"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="521" id="2BK-0U-h0R"/>
                         <constraint firstAttribute="width" constant="584" id="gxc-2d-dvp"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZb-vW-lD8">
-                    <rect key="frame" x="8" y="31" width="32" height="32"/>
-                    <state key="normal" backgroundImage="delete_sign-32.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="removeImageView:" destination="iN0-l3-epB" eventType="touchUpInside" id="RwL-KW-UUV"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PYj-sI-Sjb">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="71"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZb-vW-lD8">
+                            <rect key="frame" x="8" y="20" width="32" height="32"/>
+                            <state key="normal" backgroundImage="delete_sign-32.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="removeImageView:" destination="iN0-l3-epB" eventType="touchUpInside" id="RwL-KW-UUV"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PYj-sI-Sjb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="J3w-o1-wnc"/>
+                <constraint firstAttribute="trailing" secondItem="PYj-sI-Sjb" secondAttribute="trailing" id="Tb5-45-Ity"/>
+                <constraint firstItem="PYj-sI-Sjb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="mGR-Mb-aAn"/>
+            </constraints>
             <connections>
+                <outlet property="actionView" destination="PYj-sI-Sjb" id="zZJ-ub-245"/>
                 <outlet property="closeButton" destination="gZb-vW-lD8" id="VaF-4n-hxh"/>
                 <outlet property="imageHeightConstraint" destination="2BK-0U-h0R" id="RXV-53-DRf"/>
                 <outlet property="imageWidthConstraint" destination="gxc-2d-dvp" id="3Pe-4a-TI5"/>
                 <outlet property="mainImage" destination="eBy-jF-EHW" id="439-Dc-nTv"/>
             </connections>
-            <point key="canvasLocation" x="22" y="602"/>
+            <point key="canvasLocation" x="22" y="566"/>
         </view>
     </objects>
     <resources>

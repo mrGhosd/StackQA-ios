@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageHeightConstraint;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *imageWidthConstraint;
 - (IBAction)removeImageView:(id)sender;
+@property (strong, nonatomic) IBOutlet UIView *actionView;
 
 @end
