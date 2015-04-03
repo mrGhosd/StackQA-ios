@@ -90,28 +90,27 @@
 - (void) errorUserProfileDownload{
     UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой пользователь не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-
-- (IBAction)registrationButton:(id)sender {
-    self.regEmailField.layer.borderColor = [[UIColor clearColor]CGColor];
-    self.regPasswordField.layer.borderColor = [[UIColor clearColor]CGColor];
-    self.regPasswordConfirmationField.layer.borderColor = [[UIColor clearColor]CGColor];
-    NSMutableDictionary *users = @{@"email": self.regEmailField.text,
-                             @"password": self.regPasswordField.text,
-                             @"password_confirmation": self.regPasswordConfirmationField.text};
-    
-    [[AuthorizationManager sharedInstance] signUpWithParams:@{@"user": users} andComplition:^(id data, BOOL success){
-        if(success){
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:@"Спасибо за регистрацию!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [av show];
-        } else {
-            ServerError *error = [[ServerError alloc] initWithData:data];
-            [self handleRegistrationError:error];
-        }
-    }];
+- (void) handleAuthorizationErrors:(ServerError *)error{
+    NSString *fullMessage = @"";
+    if(error.message[@"email"]){
+        [self markFieldAsError:self.emailField];
+        NSString *message = [NSString stringWithFormat:@"email %@", error.message[@"email"][0]];
+        fullMessage = [NSString stringWithFormat:@"%@", message];
+    }
+    if(error.message[@"password"]){
+        [self markFieldAsError:self.passwordField];
+        NSString *message = [NSString stringWithFormat:@"password %@", error.message[@"password"][0]];
+        fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
+    }
+    if(error.message[@"error"]){
+        fullMessage = @"Такого пользователя не существует";
+    }
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [av show];
 }
+
 - (void) handleRegistrationError:(ServerError *) error{
     NSString *fullMessage = @"";
     if(error.message[@"email"]){
@@ -146,5 +145,23 @@
         [store synchronize];
         [[AuthorizationManager sharedInstance] signInUserWithEmail:self.emailField.text andPassword:self.passwordField.text];
     });
+}
+- (IBAction)registrationButton:(id)sender {
+    self.regEmailField.layer.borderColor = [[UIColor clearColor]CGColor];
+    self.regPasswordField.layer.borderColor = [[UIColor clearColor]CGColor];
+    self.regPasswordConfirmationField.layer.borderColor = [[UIColor clearColor]CGColor];
+    NSMutableDictionary *users = @{@"email": self.regEmailField.text,
+                                   @"password": self.regPasswordField.text,
+                                   @"password_confirmation": self.regPasswordConfirmationField.text};
+    
+    [[AuthorizationManager sharedInstance] signUpWithParams:@{@"user": users} andComplition:^(id data, BOOL success){
+        if(success){
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:@"Спасибо за регистрацию!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [av show];
+        } else {
+            ServerError *error = [[ServerError alloc] initWithData:data];
+            [self handleRegistrationError:error];
+        }
+    }];
 }
 @end
