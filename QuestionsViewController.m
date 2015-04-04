@@ -135,19 +135,20 @@
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
      NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    
-    if (cell == nil){
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"QuestionsTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
     cell.questionTitle.text = (Question *)questionItem.title;
     cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
-    cell.viewsCount.text = [NSString stringWithFormat:@"%@", questionItem.views];
-    cell.answersCount.text = [NSString stringWithFormat:@"%@", questionItem.answers_count];
-    cell.commentsCount.text = [NSString stringWithFormat:@"%@", questionItem.comments_count];
-    
+    [self setQuestionRateViewForCell:cell];
+    [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
+    [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
+    [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
     return cell;
+}
+- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell{
+    cell.questionRate.backgroundColor = [UIColor lightGrayColor];
+    cell.questionRate.textColor = [UIColor whiteColor];
+    cell.questionRate.clipsToBounds = YES;
+    cell.questionRate.layer.cornerRadius = 30;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -169,7 +170,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:@"showQuestion" sender:self];
 }
 
 - (NSDate *) correctConvertOfDate:(NSString *) date{

@@ -55,7 +55,6 @@
 		64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EEB1A6C52C2006AB0AC /* Question.m */; };
 		64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EEE1A6C5EBC006AB0AC /* QuestionDetailViewController.m */; };
 		64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EF11A6C6FFA006AB0AC /* QuestionsTableViewCell.m */; };
-		64C69EF41A6C6FFA006AB0AC /* QuestionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF21A6C6FFA006AB0AC /* QuestionsTableViewCell.xib */; };
 		64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF71A6C71D7006AB0AC /* group-32.png */; };
 		64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF91A6C726B006AB0AC /* ask_question-32.png */; };
 		64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EFA1A6C726B006AB0AC /* chat-32.png */; };
@@ -153,7 +152,6 @@
 		64C69EEE1A6C5EBC006AB0AC /* QuestionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionDetailViewController.m; path = ../QuestionDetailViewController.m; sourceTree = "<group>"; };
 		64C69EF01A6C6FFA006AB0AC /* QuestionsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionsTableViewCell.h; path = ../QuestionsTableViewCell.h; sourceTree = "<group>"; };
 		64C69EF11A6C6FFA006AB0AC /* QuestionsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionsTableViewCell.m; path = ../QuestionsTableViewCell.m; sourceTree = "<group>"; };
-		64C69EF21A6C6FFA006AB0AC /* QuestionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuestionsTableViewCell.xib; path = ../QuestionsTableViewCell.xib; sourceTree = "<group>"; };
 		64C69EF71A6C71D7006AB0AC /* group-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "group-32.png"; path = "../group-32.png"; sourceTree = "<group>"; };
 		64C69EF91A6C726B006AB0AC /* ask_question-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ask_question-32.png"; path = "../ask_question-32.png"; sourceTree = "<group>"; };
 		64C69EFA1A6C726B006AB0AC /* chat-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-32.png"; path = "../chat-32.png"; sourceTree = "<group>"; };
@@ -459,7 +457,6 @@
 				64C69EC21A6C4F01006AB0AC /* ViewController.h */,
 				64C69EC31A6C4F01006AB0AC /* ViewController.m */,
 				6469F9B51A70592500E837E3 /* Main.storyboard */,
-				64C69EF21A6C6FFA006AB0AC /* QuestionsTableViewCell.xib */,
 				64C69EC81A6C4F01006AB0AC /* Images.xcassets */,
 				64C69ECA1A6C4F01006AB0AC /* LaunchScreen.xib */,
 				64C69EB81A6C4F01006AB0AC /* Supporting Files */,
@@ -589,7 +586,6 @@
 				6469F9B61A70592500E837E3 /* Main.storyboard in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
 				64F567A01ACF07910084AED4 /* ImageView.xib in Resources */,
-				64C69EF41A6C6FFA006AB0AC /* QuestionsTableViewCell.xib in Resources */,
 				6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */,
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
 				643874181ACAF3820059EBEC /* user7.png in Resources */,
