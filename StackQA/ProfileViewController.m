@@ -74,13 +74,6 @@
     imageWrapper.mainImage.image = [self.user profileImage];
     imageWrapper.imageHeightConstraint.constant = screenSize.height - 30;
     imageWrapper.imageWidthConstraint.constant = screenSize.width - 20;
-//    imageWrapper.mainImage.frame = CGRectMake(0, 0, screenSize.width, screenSize.height);
-//    imageWrapper.mainImage.frame.size.height = screenSize.height;
-//    imageWrapper.mainImage.frame.size.width = screenSize.width;
-//    imageWrapper.backgroundColor = [UIColor blackColor];
-   
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[self.user profileImage]];
-//    imageView.frame = CGRectMake(10, 20, self.view.frame.size.width - 20, self.view.frame.size.height - 50);
     imageWrapper.backgroundColor = [UIColor lightGrayColor];
     self.navigationController.navigationBar.hidden = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleImageActionView)];
