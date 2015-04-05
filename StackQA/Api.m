@@ -62,7 +62,7 @@ static Api *sharedSingleton_ = nil;
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
-                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000%@", url]
+                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     

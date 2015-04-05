@@ -8,7 +8,11 @@
 
 #import "QuestionsFormViewController.h"
 #import <CoreData+MagicalRecord.h>
-@interface QuestionsFormViewController ()
+#import "Api.h"
+#import "AuthorizationManager.h"
+@interface QuestionsFormViewController (){
+    AuthorizationManager *auth;
+}
 
 @end
 
@@ -16,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
     if(self.question){
         self.questionTitle.text = self.question.title;
         self.questionText.text = self.question.text;
@@ -58,7 +63,15 @@
         }
     }
     [localContext MR_save];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
+                                     @"user_id": auth.currentUser.object_id, @"category_id": @2};
+    [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"question": questionParams} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+                [self dismissViewControllerAnimated:YES completion:nil];
+        } else{
+            
+        }
+    }];
 }
 
 - (IBAction)hideForm:(id)sender {

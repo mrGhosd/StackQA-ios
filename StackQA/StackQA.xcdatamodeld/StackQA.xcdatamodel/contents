@@ -44,6 +44,7 @@
         <attribute name="correct_naming" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="questions_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
@@ -53,6 +54,6 @@
         <element name="Authorization" positionX="-1523" positionY="-277" width="128" height="103"/>
         <element name="Question" positionX="-1746" positionY="-478" width="128" height="253"/>
         <element name="SQACategory" positionX="-1559" positionY="-544" width="128" height="73"/>
-        <element name="User" positionX="-1521" positionY="-162" width="128" height="178"/>
+        <element name="User" positionX="-1521" positionY="-162" width="128" height="195"/>
     </elements>
 </model>

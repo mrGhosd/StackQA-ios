@@ -10,6 +10,7 @@
 
 @implementation User
 
+@dynamic object_id;
 @dynamic email;
 @dynamic surname;
 @dynamic name;

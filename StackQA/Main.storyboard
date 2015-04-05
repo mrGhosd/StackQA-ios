@@ -21,15 +21,14 @@
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-K3-JU4">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cob-e8-sIx">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cob-e8-sIx">
                                 <rect key="frame" x="16" y="82" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-7g-SDj">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Текст вопроса" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-7g-SDj">
                                 <rect key="frame" x="16" y="120" width="288" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -55,8 +54,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="N4u-K3-JU4" secondAttribute="trailing" constant="-16" id="KEh-if-nj0"/>
+                            <constraint firstItem="Cob-e8-sIx" firstAttribute="top" secondItem="N4u-K3-JU4" secondAttribute="bottom" constant="18" id="LKK-EY-WxN"/>
                             <constraint firstItem="N4u-K3-JU4" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="-16" id="PV6-iY-v6y"/>
+                            <constraint firstItem="QPr-7g-SDj" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="RKj-7g-MQv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QPr-7g-SDj" secondAttribute="trailing" constant="10" id="SSg-sR-gyg"/>
                             <constraint firstItem="Y4w-Oq-nAs" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" id="dUj-qE-RdC"/>
+                            <constraint firstItem="QPr-7g-SDj" firstAttribute="top" secondItem="Cob-e8-sIx" secondAttribute="bottom" constant="8" id="h1e-dL-ybC"/>
+                            <constraint firstItem="Cob-e8-sIx" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="mEU-OK-xwN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cob-e8-sIx" secondAttribute="trailing" constant="10" id="o7n-qW-NhC"/>
                             <constraint firstItem="JPW-mY-QYy" firstAttribute="trailing" secondItem="mXu-pO-DtV" secondAttribute="trailingMargin" id="yT9-Ht-a3p"/>
                         </constraints>
                     </view>

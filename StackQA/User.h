@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSNumber * questions_count;
 @property (nonatomic, retain) NSNumber * answers_count;
 @property (nonatomic, retain) NSNumber * comments_count;
+@property (nonatomic, retain) NSNumber * object_id;
 
 - (UIImage *) profileImage;
 @end
