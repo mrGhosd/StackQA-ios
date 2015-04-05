@@ -16,7 +16,10 @@
 #import "SWRevealViewController.h"
 #import "Api.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "AuthorizationManager.h"
+
 @interface QuestionsViewController (){
+    AuthorizationManager *auth;
     Api *api;
     UIApplication *app;
     NSArray *questionsArray;
@@ -28,17 +31,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
+    auth = [AuthorizationManager sharedInstance];
     questionsArray = [Question MR_findAll];
     [self defineNavigationPanel];
     [self showQuestions];
     self.questions = [Question MR_findAll];
     [self.tableView reloadData];
-    
+    [self toggleCrateQuestionButton];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void) currentUserValue{
+    [self toggleCrateQuestionButton];
+    [self.tableView reloadData];
 }
 - (void) showQuestions{
     [self loadQuestions];
@@ -50,7 +59,14 @@
         return false;
     }
 }
-
+- (void) toggleCrateQuestionButton{
+    if([[AuthorizationManager sharedInstance] currentUser]){
+        self.addQuestion.enabled = YES;
+    } else {
+        self.addQuestion.enabled = NO;
+    }
+    [self.tableView reloadData];
+}
 - (void) loadQuestions{
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
@@ -82,10 +98,14 @@
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary *question in questions){
-        Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"]];
-        if(!qw){
             [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-                Question *q = [Question MR_createInContext:localContext];
+                Question *q;
+                Question *current_q = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"]];
+                if(current_q){
+                    q = current_q;
+                } else {
+                    q = [Question MR_createInContext:localContext];
+                }
                 q.object_id = question[@"id"];
                 q.user_id = question[@"user_id"];
                 q.category_id = question[@"category_id"];
@@ -96,9 +116,7 @@
                 q.comments_count = question[@"comments_count"];
                 q.text = question[@"text"];
                 [localContext MR_save];
-            }];
-        }
-
+        }];
     }
 //    [NSThread sleepForTimeInterval:2.0]
     self.questions = [NSArray arrayWithArray:[Question MR_findAll]];
@@ -111,6 +129,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self toggleCrateQuestionButton];
     self.questions = [Question MR_findAll];
     [self.tableView reloadData];
 }

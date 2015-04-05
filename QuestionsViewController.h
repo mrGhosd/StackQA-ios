@@ -11,4 +11,5 @@
 @interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property(strong)NSMutableArray *questions;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addQuestion;
 @end

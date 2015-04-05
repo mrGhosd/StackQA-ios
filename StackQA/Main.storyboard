@@ -173,6 +173,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addQuestion" destination="2FM-gE-IYr" id="zIK-8P-cPY"/>
                         <outlet property="sidebarButton" destination="wxV-oX-zhg" id="eJ1-qO-XHG"/>
                     </connections>
                 </tableViewController>
