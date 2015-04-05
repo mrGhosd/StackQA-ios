@@ -14,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *questionTitle;
 @property (strong, nonatomic) IBOutlet UITextField *questionCategory;
 @property (strong, nonatomic) IBOutlet UITextView *questionText;
+@property (strong, nonatomic) IBOutlet UITextField *questionTags;
 - (IBAction)saveQuestion:(id)sender;
 - (IBAction)hideForm:(id)sender;
 

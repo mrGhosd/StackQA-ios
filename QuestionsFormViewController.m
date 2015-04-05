@@ -94,7 +94,8 @@
     [localContext MR_save];
     
     NSMutableDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
-                                     @"user_id": auth.currentUser.object_id, @"category_id": selectedCategory[@"id"]};
+        @"user_id": auth.currentUser.object_id,
+        @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text };
     [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"question": questionParams} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
                 [self dismissViewControllerAnimated:YES completion:nil];
