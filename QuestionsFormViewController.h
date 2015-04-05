@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Question.h"
 
-@interface QuestionsFormViewController : UIViewController
+@interface QuestionsFormViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 @property(strong) Question *question;
 @property (strong, nonatomic) IBOutlet UITextField *questionTitle;
+@property (strong, nonatomic) IBOutlet UITextField *questionCategory;
 @property (strong, nonatomic) IBOutlet UITextView *questionText;
 - (IBAction)saveQuestion:(id)sender;
 - (IBAction)hideForm:(id)sender;

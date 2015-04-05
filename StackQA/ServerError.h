@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface ServerError : NSObject
-@property (nonatomic) NSInteger *status;
+@property (nonatomic) int *status;
+@property (nonatomic, retain) NSHTTPURLResponse *failedResponse;
 @property (nonatomic, retain) NSMutableDictionary *message;
 - (instancetype) initWithData:(id) data;
+- (instancetype) initWithError:(NSError *) error;
 @end

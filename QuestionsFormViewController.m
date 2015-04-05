@@ -10,8 +10,12 @@
 #import <CoreData+MagicalRecord.h>
 #import "Api.h"
 #import "AuthorizationManager.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 @interface QuestionsFormViewController (){
     AuthorizationManager *auth;
+    NSMutableArray *categories;
+    NSDictionary *selectedCategory;
+    UIPickerView *picker;
 }
 
 @end
@@ -25,6 +29,11 @@
         self.questionTitle.text = self.question.title;
         self.questionText.text = self.question.text;
     }
+    picker = [[UIPickerView alloc] init];
+    picker.delegate = self;
+    picker.dataSource = self;
+    self.questionCategory.inputView = picker;
+    [self uploadCategoriesList];
     
     // Do any additional setup after loading the view.
 }
@@ -33,7 +42,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) uploadCategoriesList{
+    [[Api sharedManager] getData:@"/categories" andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseCategories:data];
+        } else {
+        
+        }
+    }];
+}
 
+- (void) parseCategories:(id)data{
+    categories = [NSArray arrayWithArray:data[@"categories"]];
+}
+- (void) setupPickerView{
+    picker = [[UIPickerView alloc] init];
+    [picker setDelegate:self];
+    [picker setDataSource:self];
+//    picker.showsSelectionIndicator = YES;
+}
 /*
 #pragma mark - Navigation
 
@@ -45,6 +72,8 @@
 */
 
 - (IBAction)saveQuestion:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
     if (self.question) {
         Question *question = [Question MR_findFirstByAttribute:@"title" withValue:self.question.title inContext:localContext];
@@ -63,8 +92,9 @@
         }
     }
     [localContext MR_save];
-    NSDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
-                                     @"user_id": auth.currentUser.object_id, @"category_id": @2};
+    
+    NSMutableDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
+                                     @"user_id": auth.currentUser.object_id, @"category_id": selectedCategory[@"id"]};
     [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"question": questionParams} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -72,8 +102,30 @@
             
         }
     }];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
+- (NSInteger)numberOfComponentsInPickerView:
+(UIPickerView *)pickerView{
+    return 1;
+}
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component{
+    return categories.count;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component{
+    return categories[row][@"title"];
+}
+
+#pragma mark -
+#pragma mark PickerView Delegate
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
+      inComponent:(NSInteger)component{
+    selectedCategory = [NSDictionary dictionaryWithDictionary:categories[row]];
+    self.questionCategory.text = categories[row][@"title"];
+}
 - (IBAction)hideForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

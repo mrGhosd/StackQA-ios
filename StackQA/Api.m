@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "AuthorizationManager.h"
 #import <UICKeyChainStore.h>
+#import "ServerError.h"
 
 @implementation Api{
     AuthorizationManager *auth;
@@ -61,6 +62,14 @@ static Api *sharedSingleton_ = nil;
 
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
+    store = [UICKeyChainStore keyChainStore];
+    if([store objectForKeyedSubscript:@"access_token"]){
+        NSMutableDictionary *copiedParams = [params mutableCopy];
+        NSMutableDictionary *accessToken = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
+        params = [[NSMutableDictionary alloc] init];
+        [params addEntriesFromDictionary:copiedParams];
+        [params addEntriesFromDictionary:accessToken];
+    }
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
                                                                            URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
                                                                           parameters: params
@@ -75,6 +84,7 @@ static Api *sharedSingleton_ = nil;
         response(responseObject, YES);
         self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        ServerError *errorParsed = [[ServerError alloc] initWithError:error];
         response(error, NO);
     }];
     
