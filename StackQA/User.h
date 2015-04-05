@@ -18,6 +18,9 @@
 @property (nonatomic, retain) NSString * avatar_url;
 @property (nonatomic, retain) NSString * correct_naming;
 @property (nonatomic, retain) NSNumber * rate;
+@property (nonatomic, retain) NSNumber * questions_count;
+@property (nonatomic, retain) NSNumber * answers_count;
+@property (nonatomic, retain) NSNumber * comments_count;
 
 - (UIImage *) profileImage;
 @end

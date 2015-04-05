@@ -88,9 +88,12 @@ static AuthorizationManager *sharedSingleton_ = nil;
                 current_user.name = [NSString stringWithFormat:@"%@", data[@"name"]];
                 current_user.correct_naming = data[@"correct_naming"];
                 current_user.rate = data[@"rate"];
+                current_user.questions_count = data[@"questions_count"];
+                current_user.answers_count = data[@"answers_count"];
+                current_user.comments_count = data[@"comments_count"];
                 current_user.avatar_url = [NSString stringWithFormat:@"%@", data[@"avatar"][@"url"]];
                 self.currentUser = current_user;
-                [localContext MR_saveOnlySelfAndWait];
+                [localContext MR_saveToPersistentStoreAndWait];
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"getCurrentUser"
                  object:self];

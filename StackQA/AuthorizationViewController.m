@@ -167,8 +167,9 @@
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"profile_view"]){
-        ProfileViewController *view = segue.destinationViewController;
-        view.user = auth.currentUser;
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        ProfileViewController *controller = (ProfileViewController *)navController.topViewController;
+        controller.user = [[AuthorizationManager sharedInstance] currentUser];
     }
 }
 @end

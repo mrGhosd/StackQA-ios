@@ -665,15 +665,79 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SYL-g4-0Qy">
+                                                <rect key="frame" x="150" y="195" width="300" height="285"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="285" id="B5K-nx-Nop"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileCell" textLabel="LIb-qS-WYB" detailTextLabel="dhk-ez-hH0" style="IBUITableViewCellStyleValue1" id="HFF-dc-erg">
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HFF-dc-erg" id="KGg-Gx-xl9">
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LIb-qS-WYB">
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dhk-ez-hH0">
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="Xe2-Wi-8QZ" id="p4y-Aw-Pu1"/>
+                                                    <outlet property="delegate" destination="Xe2-Wi-8QZ" id="k5S-1X-PIs"/>
+                                                </connections>
+                                            </tableView>
+                                            <button opaque="NO" contentMode="top" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yJv-QD-xde">
+                                                <rect key="frame" x="8" y="61" width="87" height="32"/>
+                                                <state key="normal" title="Button" image="mark1.png">
+                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcI-oM-DeX">
+                                                <rect key="frame" x="150" y="488" width="300" height="35"/>
+                                                <color key="backgroundColor" red="1" green="0.44705885648727417" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                                <state key="normal" title="Выйти">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornderRadius">
+                                                        <integer key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="signOut:" destination="Xe2-Wi-8QZ" eventType="touchUpInside" id="sYU-a4-HhA"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="CJp-BV-o12" firstAttribute="top" secondItem="6g9-Y7-Lq4" secondAttribute="top" constant="-20" id="7z6-z7-quD"/>
+                                            <constraint firstItem="SYL-g4-0Qy" firstAttribute="top" secondItem="fM2-kr-rvx" secondAttribute="bottom" constant="8" id="8ws-XH-DIX"/>
+                                            <constraint firstItem="zcI-oM-DeX" firstAttribute="top" secondItem="SYL-g4-0Qy" secondAttribute="bottom" constant="-135" id="DeB-u1-30l"/>
                                             <constraint firstAttribute="centerX" secondItem="CJp-BV-o12" secondAttribute="centerX" id="JBZ-cc-vg0"/>
                                             <constraint firstItem="fM2-kr-rvx" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" constant="50" id="L8a-BI-oJd"/>
+                                            <constraint firstAttribute="trailing" secondItem="SYL-g4-0Qy" secondAttribute="trailing" constant="10" id="LVh-pr-McX"/>
+                                            <constraint firstItem="yJv-QD-xde" firstAttribute="top" secondItem="6g9-Y7-Lq4" secondAttribute="top" constant="35" id="M61-ao-7U2"/>
+                                            <constraint firstItem="yJv-QD-xde" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" constant="20" id="UC1-k3-gng"/>
+                                            <constraint firstItem="zcI-oM-DeX" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" constant="10" id="grd-4z-pvu"/>
                                             <constraint firstItem="CJp-BV-o12" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" constant="85" id="ifD-Ui-7If"/>
                                             <constraint firstAttribute="centerX" secondItem="fM2-kr-rvx" secondAttribute="centerX" id="j82-Nb-9Ga"/>
+                                            <constraint firstItem="SYL-g4-0Qy" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" constant="10" id="k84-C4-Zoj"/>
                                             <constraint firstItem="fM2-kr-rvx" firstAttribute="top" secondItem="CJp-BV-o12" secondAttribute="bottom" constant="8" id="uag-JZ-QE1"/>
+                                            <constraint firstItem="SYL-g4-0Qy" firstAttribute="leading" secondItem="6g9-Y7-Lq4" secondAttribute="leading" id="vCm-uq-XeQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="zcI-oM-DeX" secondAttribute="trailing" constant="10" id="zdz-ru-jzH"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -700,14 +764,17 @@
                     </navigationItem>
                     <connections>
                         <outlet property="sidebarButton" destination="Sui-qw-sU9" id="wbp-Kf-8lK"/>
+                        <outlet property="signOutButton" destination="zcI-oM-DeX" id="Muu-A8-eqK"/>
                         <outlet property="userAvatar" destination="CJp-BV-o12" id="Gvt-Te-sPg"/>
                         <outlet property="userFullName" destination="fM2-kr-rvx" id="GXe-S6-clW"/>
+                        <outlet property="userParamsTable" destination="SYL-g4-0Qy" id="43H-8U-ved"/>
+                        <outlet property="userRate" destination="yJv-QD-xde" id="EEs-aD-icN"/>
                         <segue destination="ch4-W7-k0g" kind="show" identifier="logOut" id="jdO-yh-WYz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2541" y="-1167"/>
+            <point key="canvasLocation" x="2513" y="-1139"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="F2t-O3-bA9">
@@ -813,6 +880,7 @@
         <image name="answers-32.png" width="32" height="32"/>
         <image name="chat-32.png" width="32" height="32"/>
         <image name="eye110.png" width="32" height="32"/>
+        <image name="mark1.png" width="32" height="32"/>
         <image name="menu-32.png" width="32" height="32"/>
         <image name="move9.png" width="32" height="32"/>
         <image name="plus-32.png" width="32" height="32"/>

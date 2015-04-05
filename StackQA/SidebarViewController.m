@@ -73,7 +73,6 @@
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
         AuthorizationViewController *controller = (AuthorizationViewController *)navController.topViewController;
         controller.firstView = 0;
-//        view.firstView = @"Auth";
     }
     if([[segue identifier] isEqualToString:@"registration"]){
         UINavigationController *navController = (UINavigationController *)segue.destinationViewController;

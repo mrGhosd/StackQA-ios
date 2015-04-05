@@ -16,6 +16,8 @@
     AuthorizationManager *auth;
     UICKeyChainStore *store;
     ImageView *imageWrapper;
+    NSArray *userParams;
+    NSArray *userValues;
 }
 
 @end
@@ -26,13 +28,18 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImageView) name:@"hideImageView" object:nil];
     auth = [AuthorizationManager sharedInstance];
+    userParams= @[@"Вопросов:", @"Ответов:", @"Комментариев"];
+    userValues = @[auth.currentUser.questions_count, auth.currentUser.answers_count, auth.currentUser.comments_count];
     store = [UICKeyChainStore keyChainStore];
+    self.userParamsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self defineNavigationPanel];
     self.userAvatar.image = [self.user profileImage];
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
     self.userAvatar.layer.masksToBounds = YES;
     self.userAvatar.layer.borderWidth = 0;
     self.userFullName.text = self.user.correct_naming;
+    [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
+    self.signOutButton.layer.cornerRadius = 4.f;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
     singleTap.numberOfTapsRequired = 1;
     [self.userAvatar setUserInteractionEnabled:YES];
@@ -47,6 +54,7 @@
 
 - (void) hideImageView{
     [imageWrapper removeFromSuperview];
+    self.navigationController.navigationBar.hidden = NO;
 }
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
@@ -95,6 +103,27 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return userParams.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"profileCell";
+    NSString *label = userParams[indexPath.row];
+    NSNumber *value = userValues[indexPath.row];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.textLabel.text = label;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", value];
+    return cell;
+}
+
 /*
 #pragma mark - Navigation
 
@@ -104,8 +133,7 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (IBAction)logOut:(id)sender {
+- (IBAction)signOut:(id)sender {
     auth.currentUser = nil;
     [store removeItemForKey:@"email"];
     [store removeItemForKey:@"password"];
