@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "AuthorizationManager.h"
 
-@interface StatisticViewController : ViewController
+@interface StatisticViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

@@ -7,8 +7,12 @@
 //
 
 #import "StatisticViewController.h"
-
-@interface StatisticViewController ()
+#import "StatisticTableViewCell.h"
+@interface StatisticViewController (){
+    NSArray *userStatList;
+    NSArray *userStatValuesList;
+    AuthorizationManager *auth;
+}
 
 @end
 
@@ -16,6 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
+    userStatList = @[@"Рейтинг", @"Ответов", @"+ за вопрос", @"- за вопрос", @"+ за ответ", @"- за ответ", @"Полезных ответов на вопрос", @"Первых ответов на вопрос", @"Первых ответов на свои вопросы", @"Ответов на свои вопросы"];
+    userStatValuesList = @[ auth.currentUser.rate, auth.currentUser.answers_count, auth.currentUser.statistic.questions_positive_rate_count, auth.currentUser.statistic.questions_negative_rate_count,
+        auth.currentUser.statistic.answers_positive_rate_count, auth.currentUser.statistic.answers_negative_rate_count, auth.currentUser.statistic.helpfull_answers_count,
+                        auth.currentUser.statistic.first_answers_count, auth.currentUser.statistic.first_self_answers_count, auth.currentUser.statistic.self_answers_count];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +34,23 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return userStatList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+     static NSString *CellIdentifier = @"statisticCell";
+    StatisticTableViewCell *cell = (StatisticTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.titleLabel.text = userStatList[indexPath.row];
+    cell.numberLabel.text = [NSString stringWithFormat:@"%@", userStatValuesList[indexPath.row]];
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation

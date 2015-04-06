@@ -27,6 +27,8 @@
 		6428B0E31AACF3DF00110D62 /* news-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E21AACF3DF00110D62 /* news-32.png */; };
 		6428B0E71AACF4B200110D62 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0E61AACF4B200110D62 /* Api.m */; };
 		6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E91AAE0AF500110D62 /* eye110.png */; };
+		642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE631AD339440093A5D2 /* SQAStatistic.m */; };
+		642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */; };
 		643874181ACAF3820059EBEC /* user7.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874171ACAF3820059EBEC /* user7.png */; };
 		6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */; };
 		643874201ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6438741E1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib */; };
@@ -81,8 +83,6 @@
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticViewController.h; sourceTree = "<group>"; };
 		6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticViewController.m; sourceTree = "<group>"; };
-		6414F8811AD2E32E003B2C15 /* Statistic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
-		6414F8821AD2E32E003B2C15 /* Statistic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
 		64157B841AC82C1E00E0E401 /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationManager.h; sourceTree = "<group>"; };
 		64157B851AC82C1E00E0E401 /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
 		64157B871AC8440300E0E401 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Authorization.h; path = ../Authorization.h; sourceTree = "<group>"; };
@@ -109,6 +109,10 @@
 		6428B0E51AACF4B200110D62 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
 		6428B0E61AACF4B200110D62 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		6428B0E91AAE0AF500110D62 /* eye110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye110.png; sourceTree = "<group>"; };
+		642FAE621AD339440093A5D2 /* SQAStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQAStatistic.h; sourceTree = "<group>"; };
+		642FAE631AD339440093A5D2 /* SQAStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQAStatistic.m; sourceTree = "<group>"; };
+		642FAE661AD346EF0093A5D2 /* StatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticTableViewCell.h; sourceTree = "<group>"; };
+		642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticTableViewCell.m; sourceTree = "<group>"; };
 		643874171ACAF3820059EBEC /* user7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user7.png; sourceTree = "<group>"; };
 		6438741C1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileSidebarTableViewCell.h; sourceTree = "<group>"; };
 		6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileSidebarTableViewCell.m; sourceTree = "<group>"; };
@@ -208,8 +212,6 @@
 		6414F87F1AD2E27D003B2C15 /* statistic */ = {
 			isa = PBXGroup;
 			children = (
-				6414F8811AD2E32E003B2C15 /* Statistic.h */,
-				6414F8821AD2E32E003B2C15 /* Statistic.m */,
 			);
 			name = statistic;
 			sourceTree = "<group>";
@@ -310,6 +312,7 @@
 		6428B0BD1AAC68D400110D62 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				642FAE651AD346D40093A5D2 /* statistic */,
 				6438741B1ACAFBDB0059EBEC /* profile */,
 				644B46541AC0BFBF002CF50C /* answers */,
 				6428B0CE1AACB5F100110D62 /* questions */,
@@ -394,8 +397,19 @@
 			isa = PBXGroup;
 			children = (
 				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
+				642FAE621AD339440093A5D2 /* SQAStatistic.h */,
+				642FAE631AD339440093A5D2 /* SQAStatistic.m */,
 			);
 			name = db;
+			sourceTree = "<group>";
+		};
+		642FAE651AD346D40093A5D2 /* statistic */ = {
+			isa = PBXGroup;
+			children = (
+				642FAE661AD346EF0093A5D2 /* StatisticTableViewCell.h */,
+				642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */,
+			);
+			name = statistic;
 			sourceTree = "<group>";
 		};
 		6438741B1ACAFBDB0059EBEC /* profile */ = {
@@ -707,7 +721,9 @@
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
 				64F5679E1ACF07820084AED4 /* ImageView.m in Sources */,
+				642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */,
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
+				642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */,
 				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,
 				64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */,

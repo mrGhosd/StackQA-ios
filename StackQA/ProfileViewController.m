@@ -135,7 +135,9 @@
 }
 */
 - (IBAction)showUserStatistic:(id)sender {
-    [self performSegueWithIdentifier:@"user_statistic" sender:self];
+    if(self.user.object_id == auth.currentUser.object_id){
+        [self performSegueWithIdentifier:@"user_statistic" sender:self];
+    } 
 }
 
 - (IBAction)signOut:(id)sender {
