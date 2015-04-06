@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *userRate;
 @property (strong, nonatomic) IBOutlet UIButton *signOutButton;
 @property (strong, nonatomic) IBOutlet UITableView *userParamsTable;
+- (IBAction)showUserStatistic:(id)sender;
 - (IBAction)signOut:(id)sender;
 @end

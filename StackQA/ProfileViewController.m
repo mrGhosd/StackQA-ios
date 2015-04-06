@@ -10,6 +10,7 @@
 #import "AuthorizationManager.h"
 #import <UICKeyChainStore.h>
 #import "SWRevealViewController.h"
+#import "StatisticViewController.h"
 #import "ImageView.h"
 
 @interface ProfileViewController (){
@@ -133,11 +134,21 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)showUserStatistic:(id)sender {
+    [self performSegueWithIdentifier:@"user_statistic" sender:self];
+}
+
 - (IBAction)signOut:(id)sender {
     auth.currentUser = nil;
     [store removeItemForKey:@"email"];
     [store removeItemForKey:@"password"];
     [store removeItemForKey:@"access_token"];
     [self performSegueWithIdentifier:@"logOut" sender:self];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"show_statistic"]){
+        StatisticViewController *view = segue.destinationViewController;
+    }
 }
 @end

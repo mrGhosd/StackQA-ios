@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64124A1A1AB987230009C034 /* move9.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124A191AB987230009C034 /* move9.png */; };
+		6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */; };
 		64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B851AC82C1E00E0E401 /* AuthorizationManager.m */; };
 		64157B891AC8440300E0E401 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B881AC8440300E0E401 /* Authorization.m */; };
 		64157B8C1AC8620500E0E401 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B8B1AC8620500E0E401 /* User.m */; };
@@ -78,6 +79,8 @@
 		0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.debug.xcconfig"; sourceTree = "<group>"; };
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
+		6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticViewController.h; sourceTree = "<group>"; };
+		6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticViewController.m; sourceTree = "<group>"; };
 		64157B841AC82C1E00E0E401 /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationManager.h; sourceTree = "<group>"; };
 		64157B851AC82C1E00E0E401 /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
 		64157B871AC8440300E0E401 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Authorization.h; path = ../Authorization.h; sourceTree = "<group>"; };
@@ -191,6 +194,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6414F8781AD2D99C003B2C15 /* statistic */ = {
+			isa = PBXGroup;
+			children = (
+				6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */,
+				6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */,
+			);
+			name = statistic;
+			sourceTree = "<group>";
+		};
 		64157B831AC82C0200E0E401 /* authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +261,7 @@
 		6428B0BB1AAC68C300110D62 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6414F8781AD2D99C003B2C15 /* statistic */,
 				64157B8D1AC8726A00E0E401 /* profile */,
 				647C55C01AC36D6D0011D5FA /* authorization */,
 				644B464E1AC0AC02002CF50C /* answers */,
@@ -659,6 +672,7 @@
 				64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */,
 				64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */,
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
+				6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
@@ -803,6 +817,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -815,6 +830,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
