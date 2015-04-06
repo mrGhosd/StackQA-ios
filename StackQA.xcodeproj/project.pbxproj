@@ -81,6 +81,8 @@
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticViewController.h; sourceTree = "<group>"; };
 		6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticViewController.m; sourceTree = "<group>"; };
+		6414F8811AD2E32E003B2C15 /* Statistic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
+		6414F8821AD2E32E003B2C15 /* Statistic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
 		64157B841AC82C1E00E0E401 /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationManager.h; sourceTree = "<group>"; };
 		64157B851AC82C1E00E0E401 /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
 		64157B871AC8440300E0E401 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Authorization.h; path = ../Authorization.h; sourceTree = "<group>"; };
@@ -203,6 +205,24 @@
 			name = statistic;
 			sourceTree = "<group>";
 		};
+		6414F87F1AD2E27D003B2C15 /* statistic */ = {
+			isa = PBXGroup;
+			children = (
+				6414F8811AD2E32E003B2C15 /* Statistic.h */,
+				6414F8821AD2E32E003B2C15 /* Statistic.m */,
+			);
+			name = statistic;
+			sourceTree = "<group>";
+		};
+		6414F8801AD2E28E003B2C15 /* server_error */ = {
+			isa = PBXGroup;
+			children = (
+				64F567941ACE9FA90084AED4 /* ServerError.h */,
+				64F567951ACE9FA90084AED4 /* ServerError.m */,
+			);
+			name = server_error;
+			sourceTree = "<group>";
+		};
 		64157B831AC82C0200E0E401 /* authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,14 +295,14 @@
 		6428B0BC1AAC68CB00110D62 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				6414F8801AD2E28E003B2C15 /* server_error */,
+				6414F87F1AD2E27D003B2C15 /* statistic */,
 				64157B911AC8729C00E0E401 /* user */,
 				64157B831AC82C0200E0E401 /* authorization */,
 				644B465D1AC0C6DB002CF50C /* answers */,
 				646DDEFC1AB4D8670066F75A /* category */,
 				6428B0E41AACF49500110D62 /* API */,
 				6428B0BE1AAC68F500110D62 /* question */,
-				64F567941ACE9FA90084AED4 /* ServerError.h */,
-				64F567951ACE9FA90084AED4 /* ServerError.m */,
 			);
 			name = models;
 			sourceTree = "<group>";

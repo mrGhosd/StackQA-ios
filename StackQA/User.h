@@ -5,7 +5,7 @@
 //  Created by vsokoltsov on 29.03.15.
 //  Copyright (c) 2015 vsokoltsov. All rights reserved.
 //
-
+#import "Statistic.h"
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import <UIKit/UIKit.h>
@@ -22,6 +22,6 @@
 @property (nonatomic, retain) NSNumber * answers_count;
 @property (nonatomic, retain) NSNumber * comments_count;
 @property (nonatomic, retain) NSNumber * object_id;
-
+@property (nonatomic, retain) Statistic * statistic;
 - (UIImage *) profileImage;
 @end

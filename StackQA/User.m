@@ -20,6 +20,7 @@
 @dynamic questions_count;
 @dynamic answers_count;
 @dynamic comments_count;
+@dynamic statistic;
 
 - (NSString *) fullUrlToUserImage{
     NSString *url = [NSString stringWithFormat:@"http://localhost:3000%@", self.avatar_url];
