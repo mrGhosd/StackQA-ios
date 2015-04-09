@@ -98,27 +98,8 @@
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary *question in questions){
-            [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-                Question *q;
-                Question *current_q = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"]];
-                if(current_q){
-                    q = current_q;
-                } else {
-                    q = [Question MR_createInContext:localContext];
-                }
-                q.object_id = question[@"id"];
-                q.user_id = question[@"user_id"];
-                q.category_id = question[@"category_id"];
-                q.rate = question[@"rate"];
-                q.title = question[@"title"];
-                q.created_at = [self correctConvertOfDate:question[@"created_at"]];
-                q.answers_count = question[@"answers_count"];
-                q.comments_count = question[@"comments_count"];
-                q.text = question[@"text"];
-                [localContext MR_save];
-        }];
+        [Question create:question];
     }
-//    [NSThread sleepForTimeInterval:2.0]
     self.questions = [NSArray arrayWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

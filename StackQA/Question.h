@@ -29,6 +29,6 @@
 @property (nonatomic, retain) SQACategory *category;
 @property (nonatomic, retain) Answer *answers;
 
-- (BOOL) create:(id) attributes;
 + (NSDate *) correctConvertOfDate:(NSString *) date;
++ (void) create: (NSDictionary *) params;
 @end

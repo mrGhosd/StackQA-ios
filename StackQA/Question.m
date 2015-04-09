@@ -26,29 +26,42 @@
 @dynamic comments_count;
 @dynamic answers_list;
 
-- (void) create:(id) attributes{
-    Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:attributes[@"id"]];
-    if(!question){
-        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext){
-            Question *q = [Question MR_createInContext:localContext];
-            q.object_id = attributes[@"id"];
-            q.user_id = attributes[@"user_id"];
-            q.category_id = attributes[@"category_id"];
-            q.rate = attributes[@"rate"];
-            q.title = attributes[@"title"];
-            q.created_at = [Question correctConvertOfDate:attributes[@"created_at"]];
-            q.text = attributes[@"text"];
-            [localContext MR_save];
-        }];
-    }
-
-}
-
 + (NSDate *) correctConvertOfDate:(NSString *) date{
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *correctDate = [dateFormat dateFromString:date];
     return correctDate;
+}
+
++ (void) create: (NSDictionary *) params{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        Question *question = [self defineQuestionWithId:params[@"id"] andContext:localContext];
+        [self setParams:params toQuestion:question];
+        [localContext MR_save];
+    }];
+}
+
++ (Question *) defineQuestionWithId: (id) object_id andContext: (NSManagedObjectContext *) context{
+    Question *q;
+    Question *current_q = [Question MR_findFirstByAttribute:@"object_id" withValue:object_id];
+    if(current_q){
+        q = current_q;
+    } else {
+        q = [Question MR_createInContext:context];
+    }
+    return q;
+}
+
++ (void) setParams:(NSDictionary *)params toQuestion:(Question *) question{
+    question.object_id = params[@"id"];
+    question.user_id = params[@"user_id"];
+    question.category_id = params[@"category_id"];
+    question.rate = params[@"rate"];
+    question.title = params[@"title"];
+    question.created_at = [self correctConvertOfDate:params[@"created_at"]];
+    question.answers_count = params[@"answers_count"];
+    question.comments_count = params[@"comments_count"];
+    question.text = params[@"text"];
 }
 
 @end
