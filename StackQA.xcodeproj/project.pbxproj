@@ -45,6 +45,7 @@
 		6469F9B61A70592500E837E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B51A70592500E837E3 /* Main.storyboard */; };
 		646DDF051AB4D9650066F75A /* SQACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DDF041AB4D9650066F75A /* SQACategory.m */; };
 		647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C55C21AC36D980011D5FA /* AuthorizationViewController.m */; };
+		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64C69EBB1A6C4F01006AB0AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBA1A6C4F01006AB0AC /* main.m */; };
 		64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBD1A6C4F01006AB0AC /* AppDelegate.m */; };
 		64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */; };
@@ -136,6 +137,8 @@
 		646DDF041AB4D9650066F75A /* SQACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQACategory.m; sourceTree = "<group>"; };
 		647C55C11AC36D980011D5FA /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
 		647C55C21AC36D980011D5FA /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
+		648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuestionsViewController.h; sourceTree = "<group>"; };
+		648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuestionsViewController.m; sourceTree = "<group>"; };
 		64C69EB51A6C4F01006AB0AC /* StackQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C69EB91A6C4F01006AB0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64C69EBA1A6C4F01006AB0AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -241,6 +244,8 @@
 			children = (
 				64157B8E1AC8728400E0E401 /* ProfileViewController.h */,
 				64157B8F1AC8728400E0E401 /* ProfileViewController.m */,
+				648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */,
+				648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -729,6 +734,7 @@
 				64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */,
 				64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */,
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,
+				648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,
 				64F567961ACE9FA90084AED4 /* ServerError.m in Sources */,
 				64C69EBB1A6C4F01006AB0AC /* main.m in Sources */,

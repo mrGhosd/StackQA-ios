@@ -17,6 +17,7 @@
     AuthorizationManager *auth;
     UICKeyChainStore *store;
     ImageView *imageWrapper;
+    NSArray *paramsIDs;
     NSArray *userParams;
     NSArray *userValues;
 }
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImageView) name:@"hideImageView" object:nil];
     auth = [AuthorizationManager sharedInstance];
+    paramsIDs = @[@"user_questions", @"user_answers", @"user_comments"];
     userParams= @[@"Вопросов:", @"Ответов:", @"Комментариев"];
     userValues = @[auth.currentUser.questions_count, auth.currentUser.answers_count, auth.currentUser.comments_count];
     store = [UICKeyChainStore keyChainStore];
@@ -123,6 +125,10 @@
     cell.textLabel.text = label;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", value];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:paramsIDs[indexPath.row] sender:self];
 }
 
 /*
