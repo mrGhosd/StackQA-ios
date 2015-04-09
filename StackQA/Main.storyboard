@@ -867,7 +867,7 @@
                         <outlet property="userRate" destination="yJv-QD-xde" id="EEs-aD-icN"/>
                         <segue destination="ch4-W7-k0g" kind="show" identifier="logOut" id="jdO-yh-WYz"/>
                         <segue destination="HY1-5n-C4M" kind="show" identifier="user_statistic" id="9Jy-i1-Yu6"/>
-                        <segue destination="lyJ-wl-ykd" kind="show" identifier="user_questions" id="GcZ-5g-3mH"/>
+                        <segue destination="2vF-PV-YRg" kind="show" identifier="user_questions" id="uQv-Ln-Urv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1072,8 +1072,9 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Ogc-fD-TQd"/>
-        <segue reference="4oy-yi-Vs6"/>
         <segue reference="5Em-mt-R6W"/>
+        <segue reference="4oy-yi-Vs6"/>
+        <segue reference="uQv-Ln-Urv"/>
         <segue reference="jdO-yh-WYz"/>
     </inferredMetricsTieBreakers>
 </document>

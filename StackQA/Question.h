@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "SQACategory.h"
 #import "Answer.h"
-
+#import "User.h"
 @interface Question : NSManagedObject{
    }
 
@@ -27,8 +27,10 @@
 @property (nonatomic, retain) NSNumber * comments_count;
 @property (nonatomic, retain) NSMutableArray * answers_list;
 @property (nonatomic, retain) SQACategory *category;
-@property (nonatomic, retain) Answer *answers;
+@property (nonatomic, retain) User *user;
+@property (nonatomic, strong) NSMutableSet *answers;
 
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;
++ (void) setQuestionsForUser:(User *) user;
 @end

@@ -23,5 +23,7 @@
 @property (nonatomic, retain) NSNumber * comments_count;
 @property (nonatomic, retain) NSNumber * object_id;
 @property (nonatomic, retain) SQAStatistic * statistic;
+@property (nonatomic, strong) NSMutableSet * questions;
+@property (nonatomic, retain) NSSet * answers;
 - (UIImage *) profileImage;
 @end

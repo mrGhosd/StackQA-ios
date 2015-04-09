@@ -33,10 +33,8 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
     auth = [AuthorizationManager sharedInstance];
-    questionsArray = [Question MR_findAll];
     [self defineNavigationPanel];
-    [self showQuestions];
-    self.questions = [Question MR_findAll];
+    [self pageType];
     [self.tableView reloadData];
     [self toggleCrateQuestionButton];
     // Uncomment the following line to preserve selection between presentations.
@@ -45,6 +43,15 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void) pageType{
+    if(self.user_page){
+        [self showUserQuestions];
+    } else {
+        [self showQuestions];
+    }
+}
+
 -(void) currentUserValue{
     [self toggleCrateQuestionButton];
     [self.tableView reloadData];
@@ -52,13 +59,22 @@
 - (void) showQuestions{
     [self loadQuestions];
 }
-- (BOOL) questionsExists{
-    if(questionsArray.count > 0){
-        return true;
-    } else {
-        return false;
-    }
+
+- (void) showUserQuestions{
+    api = [Api sharedManager];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    
+    [api getData:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.object_id] andComplition:^(id data, BOOL result){
+        if(result){
+            [self parseUserQuestionsData:data];
+        } else {
+            NSLog(@"data is %@", data);
+        }
+    }];
+    [self.tableView reloadData];
 }
+
 - (void) toggleCrateQuestionButton{
     if([[AuthorizationManager sharedInstance] currentUser]){
         self.addQuestion.enabled = YES;
@@ -77,7 +93,6 @@
             [self parseQuestionsData:data];
         } else {
             NSLog(@"data is %@", data);
-            questionsArray = [NSArray arrayWithArray:data[@"questions"]];
         }
     }];
     self.questions = [Question MR_findAll];
@@ -86,13 +101,11 @@
 
 -(void) defineNavigationPanel{
     SWRevealViewController *revealViewController = self.revealViewController;
-    if ( revealViewController )
-    {
+    if ( revealViewController ){
         [self.sidebarButton setTarget: self.revealViewController];
         [self.sidebarButton setAction: @selector( revealToggle: )];
         [self.view addGestureRecognizer: self.revealViewController.panGestureRecognizer];
         revealViewController.rightViewController = nil;
-        
     }
 }
 - (void) parseQuestionsData:(id) data{
@@ -101,6 +114,17 @@
         [Question create:question];
     }
     self.questions = [NSArray arrayWithArray:[Question MR_findAll]];
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+- (void) parseUserQuestionsData:(id) data{
+    NSMutableArray *questions = data[@"questions"];
+    for(NSDictionary *question in questions){
+        [Question create:question];
+    }
+    [Question setQuestionsForUser:self.user_page];
+    self.questions = [NSArray arrayWithArray:[self.user_page.questions allObjects]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }

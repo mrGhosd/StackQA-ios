@@ -32,6 +32,7 @@
         <attribute name="views" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQACategory" inverseName="question" inverseEntity="SQACategory" syncable="YES"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="questions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SQACategory" representedClassName="SQACategory" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,14 +60,15 @@
         <attribute name="questions_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="user" inverseEntity="Question" syncable="YES"/>
         <relationship name="statistic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQAStatistic" inverseName="user" inverseEntity="SQAStatistic" syncable="YES"/>
     </entity>
     <elements>
         <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
-        <element name="Authorization" positionX="-1523" positionY="-277" width="128" height="103"/>
-        <element name="Question" positionX="-1746" positionY="-478" width="128" height="253"/>
+        <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
+        <element name="Question" positionX="-1746" positionY="-478" width="128" height="268"/>
         <element name="SQACategory" positionX="-1559" positionY="-544" width="128" height="73"/>
         <element name="SQAStatistic" positionX="-1809" positionY="-85" width="128" height="178"/>
-        <element name="User" positionX="-1521" positionY="-162" width="128" height="208"/>
+        <element name="User" positionX="-1523" positionY="-223" width="128" height="223"/>
     </elements>
 </model>

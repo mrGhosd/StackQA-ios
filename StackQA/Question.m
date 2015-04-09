@@ -63,5 +63,12 @@
     question.comments_count = params[@"comments_count"];
     question.text = params[@"text"];
 }
-
++ (void) setQuestionsForUser:(User *) user{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
+        Question *questions = [Question MR_findAllWithPredicate:peopleFilter];
+        [user setValue:[NSMutableSet setWithArray:questions] forKey:@"questions"];
+        [localContext MR_save];
+    }];
+}
 @end

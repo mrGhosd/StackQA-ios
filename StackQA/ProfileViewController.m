@@ -11,6 +11,7 @@
 #import <UICKeyChainStore.h>
 #import "SWRevealViewController.h"
 #import "StatisticViewController.h"
+#import "QuestionsViewController.h"
 #import "ImageView.h"
 
 @interface ProfileViewController (){
@@ -157,6 +158,10 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"show_statistic"]){
         StatisticViewController *view = segue.destinationViewController;
+    }
+    if([[segue identifier] isEqualToString:@"user_questions"]){
+        QuestionsViewController *view = segue.destinationViewController;
+        view.user_page = self.user;
     }
 }
 @end
