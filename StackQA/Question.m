@@ -25,6 +25,7 @@
 @dynamic answers_count;
 @dynamic comments_count;
 @dynamic answers_list;
+@dynamic tags;
 
 + (NSDate *) correctConvertOfDate:(NSString *) date{
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -61,6 +62,7 @@
     question.created_at = [self correctConvertOfDate:params[@"created_at"]];
     question.answers_count = params[@"answers_count"];
     question.comments_count = params[@"comments_count"];
+    question.tags = params[@"tag_list"];
     question.text = params[@"text"];
 }
 + (void) setQuestionsForUser:(User *) user{

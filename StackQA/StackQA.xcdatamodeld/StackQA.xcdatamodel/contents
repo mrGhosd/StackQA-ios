@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Answer" representedClassName="Answer" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="is_helpful" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -26,6 +26,7 @@
         <attribute name="is_closed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -66,7 +67,7 @@
     <elements>
         <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
-        <element name="Question" positionX="-1764" positionY="-540" width="128" height="268"/>
+        <element name="Question" positionX="-1764" positionY="-540" width="128" height="285"/>
         <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>
         <element name="SQAStatistic" positionX="-1908" positionY="-178" width="128" height="178"/>
         <element name="User" positionX="-1523" positionY="-223" width="128" height="223"/>

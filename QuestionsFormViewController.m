@@ -25,17 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
-    if(self.question){
-        self.questionTitle.text = self.question.title;
-        self.questionText.text = self.question.text;
-    }
-    picker = [[UIPickerView alloc] init];
-    picker.delegate = self;
-    picker.dataSource = self;
-    self.questionCategory.inputView = picker;
     [self uploadCategoriesList];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,12 +44,23 @@
 
 - (void) parseCategories:(id)data{
     categories = [NSArray arrayWithArray:data[@"categories"]];
+    [self initViewData];
 }
+
+- (void) initViewData{
+    if(self.question){
+        self.questionTitle.text = self.question.title;
+        self.questionText.text = self.question.text;
+        self.questionTags.text = self.question.tags;
+    }
+    [self setupPickerView];
+}
+
 - (void) setupPickerView{
     picker = [[UIPickerView alloc] init];
-    [picker setDelegate:self];
-    [picker setDataSource:self];
-//    picker.showsSelectionIndicator = YES;
+    picker.delegate = self;
+    picker.dataSource = self;
+    self.questionCategory.inputView = picker;
 }
 /*
 #pragma mark - Navigation

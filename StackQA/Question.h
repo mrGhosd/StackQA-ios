@@ -21,6 +21,7 @@
 @property (nonatomic, retain) NSNumber * views;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * text;
+@property (nonatomic, retain) NSString * tags;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) NSNumber * answers_count;
