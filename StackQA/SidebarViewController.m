@@ -91,9 +91,9 @@
 - (void) viewDidAppear:(BOOL)animated{
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
-        menuID = @[@"logo", @"profile"];
-        menuItems = @[@"StackQ&A", @"Профиль"];
-        menuIcons = @[@"", @"user7.png"];
+        menuID = @[@"logo", @"profile", @"questions"];
+        menuItems = @[@"StackQ&A", @"Профиль", @"Вопросы"];
+        menuIcons = @[@"", @"user7.png", @"ask_question-32.png"];
     } else {
         menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
         menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];

@@ -14,6 +14,6 @@
 @interface SQACategory : NSManagedObject
 
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) Question *question;
+@property (nonatomic, retain) NSMutableSet *questions;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <SWTableViewCell.h>
 
-@interface QuestionsTableViewCell : UITableViewCell
+@interface QuestionsTableViewCell : SWTableViewCell
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
 @property (strong, nonatomic) IBOutlet UILabel *questionDate;
 @property (strong, nonatomic) IBOutlet UILabel *questionRate;

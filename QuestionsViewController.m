@@ -46,6 +46,7 @@
 
 - (void) pageType{
     if(self.user_page){
+        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correct_naming]];
         [self showUserQuestions];
     } else {
         [self showQuestions];
@@ -166,8 +167,36 @@
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Редактировать"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Удалить"];
+    cell.rightUtilityButtons = rightUtilityButtons;
+    cell.delegate = self;
+    
+    
     return cell;
 }
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            [self performSegueWithIdentifier:@"showQuestionForm" sender:self];
+        }
+        case 1:
+        {
+         
+        }
+        default:
+            break;
+    }
+}
+
+
 - (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell{
     cell.questionRate.backgroundColor = [UIColor lightGrayColor];
     cell.questionRate.textColor = [UIColor whiteColor];

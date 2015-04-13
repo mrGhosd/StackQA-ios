@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b3L-mm-faj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b3L-mm-faj">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -197,6 +197,7 @@
                     <connections>
                         <outlet property="addQuestion" destination="2FM-gE-IYr" id="zIK-8P-cPY"/>
                         <outlet property="sidebarButton" destination="wxV-oX-zhg" id="eJ1-qO-XHG"/>
+                        <segue destination="L2G-jD-e0s" kind="presentation" identifier="showQuestionForm" id="Zma-F1-cBs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUx-wJ-w8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -868,6 +869,7 @@
                         <segue destination="ch4-W7-k0g" kind="show" identifier="logOut" id="jdO-yh-WYz"/>
                         <segue destination="HY1-5n-C4M" kind="show" identifier="user_statistic" id="9Jy-i1-Yu6"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="user_questions" id="uQv-Ln-Urv"/>
+                        <segue destination="lyJ-wl-ykd" kind="show" identifier="user_answers" id="Xfm-tM-9TR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -959,7 +961,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCa-hd-F63" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509" y="-340"/>
+            <point key="canvasLocation" x="2661" y="-148"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="F2t-O3-bA9">
@@ -1071,10 +1073,11 @@
         <image name="plus-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ogc-fD-TQd"/>
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
+        <segue reference="Ogc-fD-TQd"/>
         <segue reference="uQv-Ln-Urv"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="Zma-F1-cBs"/>
     </inferredMetricsTieBreakers>
 </document>

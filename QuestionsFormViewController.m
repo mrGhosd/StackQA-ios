@@ -76,9 +76,10 @@
                          animated:YES];
     NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
     if (self.question) {
-        Question *question = [Question MR_findFirstByAttribute:@"title" withValue:self.question.title inContext:localContext];
+        Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question.object_id inContext:localContext];
         question.title = self.questionTitle.text;
         question.text = self.questionText.text;
+        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/@%", question.object_id] andType:@"PUT"];
     }
     else {
         
@@ -87,18 +88,24 @@
             question.title = self.questionTitle.text;
             question.created_at = [NSDate date];
             question.text = self.questionText.text;
+            [self sendQuestionToServerWithURL:@"/questions" andType:@"POST"];
         } else {
             NSLog(@"Error!");
         }
     }
     [localContext MR_save];
     
+    
+}
+
+- (void) sendQuestionToServerWithURL:(NSString *) url andType: (NSString *) type{
     NSMutableDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
-        @"user_id": auth.currentUser.object_id,
-        @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text };
-    [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"question": questionParams} requestType:@"POST" andComplition:^(id data, BOOL success){
+                                            @"user_id": auth.currentUser.object_id,
+                                            @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text };
+    [[Api sharedManager] sendDataToURL:url parameters:@{@"question": questionParams} requestType:type
+                         andComplition:^(id data, BOOL success){
         if(success){
-                [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
         } else{
             
         }

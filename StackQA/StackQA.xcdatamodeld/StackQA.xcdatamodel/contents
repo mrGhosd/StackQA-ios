@@ -9,7 +9,7 @@
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="Authorization" representedClassName="Authorization" syncable="YES">
         <attribute name="access_token" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,13 +30,13 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="views" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="answers" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Answer" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQACategory" inverseName="question" inverseEntity="SQACategory" syncable="YES"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQACategory" inverseName="questions" inverseEntity="SQACategory" syncable="YES"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="questions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SQACategory" representedClassName="SQACategory" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="category" inverseEntity="Question" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="category" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="SQAStatistic" representedClassName="Statistic" syncable="YES">
         <attribute name="answers_negative_rate_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -66,9 +66,9 @@
     <elements>
         <element name="Answer" positionX="-1962" positionY="-484" width="128" height="178"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
-        <element name="Question" positionX="-1746" positionY="-478" width="128" height="268"/>
-        <element name="SQACategory" positionX="-1559" positionY="-544" width="128" height="73"/>
-        <element name="SQAStatistic" positionX="-1809" positionY="-85" width="128" height="178"/>
+        <element name="Question" positionX="-1764" positionY="-540" width="128" height="268"/>
+        <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>
+        <element name="SQAStatistic" positionX="-1908" positionY="-178" width="128" height="178"/>
         <element name="User" positionX="-1523" positionY="-223" width="128" height="223"/>
     </elements>
 </model>

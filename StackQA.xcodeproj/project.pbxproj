@@ -215,6 +215,8 @@
 		6414F87F1AD2E27D003B2C15 /* statistic */ = {
 			isa = PBXGroup;
 			children = (
+				642FAE621AD339440093A5D2 /* SQAStatistic.h */,
+				642FAE631AD339440093A5D2 /* SQAStatistic.m */,
 			);
 			name = statistic;
 			sourceTree = "<group>";
@@ -402,8 +404,6 @@
 			isa = PBXGroup;
 			children = (
 				64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */,
-				642FAE621AD339440093A5D2 /* SQAStatistic.h */,
-				642FAE631AD339440093A5D2 /* SQAStatistic.m */,
 			);
 			name = db;
 			sourceTree = "<group>";

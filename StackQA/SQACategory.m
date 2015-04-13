@@ -13,6 +13,6 @@
 @implementation SQACategory
 
 @dynamic title;
-@dynamic question;
+@dynamic questions;
 
 @end
