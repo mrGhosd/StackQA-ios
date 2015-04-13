@@ -19,6 +19,7 @@
 #import "AuthorizationManager.h"
 
 @interface QuestionsViewController (){
+    Question *currentQuestion;
     AuthorizationManager *auth;
     Api *api;
     UIApplication *app;
@@ -184,6 +185,8 @@
     switch (index) {
         case 0:
         {
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            currentQuestion = self.questions[cellIndexPath.row];
             [self performSegueWithIdentifier:@"showQuestionForm" sender:self];
         }
         case 1:
@@ -217,11 +220,12 @@
     if([[segue identifier] isEqualToString:@"showQuestionForm"]){
         Question *question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
         QuestionsFormViewController *form = segue.destinationViewController;
-        form.question = question;
+        form.question = currentQuestion;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"showQuestion" sender:self];
 }
 
 - (NSDate *) correctConvertOfDate:(NSString *) date{

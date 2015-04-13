@@ -68,7 +68,7 @@
     for(NSDictionary *category in categories){
         if(category[@"id"] == self.question.category_id){
             title = category[@"title"];
-            selectedCategory = category[@"id"];
+            selectedCategory = category;
         }
     }
     return title;
@@ -91,7 +91,9 @@
         Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question.object_id inContext:localContext];
         question.title = self.questionTitle.text;
         question.text = self.questionText.text;
-        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/@%", question.object_id] andType:@"PUT"];
+        question.tags = self.questionTags.text;
+        question.category_id = selectedCategory[@"id"];
+        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/%@", question.object_id] andType:@"PUT"];
     }
     else {
         
