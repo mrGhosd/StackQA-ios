@@ -52,6 +52,7 @@
         self.questionTitle.text = self.question.title;
         self.questionText.text = self.question.text;
         self.questionTags.text = self.question.tags;
+        self.questionCategory.text = [self getCategoryFromMainList];
     }
     [self setupPickerView];
 }
@@ -61,6 +62,16 @@
     picker.delegate = self;
     picker.dataSource = self;
     self.questionCategory.inputView = picker;
+}
+- (NSString *) getCategoryFromMainList{
+    NSString *title;
+    for(NSDictionary *category in categories){
+        if(category[@"id"] == self.question.category_id){
+            title = category[@"title"];
+            selectedCategory = category[@"id"];
+        }
+    }
+    return title;
 }
 /*
 #pragma mark - Navigation
