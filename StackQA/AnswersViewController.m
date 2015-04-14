@@ -116,7 +116,7 @@
     [self.view endEditing:YES];
     if(selectedIndex == indexPath.row){
         selectedIndex = -1;
-        currentCellHeight = 30.0;
+//        currentCellHeight = 30.0;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
@@ -146,18 +146,28 @@
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem[@"user_name"]];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem[@"rate"]];
     if(currentCellHeight){
-        cell.answerTextHeight.constant = currentCellHeight;
+        if(currentCellHeight <= 10){
+            cell.answerTextHeight.constant = 110;
+        } else {
+            cell.answerTextHeight.constant = currentCellHeight;
+        }
+        
     }
-//    if(auth.currentUser){
-//        NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-//        [rightUtilityButtons sw_addUtilityButtonWithColor:
-//         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-//                                                     icon:[UIImage imageNamed:@"edit-32.png"]];
-//        [rightUtilityButtons sw_addUtilityButtonWithColor:
-//         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
-//        cell.rightUtilityButtons = rightUtilityButtons;
-//        cell.delegate = self;
-//    }
+    if(auth.currentUser){
+        NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
+        if(answerItem[@"user_id"] == auth.currentUser.object_id){
+            
+            [rightUtilityButtons sw_addUtilityButtonWithColor:
+             [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                     icon:[UIImage imageNamed:@"edit-32.png"]];
+            [rightUtilityButtons sw_addUtilityButtonWithColor:
+             [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
+        }
+        cell.rightUtilityButtons = rightUtilityButtons;
+        cell.delegate = self;
+    }
     return cell;
 }
 
@@ -174,7 +184,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(selectedIndex == indexPath.row){
-        return currentCellHeight;
+        
+        if(currentCellHeight <= 110){
+            return 110;
+        } else {
+            return currentCellHeight;
+        }
+        
     } else {
         return 110;
     }
