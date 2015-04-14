@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640DC37F1ADD824900CE22DA /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 640DC37E1ADD824900CE22DA /* message.png */; };
+		640DC3811ADD860700CE22DA /* settings48.png in Resources */ = {isa = PBXBuildFile; fileRef = 640DC3801ADD860700CE22DA /* settings48.png */; };
 		64124A1A1AB987230009C034 /* move9.png in Resources */ = {isa = PBXBuildFile; fileRef = 64124A191AB987230009C034 /* move9.png */; };
 		6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */; };
 		64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B851AC82C1E00E0E401 /* AuthorizationManager.m */; };
@@ -80,6 +82,8 @@
 /* Begin PBXFileReference section */
 		0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.debug.xcconfig"; sourceTree = "<group>"; };
+		640DC37E1ADD824900CE22DA /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		640DC3801ADD860700CE22DA /* settings48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings48.png; sourceTree = "<group>"; };
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticViewController.h; sourceTree = "<group>"; };
 		6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticViewController.m; sourceTree = "<group>"; };
@@ -262,12 +266,14 @@
 		6428B0BA1AAC68BB00110D62 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				640DC3801ADD860700CE22DA /* settings48.png */,
 				643874211ACAFCD00059EBEC /* mark1.png */,
 				643874171ACAF3820059EBEC /* user7.png */,
 				64124A191AB987230009C034 /* move9.png */,
 				6428B0E91AAE0AF500110D62 /* eye110.png */,
 				6428B0E21AACF3DF00110D62 /* news-32.png */,
 				6428B0E01AACF2D200110D62 /* feedback-32.png */,
+				640DC37E1ADD824900CE22DA /* message.png */,
 				6428B0DE1AACF2BE00110D62 /* response-32.png */,
 				6428B0DC1AACF28E00110D62 /* category.png */,
 				6428B0DA1AACF25C00110D62 /* answers-32.png */,
@@ -632,6 +638,7 @@
 				6428B0E31AACF3DF00110D62 /* news-32.png in Resources */,
 				6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */,
 				64124A1A1AB987230009C034 /* move9.png in Resources */,
+				640DC37F1ADD824900CE22DA /* message.png in Resources */,
 				6469F9B61A70592500E837E3 /* Main.storyboard in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
 				64F567A01ACF07910084AED4 /* ImageView.xib in Resources */,
@@ -645,6 +652,7 @@
 				64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */,
 				6428B0DB1AACF25C00110D62 /* answers-32.png in Resources */,
 				6428B0E11AACF2D200110D62 /* feedback-32.png in Resources */,
+				640DC3811ADD860700CE22DA /* settings48.png in Resources */,
 				6428B0D61AACF1E300110D62 /* create1.png in Resources */,
 				6428B0DF1AACF2BE00110D62 /* response-32.png in Resources */,
 				64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */,

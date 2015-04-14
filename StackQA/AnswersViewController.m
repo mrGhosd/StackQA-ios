@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
+    self.sendButton.layer.cornerRadius = 5;
+    self.settingsButton.layer.cornerRadius = 5;
     [self setActionViewBorder];
     [self setActionViewTextBorder];
     self.tableView.delegate = self;
@@ -159,33 +161,23 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(selectedIndex == indexPath.row){
-        return currentCellHeight + 150;
+        return currentCellHeight;
     } else {
         return 100;
     }
     
 }
 - (void) setActionViewBorder{
-    CGSize mainViewSize = self.view.bounds.size;
+    CGSize mainViewSize = self.actionView.frame.size;
     CGFloat borderWidth = 1;
     UIColor *borderColor = [UIColor lightGrayColor];
-    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, mainViewSize.width, borderWidth)];
+    UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, mainViewSize.width, borderWidth)];
     topView.opaque = YES;
     topView.backgroundColor = borderColor;
     topView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.actionView addSubview:topView];
 }
-- (float) setAnswerTextHeight:(NSDictionary *) answer{
-    CGSize size = [answer[@"text"] sizeWithAttributes:nil];
-    float viewHeight;
-    float height_diff = self.view.frame.size.height - size.width;
-    if(height_diff < 0){
-        viewHeight = size.width / 20.615 - 2000;
-    } else {
-        viewHeight = height_diff / 3;
-    }
-    return viewHeight;
-}
+
 
 - (void) setActionViewTextBorder{
     [self.actionViewText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
@@ -209,4 +201,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)createAnswer:(id)sender {
+}
+- (IBAction)showSettings:(id)sender {
+}
 @end
