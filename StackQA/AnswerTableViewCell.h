@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UILabel *answerRate;
 @property (strong, nonatomic) IBOutlet UIWebView *answerText;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerTextHeight;
 
 @end

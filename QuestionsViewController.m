@@ -168,6 +168,7 @@
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
+    
     if(auth.currentUser && questionItem.user_id == auth.currentUser.object_id){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:

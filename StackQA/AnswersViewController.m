@@ -14,6 +14,7 @@
 @interface AnswersViewController (){
     int selectedIndex;
     Api *api;
+    float currentCellHeight;
     NSManagedObjectContext *localContext;
     NSMutableArray *answersList;
 }
@@ -110,6 +111,7 @@
     [self.view endEditing:YES];
     if(selectedIndex == indexPath.row){
         selectedIndex = -1;
+        currentCellHeight = 30.0;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
@@ -121,23 +123,26 @@
     }
     
     selectedIndex = indexPath.row;
+    [self changeAnswerTextHeightAt:indexPath];
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+- (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
+    CGSize size = [answersList[path.row][@"text"] sizeWithAttributes:nil];
+    currentCellHeight = size.width / 10;
+    [self.tableView cellForRowAtIndexPath:path];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *answerItem = [answersList objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil){
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AnswerTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
     [cell.answerText loadHTMLString: answerItem[@"text"] baseURL:nil];
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem[@"user_name"]];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem[@"rate"]];
-
+    if(currentCellHeight){
+        cell.answerTextHeight.constant = currentCellHeight;
+    }
     return cell;
 }
 
@@ -154,7 +159,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(selectedIndex == indexPath.row){
-        return 350;
+        return currentCellHeight + 150;
     } else {
         return 100;
     }

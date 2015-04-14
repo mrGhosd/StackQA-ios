@@ -38,17 +38,28 @@
     [params enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
         [serverObjects addObject:object[@"id"]];
     }];
+    
     NSPredicate *questionFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
     NSArray *deletedQuestions = [Question MR_findAllWithPredicate:questionFilter];
     for(Question *question in deletedQuestions){
         [question MR_deleteEntity];
     }
+    
     NSMutableArray *deviceObjects = [NSMutableArray new];
     NSMutableArray *questionsList = [Question MR_findAll];
     [questionsList enumerateObjectsUsingBlock:^(Question *object, NSUInteger index, BOOL *stop){
         [deviceObjects addObject:object.object_id];
     }];
+    
     [serverObjects removeObjectsInArray:deviceObjects];
+
+        [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+                for(NSDictionary *dict in params){
+                    if(dict[@"id"] == object){
+                        [self create:dict];
+                    }
+                }
+        }];
 }
 
 + (void) create: (NSDictionary *) params{
