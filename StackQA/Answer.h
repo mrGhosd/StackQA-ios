@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <CoreData+MagicalRecord.h>
+#import "User.h"
 
 @class Question;
 
@@ -22,5 +24,10 @@
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) Question *question;
+
++ (NSDate *) correctConvertOfDate:(NSString *) date;
++ (void) create: (NSDictionary *) params;
++ (void) setQuestionsForUser:(User *) user;
++ (void) sync: (NSArray *) params;
 
 @end

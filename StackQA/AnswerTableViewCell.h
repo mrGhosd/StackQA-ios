@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface AnswerTableViewCell : UITableViewCell <UIWebViewDelegate>
+#import <SWTableViewCell.h>
+@interface AnswerTableViewCell : SWTableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *userName;
 @property (strong, nonatomic) IBOutlet UILabel *answerRate;

@@ -383,12 +383,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hCU-yT-EaZ" id="aEH-VF-ExA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-BT-AHq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-BT-AHq">
                                                     <rect key="frame" x="8" y="8" width="60" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="60" id="BN2-w7-qx9"/>
-                                                        <constraint firstAttribute="height" constant="60" id="uL8-Wn-yHS"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -400,7 +396,7 @@
                                                         <constraint firstAttribute="height" constant="55" id="iyF-h6-TeC"/>
                                                     </constraints>
                                                 </webView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XO-o4-etb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XO-o4-etb">
                                                     <rect key="frame" x="76" y="27" width="516" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -408,15 +404,15 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FLX-io-my1" firstAttribute="top" secondItem="eMS-BT-AHq" secondAttribute="bottom" constant="3" id="1tq-qk-m80"/>
-                                                <constraint firstItem="3XO-o4-etb" firstAttribute="top" secondItem="aEH-VF-ExA" secondAttribute="topMargin" constant="19" id="FkB-q1-XB8"/>
-                                                <constraint firstItem="eMS-BT-AHq" firstAttribute="leading" secondItem="aEH-VF-ExA" secondAttribute="leadingMargin" id="GOh-8y-qCu"/>
-                                                <constraint firstItem="eMS-BT-AHq" firstAttribute="top" secondItem="aEH-VF-ExA" secondAttribute="topMargin" id="Nmh-ic-E2o"/>
-                                                <constraint firstItem="FLX-io-my1" firstAttribute="leading" secondItem="aEH-VF-ExA" secondAttribute="leadingMargin" id="PyD-nV-qBt"/>
-                                                <constraint firstItem="FLX-io-my1" firstAttribute="trailing" secondItem="aEH-VF-ExA" secondAttribute="trailingMargin" id="bna-Nh-mnM"/>
-                                                <constraint firstItem="FLX-io-my1" firstAttribute="bottom" secondItem="aEH-VF-ExA" secondAttribute="bottomMargin" id="eta-Gu-zX9"/>
-                                                <constraint firstItem="3XO-o4-etb" firstAttribute="leading" secondItem="eMS-BT-AHq" secondAttribute="trailing" constant="8" id="p62-BR-qcx"/>
-                                                <constraint firstItem="3XO-o4-etb" firstAttribute="leading" secondItem="eMS-BT-AHq" secondAttribute="trailing" constant="8" id="z0c-Gv-TND"/>
+                                                <constraint firstItem="FLX-io-my1" firstAttribute="top" secondItem="eMS-BT-AHq" secondAttribute="bottom" constant="3" id="Ash-ZE-KTq"/>
+                                                <constraint firstItem="FLX-io-my1" firstAttribute="leading" secondItem="aEH-VF-ExA" secondAttribute="leadingMargin" id="B1t-Yn-Wy6"/>
+                                                <constraint firstItem="FLX-io-my1" firstAttribute="trailing" secondItem="aEH-VF-ExA" secondAttribute="trailingMargin" id="CHo-4w-M8l"/>
+                                                <constraint firstItem="FLX-io-my1" firstAttribute="top" secondItem="eMS-BT-AHq" secondAttribute="bottom" constant="3" id="ONp-Kq-JnW"/>
+                                                <constraint firstItem="3XO-o4-etb" firstAttribute="top" secondItem="aEH-VF-ExA" secondAttribute="topMargin" constant="19" id="iNG-3I-Ygm"/>
+                                                <constraint firstItem="eMS-BT-AHq" firstAttribute="top" secondItem="aEH-VF-ExA" secondAttribute="topMargin" id="jFS-Ic-bGS"/>
+                                                <constraint firstItem="eMS-BT-AHq" firstAttribute="leading" secondItem="aEH-VF-ExA" secondAttribute="leadingMargin" id="mgj-iN-Xju"/>
+                                                <constraint firstItem="3XO-o4-etb" firstAttribute="leading" secondItem="eMS-BT-AHq" secondAttribute="trailing" constant="8" id="qpl-gS-FjH"/>
+                                                <constraint firstItem="3XO-o4-etb" firstAttribute="trailing" secondItem="aEH-VF-ExA" secondAttribute="trailingMargin" id="uhi-bU-jla"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

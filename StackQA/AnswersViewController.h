@@ -7,9 +7,10 @@
 //
 #import <UIKit/UIKit.h>
 #import <CoreData+MagicalRecord.h>
+#import <SWTableViewCell.h>
 #import "Question.h"
 
-@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewBottom;
