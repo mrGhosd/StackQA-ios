@@ -34,4 +34,5 @@
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;
 + (void) setQuestionsForUser:(User *) user;
++ (void) sync: (NSArray *) params;
 @end

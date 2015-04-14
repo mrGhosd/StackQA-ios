@@ -97,7 +97,6 @@
             NSLog(@"data is %@", data);
         }
     }];
-    self.questions = [Question MR_findAll];
     [self.tableView reloadData];
 }
 
@@ -112,10 +111,11 @@
 }
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
-    for(NSDictionary *question in questions){
-        [Question create:question];
-    }
-    self.questions = [NSArray arrayWithArray:[Question MR_findAll]];
+//    for(NSDictionary *question in questions){
+//        [Question create:question];
+//    }
+    [Question sync:questions];
+    self.questions = [NSMutableArray arrayWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -126,7 +126,7 @@
         [Question create:question];
     }
     [Question setQuestionsForUser:self.user_page];
-    self.questions = [NSArray arrayWithArray:[self.user_page.questions allObjects]];
+    self.questions = [NSMutableArray arrayWithArray:[self.user_page.questions allObjects]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -137,7 +137,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self toggleCrateQuestionButton];
-    self.questions = [Question MR_findAll];
+    self.questions = [[NSMutableArray alloc] initWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
 }
 
@@ -160,7 +160,7 @@
     Question *questionItem = [self.questions objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
     cell.questionTitle.text = (Question *)questionItem.title;
     cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
@@ -168,14 +168,17 @@
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
+    if(auth.currentUser && questionItem.user_id == auth.currentUser.object_id){
+        NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:
+         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                     icon:[UIImage imageNamed:@"edit-32.png"]];
+        [rightUtilityButtons sw_addUtilityButtonWithColor:
+         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
+        cell.rightUtilityButtons = rightUtilityButtons;
+        cell.delegate = self;
+    }
     
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                icon:[UIImage imageNamed:@"edit-32.png"]];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
-    cell.rightUtilityButtons = rightUtilityButtons;
-    cell.delegate = self;
     
     
     return cell;
@@ -188,10 +191,23 @@
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             currentQuestion = self.questions[cellIndexPath.row];
             [self performSegueWithIdentifier:@"showQuestionForm" sender:self];
+            break;
         }
         case 1:
         {
-         
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            currentQuestion = self.questions[cellIndexPath.row];
+            [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", currentQuestion.object_id] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
+                if(success){
+                    [self.questions removeObjectAtIndex:cellIndexPath.row];
+                    [currentQuestion MR_deleteEntity];
+                    [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+
+                } else {
+                    
+                }
+            }];
+            break;
         }
         default:
             break;

@@ -43,14 +43,15 @@
     self.webView.backgroundColor = [UIColor clearColor];
     CGSize size = [self.question.text sizeWithAttributes:nil];
     float viewHeight;
+    CGSize fittingSize = [self.webView sizeThatFits:CGSizeZero];
     float height_diff = self.view.frame.size.height - size.width;
     if(height_diff < 0){
-        viewHeight = size.width / 20.615 - 2000;
+        viewHeight = size.width / 9.9;
     } else {
         viewHeight = height_diff / 3;
     }
     self.webView.scrollView.scrollEnabled = NO;
-    float fullViewHeight = viewHeight + self.questionTitle.frame.size.height + self.questionDate.frame.size.height + self.questionCategory.frame.size.height + 10000;
+    float fullViewHeight = viewHeight + self.questionTitle.frame.size.height + self.questionDate.frame.size.height + self.questionCategory.frame.size.height;
     self.viewAndScrollViewHeight.constant = fullViewHeight;
     [self.webView addConstraint:[NSLayoutConstraint
                                       constraintWithItem:self.webView
