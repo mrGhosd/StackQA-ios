@@ -161,7 +161,7 @@
     cell.questionTitle.text = (Question *)questionItem.title;
     cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
-    [self setQuestionRateViewForCell:cell];
+    [self setQuestionRateViewForCell:cell andItem:questionItem];
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
@@ -176,9 +176,6 @@
         cell.rightUtilityButtons = rightUtilityButtons;
         cell.delegate = self;
     }
-    
-    
-    
     return cell;
 }
 
@@ -213,8 +210,12 @@
 }
 
 
-- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell{
-    cell.questionRate.backgroundColor = [UIColor lightGrayColor];
+- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (Question *) question{
+    if(question.is_closed){
+        cell.questionRate.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.questionRate.backgroundColor = [UIColor lightGrayColor];
+    }
     cell.questionRate.textColor = [UIColor whiteColor];
     cell.questionRate.clipsToBounds = YES;
     cell.questionRate.layer.cornerRadius = 30;

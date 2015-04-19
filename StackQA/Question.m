@@ -101,6 +101,7 @@
     question.category_id = params[@"category_id"];
     question.rate = params[@"rate"];
     question.title = params[@"title"];
+    question.is_closed = (BOOL)[params[@"is_closed"] boolValue];
     question.created_at = [self correctConvertOfDate:params[@"created_at"]];
     question.answers_count = params[@"answers_count"];
     question.comments_count = params[@"comments_count"];

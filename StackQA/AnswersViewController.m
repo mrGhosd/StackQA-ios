@@ -143,6 +143,10 @@
     [cell.answerText loadHTMLString: answerItem[@"text"] baseURL:nil];
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem[@"user_name"]];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem[@"rate"]];
+    if((BOOL)[answerItem[@"is_helpfull"] boolValue]){
+        cell.answerRate.backgroundColor = [UIColor greenColor];
+    }
+    
     if(currentCellHeight){
         if(currentCellHeight <= 10){
             cell.answerTextHeight.constant = 110;
@@ -152,9 +156,13 @@
         
     }
     if(auth.currentUser){
+        NSMutableArray *leftUtilityButtons = [NSMutableArray new];
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-        [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
-        [rightUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
+        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
+        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
+        if(!self.question.is_closed){
+            [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
+        }
         if(answerItem[@"user_id"] == auth.currentUser.object_id){
             
             [rightUtilityButtons sw_addUtilityButtonWithColor:
@@ -163,6 +171,7 @@
             [rightUtilityButtons sw_addUtilityButtonWithColor:
              [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
         }
+        cell.leftUtilityButtons = leftUtilityButtons;
         cell.rightUtilityButtons = rightUtilityButtons;
         cell.delegate = self;
     }
@@ -250,6 +259,7 @@
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
                          andComplition:^(id data, BOOL success){
                              if(success){
+                                 self.actionViewText.text = @"";
                                  [self viewDidLoad];
                              } else{
                                  
