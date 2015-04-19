@@ -35,25 +35,39 @@
 }
 + (void) sync: (NSArray *) params{
     NSMutableArray *serverObjects = [NSMutableArray new];
+    //Разбиваем пришедшие с сервера вопросы по id
     [params enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
         [serverObjects addObject:object[@"id"]];
     }];
     
+    //Находим вопросы, которых нет на сервере, но есть на устройстве, и удаляем их
     NSPredicate *questionFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
     NSArray *deletedQuestions = [Question MR_findAllWithPredicate:questionFilter];
     for(Question *question in deletedQuestions){
         [question MR_deleteEntity];
     }
     
+    //Создаем массив с id на устройстве и добавляем туда значения id всех вопросов
     NSMutableArray *deviceObjects = [NSMutableArray new];
     NSMutableArray *questionsList = [Question MR_findAll];
     [questionsList enumerateObjectsUsingBlock:^(Question *object, NSUInteger index, BOOL *stop){
         [deviceObjects addObject:object.object_id];
     }];
     
+    [deviceObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+        for(NSDictionary *attr in params){
+            if((BOOL)[object isEqual:attr[@"id"]]){
+                [self create:attr];
+            }
+        }
+    }];
+    
+    //Удаляем из массива объектов с сервера id с устройства
     [serverObjects removeObjectsInArray:deviceObjects];
-
-        [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+    
+    
+    //Создаем отсутствующие вопросы
+    [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
                 for(NSDictionary *dict in params){
                     if(dict[@"id"] == object){
                         [self create:dict];

@@ -244,6 +244,17 @@
 }
 */
 - (IBAction)createAnswer:(id)sender {
+    NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
+                                          @"question_id": self.question.object_id,
+                                          @"text": self.actionViewText.text};
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
+                         andComplition:^(id data, BOOL success){
+                             if(success){
+                                 [self viewDidLoad];
+                             } else{
+                                 
+                             }
+                         }];
     
 }
 - (IBAction)showSettings:(id)sender {

@@ -111,9 +111,6 @@
 }
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
-//    for(NSDictionary *question in questions){
-//        [Question create:question];
-//    }
     [Question sync:questions];
     self.questions = [NSMutableArray arrayWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
