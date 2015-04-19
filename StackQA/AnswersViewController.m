@@ -31,14 +31,22 @@
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
-    [self setActionViewBorder];
-    [self setActionViewTextBorder];
+    [self setAnswersListData];
     self.tableView.delegate = self;
     [self loadAnswersList];
     
     // Do any additional setup after loading the view.
 }
-
+- (void) setAnswersListData{
+    if(auth.currentUser){
+        self.actionView.hidden = NO;
+        [self setActionViewBorder];
+        [self setActionViewTextBorder];
+    } else {
+        self.tableViewBottom.constant = 0.0;
+        self.actionView.hidden = YES;
+    }
+}
 - (void) loadAnswersList{
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
@@ -61,15 +69,6 @@
 //        [self.tableView reloadData];
 }
 - (void)keyboardWillShow:(NSNotification*)notification {
-    /*[self.actionView addConstraint:[NSLayoutConstraint
-                                 constraintWithItem:self.actionView
-                                 attribute:NSLayoutAttributeBottom
-                                 relatedBy:NSLayoutRelationEqual
-                                 toItem:self.view
-                                 attribute:NSLayoutAttributeBottom
-                                 multiplier:0.5
-                                 constant:500.0]];*/
-//    id keyboardFrameBegin = [notification valueForKey:@"UIKeyboardFrameEndUserInfoKey"];
     NSDictionary *keyboardValues = [notification userInfo];
     id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
     CGRect keyboardFrame = [keyboardSize CGRectValue];
@@ -92,7 +91,6 @@
             textViewConstraint = keyboardFrame.size.height;
             break;
     }
-//    [self.tableView addConstraint:[NSLayoutConstraint constraintWithItem:self.actionView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.tableView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:textViewConstraint + 100.0]];
     self.tableViewBottom.constant = textViewConstraint + self.actionView.frame.size.height;
     self.textViewBottom.constant = textViewConstraint;
 }
@@ -246,6 +244,7 @@
 }
 */
 - (IBAction)createAnswer:(id)sender {
+    
 }
 - (IBAction)showSettings:(id)sender {
 }
