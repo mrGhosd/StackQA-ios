@@ -116,4 +116,10 @@
         [localContext MR_save];
     }];
 }
+- (void) closeQuestion{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        self.is_closed = YES;
+        [localContext MR_save];
+    }];
+}
 @end

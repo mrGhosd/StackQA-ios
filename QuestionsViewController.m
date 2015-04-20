@@ -134,7 +134,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self toggleCrateQuestionButton];
-    self.questions = [[NSMutableArray alloc] initWithArray:[Question MR_findAll]];
+//    self.questions = [[NSMutableArray alloc] initWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
 }
 

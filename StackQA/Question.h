@@ -35,4 +35,5 @@
 + (void) create: (NSDictionary *) params;
 + (void) setQuestionsForUser:(User *) user;
 + (void) sync: (NSArray *) params;
+- (void) closeQuestion;
 @end

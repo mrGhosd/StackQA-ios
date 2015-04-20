@@ -230,11 +230,28 @@
             [self changeAnswersRateWithAnswer:currentAnswer indexPath: cellIndexPath  andRate:@"minus"];
             break;
         }
+        case 2:
+        {
+            [self setAnswerAsHelpfullWithAnswer:currentAnswer andIndexPath:cellIndexPath];
+            break;
+        }
         default:
             break;
     }
 }
-
+- (void) setAnswerAsHelpfullWithAnswer:(NSMutableDictionary *)answer andIndexPath: (NSIndexPath *) path{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.object_id, answer[@"id"] ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+            cell.answerRate.backgroundColor = [UIColor greenColor];
+            [self.question closeQuestion];
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [self loadAnswersList];
+        } else {
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+        }
+    }];
+}
 - (void) changeAnswersRateWithAnswer: (NSDictionary *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
     [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer[@"id"] ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
