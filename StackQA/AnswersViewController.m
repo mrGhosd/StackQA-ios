@@ -114,7 +114,6 @@
     [self.view endEditing:YES];
     if(selectedIndex == indexPath.row){
         selectedIndex = -1;
-//        currentCellHeight = 30.0;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         return;
     }
@@ -196,6 +195,57 @@
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return 0;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            break;
+        }
+        case 1:
+        {
+            break;
+        }
+        case 2:
+        {
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    NSMutableDictionary *currentAnswer = answersList[cellIndexPath.row];
+    switch (index) {
+        case 0:
+        {
+            [self changeAnswersRateWithAnswer:currentAnswer indexPath: cellIndexPath  andRate:@"plus"];
+            break;
+        }
+        case 1:
+        {
+            [self changeAnswersRateWithAnswer:currentAnswer indexPath: cellIndexPath  andRate:@"minus"];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void) changeAnswersRateWithAnswer: (NSDictionary *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer[@"id"] ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+            cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [self loadAnswersList];
+        } else {
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+        }
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
