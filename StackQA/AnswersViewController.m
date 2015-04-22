@@ -7,6 +7,7 @@
 //
 
 #import "AnswersViewController.h"
+#import "AnswerDetailViewController.h"
 #import "Api.h"
 #import "AnswerTableViewCell.h"
 #import "AuthorizationManager.h"
@@ -18,6 +19,7 @@
     AuthorizationManager *auth;
     float currentCellHeight;
     NSManagedObjectContext *localContext;
+    NSMutableDictionary *selectedAnswer;
     NSMutableArray *answersList;
 }
 
@@ -31,11 +33,15 @@
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers) name:@"updateAnswer" object:nil];
     [self setAnswersListData];
     self.tableView.delegate = self;
     [self loadAnswersList];
     
     // Do any additional setup after loading the view.
+}
+- (void) reloadAnswers{
+    [self loadAnswersList];
 }
 - (void) setAnswersListData{
     if(auth.currentUser){
@@ -198,13 +204,18 @@
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    selectedAnswer = [NSMutableDictionary dictionaryWithDictionary:answersList[cellIndexPath.row]];
     switch (index) {
         case 0:
         {
+            [self performSegueWithIdentifier:@"answer_edit" sender:self];
+            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         }
         case 1:
         {
+            
             break;
         }
         case 2:
@@ -314,11 +325,14 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"answer_edit"]){
+        AnswerDetailViewController *view = segue.destinationViewController;
+        view.answer = [NSMutableDictionary dictionaryWithDictionary:selectedAnswer];
+    }
+}
+
 - (IBAction)createAnswer:(id)sender {
     NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
                                           @"question_id": self.question.object_id,

@@ -500,11 +500,112 @@
                         <outlet property="tableView" destination="TLS-zL-hgS" id="Kgk-Kc-fws"/>
                         <outlet property="tableViewBottom" destination="oZm-1y-xxk" id="C5k-ku-fIN"/>
                         <outlet property="textViewBottom" destination="jUW-ab-2WZ" id="rK9-LV-eNS"/>
+                        <segue destination="5E5-Ym-Sk5" kind="presentation" identifier="answer_edit" id="Mye-8z-EVr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sew-bl-tWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112" y="2030"/>
+        </scene>
+        <!--Answer Detail View Controller-->
+        <scene sceneID="1Cc-nQ-PGQ">
+            <objects>
+                <viewController id="5E5-Ym-Sk5" customClass="AnswerDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="C52-gf-2Q8"/>
+                        <viewControllerLayoutGuide type="bottom" id="W79-Bz-wnz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hya-rT-aRd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-H5-EYU">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-Nc-eme">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Jd-clY">
+                                                <rect key="frame" x="8" y="532" width="140" height="60"/>
+                                                <color key="backgroundColor" red="0.29286650060000002" green="1" blue="0.03287868477" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="87I-w4-VAC"/>
+                                                    <constraint firstAttribute="width" constant="140" id="c2e-Cv-be0"/>
+                                                </constraints>
+                                                <state key="normal" title="Сохранить">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="answerSave:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="wn6-WC-eXU"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-4C-1wA">
+                                                <rect key="frame" x="452" y="532" width="140" height="60"/>
+                                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="a2z-wR-Ge0"/>
+                                                    <constraint firstAttribute="width" constant="140" id="aE5-vQ-ej9"/>
+                                                </constraints>
+                                                <state key="normal" title="Отмена">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="dissmissDetailAnswerView:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="Xzu-2C-KNG"/>
+                                                </connections>
+                                            </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-zT-XcO">
+                                                <rect key="frame" x="8" y="48" width="584" height="476"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="516" id="qkm-7y-f9V"/>
+                                                </constraints>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="PLH-Jd-clY" secondAttribute="bottom" constant="8" id="9QI-l2-Lbk"/>
+                                            <constraint firstAttribute="bottom" secondItem="f1z-4C-1wA" secondAttribute="bottom" constant="8" id="IBN-Ta-lK1"/>
+                                            <constraint firstAttribute="trailing" secondItem="f1z-4C-1wA" secondAttribute="trailing" constant="8" id="KHf-8k-o2c"/>
+                                            <constraint firstAttribute="trailing" secondItem="hDV-zT-XcO" secondAttribute="trailing" constant="8" id="NON-Pr-tSB"/>
+                                            <constraint firstItem="f1z-4C-1wA" firstAttribute="top" secondItem="hDV-zT-XcO" secondAttribute="bottom" constant="8" id="X3O-u5-9kK"/>
+                                            <constraint firstItem="PLH-Jd-clY" firstAttribute="leading" secondItem="8fu-Nc-eme" secondAttribute="leading" constant="8" id="bBz-jR-Abl"/>
+                                            <constraint firstItem="hDV-zT-XcO" firstAttribute="top" secondItem="8fu-Nc-eme" secondAttribute="top" constant="50" id="k5f-hW-snM"/>
+                                            <constraint firstItem="hDV-zT-XcO" firstAttribute="leading" secondItem="8fu-Nc-eme" secondAttribute="leading" constant="8" id="mt2-LV-XvL"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8fu-Nc-eme" firstAttribute="leading" secondItem="oHC-H5-EYU" secondAttribute="leading" id="KOb-ae-GoE"/>
+                                    <constraint firstItem="8fu-Nc-eme" firstAttribute="width" secondItem="oHC-H5-EYU" secondAttribute="width" id="QAw-CK-PEd"/>
+                                    <constraint firstAttribute="bottom" secondItem="8fu-Nc-eme" secondAttribute="bottom" id="bbg-Zt-ss8"/>
+                                    <constraint firstItem="8fu-Nc-eme" firstAttribute="top" secondItem="oHC-H5-EYU" secondAttribute="top" id="cXD-q7-OVa"/>
+                                    <constraint firstAttribute="trailing" secondItem="8fu-Nc-eme" secondAttribute="trailing" id="fhI-83-pQc"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oHC-H5-EYU" firstAttribute="leading" secondItem="Hya-rT-aRd" secondAttribute="leadingMargin" constant="-16" id="4ny-oF-8He"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oHC-H5-EYU" secondAttribute="trailing" constant="-16" id="SaT-k8-Dg7"/>
+                            <constraint firstItem="W79-Bz-wnz" firstAttribute="top" secondItem="oHC-H5-EYU" secondAttribute="bottom" id="i4c-qO-Y6h"/>
+                            <constraint firstItem="oHC-H5-EYU" firstAttribute="top" secondItem="Hya-rT-aRd" secondAttribute="topMargin" id="l9L-dx-8yn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="answerDetailTextView" destination="hDV-zT-XcO" id="OdT-Fv-MPY"/>
+                        <outlet property="answerDetailTextViewHeightConstraint" destination="qkm-7y-f9V" id="jBd-uN-0fG"/>
+                        <outlet property="answerDismissButton" destination="f1z-4C-1wA" id="4PT-RF-3ac"/>
+                        <outlet property="answerSaveButton" destination="PLH-Jd-clY" id="f2w-Om-56O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qj0-O7-5jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112" y="2777"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="TC2-OV-4BK">
