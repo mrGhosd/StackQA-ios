@@ -2,8 +2,9 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Answer" representedClassName="Answer" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="is_helpful" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_helpfull" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="question_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
@@ -67,7 +68,7 @@
         <relationship name="statistic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQAStatistic" inverseName="user" inverseEntity="SQAStatistic" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="193"/>
+        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="208"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
         <element name="Question" positionX="-1764" positionY="-630" width="128" height="285"/>
         <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>

@@ -15,12 +15,13 @@
 @dynamic object_id;
 @dynamic user_id;
 @dynamic text;
-@dynamic is_helpful;
+@dynamic is_helpfull;
 @dynamic created_at;
 @dynamic updated_at;
 @dynamic question;
 @dynamic user_name;
 @dynamic rate;
+@dynamic question_id;
 
 + (void) sync: (NSArray *) params{
     NSMutableArray *serverObjects = [NSMutableArray new];
@@ -67,35 +68,33 @@
 
 + (void) create: (NSDictionary *) params{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        Question *question = [self defineQuestionWithId:params[@"id"] andContext:localContext];
-        [self setParams:params toQuestion:question];
+        Answer *question = [self defineAnswerWithId:params[@"id"] andContext:localContext];
+        [self setParams:params toAnswer:question];
         [localContext MR_save];
     }];
 }
 
-+ (Question *) defineQuestionWithId: (id) object_id andContext: (NSManagedObjectContext *) context{
-    Question *q;
-    Question *current_q = [Question MR_findFirstByAttribute:@"object_id" withValue:object_id];
-    if(current_q){
-        q = current_q;
++ (Question *) defineAnswerWithId: (id) object_id andContext: (NSManagedObjectContext *) context{
+    Answer *a;
+    Answer *current_a = [Answer MR_findFirstByAttribute:@"object_id" withValue:object_id];
+    if(current_a){
+        a = current_a;
     } else {
-        q = [Question MR_createInContext:context];
+        a = [Answer MR_createInContext:context];
     }
-    return q;
+    return a;
 }
 
-+ (void) setParams:(NSDictionary *)params toQuestion:(Question *) question{
-    question.object_id = params[@"id"];
-    question.user_id = params[@"user_id"];
-    question.category_id = params[@"category_id"];
-    question.rate = params[@"rate"];
-    question.title = params[@"title"];
-    question.created_at = [self correctConvertOfDate:params[@"created_at"]];
-    question.answers_count = params[@"answers_count"];
-    question.comments_count = params[@"comments_count"];
-    question.tags = params[@"tag_list"];
-    question.text = params[@"text"];
++ (void) setParams:(NSDictionary *)params toAnswer:(Answer *) answer{
+    answer.object_id = params[@"id"];
+    answer.user_id = params[@"user_id"];
+    answer.question_id = params[@"question_id"];
+    answer.created_at = [self correctConvertOfDate:params[@"created_at"]];
+    answer.text = params[@"text"];
+    answer.rate = params[@"rate"];
+    answer.is_helpfull = (BOOL)[params[@"is_helpfull"] boolValue];
 }
+
 + (void) setAnswerssForUser:(User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
