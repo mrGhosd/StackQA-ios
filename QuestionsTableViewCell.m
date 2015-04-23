@@ -23,4 +23,13 @@
 
     // Configure the view for the selected state
 }
+- (void) setQuestionData: (Question *) question{
+    self.question = question ;
+}
+- (IBAction)showAnswersList:(id)sender {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"answersListForQuestion"
+     object:self.question];
+
+}
 @end

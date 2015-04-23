@@ -156,7 +156,7 @@
         if(currentCellHeight <= 10){
             cell.answerTextHeight.constant = 110;
         } else {
-            cell.answerTextHeight.constant = currentCellHeight;
+            cell.answerTextHeight.constant = 110;
         }
         
     }
@@ -216,6 +216,7 @@
         case 1:
         {
             
+            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
             break;
         }
         case 2:
@@ -225,6 +226,20 @@
         default:
             break;
     }
+}
+
+- (void) deleteAnswer:(NSDictionary *) answer atIndexPath: (NSIndexPath *) path{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.object_id, answer[@"id"] ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+            cell.answerRate.backgroundColor = [UIColor greenColor];
+            [self.question closeQuestion];
+            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [self loadAnswersList];
+        } else {
+            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+        }
+    }];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
@@ -287,6 +302,7 @@
         
         if(currentCellHeight <= 110){
             return 110;
+            
         } else {
             return currentCellHeight;
         }

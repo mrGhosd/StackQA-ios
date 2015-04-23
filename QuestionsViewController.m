@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(answersListForQuestion:) name:@"answersListForQuestion" object:currentQuestion];
     auth = [AuthorizationManager sharedInstance];
     [self defineNavigationPanel];
     [self pageType];
@@ -44,7 +45,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
+- (void) answersListForQuestion:(NSNotification *) notification{
+    currentQuestion = notification.object;
+    [self performSegueWithIdentifier:@"showAnswersListForQuestion" sender:self];
+}
 - (void) pageType{
     if(self.user_page){
         [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correct_naming]];
@@ -157,7 +161,7 @@
     Question *questionItem = [self.questions objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+    [cell setQuestionData:questionItem];
     cell.questionTitle.text = (Question *)questionItem.title;
     cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
@@ -234,6 +238,10 @@
     }
     if([[segue identifier] isEqualToString:@"showQuestionForm"]){
         Question *question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        QuestionsFormViewController *form = segue.destinationViewController;
+        form.question = currentQuestion;
+    }
+    if([[segue identifier] isEqualToString:@"showAnswersListForQuestion"]){
         QuestionsFormViewController *form = segue.destinationViewController;
         form.question = currentQuestion;
     }
