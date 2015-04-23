@@ -24,6 +24,6 @@
 @property (nonatomic, retain) NSNumber * object_id;
 @property (nonatomic, retain) SQAStatistic * statistic;
 @property (nonatomic, strong) NSMutableSet * questions;
-@property (nonatomic, retain) NSSet * answers;
+@property (nonatomic, retain) NSMutableSet * answers;
 - (UIImage *) profileImage;
 @end

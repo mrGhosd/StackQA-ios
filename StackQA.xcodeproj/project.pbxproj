@@ -66,6 +66,7 @@
 		64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF71A6C71D7006AB0AC /* group-32.png */; };
 		64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EF91A6C726B006AB0AC /* ask_question-32.png */; };
 		64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EFA1A6C726B006AB0AC /* chat-32.png */; };
+		64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */; };
 		64E9C5F21AE4445A0055B325 /* correct6.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E9C5F11AE444590055B325 /* correct6.png */; };
 		64F567961ACE9FA90084AED4 /* ServerError.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F567951ACE9FA90084AED4 /* ServerError.m */; };
 		64F5679E1ACF07820084AED4 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5679D1ACF07820084AED4 /* ImageView.m */; };
@@ -177,6 +178,8 @@
 		64C69EF71A6C71D7006AB0AC /* group-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "group-32.png"; path = "../group-32.png"; sourceTree = "<group>"; };
 		64C69EF91A6C726B006AB0AC /* ask_question-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ask_question-32.png"; path = "../ask_question-32.png"; sourceTree = "<group>"; };
 		64C69EFA1A6C726B006AB0AC /* chat-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat-32.png"; path = "../chat-32.png"; sourceTree = "<group>"; };
+		64D8E3371AE9B488006EB1CD /* UserAnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnswersViewController.h; sourceTree = "<group>"; };
+		64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersViewController.m; sourceTree = "<group>"; };
 		64E9C5F11AE444590055B325 /* correct6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = correct6.png; sourceTree = "<group>"; };
 		64F567941ACE9FA90084AED4 /* ServerError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerError.h; sourceTree = "<group>"; };
 		64F567951ACE9FA90084AED4 /* ServerError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerError.m; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				64157B8F1AC8728400E0E401 /* ProfileViewController.m */,
 				648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */,
 				648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */,
+				64D8E3371AE9B488006EB1CD /* UserAnswersViewController.h */,
+				64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -739,6 +744,7 @@
 				6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */,
 				64157B8C1AC8620500E0E401 /* User.m in Sources */,
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
+				64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
 				646DDF051AB4D9650066F75A /* SQACategory.m in Sources */,
 				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,

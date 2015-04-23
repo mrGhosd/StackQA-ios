@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIy-iO-urh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656" y="-170"/>
+            <point key="canvasLocation" x="1792" y="342"/>
         </scene>
         <!--Questions View Controller-->
         <scene sceneID="jGh-gV-cCy">
@@ -346,7 +346,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-ye-tND" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="1284"/>
+            <point key="canvasLocation" x="1858" y="1124"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="6wN-md-VlH">
@@ -1029,6 +1029,7 @@
                         <segue destination="HY1-5n-C4M" kind="show" identifier="user_statistic" id="9Jy-i1-Yu6"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="user_questions" id="uQv-Ln-Urv"/>
                         <segue destination="lyJ-wl-ykd" kind="show" identifier="user_answers" id="Xfm-tM-9TR"/>
+                        <segue destination="mBo-Nb-Ujf" kind="show" identifier="userAnswers" id="Ro0-DF-bfe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1086,6 +1087,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCa-hd-F63" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2661" y="-148"/>
+        </scene>
+        <!--User Answers View Controller-->
+        <scene sceneID="OlO-Ku-ons">
+            <objects>
+                <viewController id="mBo-Nb-Ujf" customClass="UserAnswersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jgA-zh-cAc"/>
+                        <viewControllerLayoutGuide type="bottom" id="7GS-2G-vwx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cQK-sV-pPu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GRi-lf-lls" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3548" y="-143"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="F2t-O3-bA9">
@@ -1202,8 +1221,8 @@
         <segue reference="uQv-Ln-Urv"/>
         <segue reference="j2K-an-z6G"/>
         <segue reference="jdO-yh-WYz"/>
-        <segue reference="1uy-uL-sgR"/>
         <segue reference="Zma-F1-cBs"/>
+        <segue reference="g3P-Gf-qaj"/>
         <segue reference="Ogc-fD-TQd"/>
         <segue reference="4oy-yi-Vs6"/>
     </inferredMetricsTieBreakers>
