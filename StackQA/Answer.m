@@ -79,11 +79,14 @@
         [answer MR_deleteEntity];
     }
 }
-+ (void) syncAnswerParams:(NSDictionary *) params withUser: (User *) user{
++ (void) setAnswersToUser: (User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
         Answer *answers = [Answer MR_findAllWithPredicate:peopleFilter];
         [user setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
+        for(Answer *a in user.answers){
+            a.user = user;
+        }
         [localContext MR_save];
     }];
 }

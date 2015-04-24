@@ -26,12 +26,13 @@
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) Question *question;
+@property (nonatomic, retain) User *user;
 
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;
 + (void) setQuestionsForUser:(User *) user;
 + (void) sync: (NSArray *) params;
 + (void) deleteAnswersFromDevice: (NSArray *) answers;
-+ (void) syncAnswerParams:(NSDictionary *) params withUser:(User *) user;
++ (void) setAnswersToUser: (User *) user;
 
 @end

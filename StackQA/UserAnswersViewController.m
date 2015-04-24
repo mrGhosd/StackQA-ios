@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
-    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", auth.currentUser.object_id] andComplition:^(id data, BOOL success){
+    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", self.user.object_id] andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {
@@ -34,9 +34,7 @@
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
     [Answer sync:answers];
-    for(NSDictionary *answer in answers){
-        [Answer syncAnswerParams:answer withUser:self.user];
-    }
+    [Answer setAnswersToUser:self.user];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
