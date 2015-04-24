@@ -31,5 +31,7 @@
 + (void) create: (NSDictionary *) params;
 + (void) setQuestionsForUser:(User *) user;
 + (void) sync: (NSArray *) params;
++ (void) deleteAnswersFromDevice: (NSArray *) answers;
++ (void) syncAnswerParams:(NSDictionary *) params withUser:(User *) user;
 
 @end

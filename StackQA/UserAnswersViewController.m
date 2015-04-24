@@ -7,8 +7,13 @@
 //
 
 #import "UserAnswersViewController.h"
+#import "Api.h"
+#import "Answer.h"
+#import "AuthorizationManager.h"
 
-@interface UserAnswersViewController ()
+@interface UserAnswersViewController (){
+    AuthorizationManager *auth;
+}
 
 @end
 
@@ -16,9 +21,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    auth = [AuthorizationManager sharedInstance];
+    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", auth.currentUser.object_id] andComplition:^(id data, BOOL success){
+        if(success){
+            [self parseData:data];
+        } else {
+            
+        }
+    }];
     // Do any additional setup after loading the view.
 }
-
+- (void) parseData:(NSDictionary *) data{
+    NSArray *answers = data[@"users"];
+    [Answer sync:answers];
+    for(NSDictionary *answer in answers){
+        [Answer syncAnswerParams:answer withUser:self.user];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -32,7 +32,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImageView) name:@"hideImageView" object:nil];
     auth = [AuthorizationManager sharedInstance];
-    paramsIDs = @[@"user_questions", @"user_answers", @"user_comments"];
+    paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
     userParams= @[@"Вопросов:", @"Ответов:", @"Комментариев"];
     userValues = @[auth.currentUser.questions_count, auth.currentUser.answers_count, auth.currentUser.comments_count];
     store = [UICKeyChainStore keyChainStore];

@@ -1028,7 +1028,6 @@
                         <segue destination="ch4-W7-k0g" kind="show" identifier="logOut" id="jdO-yh-WYz"/>
                         <segue destination="HY1-5n-C4M" kind="show" identifier="user_statistic" id="9Jy-i1-Yu6"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="user_questions" id="uQv-Ln-Urv"/>
-                        <segue destination="lyJ-wl-ykd" kind="show" identifier="user_answers" id="Xfm-tM-9TR"/>
                         <segue destination="mBo-Nb-Ujf" kind="show" identifier="userAnswers" id="Ro0-DF-bfe"/>
                     </connections>
                 </viewController>
