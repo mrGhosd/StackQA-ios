@@ -35,5 +35,6 @@
 + (void) deleteAnswersFromDevice: (NSArray *) answers;
 + (void) setAnswersToUser: (User *) user;
 + (void) setQuestionsForAnswers;
+- (Question *) getAnswerQuestion;
 
 @end

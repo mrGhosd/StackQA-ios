@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    usersAnswersList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     [self loadUsersAnswers];
     // Do any additional setup after loading the view.
@@ -42,8 +43,9 @@
     NSArray *answers = data[@"users"];
     [Answer sync:answers];
     [Answer setAnswersToUser:self.user];
-//    [Answer setQuestionsForAnswers];
-    usersAnswersList = [self.user.answers allObjects];
+    for(Answer *answer in self.user.answers){
+        [usersAnswersList addObject:answer];
+    }
     [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
@@ -65,11 +67,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Answer *answerItem = usersAnswersList[indexPath.row];
+    Question *question = [answerItem getAnswerQuestion];
     static NSString *CellIdentifier = @"userAnswersCell";
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(answerItem.question != nil){
-        Question *q = [Question MR_findFirstByAttribute:@"object_id" withValue:answerItem.question_id];
-        [cell.answerQuestion setTitle: answerItem.question.title  forState:UIControlStateNormal];
+    if(question != nil){
+        
+        [cell.answerQuestion setTitle: question.title  forState:UIControlStateNormal];
     }
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];

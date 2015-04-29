@@ -88,17 +88,8 @@
             [localContext MR_save];
         }
         NSArray *answersList = [Answer MR_findAllInContext:localContext];
-        for(Answer *a in answersList){
-            Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:a.question_id inContext:localContext];
-            a.question = question;
-            [localContext MR_save];
-        }
         NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
-        for(Answer *a in answers){
-            
-        }
         [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
-
         [localContext MR_save];
     }];
 }
@@ -162,6 +153,14 @@
         [question setValue:[NSMutableSet setWithArray:questions] forKey:@"answers"];
         [localContext MR_save];
     }];
+}
+
+- (Question *) getAnswerQuestion{
+    __block Question *question;
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
+        question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question_id inContext:context];
+    }];
+    return question;
 }
 
 @end
