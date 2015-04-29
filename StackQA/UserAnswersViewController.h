@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "User.h"
 
-@interface UserAnswersViewController : ViewController
+@interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) User *user;
 @end

@@ -81,16 +81,38 @@
 }
 + (void) setAnswersToUser: (User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
-        Answer *answers = [Answer MR_findAllWithPredicate:peopleFilter];
-        [user setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
-        for(Answer *a in user.answers){
-            a.user = user;
+        NSArray *questions = [Question MR_findAllInContext:localContext];
+        for(Question *q in questions){
+            NSArray *arr = [Answer MR_findByAttribute:@"question_id" withValue:q.object_id inContext:localContext];
+            [q setValue:[NSMutableSet setWithArray:arr] forKey:@"answers"];
+            [localContext MR_save];
         }
+        NSArray *answersList = [Answer MR_findAllInContext:localContext];
+        for(Answer *a in answersList){
+            Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:a.question_id inContext:localContext];
+            a.question = question;
+            [localContext MR_save];
+        }
+        NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
+        for(Answer *a in answers){
+            
+        }
+        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
+
         [localContext MR_save];
     }];
 }
-
++ (void) setQuestionsForAnswers{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        NSArray *answers = [Answer MR_findAllInContext:localContext];
+        
+    }];
+}
++ (void) setAnswer:(Answer *) answer toQuestion: (Question *) question{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        
+    }];
+}
 + (void) create: (NSDictionary *) params{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         Answer *answer = [self defineAnswerWithId:params[@"id"] andContext:localContext];
@@ -132,14 +154,6 @@
     }];
 }
 
-+ (void) setAnswerssForUser:(User *) user{
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
-        Answer *answers = [Answer MR_findAllWithPredicate:peopleFilter];
-        [user setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
-        [localContext MR_save];
-    }];
-}
 
 + (void) setAnswersForQuestion:(Question *) question{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){

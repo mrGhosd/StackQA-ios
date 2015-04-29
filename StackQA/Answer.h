@@ -34,5 +34,6 @@
 + (void) sync: (NSArray *) params;
 + (void) deleteAnswersFromDevice: (NSArray *) answers;
 + (void) setAnswersToUser: (User *) user;
++ (void) setQuestionsForAnswers;
 
 @end

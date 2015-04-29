@@ -47,6 +47,7 @@
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
 		6469F9B61A70592500E837E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B51A70592500E837E3 /* Main.storyboard */; };
 		646DDF051AB4D9650066F75A /* SQACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DDF041AB4D9650066F75A /* SQACategory.m */; };
+		647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */; };
 		647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C55C21AC36D980011D5FA /* AuthorizationViewController.m */; };
 		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */; };
@@ -144,6 +145,8 @@
 		6469F9B51A70592500E837E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		646DDF031AB4D9650066F75A /* SQACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQACategory.h; sourceTree = "<group>"; };
 		646DDF041AB4D9650066F75A /* SQACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQACategory.m; sourceTree = "<group>"; };
+		647BD8971AF027F0002A0B66 /* UserAnswersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnswersTableViewCell.h; sourceTree = "<group>"; };
+		647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersTableViewCell.m; sourceTree = "<group>"; };
 		647C55C11AC36D980011D5FA /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
 		647C55C21AC36D980011D5FA /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
 		648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuestionsViewController.h; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				64F5679C1ACF07820084AED4 /* ImageView.h */,
 				64F5679D1ACF07820084AED4 /* ImageView.m */,
 				64F5679F1ACF07910084AED4 /* ImageView.xib */,
+				647BD8971AF027F0002A0B66 /* UserAnswersTableViewCell.h */,
+				647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -738,6 +743,7 @@
 				64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */,
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
 				6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */,
+				647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
