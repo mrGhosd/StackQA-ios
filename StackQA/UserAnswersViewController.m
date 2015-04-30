@@ -86,7 +86,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
         QuestionDetailViewController *view = segue.destinationViewController;
-        view.question = chosenQuestion;
+        view.question = [chosenQuestion MR_inThreadContext];
     }
 }
 

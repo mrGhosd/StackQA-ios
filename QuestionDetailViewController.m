@@ -27,7 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     [self uploadQuestionData];
     self.webView.delegate = self;
     [self refreshInit];
@@ -66,12 +65,12 @@
 - (void) uploadQuestionData{
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     
-
+    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    
-    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.object_id] andComplition:^(id data, BOOL result){
+    Question *currentQuestion = [self.question MR_inContext:localContext];
+    [api getData:[NSString stringWithFormat:@"/questions/%@", currentQuestion.object_id] andComplition:^(id data, BOOL result){
         if(result){
             [self parseQuestionData:data];
         } else {
@@ -89,11 +88,11 @@
         Question *q = qw;
         q.category = [SQACategory MR_createInContext:localContext];
         q.category.title = question[@"category"][@"title"];
+        q.text = question[@"text"];
     
         [localContext MR_save];
     }
-    [Question create:question];
-//    [self initQuestionData];
+    [self initQuestionData];
     [refreshControl endRefreshing];
 }
 
