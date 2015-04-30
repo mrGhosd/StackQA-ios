@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "User.h"
+#import <CoreData/CoreData.h>
+#import <CoreData+MagicalRecord.h>
 
 @interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

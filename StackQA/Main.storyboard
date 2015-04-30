@@ -1138,7 +1138,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="answerQuestion" destination="aZZ-Jv-QuH" id="mVU-n9-5Hn"/>
+                                            <outlet property="answerQuestion" destination="aZZ-Jv-QuH" id="LzG-lK-ppG"/>
                                             <outlet property="answerRate" destination="M2a-8n-bbp" id="OdA-HV-Fko"/>
                                             <outlet property="answerText" destination="nqA-B0-6tS" id="nYn-l5-uCb"/>
                                         </connections>
@@ -1160,6 +1160,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="cxD-cN-4JU" id="k3l-Hz-Od8"/>
+                        <segue destination="Xug-EA-AjG" kind="show" identifier="userAnswersQuestion" id="xUG-jW-SU9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRi-lf-lls" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1278,11 +1279,12 @@
         <image name="settings48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uQv-Ln-Urv"/>
+        <segue reference="g3P-Gf-qaj"/>
+        <segue reference="xUG-jW-SU9"/>
         <segue reference="j2K-an-z6G"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="uQv-Ln-Urv"/>
         <segue reference="Zma-F1-cBs"/>
-        <segue reference="g3P-Gf-qaj"/>
         <segue reference="Ogc-fD-TQd"/>
         <segue reference="4oy-yi-Vs6"/>
     </inferredMetricsTieBreakers>

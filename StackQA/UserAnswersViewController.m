@@ -7,6 +7,7 @@
 //
 
 #import "UserAnswersViewController.h"
+#import "QuestionDetailViewController.h"
 #import "Api.h"
 #import "Answer.h"
 #import "Question.h"
@@ -15,7 +16,9 @@
 
 @interface UserAnswersViewController (){
     AuthorizationManager *auth;
+    Question *chosenQuestion;
     NSMutableArray *usersAnswersList;
+    NSMutableArray *answerQuestionsList;
 }
 
 @end
@@ -25,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     usersAnswersList = [NSMutableArray new];
+    answerQuestionsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     [self loadUsersAnswers];
     // Do any additional setup after loading the view.
@@ -38,13 +42,15 @@
         }
     }];
 }
-
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
     [Answer sync:answers];
     [Answer setAnswersToUser:self.user];
     for(Answer *answer in self.user.answers){
+        Question *question = [answer getAnswerQuestion];
+        [answerQuestionsList addObject:question];
         [usersAnswersList addObject:answer];
+//        [defaultContext MR_Save];
     }
     [self.tableView reloadData];
 }
@@ -54,53 +60,47 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
     return usersAnswersList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Answer *answerItem = usersAnswersList[indexPath.row];
-    Question *question = [answerItem getAnswerQuestion];
+    Question *questionItem = [answerItem getAnswerQuestion];
     static NSString *CellIdentifier = @"userAnswersCell";
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if(question != nil){
-        
-        [cell.answerQuestion setTitle: question.title  forState:UIControlStateNormal];
+    [cell setQUestionData:questionItem];
+    if(questionItem != nil){
+        [cell.answerQuestion setTitle: questionItem.title  forState:UIControlStateNormal];
     }
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
+    NSNumber *questionId = questionItem.object_id;
+    cell.answerQuestion.tag = [questionId integerValue];
+    [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
-    
-//    cell.answerAuthor
-//    QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    [cell setQuestionData:questionItem];
-//    cell.questionTitle.text = (Question *)questionItem.title;
-//    cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
-//    cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
-//    [self setQuestionRateViewForCell:cell andItem:questionItem];
-//    [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
-//    [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
-//    [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
-//    
-//    if(auth.currentUser && questionItem.user_id == auth.currentUser.object_id){
-//        NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-//        [rightUtilityButtons sw_addUtilityButtonWithColor:
-//         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-//                                                     icon:[UIImage imageNamed:@"edit-32.png"]];
-//        [rightUtilityButtons sw_addUtilityButtonWithColor:
-//         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
-//        cell.rightUtilityButtons = rightUtilityButtons;
-//        cell.delegate = self;
-//    }
     return cell;
 }
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
+        QuestionDetailViewController *view = segue.destinationViewController;
+        view.question = chosenQuestion;
+    }
+}
 
+- (void) answerQuestionClicked: (UIButton *) sender{
+    UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[sender superview];
+    __block Question *question;
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
+        NSNumber *questionID = [NSNumber numberWithInteger:sender.tag];
+        question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionID inContext:context];
+    }];
+    chosenQuestion = question;
+    [self performSegueWithIdentifier:@"userAnswersQuestion" sender:self];
+//    Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionId];
+}
 /*
 #pragma mark - Navigation
 
