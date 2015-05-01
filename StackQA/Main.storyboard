@@ -609,7 +609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qj0-O7-5jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="2777"/>
+            <point key="canvasLocation" x="2032" y="2025"/>
         </scene>
         <!--Sidebar View Controller-->
         <scene sceneID="TC2-OV-4BK">
@@ -1168,6 +1168,7 @@
                     <connections>
                         <outlet property="tableView" destination="cxD-cN-4JU" id="k3l-Hz-Od8"/>
                         <segue destination="Xug-EA-AjG" kind="show" identifier="userAnswersQuestion" id="xUG-jW-SU9"/>
+                        <segue destination="5E5-Ym-Sk5" kind="show" identifier="answer_edit" id="wbe-Bg-hYN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRi-lf-lls" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1286,11 +1287,12 @@
         <image name="settings48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g3P-Gf-qaj"/>
-        <segue reference="xUG-jW-SU9"/>
+        <segue reference="uQv-Ln-Urv"/>
         <segue reference="j2K-an-z6G"/>
         <segue reference="jdO-yh-WYz"/>
-        <segue reference="uQv-Ln-Urv"/>
+        <segue reference="xUG-jW-SU9"/>
+        <segue reference="wbe-Bg-hYN"/>
+        <segue reference="g3P-Gf-qaj"/>
         <segue reference="Zma-F1-cBs"/>
         <segue reference="Ogc-fD-TQd"/>
         <segue reference="4oy-yi-Vs6"/>
