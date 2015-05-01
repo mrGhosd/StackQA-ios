@@ -1124,23 +1124,30 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nqA-B0-6tS">
-                                                    <rect key="frame" x="8" y="76" width="584" height="25"/>
+                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqA-B0-6tS">
+                                                    <rect key="frame" x="8" y="68" width="584" height="33"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="33" id="Bmu-i0-6Zr"/>
+                                                    </constraints>
                                                 </webView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aZZ-Jv-QuH" firstAttribute="trailing" secondItem="dGe-gG-zTk" secondAttribute="trailingMargin" id="7gf-nb-3wa"/>
+                                                <constraint firstItem="nqA-B0-6tS" firstAttribute="trailing" secondItem="dGe-gG-zTk" secondAttribute="trailingMargin" id="8r8-kt-z6I"/>
                                                 <constraint firstItem="M2a-8n-bbp" firstAttribute="leading" secondItem="dGe-gG-zTk" secondAttribute="leadingMargin" id="EI2-XY-jPK"/>
                                                 <constraint firstItem="aZZ-Jv-QuH" firstAttribute="leading" secondItem="M2a-8n-bbp" secondAttribute="trailing" constant="8" id="eZY-hG-xCQ"/>
+                                                <constraint firstItem="nqA-B0-6tS" firstAttribute="leading" secondItem="dGe-gG-zTk" secondAttribute="leadingMargin" id="nig-GH-lEP"/>
                                                 <constraint firstItem="aZZ-Jv-QuH" firstAttribute="top" secondItem="dGe-gG-zTk" secondAttribute="topMargin" constant="15" id="nob-r1-OZe"/>
                                                 <constraint firstItem="M2a-8n-bbp" firstAttribute="top" secondItem="dGe-gG-zTk" secondAttribute="topMargin" id="v9Z-0z-tFD"/>
+                                                <constraint firstItem="nqA-B0-6tS" firstAttribute="top" secondItem="M2a-8n-bbp" secondAttribute="bottom" id="xhg-cN-G1A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="answerQuestion" destination="aZZ-Jv-QuH" id="LzG-lK-ppG"/>
                                             <outlet property="answerRate" destination="M2a-8n-bbp" id="OdA-HV-Fko"/>
                                             <outlet property="answerText" destination="nqA-B0-6tS" id="nYn-l5-uCb"/>
+                                            <outlet property="answerTextHeight" destination="Bmu-i0-6Zr" id="Nzw-Ao-BRB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *answerQuestion;
 @property (strong, nonatomic) IBOutlet UIWebView *answerText;
 @property (strong) Question *question;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerTextHeight;
 - (void) setQUestionData: (Question *) question;
 @end

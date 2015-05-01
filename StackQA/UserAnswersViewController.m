@@ -17,6 +17,8 @@
 @interface UserAnswersViewController (){
     AuthorizationManager *auth;
     Question *chosenQuestion;
+    float currentCellHeight;
+    int selectedIndex;
     NSMutableArray *usersAnswersList;
     NSMutableArray *answerQuestionsList;
 }
@@ -27,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    selectedIndex = -1;
     usersAnswersList = [NSMutableArray new];
     answerQuestionsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
@@ -83,10 +86,17 @@
         cell.answerRate.backgroundColor = [UIColor greenColor];
     }
     
+    if(currentCellHeight <= 30){
+        cell.answerTextHeight.constant = 110;
+    } else {
+        cell.answerTextHeight.constant = currentCellHeight;
+    }
+    
     cell.answerQuestion.tag = [questionId integerValue];
     [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
+    
     return cell;
 }
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -107,6 +117,49 @@
     [self performSegueWithIdentifier:@"userAnswersQuestion" sender:self];
 //    Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionId];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(selectedIndex == indexPath.row){
+        
+        if(currentCellHeight <= 110){
+            return 110;
+            
+        } else {
+            return currentCellHeight;
+        }
+        
+    } else {
+        return 110;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
+    if(selectedIndex == indexPath.row){
+        selectedIndex = -1;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
+    
+    if(selectedIndex != -1){
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        selectedIndex = indexPath.row;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    selectedIndex = indexPath.row;
+    [self changeAnswerTextHeightAt:indexPath];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
+    CGSize size = [[usersAnswersList[path.row] text] sizeWithAttributes:nil];
+    currentCellHeight = size.width / 10;
+    [self.tableView cellForRowAtIndexPath:path];
+}
+
 /*
 #pragma mark - Navigation
 
