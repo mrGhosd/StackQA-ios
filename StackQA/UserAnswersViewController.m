@@ -78,8 +78,14 @@
     }
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
     NSNumber *questionId = questionItem.object_id;
+    
+    if(answerItem.is_helpfull){
+        cell.answerRate.backgroundColor = [UIColor greenColor];
+    }
+    
     cell.answerQuestion.tag = [questionId integerValue];
     [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
     return cell;
 }

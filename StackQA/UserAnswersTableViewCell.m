@@ -12,6 +12,13 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.answerText.delegate = self;
+    self.answerText.backgroundColor = [UIColor clearColor];
+    self.answerText.scrollView.scrollEnabled = NO;
+    self.answerRate.backgroundColor = [UIColor lightGrayColor];
+    self.answerRate.textColor = [UIColor whiteColor];
+    self.answerRate.clipsToBounds = YES;
+    self.answerRate.layer.cornerRadius = 30;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -24,10 +31,4 @@
     self.question = q;
 }
 
-- (IBAction)showAnswerQuestion:(id)sender {
-    Question *q = self.question;
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"showAnswerQuestion"
-     object:self.question];
-}
 @end

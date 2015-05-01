@@ -20,7 +20,6 @@
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * user_name;
-@property (nonatomic, retain) NSNumber * is_helpful;
 @property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) NSNumber * question_id;
 @property (nonatomic, retain) NSDate * created_at;
