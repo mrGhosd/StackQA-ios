@@ -152,14 +152,14 @@
         cell.answerRate.backgroundColor = [UIColor greenColor];
     }
     
-    if(currentCellHeight){
-        if(currentCellHeight <= 10){
+//    if(currentCellHeight != 0){
+        if(currentCellHeight <= 30){
             cell.answerTextHeight.constant = 110;
         } else {
-            cell.answerTextHeight.constant = 110;
+            cell.answerTextHeight.constant = currentCellHeight;
         }
         
-    }
+//    }
     if(auth.currentUser){
         NSMutableArray *leftUtilityButtons = [NSMutableArray new];
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
