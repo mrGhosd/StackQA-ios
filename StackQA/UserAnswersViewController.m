@@ -46,16 +46,18 @@
         }
     }];
 }
+- (void) viewDidAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
     [Answer sync:answers];
     [Answer setAnswersToUser:self.user];
     for(Answer *answer in self.user.answers){
-        Question *question = [answer getAnswerQuestion];
-        [answerQuestionsList addObject:question];
         [usersAnswersList addObject:answer];
     }
     [self.tableView reloadData];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -84,6 +86,8 @@
     
     if(answerItem.is_helpfull){
         cell.answerRate.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
     }
     
     if(currentCellHeight <= 30){

@@ -29,11 +29,12 @@
 
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;
++ (void) create: (NSDictionary *) params inContext:(NSManagedObjectContext *) localContext;
 + (void) setQuestionsForUser:(User *) user;
 + (void) sync: (NSArray *) params;
 + (void) deleteAnswersFromDevice: (NSArray *) answers;
 + (void) setAnswersToUser: (User *) user;
-+ (void) setQuestionsForAnswers;
 - (Question *) getAnswerQuestion;
+- (void) destroy;
 
 @end
