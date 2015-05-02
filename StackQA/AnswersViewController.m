@@ -109,7 +109,7 @@
 }
 
 - (void) parseAnswerData:(id) data{
-    answersList = data[@"answers"];
+    answersList = [NSMutableArray arrayWithArray:data[@"answers"]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.tableView reloadData];
@@ -149,6 +149,8 @@
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem[@"rate"]];
     if((BOOL)[answerItem[@"is_helpfull"] boolValue]){
         cell.answerRate.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
     }
     
 //    if(currentCellHeight != 0){
@@ -233,13 +235,19 @@
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
             [self.question closeQuestion];
-            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            [answersList removeObjectAtIndex:path.row];
+            if(answersList.count == 0){
+             [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            }
             [self loadAnswersList];
         } else {
             [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
         }
     }];
 }
+
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
@@ -292,7 +300,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [answersList count];
+    return answersList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
