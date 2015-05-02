@@ -24,7 +24,7 @@
     // Do any additional setup after loading the view.
     self.answerDismissButton.layer.cornerRadius = 5.0;
     self.answerSaveButton.layer.cornerRadius = 5.0;
-    self.answerDetailTextView.text = self.answer[@"text"];
+    self.answerDetailTextView.text = self.answer.text;
 
     float viewHeight;
     CGSize size = [self.answerDetailTextView.text sizeWithAttributes:nil];
@@ -58,8 +58,8 @@
 }
 
 - (IBAction)answerSave:(id)sender {
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer[@"question_id"], self.answer[@"id"]];
-    NSDictionary *params = @{@"question_id": self.answer[@"question_id"], @"user_id": auth.currentUser.object_id, @"text": self.answerDetailTextView.text };
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer.question_id, self.answer.object_id];
+    NSDictionary *params = @{@"question_id": self.answer.object_id, @"user_id": auth.currentUser.object_id, @"text": self.answerDetailTextView.text };
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
         if(success){
             [[NSNotificationCenter defaultCenter]

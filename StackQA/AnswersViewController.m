@@ -19,7 +19,7 @@
     AuthorizationManager *auth;
     float currentCellHeight;
     NSManagedObjectContext *localContext;
-    NSMutableDictionary *selectedAnswer;
+    Answer *selectedAnswer;
     NSMutableArray *answersList;
 }
 
@@ -109,10 +109,10 @@
 }
 
 - (void) parseAnswerData:(id) data{
-    answersList = [NSMutableArray arrayWithArray:data[@"answers"]];
+    [Answer sync:data[@"answers"]];
+    answersList = [NSMutableArray arrayWithArray:[Answer answersForQuestion:self.question]];
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    [self.tableView reloadData];
 
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -141,26 +141,24 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary *answerItem = [answersList objectAtIndex:indexPath.row];
+    Answer *answerItem = [answersList objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [cell.answerText loadHTMLString: answerItem[@"text"] baseURL:nil];
-    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem[@"user_name"]];
-    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem[@"rate"]];
-    if((BOOL)[answerItem[@"is_helpfull"] boolValue]){
+    [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
+    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
+    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
+    if(answerItem.is_helpfull){
         cell.answerRate.backgroundColor = [UIColor greenColor];
     } else {
         cell.answerRate.backgroundColor = [UIColor lightGrayColor];
     }
     
-//    if(currentCellHeight != 0){
-        if(currentCellHeight <= 30){
-            cell.answerTextHeight.constant = 110;
-        } else {
-            cell.answerTextHeight.constant = currentCellHeight;
-        }
-        
-//    }
+    if(currentCellHeight <= 30){
+        cell.answerTextHeight.constant = 110;
+    } else {
+        cell.answerTextHeight.constant = currentCellHeight;
+    }
+    
     if(auth.currentUser){
         NSMutableArray *leftUtilityButtons = [NSMutableArray new];
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
@@ -169,7 +167,7 @@
         if(!self.question.is_closed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
-        if(answerItem[@"user_id"] == auth.currentUser.object_id){
+        if(answerItem.user_id == auth.currentUser.object_id){
             
             [rightUtilityButtons sw_addUtilityButtonWithColor:
              [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -206,22 +204,19 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-    selectedAnswer = [NSMutableDictionary dictionaryWithDictionary:answersList[cellIndexPath.row]];
+    selectedAnswer = answersList[cellIndexPath.row];
     switch (index) {
-        case 0:
-        {
+        case 0:{
             [self performSegueWithIdentifier:@"answer_edit" sender:self];
             [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         }
-        case 1:
-        {
+        case 1:{
             
             [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
             break;
         }
-        case 2:
-        {
+        case 2:{
             break;
         }
         default:
@@ -229,13 +224,14 @@
     }
 }
 
-- (void) deleteAnswer:(NSDictionary *) answer atIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.object_id, answer[@"id"] ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+- (void) deleteAnswer:(Answer *) answer atIndexPath: (NSIndexPath *) path{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
             [self.question closeQuestion];
             [answersList removeObjectAtIndex:path.row];
+            [answer MR_deleteEntity];
             if(answersList.count == 0){
              [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
             } else {
@@ -251,7 +247,7 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-    NSMutableDictionary *currentAnswer = answersList[cellIndexPath.row];
+    Answer *currentAnswer = answersList[cellIndexPath.row];
     switch (index) {
         case 0:
         {
@@ -272,8 +268,8 @@
             break;
     }
 }
-- (void) setAnswerAsHelpfullWithAnswer:(NSMutableDictionary *)answer andIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.object_id, answer[@"id"] ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+- (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer andIndexPath: (NSIndexPath *) path{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.object_id, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
@@ -285,8 +281,8 @@
         }
     }];
 }
-- (void) changeAnswersRateWithAnswer: (NSDictionary *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer[@"id"] ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
+- (void) changeAnswersRateWithAnswer: (Answer *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
@@ -352,7 +348,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"answer_edit"]){
         AnswerDetailViewController *view = segue.destinationViewController;
-        view.answer = [NSMutableDictionary dictionaryWithDictionary:selectedAnswer];
+        view.answer = selectedAnswer;
     }
 }
 

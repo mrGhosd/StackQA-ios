@@ -24,60 +24,60 @@
 @dynamic question_id;
 
 + (void) sync: (NSArray *) params{
-//    NSMutableArray *serverObjects = [NSMutableArray new];
-//    //Разбиваем пришедшие с сервера вопросы по id
-//    [params enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-//        [serverObjects addObject:object[@"id"]];
-//    }];
-//    
-//    //Находим вопросы, которых нет на сервере, но есть на устройстве, и удаляем их
-//    NSPredicate *answerFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
-//    NSArray *deletedQuestions = [Answer MR_findAllWithPredicate:answerFilter];
-//    for(Answer *answer in deletedQuestions){
-//        [answer MR_deleteEntity];
-//    }
-//    
-//    //Создаем массив с id на устройстве и добавляем туда значения id всех вопросов
-//    NSMutableArray *deviceObjects = [NSMutableArray new];
-//    NSMutableArray *questionsList = [Answer MR_findAll];
-//    [questionsList enumerateObjectsUsingBlock:^(Answer *object, NSUInteger index, BOOL *stop){
-//        [deviceObjects addObject:object.object_id];
-//    }];
-//    
-//    [deviceObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-//        for(NSDictionary *attr in params){
-//            if((BOOL)[object isEqual:attr[@"id"]]){
-//                [self create:attr];
-//            }
-//        }
-//    }];
-//    
-//    //Удаляем из массива объектов с сервера id с устройства
-//    [serverObjects removeObjectsInArray:deviceObjects];
-//    
-//    
-//    //Создаем отсутствующие вопросы
-//    [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-//        for(NSDictionary *dict in params){
-//            if(dict[@"id"] == object){
-//                [self create:dict];
-//            }
-//        }
-//    }];
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSArray *serverObjects = [params copy];
-        NSMutableArray *deviceObjects = [Answer MR_findAll];
-        for(NSDictionary *serverAnswer in serverObjects){
-            [Answer create:serverAnswer];
-            NSArray *deviceAnswer = [Answer MR_findByAttribute:@"object_id" withValue:serverAnswer[@"id"] inContext:localContext];
-            if([deviceAnswer count] > 1){
-                for(Answer *ans in deviceAnswer){
-                    [ans MR_deleteInContext:localContext];
-                }
+    NSMutableArray *serverObjects = [NSMutableArray new];
+    //Разбиваем пришедшие с сервера вопросы по id
+    [params enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+        [serverObjects addObject:object[@"id"]];
+    }];
+    
+    //Находим вопросы, которых нет на сервере, но есть на устройстве, и удаляем их
+    NSPredicate *answerFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
+    NSArray *deletedQuestions = [Answer MR_findAllWithPredicate:answerFilter];
+    for(Answer *answer in deletedQuestions){
+        [answer MR_deleteEntity];
+    }
+    
+    //Создаем массив с id на устройстве и добавляем туда значения id всех вопросов
+    NSMutableArray *deviceObjects = [NSMutableArray new];
+    NSMutableArray *questionsList = [Answer MR_findAll];
+    [questionsList enumerateObjectsUsingBlock:^(Answer *object, NSUInteger index, BOOL *stop){
+        [deviceObjects addObject:object.object_id];
+    }];
+    
+    [deviceObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+        for(NSDictionary *attr in params){
+            if((BOOL)[object isEqual:attr[@"id"]]){
+                [self create:attr];
             }
-            [Answer create:serverAnswer inContext:localContext];
         }
     }];
+    
+    //Удаляем из массива объектов с сервера id с устройства
+    [serverObjects removeObjectsInArray:deviceObjects];
+    
+    
+    //Создаем отсутствующие вопросы
+    [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
+        for(NSDictionary *dict in params){
+            if(dict[@"id"] == object){
+                [self create:dict];
+            }
+        }
+    }];
+//    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+//        NSArray *serverObjects = [params copy];
+//        NSMutableArray *deviceObjects = [Answer MR_findAll];
+//        for(NSDictionary *serverAnswer in serverObjects){
+//            [Answer create:serverAnswer];
+//            NSArray *deviceAnswer = [Answer MR_findByAttribute:@"object_id" withValue:serverAnswer[@"id"] inContext:localContext];
+//            if([deviceAnswer count] > 1){
+//                for(Answer *ans in deviceAnswer){
+//                    [ans MR_deleteInContext:localContext];
+//                }
+//            }
+//            [Answer create:serverAnswer inContext:localContext];
+//        }
+//    }];
 }
 + (void) deleteAnswersFromDevice: (NSArray *) answers{
     NSMutableArray *serverObjects = [NSMutableArray new];
@@ -158,6 +158,7 @@
 + (void) setParams:(NSDictionary *)params toAnswer:(Answer *) answer{
     answer.object_id = params[@"id"];
     answer.user_id = params[@"user_id"];
+    answer.user_name = params[@"user_name"];
     answer.question_id = params[@"question_id"];
     answer.created_at = [Question correctConvertOfDate:params[@"created_at"]];
     answer.text = params[@"text"];
@@ -181,5 +182,10 @@
         [self MR_deleteEntity];
         [localContext MR_save];
     }];
+}
++ (NSArray *) answersForQuestion:(Question *)question{
+    NSPredicate *answersFilter = [NSPredicate predicateWithFormat:@"question_id = %@", question.object_id];
+    NSArray *questionAnswers = [Answer MR_findAllWithPredicate:answersFilter];
+    return questionAnswers;
 }
 @end

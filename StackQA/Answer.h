@@ -36,5 +36,6 @@
 + (void) setAnswersToUser: (User *) user;
 - (Question *) getAnswerQuestion;
 - (void) destroy;
++ (NSArray *) answersForQuestion:(Question *)question;
 
 @end

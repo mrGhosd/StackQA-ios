@@ -10,7 +10,7 @@
 #import "Answer.h"
 
 @interface AnswerDetailViewController : ViewController
-@property (strong, nonatomic) NSDictionary *answer;
+@property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerDetailTextViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet UITextView *answerDetailTextView;
 - (IBAction)dissmissDetailAnswerView:(id)sender;
