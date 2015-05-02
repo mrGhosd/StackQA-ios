@@ -77,58 +77,14 @@
     Question *questionItem = [answerItem getAnswerQuestion];
     static NSString *CellIdentifier = @"userAnswersCell";
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [cell setQUestionData:questionItem];
-    if(questionItem != nil){
-        [cell.answerQuestion setTitle: questionItem.title  forState:UIControlStateNormal];
-    }
-    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
-    NSNumber *questionId = questionItem.object_id;
-    
-    if(answerItem.is_helpfull){
-        cell.answerRate.backgroundColor = [UIColor greenColor];
-    } else {
-        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
-    }
-    
+    [cell setCellDataWithQuestion:questionItem andAnswer:answerItem];
+    [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
     if(currentCellHeight <= 30){
         cell.answerTextHeight.constant = 110;
     } else {
         cell.answerTextHeight.constant = currentCellHeight;
     }
-    
-    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
-    if(!questionItem.is_closed){
-        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
-    }
-        
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                     icon:[UIImage imageNamed:@"edit-32.png"]];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-         [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
-    cell.leftUtilityButtons = leftUtilityButtons;
-    cell.rightUtilityButtons = rightUtilityButtons;
-    cell.delegate = self;
-    
-    cell.answerQuestion.tag = [questionId integerValue];
-    [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
-    
     return cell;
-}
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
-        QuestionDetailViewController *view = segue.destinationViewController;
-        view.question = [chosenQuestion MR_inThreadContext];
-    }
-    if([[segue identifier] isEqualToString:@"answer_edit"]){
-        AnswerDetailViewController *view = segue.destinationViewController;
-        view.answer = sender;
-    }
 }
 
 - (void) answerQuestionClicked: (UIButton *) sender{
@@ -183,20 +139,17 @@
     Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
     Question *question = [currentAnswer getAnswerQuestion];
     switch (index) {
-        case 0:
-        {
+        case 0:{
             [self performSegueWithIdentifier:@"answer_edit" sender:currentAnswer];
             [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         }
-        case 1:
-        {
+        case 1:{
             
             [self deleteAnswer:currentAnswer question:question atIndexPath:cellIndexPath];
             break;
         }
-        case 2:
-        {
+        case 2:{
             break;
         }
         default:
@@ -223,18 +176,15 @@
     Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
     Question *question = [currentAnswer getAnswerQuestion];
     switch (index) {
-        case 0:
-        {
+        case 0:{
             [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"plus"];
             break;
         }
-        case 1:
-        {
+        case 1:{
             [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"minus"];
             break;
         }
-        case 2:
-        {
+        case 2:{
             [self setAnswerAsHelpfullWithAnswer:currentAnswer question:question andIndexPath:cellIndexPath];
             break;
         }
@@ -283,5 +233,18 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Navigation Segue
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
+        QuestionDetailViewController *view = segue.destinationViewController;
+        view.question = [chosenQuestion MR_inThreadContext];
+    }
+    if([[segue identifier] isEqualToString:@"answer_edit"]){
+        AnswerDetailViewController *view = segue.destinationViewController;
+        view.answer = sender;
+    }
+}
+
 
 @end

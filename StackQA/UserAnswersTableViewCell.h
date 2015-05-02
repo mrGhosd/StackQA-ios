@@ -17,4 +17,5 @@
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerTextHeight;
 - (void) setQUestionData: (Question *) question;
+- (void) setCellDataWithQuestion: (Question *) question andAnswer: (Answer *) answer;
 @end
