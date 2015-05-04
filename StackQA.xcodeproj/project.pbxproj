@@ -42,6 +42,7 @@
 		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644B465C1AC0C6B1002CF50C /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B465B1AC0C6B1002CF50C /* Answer.m */; };
+		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
 		6469F9B01A7049B300E837E3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9AF1A7049B300E837E3 /* edit-32.png */; };
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
@@ -139,6 +140,8 @@
 		644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTableViewCell.m; sourceTree = "<group>"; };
 		644B465A1AC0C6B1002CF50C /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		644B465B1AC0C6B1002CF50C /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
+		644EAB781AF7D50C000C921C /* CommentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsListViewController.h; sourceTree = "<group>"; };
+		644EAB791AF7D50C000C921C /* CommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListViewController.m; sourceTree = "<group>"; };
 		6469F9AF1A7049B300E837E3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
@@ -314,6 +317,7 @@
 		6428B0BB1AAC68C300110D62 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				644EAB771AF7D4ED000C921C /* comments */,
 				6414F8781AD2D99C003B2C15 /* statistic */,
 				64157B8D1AC8726A00E0E401 /* profile */,
 				647C55C01AC36D6D0011D5FA /* authorization */,
@@ -483,6 +487,15 @@
 				644B465B1AC0C6B1002CF50C /* Answer.m */,
 			);
 			name = answers;
+			sourceTree = "<group>";
+		};
+		644EAB771AF7D4ED000C921C /* comments */ = {
+			isa = PBXGroup;
+			children = (
+				644EAB781AF7D50C000C921C /* CommentsListViewController.h */,
+				644EAB791AF7D50C000C921C /* CommentsListViewController.m */,
+			);
+			name = comments;
 			sourceTree = "<group>";
 		};
 		646DDEFC1AB4D8670066F75A /* category */ = {
@@ -760,6 +773,7 @@
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
 				64F5679E1ACF07820084AED4 /* ImageView.m in Sources */,
 				642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */,
+				644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */,
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
 				642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */,
 				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,

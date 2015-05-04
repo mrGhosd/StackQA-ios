@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *answerRate;
 @property (strong, nonatomic) IBOutlet UIWebView *answerText;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerTextHeight;
+@property (strong, nonatomic) IBOutlet UIButton *answerComments;
 
 @end

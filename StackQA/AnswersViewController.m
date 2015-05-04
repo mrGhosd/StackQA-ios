@@ -20,6 +20,7 @@
     float currentCellHeight;
     NSManagedObjectContext *localContext;
     Answer *selectedAnswer;
+    Question *questionAnswerSelected;
     NSMutableArray *answersList;
 }
 
@@ -145,6 +146,8 @@
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
+    cell.answerComments.tag = answerItem.object_id;
+    [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
     if(answerItem.is_helpfull){
@@ -180,6 +183,17 @@
         cell.delegate = self;
     }
     return cell;
+}
+
+- (void) answerCommentsClicked: (UIButton *) sender{
+    __block Question *question;
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
+        NSNumber *answerID = [NSNumber numberWithInteger:sender.tag];
+        NSNumber *questionID = [NSNumber numberWithInteger:sender.tag];
+        Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
+        question = [Question MR_findFirstByAttribute:@"object_id" withValue:answer.question_id inContext:context];
+    }];
+    [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
