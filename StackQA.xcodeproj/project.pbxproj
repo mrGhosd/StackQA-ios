@@ -44,6 +44,7 @@
 		644B465C1AC0C6B1002CF50C /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B465B1AC0C6B1002CF50C /* Answer.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
 		644EAB7E1AF7DC34000C921C /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB7D1AF7DC34000C921C /* Comment.m */; };
+		644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */; };
 		6469F9B01A7049B300E837E3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9AF1A7049B300E837E3 /* edit-32.png */; };
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
@@ -145,6 +146,8 @@
 		644EAB791AF7D50C000C921C /* CommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListViewController.m; sourceTree = "<group>"; };
 		644EAB7C1AF7DC34000C921C /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		644EAB7D1AF7DC34000C921C /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		644FE0DC1AF80AFB0059E830 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		6469F9AF1A7049B300E837E3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
@@ -351,6 +354,7 @@
 		6428B0BD1AAC68D400110D62 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				644FE0DB1AF80AE00059E830 /* comment */,
 				642FAE651AD346D40093A5D2 /* statistic */,
 				6438741B1ACAFBDB0059EBEC /* profile */,
 				644B46541AC0BFBF002CF50C /* answers */,
@@ -507,6 +511,15 @@
 			children = (
 				644EAB7C1AF7DC34000C921C /* Comment.h */,
 				644EAB7D1AF7DC34000C921C /* Comment.m */,
+			);
+			name = comment;
+			sourceTree = "<group>";
+		};
+		644FE0DB1AF80AE00059E830 /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				644FE0DC1AF80AFB0059E830 /* CommentTableViewCell.h */,
+				644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */,
 			);
 			name = comment;
 			sourceTree = "<group>";
@@ -796,6 +809,7 @@
 				64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */,
 				64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */,
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,
+				644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */,
 				648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,
 				64F567961ACE9FA90084AED4 /* ServerError.m in Sources */,

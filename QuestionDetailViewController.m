@@ -10,6 +10,7 @@
 #import "QuestionsFormViewController.h"
 #import "QuestionsViewController.h"
 #import "AnswersViewController.h"
+#import "CommentsListViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "Api.h"
@@ -155,6 +156,10 @@
     if ([[segue identifier] isEqualToString:@"answers_list"]) {
         AnswersViewController *detail = segue.destinationViewController;
         detail.question = self.question;
+    }
+    if([[segue identifier] isEqualToString:@"commentsQuestionView"]){
+        CommentsListViewController *view = segue.destinationViewController;
+        view.question = self.question;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
