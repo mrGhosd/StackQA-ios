@@ -10,6 +10,8 @@
 #import "Question.h"
 #import "Answer.h"
 
-@interface CommentsListViewController : ViewController
-
+@interface CommentsListViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong) Question *question;
+@property (strong) Answer *answer;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
