@@ -10,6 +10,7 @@
         <attribute name="updated_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="comments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" syncable="YES"/>
         <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="answers" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -18,6 +19,13 @@
         <attribute name="created_at" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="expires_in" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="token_type" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Comment" representedClassName="Comment" syncable="YES">
+        <attribute name="commentable_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentable_type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="answers_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -35,6 +43,7 @@
         <attribute name="views" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQACategory" inverseName="questions" inverseEntity="SQACategory" syncable="YES"/>
+        <relationship name="comments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Comment" syncable="YES"/>
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="questions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SQACategory" representedClassName="SQACategory" syncable="YES">
@@ -68,11 +77,12 @@
         <relationship name="statistic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQAStatistic" inverseName="user" inverseEntity="SQAStatistic" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="208"/>
+        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="223"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
-        <element name="Question" positionX="-1764" positionY="-630" width="128" height="285"/>
+        <element name="Question" positionX="-1764" positionY="-630" width="128" height="298"/>
         <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>
-        <element name="SQAStatistic" positionX="-1908" positionY="-126" width="128" height="178"/>
+        <element name="SQAStatistic" positionX="-1991" positionY="-169" width="128" height="178"/>
         <element name="User" positionX="-1523" positionY="-223" width="128" height="238"/>
+        <element name="Comment" positionX="-1838" positionY="-225" width="128" height="118"/>
     </elements>
 </model>

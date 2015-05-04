@@ -26,6 +26,7 @@
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) NSMutableSet *comments;
 
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;

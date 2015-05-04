@@ -30,6 +30,7 @@
 @property (nonatomic, retain) SQACategory *category;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, strong) NSMutableSet *answers;
+@property (nonatomic, retain) NSMutableSet *comments;
 
 + (NSDate *) correctConvertOfDate:(NSString *) date;
 + (void) create: (NSDictionary *) params;

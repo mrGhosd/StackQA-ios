@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "Question.h"
+#import "Answer.h"
 
 @interface CommentsListViewController : ViewController
 
