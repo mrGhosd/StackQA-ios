@@ -242,8 +242,6 @@
     [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-            cell.answerRate.backgroundColor = [UIColor greenColor];
-            [self.question closeQuestion];
             [answersList removeObjectAtIndex:path.row];
             [answer MR_deleteEntity];
             if(answersList.count == 0){

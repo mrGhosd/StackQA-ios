@@ -151,7 +151,7 @@
             break;
         }
         case 1:{
-            
+            [self deleteComment:selectedComment AtPath:cellIndexPath];
 //            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
             break;
         }
@@ -162,7 +162,29 @@
             break;
     }
 }
-
+- (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": comment.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.object_id, comment.object_id];
+    
+    if(self.answer){
+        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.object_id, self.answer.object_id, comment.object_id];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [commentsList removeObjectAtIndex:path.row];
+            [comment MR_deleteEntity];
+            if(commentsList.count == 0){
+                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            }
+        
+        } else {
+        
+        }
+    }];
+}
 - (void)tappedTextView:(UITapGestureRecognizer *)tapGesture {
     CommentTableViewCell *cell = [[[tapGesture view] superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
