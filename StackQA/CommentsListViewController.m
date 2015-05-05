@@ -26,12 +26,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setCommentControl];
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     selectedIndex = -1;
     [self defineCorrectURL];
     [self loadCommentsData];
     // Do any additional setup after loading the view.
 }
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) setCommentControl{
+    if([[AuthorizationManager sharedInstance] currentUser]){
+        [self.controlView setHidden:NO];
+        self.commentText.autocorrectionType = UITextAutocorrectionTypeNo;
+        [self setTextViewBorder];
+        self.commentSendButton.layer.cornerRadius = 5;
+        self.commentTableBottomMargin.constant = self.controlView.frame.size.height;
+    } else {
+        self.commentTableBottomMargin.constant = 0.0;
+        [self.controlView setHidden:YES];
+    }
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+    float textViewConstraint;
+    switch (orientation) {
+        case 1:
+            textViewConstraint = keyboardFrame.size.height;
+            break;
+            
+        case 2:
+            textViewConstraint = keyboardFrame.size.height;
+            break;
+            
+        case 3:
+            textViewConstraint = keyboardFrame.size.height;
+            break;
+            
+        case 4:
+            textViewConstraint = keyboardFrame.size.height;
+            break;
+            
+        default:
+            textViewConstraint = keyboardFrame.size.height;
+            break;
+    }
+    self.commentTableBottomMargin.constant = textViewConstraint + self.controlView.frame.size.height;
+    self.controlViewBottomMargin.constant = textViewConstraint;
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+    self.controlViewBottomMargin.constant = 0.0;
+    self.commentTableBottomMargin.constant = self.controlView.frame.size.height;
+}
+- (void) setTextViewBorder{
+    [self.commentText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [self.commentText.layer setBorderWidth:2.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    self.commentText.layer.cornerRadius = 5;
+    self.commentText.clipsToBounds = YES;
+}
+
 
 - (void) defineCorrectURL{
     if(self.answer){

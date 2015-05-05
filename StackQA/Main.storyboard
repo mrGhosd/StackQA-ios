@@ -408,6 +408,39 @@
                                     <outlet property="delegate" destination="cyX-9e-sgK" id="fQM-f0-CmX"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-Dm-VXi">
+                                <rect key="frame" x="0.0" y="282" width="600" height="48"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="s" translatesAutoresizingMaskIntoConstraints="NO" id="Wk0-IQ-fLU">
+                                        <rect key="frame" x="8" y="8" width="518" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqH-0z-IcO">
+                                        <rect key="frame" x="534" y="8" width="58" height="32"/>
+                                        <color key="backgroundColor" red="0.31467074969999997" green="1" blue="0.30157442699999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="5UX-fW-RP0"/>
+                                            <constraint firstAttribute="height" constant="32" id="BzW-mm-zAh"/>
+                                        </constraints>
+                                        <state key="normal" image="message.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Wk0-IQ-fLU" secondAttribute="bottom" constant="8" id="0tM-n5-2Dy"/>
+                                    <constraint firstAttribute="bottom" secondItem="sqH-0z-IcO" secondAttribute="bottom" constant="8" id="CRy-Gp-Ru7"/>
+                                    <constraint firstItem="Wk0-IQ-fLU" firstAttribute="top" secondItem="ivr-Dm-VXi" secondAttribute="top" constant="8" id="JJC-ja-3Xa"/>
+                                    <constraint firstItem="sqH-0z-IcO" firstAttribute="top" secondItem="ivr-Dm-VXi" secondAttribute="top" constant="8" id="LSC-QV-jct"/>
+                                    <constraint firstItem="sqH-0z-IcO" firstAttribute="leading" secondItem="Wk0-IQ-fLU" secondAttribute="trailing" constant="8" id="aAl-5l-lCt"/>
+                                    <constraint firstItem="Wk0-IQ-fLU" firstAttribute="leading" secondItem="ivr-Dm-VXi" secondAttribute="leading" constant="8" id="eE3-Zn-jmL"/>
+                                    <constraint firstItem="sqH-0z-IcO" firstAttribute="leading" secondItem="Wk0-IQ-fLU" secondAttribute="trailing" constant="8" id="ioI-Lg-GsZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="sqH-0z-IcO" secondAttribute="trailing" constant="8" id="laH-3F-Aed"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -415,9 +448,17 @@
                             <constraint firstItem="jQB-gA-JRs" firstAttribute="leading" secondItem="PHJ-Nf-9Eh" secondAttribute="leadingMargin" constant="-16" id="BLy-j6-Dzi"/>
                             <constraint firstItem="bnv-pr-fId" firstAttribute="top" secondItem="jQB-gA-JRs" secondAttribute="bottom" id="EkH-0D-ySX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jQB-gA-JRs" secondAttribute="trailing" constant="-16" id="RF5-I8-HyD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ivr-Dm-VXi" secondAttribute="trailing" constant="-16" id="Xxk-rP-OMM"/>
+                            <constraint firstItem="ivr-Dm-VXi" firstAttribute="leading" secondItem="PHJ-Nf-9Eh" secondAttribute="leadingMargin" constant="-16" id="jqD-4P-a8z"/>
+                            <constraint firstItem="bnv-pr-fId" firstAttribute="top" secondItem="ivr-Dm-VXi" secondAttribute="bottom" id="zig-HP-23V"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="commentSendButton" destination="sqH-0z-IcO" id="d0o-cd-Jxt"/>
+                        <outlet property="commentTableBottomMargin" destination="EkH-0D-ySX" id="XAZ-2K-OzE"/>
+                        <outlet property="commentText" destination="Wk0-IQ-fLU" id="qyz-lZ-Y5a"/>
+                        <outlet property="controlView" destination="ivr-Dm-VXi" id="MPA-Sh-25P"/>
+                        <outlet property="controlViewBottomMargin" destination="zig-HP-23V" id="3vN-Xa-lDc"/>
                         <outlet property="tableView" destination="jQB-gA-JRs" id="gvf-CY-EfB"/>
                     </connections>
                 </viewController>

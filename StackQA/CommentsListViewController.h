@@ -14,4 +14,9 @@
 @property (strong) Question *question;
 @property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentTableBottomMargin;
+@property (strong, nonatomic) IBOutlet UIView *controlView;
+@property (strong, nonatomic) IBOutlet UITextView *commentText;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *controlViewBottomMargin;
+@property (strong, nonatomic) IBOutlet UIButton *commentSendButton;
 @end
