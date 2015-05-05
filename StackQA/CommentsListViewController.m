@@ -10,6 +10,7 @@
 #import "AuthorizationManager.h"
 #import "CommentTableViewCell.h"
 #import "CommentsListViewController.h"
+#import "CommentDetailViewController.h"
 #import <SWTableViewCell.h>
 
 @interface CommentsListViewController (){
@@ -19,6 +20,7 @@
     int selectedIndex;
     float currentCellHeight;
     AuthorizationManager *auth;
+    Comment *selectedComment;
     NSManagedObjectContext *localContext;
 }
 
@@ -38,6 +40,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    [self loadCommentsData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -138,6 +141,28 @@
     return cell;
 }
 
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    selectedComment = commentsList[cellIndexPath.row];
+    switch (index) {
+        case 0:{
+            [self performSegueWithIdentifier:@"comment_edit" sender:self];
+            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        }
+        case 1:{
+            
+//            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
+            break;
+        }
+        case 2:{
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 - (void)tappedTextView:(UITapGestureRecognizer *)tapGesture {
     CommentTableViewCell *cell = [[[tapGesture view] superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
@@ -211,6 +236,16 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"comment_edit"]){
+        CommentDetailViewController *view = segue.destinationViewController;
+        view.comment = selectedComment;
+        view.question = self.question;
+        if(self.answer){
+            view.answer = self.answer;
+        }
+    }
+}
 
 - (IBAction)createComment:(id)sender {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": self.commentText.text}];
@@ -218,7 +253,7 @@
 
     if(self.answer){
         [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@.comments", self.question.object_id, self.answer.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.object_id, self.answer.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){

@@ -463,11 +463,123 @@
                         <outlet property="controlView" destination="ivr-Dm-VXi" id="MPA-Sh-25P"/>
                         <outlet property="controlViewBottomMargin" destination="zig-HP-23V" id="3vN-Xa-lDc"/>
                         <outlet property="tableView" destination="jQB-gA-JRs" id="gvf-CY-EfB"/>
+                        <segue destination="a1O-YQ-dhg" kind="presentation" identifier="comment_edit" id="84w-cX-ZdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uX8-hv-iff" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="552" y="2033"/>
+            <point key="canvasLocation" x="444" y="2305"/>
+        </scene>
+        <!--Comment Detail View Controller-->
+        <scene sceneID="RGd-sF-CSk">
+            <objects>
+                <viewController id="a1O-YQ-dhg" customClass="CommentDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="G2I-fM-4PM"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZVi-Za-d9H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Src-E9-RYr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KzI-WQ-P0g">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1g-dp-HKs">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZoJ-di-PoA">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="ZoJ-di-PoA" secondAttribute="trailing" id="aAG-Sb-RXV"/>
+                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="top" secondItem="R1g-dp-HKs" secondAttribute="top" id="bAc-K6-xUd"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZoJ-di-PoA" secondAttribute="bottom" constant="30" id="g0s-SJ-cGD"/>
+                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="leading" secondItem="R1g-dp-HKs" secondAttribute="leading" id="lry-QZ-l2y"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="R1g-dp-HKs" firstAttribute="top" secondItem="KzI-WQ-P0g" secondAttribute="top" id="MB4-VB-3e5"/>
+                                    <constraint firstItem="R1g-dp-HKs" firstAttribute="width" secondItem="KzI-WQ-P0g" secondAttribute="width" id="fn6-9S-Iu1"/>
+                                    <constraint firstItem="R1g-dp-HKs" firstAttribute="leading" secondItem="KzI-WQ-P0g" secondAttribute="leading" id="jGf-1W-GeJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="R1g-dp-HKs" secondAttribute="trailing" id="qc5-wZ-CwT"/>
+                                    <constraint firstAttribute="bottom" secondItem="R1g-dp-HKs" secondAttribute="bottom" constant="50" id="sY1-7q-ptk"/>
+                                </constraints>
+                            </scrollView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03i-qZ-Vnv">
+                                <rect key="frame" x="0.0" y="275" width="600" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mt7-zn-BHm">
+                                        <rect key="frame" x="8" y="10" width="106" height="30"/>
+                                        <color key="backgroundColor" red="0.29286650060000002" green="1" blue="0.03287868477" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="106" id="BeA-o9-aIw"/>
+                                            <constraint firstAttribute="height" constant="30" id="IbA-iz-IYB"/>
+                                        </constraints>
+                                        <state key="normal" title="Сохранить">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveComment:" destination="a1O-YQ-dhg" eventType="touchUpInside" id="xJF-Hh-w1u"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkS-vx-e3i">
+                                        <rect key="frame" x="486" y="10" width="106" height="30"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="WJP-Rh-4Vy"/>
+                                            <constraint firstAttribute="width" constant="106" id="p7o-Dz-Pi2"/>
+                                        </constraints>
+                                        <state key="normal" title="Отмена">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dissmissView:" destination="a1O-YQ-dhg" eventType="touchUpInside" id="RVz-6n-7u0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Mt7-zn-BHm" firstAttribute="leading" secondItem="03i-qZ-Vnv" secondAttribute="leading" constant="8" id="6Fq-Wi-tqV"/>
+                                    <constraint firstAttribute="bottom" secondItem="VkS-vx-e3i" secondAttribute="bottom" constant="10" id="CB0-D2-2Y8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mt7-zn-BHm" secondAttribute="bottom" constant="10" id="Lfe-CP-fap"/>
+                                    <constraint firstAttribute="trailing" secondItem="VkS-vx-e3i" secondAttribute="trailing" constant="8" id="Mak-as-nh9"/>
+                                    <constraint firstItem="VkS-vx-e3i" firstAttribute="top" secondItem="03i-qZ-Vnv" secondAttribute="top" constant="10" id="aJr-4n-D6j"/>
+                                    <constraint firstItem="Mt7-zn-BHm" firstAttribute="top" secondItem="03i-qZ-Vnv" secondAttribute="top" constant="10" id="xEi-H1-Pgd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZVi-Za-d9H" firstAttribute="top" secondItem="KzI-WQ-P0g" secondAttribute="bottom" constant="50" id="C6w-CK-jJj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="03i-qZ-Vnv" secondAttribute="trailing" constant="-16" id="E4j-lV-Hd2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KzI-WQ-P0g" secondAttribute="trailing" constant="-16" id="HhE-Uj-Ali"/>
+                            <constraint firstItem="ZVi-Za-d9H" firstAttribute="top" secondItem="03i-qZ-Vnv" secondAttribute="bottom" id="OYk-TR-bdI"/>
+                            <constraint firstItem="03i-qZ-Vnv" firstAttribute="leading" secondItem="Src-E9-RYr" secondAttribute="leadingMargin" constant="-16" id="Uvu-nL-rUc"/>
+                            <constraint firstItem="KzI-WQ-P0g" firstAttribute="leading" secondItem="Src-E9-RYr" secondAttribute="leadingMargin" constant="-16" id="dXq-8r-P8P"/>
+                            <constraint firstItem="KzI-WQ-P0g" firstAttribute="top" secondItem="Src-E9-RYr" secondAttribute="topMargin" id="uJG-ZZ-bG7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="VkS-vx-e3i" id="ztI-a0-r1T"/>
+                        <outlet property="commentText" destination="ZoJ-di-PoA" id="0yg-Vw-GvG"/>
+                        <outlet property="controlView" destination="03i-qZ-Vnv" id="gXy-MT-FcV"/>
+                        <outlet property="saveButton" destination="Mt7-zn-BHm" id="YVO-Uy-E64"/>
+                        <outlet property="scrollView" destination="KzI-WQ-P0g" id="4gG-Aj-Ib4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CSG-Nb-5GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="3029"/>
         </scene>
         <!--Answers View Controller-->
         <scene sceneID="Ril-Kc-HAW">

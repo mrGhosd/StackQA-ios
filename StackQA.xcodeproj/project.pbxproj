@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64097AAB1AF96C3B002F44AD /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64097AAA1AF96C3B002F44AD /* CommentDetailViewController.m */; };
 		640DC37F1ADD824900CE22DA /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 640DC37E1ADD824900CE22DA /* message.png */; };
 		640DC3811ADD860700CE22DA /* settings48.png in Resources */ = {isa = PBXBuildFile; fileRef = 640DC3801ADD860700CE22DA /* settings48.png */; };
 		640DC3831ADD96CC00CE22DA /* up-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 640DC3821ADD96CC00CE22DA /* up-32.png */; };
@@ -91,6 +92,8 @@
 /* Begin PBXFileReference section */
 		0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.debug.xcconfig"; sourceTree = "<group>"; };
+		64097AA91AF96C3B002F44AD /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
+		64097AAA1AF96C3B002F44AD /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
 		640DC37E1ADD824900CE22DA /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		640DC3801ADD860700CE22DA /* settings48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings48.png; sourceTree = "<group>"; };
 		640DC3821ADD96CC00CE22DA /* up-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up-32.png"; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 			children = (
 				644EAB781AF7D50C000C921C /* CommentsListViewController.h */,
 				644EAB791AF7D50C000C921C /* CommentsListViewController.m */,
+				64097AA91AF96C3B002F44AD /* CommentDetailViewController.h */,
+				64097AAA1AF96C3B002F44AD /* CommentDetailViewController.m */,
 			);
 			name = comments;
 			sourceTree = "<group>";
@@ -809,6 +814,7 @@
 				64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */,
 				64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */,
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,
+				64097AAB1AF96C3B002F44AD /* CommentDetailViewController.m in Sources */,
 				644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */,
 				648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,

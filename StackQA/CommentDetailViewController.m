@@ -1,0 +1,68 @@
+//
+//  CommentDetailViewController.m
+//  StackQA
+//
+//  Created by vsokoltsov on 06.05.15.
+//  Copyright (c) 2015 vsokoltsov. All rights reserved.
+//
+
+#import "CommentDetailViewController.h"
+#import "Api.h"
+#import "AuthorizationManager.h"
+
+@interface CommentDetailViewController (){
+    AuthorizationManager *auth;
+}
+
+@end
+
+@implementation CommentDetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self setActionView];
+    auth = [AuthorizationManager sharedInstance];
+    self.commentText.text = self.comment.text;
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (void) setActionView{
+    self.saveButton.layer.cornerRadius = 5.0;
+    self.cancelButton.layer.cornerRadius = 5.0;
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (IBAction)saveComment:(id)sender {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": self.commentText.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.object_id, self.comment.object_id];
+    
+    if(self.answer){
+        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.object_id, self.answer.object_id, self.comment.object_id];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
+        if(success){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            
+        }
+    }];
+}
+
+- (IBAction)dissmissView:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+@end
