@@ -18,6 +18,7 @@
     NSString *url;
     int selectedIndex;
     float currentCellHeight;
+    AuthorizationManager *auth;
     NSManagedObjectContext *localContext;
 }
 
@@ -27,8 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setCommentControl];
+    auth = [AuthorizationManager sharedInstance];
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+    [self setCommentControl];
     selectedIndex = -1;
     [self defineCorrectURL];
     [self loadCommentsData];
@@ -43,7 +45,7 @@
 }
 
 - (void) setCommentControl{
-    if([[AuthorizationManager sharedInstance] currentUser]){
+    if(auth.currentUser){
         [self.controlView setHidden:NO];
         self.commentText.autocorrectionType = UITextAutocorrectionTypeNo;
         [self setTextViewBorder];
@@ -60,28 +62,7 @@
     id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
     CGRect keyboardFrame = [keyboardSize CGRectValue];
     int orientation = (int)[[UIDevice currentDevice] orientation];
-    float textViewConstraint;
-    switch (orientation) {
-        case 1:
-            textViewConstraint = keyboardFrame.size.height;
-            break;
-            
-        case 2:
-            textViewConstraint = keyboardFrame.size.height;
-            break;
-            
-        case 3:
-            textViewConstraint = keyboardFrame.size.height;
-            break;
-            
-        case 4:
-            textViewConstraint = keyboardFrame.size.height;
-            break;
-            
-        default:
-            textViewConstraint = keyboardFrame.size.height;
-            break;
-    }
+    float textViewConstraint = keyboardFrame.size.height;
     self.commentTableBottomMargin.constant = textViewConstraint + self.controlView.frame.size.height;
     self.controlViewBottomMargin.constant = textViewConstraint;
 }
@@ -133,16 +114,12 @@
     Comment *cellComment = commentsList[indexPath.row];
     User *cellUser = [cellComment getUserForComment];
     CommentTableViewCell *cell = (CommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    cell.userAvatar.image = [cellUser profileImage];
-//    cell.userAvatar.layer.cornerRadius = cell.userAvatar.frame.size.width / 2;
-//    cell.userAvatar.layer.masksToBounds = YES;
     cell.commentText.text = cellComment.text;
     [cell.userName setTitle:cellUser.correct_naming forState:UIControlStateNormal];
-//    [cell.commentText loadHTMLString: cellComment.text baseURL:nil];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedTextView:)];
     [cell.commentText addGestureRecognizer:tapRecognizer];
     cell.commentText.selectable = YES;
-    if([[AuthorizationManager sharedInstance] currentUser] && [[[AuthorizationManager sharedInstance] currentUser] object_id] == cellComment.user_id){
+    if(auth.currentUser && auth.currentUser.object_id == cellComment.user_id){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -152,12 +129,6 @@
         cell.rightUtilityButtons = rightUtilityButtons;
         cell.delegate = self;
     }
-
-//    singleTap.delegate = self;
-//    [cell.commentText addGestureRecognizer:singleTap];
-//    [cell.commentText];
-//    [cell.commentText addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
-//    cell.commentTextHeight.constant = 33;
     
     if(currentCellHeight <= 30){
         cell.commentTextHeight.constant = 33;
@@ -241,4 +212,23 @@
 }
 */
 
+- (IBAction)createComment:(id)sender {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": self.commentText.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.object_id];
+
+    if(self.answer){
+        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@.comments", self.question.object_id, self.answer.object_id];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            self.commentText.text = @"";
+            [self loadCommentsData];
+        } else {
+        
+        }
+    }];
+    
+    
+}
 @end

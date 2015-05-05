@@ -19,4 +19,5 @@
 @property (strong, nonatomic) IBOutlet UITextView *commentText;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *controlViewBottomMargin;
 @property (strong, nonatomic) IBOutlet UIButton *commentSendButton;
+- (IBAction)createComment:(id)sender;
 @end
