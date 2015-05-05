@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SWTableViewCell.h>
 
-@interface CommentTableViewCell : UITableViewCell
+@interface CommentTableViewCell : SWTableViewCell
 @property (strong, nonatomic) IBOutlet UIImageView *userAvatar;
 @property (strong, nonatomic) IBOutlet UITextView *commentText;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *commentTextHeight;
