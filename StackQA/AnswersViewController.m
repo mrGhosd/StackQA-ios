@@ -120,11 +120,11 @@
     [self.view endEditing:YES];
     if(selectedIndex == indexPath.row){
         selectedIndex = -1;
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         return;
     }
     
-    if(selectedIndex != -1){
+    if(selectedIndex != -1 && indexPath != nil){
         NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
         selectedIndex = indexPath.row;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -152,7 +152,7 @@
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.numberOfTouchesRequired=1;
     singleTap.delegate=self;
-    [cell.answerText addGestureRecognizer:singleTap];
+//    [[cell.answerText superview] addGestureRecognizer:singleTap];
     
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
@@ -191,8 +191,14 @@
     return cell;
 }
 
-- (void) handleSingleTap{
+- (void) handleSingleTap:(UITapGestureRecognizer *)gesture{
+    AnswerTableViewCell * cell = [[[[gesture view] superview] superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
+}
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognize{
+    return YES;
 }
 - (void) answerCommentsClicked: (UIButton *) sender{
     __block Question *question;
