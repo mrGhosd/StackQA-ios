@@ -136,7 +136,7 @@
 }
 
 - (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
-    CGSize size = [answersList[path.row][@"text"] sizeWithAttributes:nil];
+    CGSize size = [[answersList[path.row] text] sizeWithAttributes:nil];
     currentCellHeight = size.width / 10;
     [self.tableView cellForRowAtIndexPath:path];
 }
@@ -148,6 +148,12 @@
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
     cell.answerComments.tag = answerItem.object_id;
     [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
+    cell.answerText.exclusiveTouch = YES;
+    UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
+    singleTap.numberOfTouchesRequired=1;
+    singleTap.delegate=self;
+    [cell.answerText addGestureRecognizer:singleTap];
+    
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
     if(answerItem.is_helpfull){
@@ -185,6 +191,9 @@
     return cell;
 }
 
+- (void) handleSingleTap{
+
+}
 - (void) answerCommentsClicked: (UIButton *) sender{
     __block Question *question;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
@@ -193,7 +202,7 @@
         Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
         question = [Question MR_findFirstByAttribute:@"object_id" withValue:answer.question_id inContext:context];
     }];
-    [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
+//    [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
