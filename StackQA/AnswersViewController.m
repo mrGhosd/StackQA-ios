@@ -8,6 +8,7 @@
 
 #import "AnswersViewController.h"
 #import "AnswerDetailViewController.h"
+#import "CommentsListViewController.h"
 #import "Api.h"
 #import "AnswerTableViewCell.h"
 #import "AuthorizationManager.h"
@@ -146,7 +147,8 @@
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
-    cell.answerComments.tag = answerItem.object_id;
+    cell.answerComments.tag = [answerItem.object_id integerValue];
+    [cell.answerComments setTitle:[NSString stringWithFormat:@"%@", answerItem.comments_count] forState:UIControlStateNormal];
     [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.answerText.exclusiveTouch = YES;
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
@@ -201,14 +203,11 @@
     return YES;
 }
 - (void) answerCommentsClicked: (UIButton *) sender{
-    __block Question *question;
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
         NSNumber *answerID = [NSNumber numberWithInteger:sender.tag];
-        NSNumber *questionID = [NSNumber numberWithInteger:sender.tag];
         Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
-        question = [Question MR_findFirstByAttribute:@"object_id" withValue:answer.question_id inContext:context];
-    }];
-//    [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
+        selectedAnswer = answer;
+        questionAnswerSelected = self.question;
+        [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -376,6 +375,11 @@
     if([[segue identifier] isEqualToString:@"answer_edit"]){
         AnswerDetailViewController *view = segue.destinationViewController;
         view.answer = selectedAnswer;
+    }
+    if([[segue identifier] isEqualToString:@"commentsAnswerView"]){
+        CommentsListViewController *view = segue.destinationViewController;
+        view.answer = selectedAnswer;
+        view.question = questionAnswerSelected;
     }
 }
 

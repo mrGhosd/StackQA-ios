@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="comments_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="created_at" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="is_helpfull" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -77,7 +78,7 @@
         <relationship name="statistic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQAStatistic" inverseName="user" inverseEntity="SQAStatistic" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="223"/>
+        <element name="Answer" positionX="-1971" positionY="-513" width="128" height="240"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
         <element name="Comment" positionX="-1838" positionY="-225" width="128" height="118"/>
         <element name="Question" positionX="-1764" positionY="-630" width="128" height="298"/>

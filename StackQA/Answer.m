@@ -22,6 +22,7 @@
 @dynamic user_name;
 @dynamic rate;
 @dynamic question_id;
+@dynamic comments_count;
 
 + (void) sync: (NSArray *) params{
     NSMutableArray *serverObjects = [NSMutableArray new];
@@ -163,6 +164,7 @@
     answer.created_at = [Question correctConvertOfDate:params[@"created_at"]];
     answer.text = params[@"text"];
     answer.rate = params[@"rate"];
+    answer.comments_count = params[@"comments_count"];
     answer.is_helpfull = (BOOL)[params[@"is_helpfull"] boolValue];
     
 }

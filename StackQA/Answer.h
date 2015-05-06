@@ -22,6 +22,7 @@
 @property (nonatomic, retain) NSString * user_name;
 @property (nonatomic, retain) NSNumber * rate;
 @property (nonatomic, retain) NSNumber * question_id;
+@property (nonatomic, retain) NSNumber * comments_count;
 @property (nonatomic, retain) NSDate * created_at;
 @property (nonatomic, retain) NSDate * updated_at;
 @property (nonatomic, retain) Question *question;
