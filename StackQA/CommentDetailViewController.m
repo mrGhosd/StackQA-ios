@@ -23,7 +23,30 @@
     [self setActionView];
     auth = [AuthorizationManager sharedInstance];
     self.commentText.text = self.comment.text;
+    self.commentText.autocorrectionType = UITextAutocorrectionTypeNo;
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+    float textViewConstraint = keyboardFrame.size.height;
+    self.scrollViewBottomMargin.constant = textViewConstraint + self.controlView.frame.size.height;
+    self.actionViewBottomMargin.constant = textViewConstraint;
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+    self.actionViewBottomMargin.constant = 0.0;
+    self.scrollViewBottomMargin.constant = self.controlView.frame.size.height;
 }
 
 - (void)didReceiveMemoryWarning {

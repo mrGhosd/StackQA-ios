@@ -20,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *saveButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UITextView *commentText;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *actionViewBottomMargin;
 - (IBAction)saveComment:(id)sender;
 - (IBAction)dissmissView:(id)sender;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
 @end

@@ -570,11 +570,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionViewBottomMargin" destination="OYk-TR-bdI" id="OEv-va-GJQ"/>
                         <outlet property="cancelButton" destination="VkS-vx-e3i" id="ztI-a0-r1T"/>
                         <outlet property="commentText" destination="ZoJ-di-PoA" id="0yg-Vw-GvG"/>
                         <outlet property="controlView" destination="03i-qZ-Vnv" id="gXy-MT-FcV"/>
                         <outlet property="saveButton" destination="Mt7-zn-BHm" id="YVO-Uy-E64"/>
                         <outlet property="scrollView" destination="KzI-WQ-P0g" id="4gG-Aj-Ib4"/>
+                        <outlet property="scrollViewBottomMargin" destination="C6w-CK-jJj" id="yq0-Lc-YvD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSG-Nb-5GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
