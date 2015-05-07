@@ -119,9 +119,8 @@
     CommentTableViewCell *cell = (CommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.commentText.text = cellComment.text;
     [cell.userName setTitle:cellUser.correct_naming forState:UIControlStateNormal];
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedTextView:)];
-    [cell.commentText addGestureRecognizer:tapRecognizer];
-    cell.commentText.selectable = YES;
+    cell.commentText.editable = NO;
+    cell.commentText.scrollEnabled = NO;
     if(auth.currentUser && auth.currentUser.object_id == cellComment.user_id){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:

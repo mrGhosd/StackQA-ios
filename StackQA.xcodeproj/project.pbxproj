@@ -47,6 +47,8 @@
 		644EAB7E1AF7DC34000C921C /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB7D1AF7DC34000C921C /* Comment.m */; };
 		644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */; };
 		646543381AFBA78800C0E10F /* QuestionViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543371AFBA78800C0E10F /* QuestionViewControllerTest.m */; };
+		646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543771AFBF3C800C0E10F /* UserCommentsViewController.m */; };
+		6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */; };
 		6469F9B01A7049B300E837E3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9AF1A7049B300E837E3 /* edit-32.png */; };
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
@@ -153,6 +155,10 @@
 		644FE0DC1AF80AFB0059E830 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		646543371AFBA78800C0E10F /* QuestionViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewControllerTest.m; sourceTree = "<group>"; };
+		646543761AFBF3C800C0E10F /* UserCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentsViewController.h; sourceTree = "<group>"; };
+		646543771AFBF3C800C0E10F /* UserCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentsViewController.m; sourceTree = "<group>"; };
+		646543791AFC0AD000C0E10F /* UserCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentTableViewCell.h; sourceTree = "<group>"; };
+		6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentTableViewCell.m; sourceTree = "<group>"; };
 		6469F9AF1A7049B300E837E3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
@@ -281,6 +287,8 @@
 				648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */,
 				64D8E3371AE9B488006EB1CD /* UserAnswersViewController.h */,
 				64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */,
+				646543761AFBF3C800C0E10F /* UserCommentsViewController.h */,
+				646543771AFBF3C800C0E10F /* UserCommentsViewController.m */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -469,6 +477,8 @@
 				64F5679F1ACF07910084AED4 /* ImageView.xib */,
 				647BD8971AF027F0002A0B66 /* UserAnswersTableViewCell.h */,
 				647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */,
+				646543791AFC0AD000C0E10F /* UserCommentTableViewCell.h */,
+				6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */,
 			);
 			name = profile;
 			sourceTree = "<group>";
@@ -804,6 +814,7 @@
 				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,
 				64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */,
 				64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */,
+				6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */,
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
 				64F5679E1ACF07820084AED4 /* ImageView.m in Sources */,
@@ -812,6 +823,7 @@
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
 				642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */,
 				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,
+				646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,
 				64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */,
 				64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */,

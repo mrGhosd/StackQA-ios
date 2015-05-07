@@ -1119,7 +1119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zwn-Cs-s6o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3552" y="-1109"/>
+            <point key="canvasLocation" x="3548" y="-1377"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jh1-Qg-Efd">
@@ -1262,11 +1262,57 @@
                         <segue destination="HY1-5n-C4M" kind="show" identifier="user_statistic" id="9Jy-i1-Yu6"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="user_questions" id="uQv-Ln-Urv"/>
                         <segue destination="mBo-Nb-Ujf" kind="show" identifier="userAnswers" id="Ro0-DF-bfe"/>
+                        <segue destination="5Fh-zh-NM9" kind="show" identifier="user_comments" id="PUr-SF-ScA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Eh-TM-mUL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2509" y="-1187"/>
+        </scene>
+        <!--User Comments View Controller-->
+        <scene sceneID="4GV-pc-Hsc">
+            <objects>
+                <viewController id="5Fh-zh-NM9" customClass="UserCommentsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VxK-Y6-I5q"/>
+                        <viewControllerLayoutGuide type="bottom" id="Myj-SJ-lsu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0en-ro-1X9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vbh-eS-XsH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="lbM-0b-MMb" customClass="UserCommentTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lbM-0b-MMb" id="I5t-du-rux">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Fh-zh-NM9" id="zf0-Vg-8Yk"/>
+                                    <outlet property="delegate" destination="5Fh-zh-NM9" id="03M-gy-tkW"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vbh-eS-XsH" secondAttribute="trailing" constant="-16" id="NqI-xh-Y8y"/>
+                            <constraint firstItem="vbh-eS-XsH" firstAttribute="leading" secondItem="0en-ro-1X9" secondAttribute="leadingMargin" constant="-16" id="mbH-u6-CyI"/>
+                            <constraint firstItem="vbh-eS-XsH" firstAttribute="top" secondItem="0en-ro-1X9" secondAttribute="topMargin" id="wb7-4c-aCF"/>
+                            <constraint firstItem="Myj-SJ-lsu" firstAttribute="top" secondItem="vbh-eS-XsH" secondAttribute="bottom" id="ycI-NR-LVR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="vbh-eS-XsH" id="7Z0-PQ-a9f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMR-pv-oYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2536" y="-163"/>
         </scene>
         <!--User Answers View Controller-->
         <scene sceneID="OlO-Ku-ons">
