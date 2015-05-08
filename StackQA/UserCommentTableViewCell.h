@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Comment.h"
+#import <SWTableViewCell.h>
 
-@interface UserCommentTableViewCell : UITableViewCell
-
+@interface UserCommentTableViewCell : SWTableViewCell
+@property (strong, nonatomic) IBOutlet UIButton *commentEntityLink;
+@property (strong, nonatomic) IBOutlet UITextView *commentText;
+- (void) setParametersForComment:(Comment *) comment;
 @end

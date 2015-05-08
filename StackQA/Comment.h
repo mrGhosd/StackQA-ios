@@ -27,4 +27,5 @@
 + (NSMutableArray *) commentsForCurrentEntity: (id) entity andID:(NSNumber *) objectID;
 - (User *) getUserForComment;
 + (void) setCommentsToUser: (User *) user;
+- (id) getEntity;
 @end

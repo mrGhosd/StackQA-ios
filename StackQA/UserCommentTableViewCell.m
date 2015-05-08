@@ -19,5 +19,22 @@
 
     // Configure the view for the selected state
 }
+- (void) setParametersForComment:(Comment *) comment{
+    self.commentText.editable = NO;
+    self.commentText.text = comment.text;
+    id entity = [comment getEntity];
+    NSString *buttonTitle;
+    UIImage *buttonImage;
+    if([comment.commentable_type isEqualToString:@"Question"]){
+        buttonTitle = [entity title];
+        buttonImage = [UIImage imageNamed:@"ask_question-32.png"];
+    } else {
+        buttonTitle = [entity text];
+        buttonImage = [UIImage imageNamed:@"answers-32.png"];
+    }
+    [self.commentEntityLink setTitle:buttonTitle forState:UIControlStateNormal];
+    [self.commentEntityLink setImage:buttonImage forState:UIControlStateNormal];
+//    [self.commentEntityLink setI];
+}
 
 @end

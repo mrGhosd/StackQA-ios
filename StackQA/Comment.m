@@ -67,6 +67,12 @@
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         Comment *comment = [self defineCommentWithId:params[@"id"] andContext:localContext];
         [self setParams:params toComment:comment];
+        if(params[@"answer"] != [NSNull null]){
+            [Answer create:params[@"answer"]];
+        }
+        if (params[@"question"] != [NSNull null]){
+            [Question create:params[@"question"]];
+        }
         [localContext MR_save];
     }];
 }
@@ -119,5 +125,9 @@
         return user;
     }
     
+}
+- (id) getEntity{
+    id entity = [NSClassFromString(self.commentable_type) MR_findFirstByAttribute:@"object_id" withValue:self.commentable_id];
+    return entity;
 }
 @end

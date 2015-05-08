@@ -58,7 +58,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"commentCell";
-    UserCommentsViewController *cell = (UserCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    Comment *commentItem = commentsList[indexPath.row];
+    UserCommentTableViewCell *cell = (UserCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    [cell setParametersForComment:commentItem];
     return cell;
 }
 
