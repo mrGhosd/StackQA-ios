@@ -51,6 +51,9 @@
         <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="questions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SQACategory" representedClassName="SQACategory" syncable="YES">
+        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="category" inverseEntity="Question" syncable="YES"/>
     </entity>
@@ -86,7 +89,7 @@
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
         <element name="Comment" positionX="-1838" positionY="-225" width="128" height="165"/>
         <element name="Question" positionX="-1764" positionY="-630" width="128" height="300"/>
-        <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>
+        <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="120"/>
         <element name="SQAStatistic" positionX="-1991" positionY="-169" width="128" height="178"/>
         <element name="User" positionX="-1523" positionY="-223" width="128" height="255"/>
     </elements>

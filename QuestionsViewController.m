@@ -37,6 +37,11 @@
     auth = [AuthorizationManager sharedInstance];
     [self defineNavigationPanel];
     [self pageType];
+    if(self.category == nil){
+        self.categoryHeaderView.hidden = YES;
+    } else {
+        self.categoryHeaderView.hidden = NO;
+    }
     [self.tableView reloadData];
     [self toggleCrateQuestionButton];
     // Uncomment the following line to preserve selection between presentations.

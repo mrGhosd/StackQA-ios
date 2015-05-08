@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <UIKit/UIKit.h>
 
 @class Question;
 
 @interface SQACategory : NSManagedObject
 
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * desc;
+@property (nonatomic, retain) NSNumber * object_id;
+@property (nonatomic, retain) NSString * image_url;
 @property (nonatomic, retain) NSMutableSet *questions;
-
++ (void) sync: (NSArray *) params;
++ (void) create: (NSDictionary *) params;
+- (UIImage *) categoryImage;
 @end
