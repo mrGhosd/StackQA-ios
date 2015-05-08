@@ -8,6 +8,7 @@
 
 #import "UserCommentsViewController.h"
 #import "UserCommentTableViewCell.h"
+#import "CommentDetailViewController.h"
 #import "QuestionDetailViewController.h"
 #import "AnswersViewController.h"
 #import "Comment.h"
@@ -20,6 +21,7 @@
     float currentCellHeight;
     int selectedIndex;
     Question *selectedQuestion;
+    Comment *selectedComment;
     NSManagedObjectContext *localContext;
     AuthorizationManager *auth;
 }
@@ -34,10 +36,12 @@
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     auth = [AuthorizationManager sharedInstance];
     commentsList = [NSMutableArray new];
-    [self loadUserCommentsData];
     // Do any additional setup after loading the view.
 }
-
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self loadUserCommentsData];
+}
 - (void) loadUserCommentsData{
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.object_id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
@@ -176,8 +180,77 @@
         AnswersViewController *view = segue.destinationViewController;
         view.question = [selectedQuestion MR_inThreadContext];
     }
+    
+    if([[segue identifier] isEqualToString:@"editComment"]){
+        CommentDetailViewController *view = segue.destinationViewController;
+        view.comment = [selectedComment MR_inThreadContext];
+        Question *q;
+        Answer *a;
+        if([selectedComment.commentable_type isEqualToString:@"Question"]){
+            q = [selectedComment getEntity];
+        }
+        if([selectedComment.commentable_type isEqualToString:@"Answer"]){
+            a = [selectedComment getEntity];
+            q = [a getAnswerQuestion];
+        }
+        view.question = [q MR_inThreadContext];
+        if(a){
+            view.answer = [a MR_inThreadContext];
+        }
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    selectedComment = commentsList[cellIndexPath.row];
+    switch (index) {
+        case 0:{
+            [self performSegueWithIdentifier:@"editComment" sender:self];
+            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            break;
+        }
+        case 1:{
+            [self deleteComment:selectedComment AtPath:cellIndexPath];
+            //            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
+            break;
+        }
+        case 2:{
+            break;
+        }
+        default:
+            break;
+    }
+}
+- (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
+    NSMutableDictionary *params;
+    NSString *url;
+    if([comment.commentable_type isEqualToString:@"Question"]){
+        Question *q = [comment getEntity];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.object_id, @"text": comment.text}];
+        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.object_id, comment.object_id];
+    }
+    if ([comment.commentable_type isEqualToString:@"Answer"]){
+        Answer *an = [comment getEntity];
+        Question *q = [an getAnswerQuestion];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.object_id, @"answer_id": an.object_id, @"text": comment.text}];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.object_id, an.object_id, comment.object_id];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [comment MR_deleteEntity];
+            [commentsList removeObjectAtIndex:path.row];
+            if(commentsList.count == 0){
+                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
+            } else {
+                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+            }
+            
+        } else {
+            
+        }
+    }];
 }
 
 /*

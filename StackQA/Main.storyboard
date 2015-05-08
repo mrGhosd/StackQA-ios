@@ -581,7 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSG-Nb-5GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="444" y="3029"/>
+            <point key="canvasLocation" x="1396" y="2481"/>
         </scene>
         <!--Answers View Controller-->
         <scene sceneID="Ril-Kc-HAW">
@@ -1338,6 +1338,7 @@
                         <outlet property="tableView" destination="vbh-eS-XsH" id="7Z0-PQ-a9f"/>
                         <segue destination="Xug-EA-AjG" kind="show" identifier="showQuestion" id="qso-7B-GJb"/>
                         <segue destination="8TF-aP-r7l" kind="show" identifier="showQuestionAnswers" id="xPL-nT-syk"/>
+                        <segue destination="a1O-YQ-dhg" kind="presentation" identifier="editComment" id="pXd-z1-64T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMR-pv-oYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1550,6 +1551,7 @@
         <segue reference="jdO-yh-WYz"/>
         <segue reference="uQv-Ln-Urv"/>
         <segue reference="Zma-F1-cBs"/>
+        <segue reference="pXd-z1-64T"/>
         <segue reference="qso-7B-GJb"/>
         <segue reference="q9u-UF-HeO"/>
         <segue reference="4oy-yi-Vs6"/>
