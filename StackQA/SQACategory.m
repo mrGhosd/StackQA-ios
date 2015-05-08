@@ -17,6 +17,7 @@
 @dynamic desc;
 @dynamic image_url;
 @dynamic questions;
+
 + (void) sync: (NSArray *) params{
     NSMutableArray *serverObjects = [NSMutableArray new];
     //Разбиваем пришедшие с сервера вопросы по id
@@ -91,6 +92,14 @@
 - (NSString *) fullUrlToUserImage{
     NSString *url = [NSString stringWithFormat:@"http://localhost:3000%@", self.image_url];
     return url;
+}
+- (NSMutableArray *) questionsList{
+    __block NSMutableArray *questions;
+//    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContexnt){
+//        questions = [Question MR_findByAttribute:@"category_id" withValue:self.object_id inContext:localContexnt];
+//    }];
+    questions = [Question MR_findByAttribute:@"category_id" withValue:self.object_id];
+    return questions;
 }
 
 @end

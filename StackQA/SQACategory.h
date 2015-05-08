@@ -22,4 +22,5 @@
 + (void) sync: (NSArray *) params;
 + (void) create: (NSDictionary *) params;
 - (UIImage *) categoryImage;
+- (NSMutableArray *) questionsList;
 @end

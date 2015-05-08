@@ -29,7 +29,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.21290949279999999" blue="0.19459590090000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="W6L-yN-fKP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="A7e-Zs-uxY"/>
                 <constraint firstItem="W6L-yN-fKP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="LkV-3z-XLi"/>

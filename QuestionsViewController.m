@@ -25,7 +25,7 @@
     AuthorizationManager *auth;
     Api *api;
     UIApplication *app;
-    NSArray *questionsArray;
+    NSMutableArray *questionsArray;
 }
 
 @end
@@ -41,11 +41,6 @@
     [self pageType];
     [self.tableView reloadData];
     [self toggleCrateQuestionButton];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void) answersListForQuestion:(NSNotification *) notification{
@@ -56,7 +51,10 @@
     if(self.user_page){
         [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correct_naming]];
         [self showUserQuestions];
-    } else {
+    } else if(self.category){
+        [self loadCategoryQuestion];
+    }
+    else {
         [self showQuestions];
     }
 }
@@ -66,6 +64,19 @@
     } else {
         return 0;
     }
+}
+- (void) loadCategoryQuestion{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    
+    [[Api sharedManager] getData:[NSString stringWithFormat:@"/categories/%@/questions", self.category.object_id] andComplition:^(id data, BOOL result){
+        if(result){
+            [self parseCategoriesQuestions:data];
+        } else {
+            NSLog(@"data is %@", data);
+        }
+    }];
+    [self.tableView reloadData];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -155,7 +166,13 @@
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
-
+- (void) parseCategoriesQuestions: (id) data{
+    NSMutableArray *questions = data[@"categories"];
+    [Question sync:questions];
+    self.questions = [self.category questionsList];
+    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
 - (void) parseUserQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary *question in questions){
@@ -173,15 +190,12 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self toggleCrateQuestionButton];
-//    self.questions = [[NSMutableArray alloc] initWithArray:[Question MR_findAll]];
     [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
@@ -235,7 +249,11 @@
                 if(success){
                     [self.questions removeObjectAtIndex:cellIndexPath.row];
                     [currentQuestion MR_deleteEntity];
-                    [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+                    if(self.questions.count == 0){
+                        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:cellIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+                    } else {
+                        [self.tableView deleteRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+                    }
 
                 } else {
                     

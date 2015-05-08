@@ -393,7 +393,7 @@
                          andComplition:^(id data, BOOL success){
                              if(success){
                                  self.actionViewText.text = @"";
-                                 [self viewDidLoad];
+                                 [self loadAnswersList];
                              } else{
                                  
                              }
