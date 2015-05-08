@@ -28,12 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self uploadQuestionData];
     self.webView.delegate = self;
     [self refreshInit];
-    [self initQuestionData];
     self.questionText.layoutManager.allowsNonContiguousLayout = NO;
     [self resizeView];
+    
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -80,6 +79,12 @@
     }];
 }
 -(void) viewDidAppear:(BOOL)animated{
+//    [self uploadQuestionData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self uploadQuestionData];
 }
 
 - (void) parseQuestionData:(id) data{
@@ -93,6 +98,7 @@
     
         [localContext MR_save];
     }
+    [Question create:data];
     [self initQuestionData];
     [refreshControl endRefreshing];
 }
@@ -108,8 +114,6 @@
     self.questionCategory.text = self.question.category.title;
     [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
-
-//    [self viewSizeSettings];
 }
 
 - (void) viewSizeSettings{

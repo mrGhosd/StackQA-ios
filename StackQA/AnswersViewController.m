@@ -38,7 +38,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers) name:@"updateAnswer" object:nil];
     [self setAnswersListData];
     self.tableView.delegate = self;
-    [self loadAnswersList];
     
     // Do any additional setup after loading the view.
 }
@@ -74,6 +73,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+- (void) viewWillAppear:(BOOL)animated{
+    [self loadAnswersList];
 }
 - (void)keyboardWillShow:(NSNotification*)notification {
     NSDictionary *keyboardValues = [notification userInfo];
