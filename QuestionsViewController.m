@@ -7,6 +7,7 @@
 //
 
 #import "QuestionsViewController.h"
+#import "QuestionCategoryView.h"
 #import "AppDelegate.h"
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
@@ -37,11 +38,6 @@
     auth = [AuthorizationManager sharedInstance];
     [self defineNavigationPanel];
     [self pageType];
-    if(self.category == nil){
-        self.categoryHeaderView.hidden = YES;
-    } else {
-        self.categoryHeaderView.hidden = NO;
-    }
     [self.tableView reloadData];
     [self toggleCrateQuestionButton];
     // Uncomment the following line to preserve selection between presentations.
@@ -50,6 +46,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (void) answersListForQuestion:(NSNotification *) notification{
     currentQuestion = notification.object;
     [self performSegueWithIdentifier:@"showAnswersListForQuestion" sender:self];
@@ -62,7 +59,29 @@
         [self showQuestions];
     }
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if(self.category != nil){
+        return 100;
+    } else {
+        return 0;
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.1f)];
+    if(self.category != nil){
+        QuestionCategoryView *view = [[[NSBundle mainBundle] loadNibNamed:@"categoryHeader" owner:self options:nil] firstObject];
+        view.categoryImageView.image = [self.category categoryImage];
+        view.categoryTextView.scrollEnabled = NO;
+        view.categoryTextView.editable = NO;
+        view.categoryTitle.text = self.category.title;
+        view.categoryTextView.text = self.category.desc;
+        
+        return view;
+    } else {
+        return view;
+    }
+}
 -(void) currentUserValue{
     [self toggleCrateQuestionButton];
     [self.tableView reloadData];

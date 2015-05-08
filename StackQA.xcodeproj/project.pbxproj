@@ -51,6 +51,8 @@
 		6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */; };
 		6465437F1AFD3D6000C0E10F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437E1AFD3D6000C0E10F /* CategoriesViewController.m */; };
 		646543831AFD3EC200C0E10F /* CategoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543821AFD3EC200C0E10F /* CategoryTableViewCell.m */; };
+		646543871AFD508000C0E10F /* categoryHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 646543861AFD508000C0E10F /* categoryHeader.xib */; };
+		6465438A1AFD5D7700C0E10F /* QuestionCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543891AFD5D7700C0E10F /* QuestionCategoryView.m */; };
 		6469F9B01A7049B300E837E3 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9AF1A7049B300E837E3 /* edit-32.png */; };
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
@@ -165,6 +167,9 @@
 		6465437E1AFD3D6000C0E10F /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
 		646543811AFD3EC200C0E10F /* CategoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryTableViewCell.h; sourceTree = "<group>"; };
 		646543821AFD3EC200C0E10F /* CategoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewCell.m; sourceTree = "<group>"; };
+		646543861AFD508000C0E10F /* categoryHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = categoryHeader.xib; sourceTree = "<group>"; };
+		646543881AFD5D7700C0E10F /* QuestionCategoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionCategoryView.h; sourceTree = "<group>"; };
+		646543891AFD5D7700C0E10F /* QuestionCategoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionCategoryView.m; sourceTree = "<group>"; };
 		6469F9AF1A7049B300E837E3 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
@@ -563,6 +568,9 @@
 			children = (
 				646543811AFD3EC200C0E10F /* CategoryTableViewCell.h */,
 				646543821AFD3EC200C0E10F /* CategoryTableViewCell.m */,
+				646543861AFD508000C0E10F /* categoryHeader.xib */,
+				646543881AFD5D7700C0E10F /* QuestionCategoryView.h */,
+				646543891AFD5D7700C0E10F /* QuestionCategoryView.m */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -759,6 +767,7 @@
 				6428B0D91AACF24D00110D62 /* ask_question-32.png in Resources */,
 				64C69EFC1A6C726B006AB0AC /* chat-32.png in Resources */,
 				6428B0DB1AACF25C00110D62 /* answers-32.png in Resources */,
+				646543871AFD508000C0E10F /* categoryHeader.xib in Resources */,
 				6428B0E11AACF2D200110D62 /* feedback-32.png in Resources */,
 				640DC3811ADD860700CE22DA /* settings48.png in Resources */,
 				6428B0D61AACF1E300110D62 /* create1.png in Resources */,
@@ -822,6 +831,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6465438A1AFD5D7700C0E10F /* QuestionCategoryView.m in Sources */,
 				64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */,
 				64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */,
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,

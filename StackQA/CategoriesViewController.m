@@ -7,6 +7,7 @@
 //
 
 #import "CategoriesViewController.h"
+#import "QuestionsViewController.h"
 #import "SWRevealViewController.h"
 #import "CategoryTableViewCell.h"
 #import <CoreData+MagicalRecord.h>
@@ -15,6 +16,7 @@
 
 @interface CategoriesViewController (){
     NSMutableArray *categoriesArray;
+    SQACategory *selectedCategory;
 }
 
 @end
@@ -82,7 +84,17 @@
     cell.textLabel.text = categoryItem.title;
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selectedCategory = categoriesArray[indexPath.row];
+    [self performSegueWithIdentifier:@"categoryQuestions" sender:self];
+}
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([[segue identifier] isEqualToString:@"categoryQuestions"]){
+        QuestionsViewController *view = segue.destinationViewController;
+        view.category = selectedCategory;
+    }
+}
 
 /*
 #pragma mark - Navigation
