@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "User.h"
+#import "Answer.h"
 
 @interface Comment : NSManagedObject
 
@@ -18,6 +19,9 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSNumber * user_id;
 @property (nonatomic, retain) User *user;
+@property (nonatomic, retain) Answer *answer;
+@property (nonatomic, retain) Question *question;
+
 + (void) sync: (NSArray *) params;
 + (void) create: (NSDictionary *) params;
 + (NSMutableArray *) commentsForCurrentEntity: (id) entity andID:(NSNumber *) objectID;

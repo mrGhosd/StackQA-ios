@@ -93,7 +93,7 @@
 + (void) setCommentsToUser: (User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         NSArray *comments = [Comment MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
-        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:comments] forKey:@"answers"];
+        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:comments] forKey:@"comments"];
         [localContext MR_save];
     }];
 }

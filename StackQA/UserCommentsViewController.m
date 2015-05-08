@@ -27,7 +27,7 @@
     [super viewDidLoad];
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     auth = [AuthorizationManager sharedInstance];
-    commentsList = [NSMutableDictionary new];
+    commentsList = [NSMutableArray new];
     [self loadUserCommentsData];
     // Do any additional setup after loading the view.
 }
@@ -47,6 +47,7 @@
     for(Comment *comment in self.user.comments){
         [commentsList addObject:comment];
     }
+    [self.tableView reloadData];
     
 }
 
