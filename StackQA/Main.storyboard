@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIy-iO-urh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792" y="342"/>
+            <point key="canvasLocation" x="1640" y="126"/>
         </scene>
         <!--Questions View Controller-->
         <scene sceneID="jGh-gV-cCy">
@@ -742,7 +742,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sew-bl-tWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728" y="2022"/>
+            <point key="canvasLocation" x="2292" y="1890"/>
         </scene>
         <!--Answer Detail View Controller-->
         <scene sceneID="1Cc-nQ-PGQ">
@@ -1336,6 +1336,8 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="vbh-eS-XsH" id="7Z0-PQ-a9f"/>
+                        <segue destination="Xug-EA-AjG" kind="show" identifier="showQuestion" id="qso-7B-GJb"/>
+                        <segue destination="8TF-aP-r7l" kind="show" identifier="showQuestionAnswers" id="xPL-nT-syk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LMR-pv-oYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1542,14 +1544,14 @@
         <image name="settings48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mye-8z-EVr"/>
+        <segue reference="xPL-nT-syk"/>
         <segue reference="j2K-an-z6G"/>
         <segue reference="jdO-yh-WYz"/>
         <segue reference="uQv-Ln-Urv"/>
         <segue reference="Zma-F1-cBs"/>
-        <segue reference="xUG-jW-SU9"/>
-        <segue reference="g3P-Gf-qaj"/>
+        <segue reference="qso-7B-GJb"/>
         <segue reference="q9u-UF-HeO"/>
-        <segue reference="Mye-8z-EVr"/>
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>

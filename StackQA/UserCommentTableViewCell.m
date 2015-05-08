@@ -21,7 +21,9 @@
 }
 - (void) setParametersForComment:(Comment *) comment{
     self.commentText.editable = NO;
+    self.commentText.scrollEnabled = NO;
     self.commentText.text = comment.text;
+    self.commentEntityLink.tag = [comment.object_id integerValue];
     id entity = [comment getEntity];
     NSString *buttonTitle;
     UIImage *buttonImage;
@@ -34,7 +36,6 @@
     }
     [self.commentEntityLink setTitle:buttonTitle forState:UIControlStateNormal];
     [self.commentEntityLink setImage:buttonImage forState:UIControlStateNormal];
-//    [self.commentEntityLink setI];
 }
 
 @end
