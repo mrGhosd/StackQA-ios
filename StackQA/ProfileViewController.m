@@ -13,6 +13,7 @@
 #import "StatisticViewController.h"
 #import "QuestionsViewController.h"
 #import "UserAnswersViewController.h"
+#import "UserCommentsViewController.h"
 #import "ImageView.h"
 
 @interface ProfileViewController (){
@@ -163,6 +164,10 @@
     if([[segue identifier] isEqualToString:@"user_questions"]){
         QuestionsViewController *view = segue.destinationViewController;
         view.user_page = self.user;
+    }
+    if([[segue identifier] isEqualToString:@"user_comments"]){
+        UserCommentsViewController *view = segue.destinationViewController;
+        view.user = self.user;
     }
     if([[segue identifier] isEqualToString:@"userAnswers"]){
         UserAnswersViewController *view = segue.destinationViewController;

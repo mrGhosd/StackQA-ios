@@ -27,6 +27,7 @@
         <attribute name="object_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName="Question" syncable="YES">
         <attribute name="answers_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -74,16 +75,17 @@
         <attribute name="rate" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="surname" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="user" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="user" inverseEntity="Question" syncable="YES"/>
         <relationship name="statistic" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SQAStatistic" inverseName="user" inverseEntity="SQAStatistic" syncable="YES"/>
     </entity>
     <elements>
         <element name="Answer" positionX="-1971" positionY="-513" width="128" height="240"/>
         <element name="Authorization" positionX="-1557" positionY="-445" width="128" height="103"/>
-        <element name="Comment" positionX="-1838" positionY="-225" width="128" height="118"/>
+        <element name="Comment" positionX="-1838" positionY="-225" width="128" height="135"/>
         <element name="Question" positionX="-1764" positionY="-630" width="128" height="298"/>
         <element name="SQACategory" positionX="-1557" positionY="-621" width="128" height="73"/>
         <element name="SQAStatistic" positionX="-1991" positionY="-169" width="128" height="178"/>
-        <element name="User" positionX="-1523" positionY="-223" width="128" height="238"/>
+        <element name="User" positionX="-1523" positionY="-223" width="128" height="255"/>
     </elements>
 </model>

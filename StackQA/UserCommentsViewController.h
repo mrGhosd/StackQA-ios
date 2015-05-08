@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "User.h"
 
 @interface UserCommentsViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong) User *user;
 @end

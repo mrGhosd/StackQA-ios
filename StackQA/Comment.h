@@ -22,4 +22,5 @@
 + (void) create: (NSDictionary *) params;
 + (NSMutableArray *) commentsForCurrentEntity: (id) entity andID:(NSNumber *) objectID;
 - (User *) getUserForComment;
++ (void) setCommentsToUser: (User *) user;
 @end

@@ -25,5 +25,7 @@
 @property (nonatomic, retain) SQAStatistic * statistic;
 @property (nonatomic, strong) NSMutableSet * questions;
 @property (nonatomic, retain) NSMutableSet * answers;
+@property (nonatomic, retain) NSMutableSet * comments;
 - (UIImage *) profileImage;
++ (User *) create: (NSDictionary *) params;
 @end

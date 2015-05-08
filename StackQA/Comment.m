@@ -9,12 +9,11 @@
 #import "Comment.h"
 #import "Question.h"
 #import "Answer.h"
+#import "Api.h"
 #import <CoreData+MagicalRecord.h>
 
-@implementation Comment{
-    NSManagedObjectContext *localContext;
-    id parentEntity;
-}
+
+@implementation Comment
 
 @dynamic object_id;
 @dynamic commentable_id;
@@ -91,6 +90,13 @@
     
     
 }
++ (void) setCommentsToUser: (User *) user{
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        NSArray *comments = [Comment MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
+        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:comments] forKey:@"answers"];
+        [localContext MR_save];
+    }];
+}
 + (NSMutableArray *) commentsForCurrentEntity: (id) entity andID:(NSNumber *) objectID{
     NSMutableArray *comments;
     NSPredicate *commentPredicate = [NSPredicate predicateWithFormat:@"commentable_type = %@ AND commentable_id = %@", [NSString stringWithFormat:@"%@", [entity class] ], objectID];
@@ -99,6 +105,19 @@
 }
 - (User *) getUserForComment{
     User *author = [User MR_findFirstByAttribute:@"object_id" withValue:self.user_id];
-    return author;
+    if(author){
+        return author;
+    } else {
+        __block User *user;
+        [[Api sharedManager] getData:[NSString stringWithFormat: @"/users/%@", self.user_id] andComplition:^(id data, BOOL success){
+            if(success){
+                user = [User create:data];
+            } else {
+            
+            }
+        }];
+        return user;
+    }
+    
 }
 @end

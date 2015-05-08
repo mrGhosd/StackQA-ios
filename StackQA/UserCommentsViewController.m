@@ -33,7 +33,7 @@
 }
 
 - (void) loadUserCommentsData{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", auth.currentUser.object_id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.object_id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {
@@ -43,6 +43,10 @@
 }
 - (void) parseData: (id)data{
     [Comment sync:data[@"users"]];
+    [Comment setCommentsToUser:self.user];
+    for(Comment *comment in self.user.comments){
+        [commentsList addObject:comment];
+    }
     
 }
 

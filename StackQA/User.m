@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import <CoreData+MagicalRecord.h>
 
 @implementation User
 
@@ -30,5 +31,51 @@
 - (UIImage *) profileImage{
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self fullUrlToUserImage]]]];
     return img;
+}
+
++ (User *) create: (NSDictionary *) params{
+    __block User *userData;
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        User *user = [self defineUserWithId:params[@"id"] andContext:localContext];
+        [user setParams:params inContext:localContext];
+        userData = user;
+        [localContext MR_save];
+    }];
+    return userData;
+}
++ (User *) defineUserWithId: (id) object_id andContext: (NSManagedObjectContext *) context{
+    User *user;
+    User *current_c = [User MR_findFirstByAttribute:@"object_id" withValue:object_id];
+    if(current_c){
+        user = current_c;
+    } else {
+        user = [User MR_createInContext:context];
+    }
+    return user;
+}
+
+- (void) setParams:(NSDictionary *)params inContext:(NSManagedObjectContext *) context{
+    if (!self.statistic){;
+        self.statistic = [SQAStatistic MR_createInContext:context];
+    }
+    self.object_id = params[@"id"];
+    self.email = params[@"email"];
+    self.surname = [NSString stringWithFormat:@"%@", params[@"surname"]];
+    self.name = [NSString stringWithFormat:@"%@", params[@"name"]];
+    self.correct_naming = params[@"correct_naming"];
+    self.rate = params[@"rate"];
+    self.questions_count = params[@"questions_count"];
+    self.answers_count = params[@"answers_count"];
+    self.comments_count = params[@"comments_count"];
+    self.statistic.answers_negative_rate_count = params[@"statistic"][@"answers_negative_rate_count"];
+    self.statistic.answers_positive_rate_count = params[@"statistic"][@"answers_positive_rate_count"];
+    self.statistic.first_answers_count = params[@"statistic"][@"first_answers_count"];
+    self.statistic.first_self_answers_count = params[@"statistic"][@"first_self_answers_count"];
+    self.statistic.helpfull_answers_count = params[@"statistic"][@"helpfull_answers_count"];
+    self.statistic.questions_negative_rate_count = params[@"statistic"][@"questions_negative_rate_count"];
+    self.statistic.questions_positive_rate_count = params[@"statistic"][@"questions_positive_rate_count"];
+    self.statistic.self_answers_count = params[@"statistic"][@"self_answers_count"];
+    self.avatar_url = [NSString stringWithFormat:@"%@", params[@"avatar"][@"url"]];
+    
 }
 @end
