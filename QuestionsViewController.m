@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
+#import "CategoryDetailViewController.h"
 #import <CoreData+MagicalRecord.h>
 #import "QuestionsTableViewCell.h"
 #import "Question.h"
@@ -72,16 +73,26 @@
     if(self.category != nil){
         QuestionCategoryView *view = [[[NSBundle mainBundle] loadNibNamed:@"categoryHeader" owner:self options:nil] firstObject];
         view.categoryImageView.image = [self.category categoryImage];
+        view.categoryImageView.layer.cornerRadius = 8.0;
+        view.categoryImageView.clipsToBounds = YES;
+        view.categoryTextView.backgroundColor = [UIColor clearColor];
         view.categoryTextView.scrollEnabled = NO;
         view.categoryTextView.editable = NO;
         view.categoryTitle.text = self.category.title;
         view.categoryTextView.text = self.category.desc;
-        
+        UITapGestureRecognizer *singleFingerTap =
+        [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                action:@selector(handleSingleTap:)];
+        [view addGestureRecognizer:singleFingerTap];
         return view;
     } else {
         return view;
     }
 }
+- (void) handleSingleTap: (UITapGestureRecognizer *)recognizer{
+    [self performSegueWithIdentifier:@"categoryDetail" sender:self];
+}
+
 -(void) currentUserValue{
     [self toggleCrateQuestionButton];
     [self.tableView reloadData];
@@ -268,6 +279,10 @@
     if([[segue identifier] isEqualToString:@"showAnswersListForQuestion"]){
         QuestionsFormViewController *form = segue.destinationViewController;
         form.question = currentQuestion;
+    }
+    if([[segue identifier] isEqualToString:@"categoryDetail"]){
+        CategoryDetailViewController *view = segue.destinationViewController;
+        view.category = self.category;
     }
 }
 

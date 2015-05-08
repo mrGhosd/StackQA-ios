@@ -202,6 +202,7 @@
                         <outlet property="sidebarButton" destination="wxV-oX-zhg" id="eJ1-qO-XHG"/>
                         <segue destination="L2G-jD-e0s" kind="presentation" identifier="showQuestionForm" id="Zma-F1-cBs"/>
                         <segue destination="8TF-aP-r7l" kind="show" identifier="showAnswersListForQuestion" id="1uy-uL-sgR"/>
+                        <segue destination="cL6-eH-Cbk" kind="show" identifier="categoryDetail" id="ZLp-YM-B5i"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUx-wJ-w8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -843,6 +844,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qj0-O7-5jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3148" y="1845"/>
+        </scene>
+        <!--Category Detail View Controller-->
+        <scene sceneID="HJK-EM-Dff">
+            <objects>
+                <viewController id="cL6-eH-Cbk" customClass="CategoryDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vKh-B3-b1n"/>
+                        <viewControllerLayoutGuide type="bottom" id="2wm-aJ-IlJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ukc-cx-3ZT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cQ-WH-BBr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCR-33-cHX">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7R-jt-slR">
+                                                <rect key="frame" x="169" y="204" width="263" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-S2-SJS">
+                                                <rect key="frame" x="30" y="233" width="541" height="313"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="l9f-o5-qG5"/>
+                                                </constraints>
+                                            </webView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fFX-Qe-Cmr">
+                                                <rect key="frame" x="240" y="76" width="120" height="120"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="180" id="Yat-Bz-xdH"/>
+                                                    <constraint firstAttribute="height" constant="180" id="cnk-jw-D42"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="hEd-S2-SJS" firstAttribute="leading" secondItem="CCR-33-cHX" secondAttribute="leading" constant="12" id="2Vv-KC-rGg"/>
+                                            <constraint firstItem="I7R-jt-slR" firstAttribute="top" secondItem="fFX-Qe-Cmr" secondAttribute="bottom" constant="8" id="5R8-1R-b4c"/>
+                                            <constraint firstItem="fFX-Qe-Cmr" firstAttribute="top" secondItem="CCR-33-cHX" secondAttribute="top" constant="50" id="BrK-lK-1pH"/>
+                                            <constraint firstItem="hEd-S2-SJS" firstAttribute="top" secondItem="I7R-jt-slR" secondAttribute="bottom" constant="8" id="HgA-J6-dxJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="hEd-S2-SJS" secondAttribute="trailing" constant="12" id="IqY-3q-PRk"/>
+                                            <constraint firstAttribute="bottom" secondItem="hEd-S2-SJS" secondAttribute="bottom" id="MRc-Xc-4Fv"/>
+                                            <constraint firstAttribute="centerX" secondItem="I7R-jt-slR" secondAttribute="centerX" id="adg-kN-glU"/>
+                                            <constraint firstAttribute="centerX" secondItem="fFX-Qe-Cmr" secondAttribute="centerX" id="rDW-Zp-dqk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CCR-33-cHX" firstAttribute="leading" secondItem="2cQ-WH-BBr" secondAttribute="leading" id="Goc-50-3Y0"/>
+                                    <constraint firstAttribute="bottom" secondItem="CCR-33-cHX" secondAttribute="bottom" id="J6y-Q3-Rdc"/>
+                                    <constraint firstItem="CCR-33-cHX" firstAttribute="width" secondItem="2cQ-WH-BBr" secondAttribute="width" id="dVu-Kf-ODi"/>
+                                    <constraint firstItem="CCR-33-cHX" firstAttribute="top" secondItem="2cQ-WH-BBr" secondAttribute="top" id="wf5-ME-GES"/>
+                                    <constraint firstAttribute="trailing" secondItem="CCR-33-cHX" secondAttribute="trailing" id="x28-uh-OQG"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2cQ-WH-BBr" firstAttribute="top" secondItem="Ukc-cx-3ZT" secondAttribute="topMargin" id="2w4-V5-w3m"/>
+                            <constraint firstItem="2cQ-WH-BBr" firstAttribute="leading" secondItem="Ukc-cx-3ZT" secondAttribute="leadingMargin" constant="-16" id="HdK-mb-hLj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2cQ-WH-BBr" secondAttribute="trailing" constant="-16" id="PWS-Ta-22i"/>
+                            <constraint firstItem="2wm-aJ-IlJ" firstAttribute="top" secondItem="2cQ-WH-BBr" secondAttribute="bottom" id="wgz-P3-U0k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="categoryImage" destination="fFX-Qe-Cmr" id="Yfr-em-0nF"/>
+                        <outlet property="categoryText" destination="hEd-S2-SJS" id="c3j-MP-VkR"/>
+                        <outlet property="categoryTitle" destination="I7R-jt-slR" id="x3t-a7-MIp"/>
+                        <outlet property="webViewHeight" destination="l9f-o5-qG5" id="Erq-Ra-SJw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19d-3Y-ivi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-237" y="-2698"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="Dls-qW-geB">

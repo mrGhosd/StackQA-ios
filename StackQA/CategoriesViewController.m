@@ -8,6 +8,7 @@
 
 #import "CategoriesViewController.h"
 #import "QuestionsViewController.h"
+#import "CategoryDetailViewController.h"
 #import "SWRevealViewController.h"
 #import "CategoryTableViewCell.h"
 #import <CoreData+MagicalRecord.h>

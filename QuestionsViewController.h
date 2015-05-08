@@ -16,6 +16,5 @@
 @property(strong) NSMutableArray *questions;
 @property (strong) User *user_page;
 @property (strong) SQACategory *category;
-@property (strong, nonatomic) IBOutlet UIView *categoryHeaderView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addQuestion;
 @end
