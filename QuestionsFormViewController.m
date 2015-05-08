@@ -66,7 +66,7 @@
 - (NSString *) getCategoryFromMainList{
     NSString *title;
     for(NSDictionary *category in categories){
-        if(category[@"id"] == self.question.category_id){
+        if([self.question.category_id isEqualToNumber:category[@"id"]]){
             title = category[@"title"];
             selectedCategory = category;
         }

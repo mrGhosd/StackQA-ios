@@ -170,7 +170,7 @@
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
     
-    if(auth.currentUser && questionItem.user_id == auth.currentUser.object_id){
+    if(auth.currentUser && [questionItem.user_id integerValue] == [auth.currentUser.object_id integerValue]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
