@@ -11,6 +11,7 @@
 @interface QuestionCategoryView : UIView
 
 @property (strong, nonatomic) IBOutlet UILabel *categoryTitle;
-@property (strong, nonatomic) IBOutlet UITextView *categoryTextView;
+
+@property (strong, nonatomic) IBOutlet UIWebView *categoryWebView;
 @property (strong, nonatomic) IBOutlet UIImageView *categoryImageView;
 @end

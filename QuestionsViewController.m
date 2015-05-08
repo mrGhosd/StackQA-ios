@@ -75,11 +75,11 @@
         view.categoryImageView.image = [self.category categoryImage];
         view.categoryImageView.layer.cornerRadius = 8.0;
         view.categoryImageView.clipsToBounds = YES;
-        view.categoryTextView.backgroundColor = [UIColor clearColor];
-        view.categoryTextView.scrollEnabled = NO;
-        view.categoryTextView.editable = NO;
+        view.categoryWebView.backgroundColor = [UIColor clearColor];
+        view.categoryWebView.opaque = NO;
+        view.categoryWebView.scrollView.scrollEnabled = NO;
         view.categoryTitle.text = self.category.title;
-        view.categoryTextView.text = self.category.desc;
+        [view.categoryWebView loadHTMLString:self.category.desc baseURL:nil];
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];

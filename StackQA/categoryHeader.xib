@@ -24,32 +24,29 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-tn-NB4">
-                    <rect key="frame" x="106" y="37" width="486" height="55"/>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qt4-TH-F18">
+                    <rect key="frame" x="106" y="37" width="486" height="58"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                </webView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.21290949279999999" blue="0.19459590090000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Vbz-tn-NB4" firstAttribute="top" secondItem="oHc-B7-DRZ" secondAttribute="bottom" constant="8" id="1Ja-gZ-oYT"/>
                 <constraint firstItem="W6L-yN-fKP" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="A7e-Zs-uxY"/>
-                <constraint firstItem="Vbz-tn-NB4" firstAttribute="leading" secondItem="W6L-yN-fKP" secondAttribute="trailing" constant="8" id="HLF-37-KCU"/>
                 <constraint firstItem="W6L-yN-fKP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="LkV-3z-XLi"/>
                 <constraint firstAttribute="bottom" secondItem="W6L-yN-fKP" secondAttribute="bottom" constant="5" id="MRn-gY-gej"/>
-                <constraint firstAttribute="bottom" secondItem="Vbz-tn-NB4" secondAttribute="bottom" constant="8" id="cA2-Sx-dST"/>
+                <constraint firstAttribute="trailing" secondItem="qt4-TH-F18" secondAttribute="trailing" constant="8" id="V3O-aP-Z2W"/>
+                <constraint firstAttribute="bottom" secondItem="qt4-TH-F18" secondAttribute="bottom" constant="5" id="dw0-sR-Zj7"/>
+                <constraint firstItem="qt4-TH-F18" firstAttribute="top" secondItem="oHc-B7-DRZ" secondAttribute="bottom" constant="8" id="fTZ-ul-McR"/>
                 <constraint firstAttribute="trailing" secondItem="oHc-B7-DRZ" secondAttribute="trailing" constant="8" id="gWd-vv-W88"/>
                 <constraint firstItem="oHc-B7-DRZ" firstAttribute="leading" secondItem="W6L-yN-fKP" secondAttribute="trailing" constant="8" id="len-ri-6Q5"/>
-                <constraint firstAttribute="trailing" secondItem="Vbz-tn-NB4" secondAttribute="trailing" constant="8" id="q9k-w2-ARK"/>
                 <constraint firstItem="oHc-B7-DRZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="w9S-fa-LZB"/>
+                <constraint firstItem="qt4-TH-F18" firstAttribute="leading" secondItem="W6L-yN-fKP" secondAttribute="trailing" constant="8" id="yQs-BD-KJy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="categoryImageView" destination="W6L-yN-fKP" id="wea-vR-N59"/>
-                <outlet property="categoryTextView" destination="Vbz-tn-NB4" id="IhU-EI-710"/>
                 <outlet property="categoryTitle" destination="oHc-B7-DRZ" id="DKb-UI-AVM"/>
+                <outlet property="categoryWebView" destination="qt4-TH-F18" id="JjM-WE-D5f"/>
             </connections>
             <point key="canvasLocation" x="139" y="297"/>
         </view>
