@@ -76,16 +76,16 @@
 
 - (void) parseQuestionData:(id) data{
     NSMutableDictionary *question = data;
+    [Question create:data];
     Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"] inContext:localContext];
     if(qw){
         Question *q = qw;
         q.category = [SQACategory MR_createInContext:localContext];
         q.category.title = question[@"category"][@"title"];
         q.text = question[@"text"];
-    
+        self.question = q;
         [localContext MR_save];
     }
-    [Question create:data[@"question"]];
     author = [User create:data[@"user"]];
     [self initQuestionData];
     [refreshControl endRefreshing];

@@ -118,7 +118,7 @@
     User *cellUser = [cellComment getUserForComment];
     CommentTableViewCell *cell = (CommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.commentText.text = cellComment.text;
-    [cell.userName setTitle:cellUser.correct_naming forState:UIControlStateNormal];
+    [cell.userName setTitle:cellUser.email forState:UIControlStateNormal];
     cell.commentText.editable = NO;
     cell.commentText.scrollEnabled = NO;
     if(auth.currentUser && auth.currentUser.object_id == cellComment.user_id){
