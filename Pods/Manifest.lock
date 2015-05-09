@@ -20,37 +20,34 @@ PODS:
   - AFNetworking/UIKit (2.5.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - CCBottomRefreshControl (0.5):
-    - Masonry
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
-  - Masonry (0.6.1)
   - MBProgressHUD (0.9.1)
   - RDRStickyKeyboardView (0.0.2)
   - SocketRocket (0.3.1-beta2)
   - SWTableViewCell (0.3.7)
   - UICKeyChainStore (2.0.4)
+  - UIImage-ResizeMagick (0.0.1)
 
 DEPENDENCIES:
   - AFNetworking
-  - CCBottomRefreshControl
   - MagicalRecord
   - MBProgressHUD
   - RDRStickyKeyboardView
   - SocketRocket
   - SWTableViewCell (~> 0.3.7)
   - UICKeyChainStore
+  - UIImage-ResizeMagick
 
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
-  CCBottomRefreshControl: 2cfdbd6f5be5181f5f070637605981d5557e8e32
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
-  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
   SocketRocket: 7284ab9370a06c99aba92b2fe3a32aedd0f9a6fa
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
+  UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
 
 COCOAPODS: 0.34.4

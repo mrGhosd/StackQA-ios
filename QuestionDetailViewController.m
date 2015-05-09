@@ -14,10 +14,12 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "Api.h"
+#import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface QuestionDetailViewController (){
     Api *api;
     User *author;
+    SQACategory *questionCategory;
     AppDelegate *app;
     NSManagedObjectContext *localContext;
     UIRefreshControl *refreshControl;
@@ -87,6 +89,7 @@
         [localContext MR_save];
     }
     author = [User create:data[@"user"]];
+    questionCategory = [[SQACategory MR_findByAttribute:@"object_id" withValue:self.question.category_id] firstObject];
     [self initQuestionData];
     [refreshControl endRefreshing];
 }
@@ -99,14 +102,17 @@
     self.questionTitle.text = self.question.title;
     [self.webView loadHTMLString:self.question.text baseURL:nil];
     self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.created_at];
-    self.questionCategory.text = self.question.category.title;
+    [self.questionCategory setTitle:self.question.category.title forState:UIControlStateNormal];
+    UIImage* resizedImage = [[questionCategory categoryImage] resizedImageByMagick: @"32x32#"];
+    [self.questionCategory setImage:resizedImage forState:UIControlStateNormal];
+    
     [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
     
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
-//    [self.authorProfileLink setImage:[author profileImage] forState:UIControlStateNormal];
-//    self.authorProfileLink.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
-    [self.authorProfileLink setBackgroundImage:[author profileImage] forState:UIControlStateNormal];
+    UIImage *image = [author profileImage];
+    
+    [self.authorProfileLink setImage:image forState:UIControlStateNormal];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
@@ -148,6 +154,10 @@
     if([[segue identifier] isEqualToString:@"commentsQuestionView"]){
         CommentsListViewController *view = segue.destinationViewController;
         view.question = self.question;
+    }
+    if([[segue identifier] isEqualToString:@"categoryQuestionView"]){
+        QuestionsViewController *view = segue.destinationViewController;
+        view.category = questionCategory;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
@@ -213,5 +223,8 @@
         [refreshControl endRefreshing];
     }
     [self initQuestionData];
+}
+- (IBAction)showQuestionCategory:(id)sender {
+    [self performSegueWithIdentifier:@"categoryQuestionView" sender:self];
 }
 @end

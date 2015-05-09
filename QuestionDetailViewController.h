@@ -17,7 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIView *nestedView;
 //- (IBAction)deleteQuestion:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *questionDate;
-@property (strong, nonatomic) IBOutlet UILabel *questionCategory;
+@property (strong, nonatomic) IBOutlet UIButton *questionCategory;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UIButton *commentsCount;
 @property (strong, nonatomic) IBOutlet UIButton *answersCount;
@@ -25,6 +25,7 @@
 - (IBAction)questionPopupView:(id)sender;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
 @property (strong, nonatomic) IBOutlet UIButton *authorProfileLink;
+- (IBAction)showQuestionCategory:(id)sender;
 
 
 @end

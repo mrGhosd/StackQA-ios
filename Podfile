@@ -12,7 +12,7 @@ pod 'UICKeyChainStore'
 pod 'SocketRocket'
 pod 'RDRStickyKeyboardView'
 pod 'UICKeyChainStore'
-pod 'CCBottomRefreshControl'
+pod 'UIImage-ResizeMagick'
 end
 
 target 'StackQATests' do

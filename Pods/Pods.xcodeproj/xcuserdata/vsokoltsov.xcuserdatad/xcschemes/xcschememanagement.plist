@@ -9,22 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-StackQA-CCBottomRefreshControl.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-StackQA-MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-StackQA-MagicalRecord.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-StackQA-Masonry.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -49,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-StackQA-UIImage-ResizeMagick.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StackQA.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,52 +52,47 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>041099E994F214C2B36D5218</key>
+		<key>4C9A7838106E2F5454637FB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1BE40A709FAA3DCBD2FA3D9D</key>
+		<key>6751D1DFC91A4C5678FDE2DB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>430C657D4F657CE802A60E47</key>
+		<key>75603A1F6BC9C1DA6AC1014E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7E2E58A4678A2F05C67C6F66</key>
+		<key>92E05A4A740B98AC3A3BD046</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC911D93A25A98A19A1C2342</key>
+		<key>BC4B3D95A9B0652660F9CFF2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD85CBAED7BA173AB7999C45</key>
+		<key>BDAD60EC122255F66E362434</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C301A8191C2C793787E85CEC</key>
+		<key>D7EBEE8DEA4F6E5455CBC464</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C53B5CFF3F0D9D8525120366</key>
+		<key>EDA33497B01029A065D95D7E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8E05B5D6BB6EFF96E562433</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DB1A8882EDFC5ADDC6A1B65C</key>
+		<key>F0BB1E72D85AC019B8D1C5ED</key>
 		<dict>
 			<key>primary</key>
 			<true/>
