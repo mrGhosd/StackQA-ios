@@ -140,7 +140,7 @@
 
 - (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
     CGSize size = [[answersList[path.row] text] sizeWithAttributes:nil];
-    currentCellHeight = size.width / 9;
+    currentCellHeight = size.width / 10;
     [self.tableView cellForRowAtIndexPath:path];
 }
 
