@@ -15,8 +15,6 @@
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *nestedView;
-@property (strong, nonatomic) IBOutlet UITextView *questionText;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *webViewHeightConstraint;
 //- (IBAction)deleteQuestion:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *questionDate;
 @property (strong, nonatomic) IBOutlet UILabel *questionCategory;
@@ -26,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewAndScrollViewHeight;
 - (IBAction)questionPopupView:(id)sender;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
+@property (strong, nonatomic) IBOutlet UIButton *authorProfileLink;
 
 
 @end

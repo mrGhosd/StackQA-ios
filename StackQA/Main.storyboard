@@ -228,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24y-Tb-Rwe">
-                                                <rect key="frame" x="447" y="8" width="145" height="21"/>
+                                                <rect key="frame" x="424" y="8" width="168" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -246,14 +246,16 @@
                                                     <constraint firstAttribute="height" constant="91" id="bDc-JG-pck"/>
                                                 </constraints>
                                             </webView>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auw-hk-bF3">
-                                                <rect key="frame" x="19" y="4" width="209" height="30"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auw-hk-bF3">
+                                                <rect key="frame" x="19" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="BaC-5e-YV1"/>
+                                                    <constraint firstAttribute="height" constant="40" id="RrY-f8-LzG"/>
+                                                </constraints>
+                                                <state key="normal" title="Button"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-HT-xfO">
-                                                <rect key="frame" x="19" y="46" width="560" height="21"/>
+                                                <rect key="frame" x="19" y="48" width="560" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -346,6 +348,7 @@
                     </view>
                     <connections>
                         <outlet property="answersCount" destination="Tuj-Gd-gTz" id="nRn-MQ-dVl"/>
+                        <outlet property="authorProfileLink" destination="Auw-hk-bF3" id="Fya-Hb-82L"/>
                         <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
                         <outlet property="questionCategory" destination="Dof-xd-zbV" id="UbB-ng-Pcp"/>
@@ -948,7 +951,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-xV-ZIf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vNj-xV-ZIf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -966,6 +969,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vNj-xV-ZIf" firstAttribute="top" secondItem="Pg0-04-sS0" secondAttribute="topMargin" id="6cg-5W-yrO"/>
+                            <constraint firstItem="I80-CI-Nbb" firstAttribute="top" secondItem="vNj-xV-ZIf" secondAttribute="bottom" id="Beg-a3-cwf"/>
+                            <constraint firstItem="vNj-xV-ZIf" firstAttribute="leading" secondItem="Pg0-04-sS0" secondAttribute="leadingMargin" constant="-16" id="W9a-WF-7YV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vNj-xV-ZIf" secondAttribute="trailing" constant="-16" id="hhI-Di-GFS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ybM-Ur-0HX">
                         <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="zCp-r2-hvd"/>

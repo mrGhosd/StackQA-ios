@@ -17,6 +17,7 @@
 
 @interface QuestionDetailViewController (){
     Api *api;
+    User *author;
     AppDelegate *app;
     NSManagedObjectContext *localContext;
     UIRefreshControl *refreshControl;
@@ -30,7 +31,6 @@
     [super viewDidLoad];
     self.webView.delegate = self;
     [self refreshInit];
-    self.questionText.layoutManager.allowsNonContiguousLayout = NO;
     [self resizeView];
     
 }
@@ -47,17 +47,7 @@
     CGSize fittingSize = [self.webView sizeThatFits:CGSizeZero];
     viewHeight = size.width / 10.0;
 
-//    float fullViewHeight = viewHeight + self.questionTitle.frame.size.height + self.questionDate.frame.size.height + self.questionCategory.frame.size.height;
-//    self.viewAndScrollViewHeight.constant = fullViewHeight;
     self.questionTextHeight.constant = viewHeight;
-//    [self.webView addConstraint:[NSLayoutConstraint
-//                                      constraintWithItem:self.webView
-//                                      attribute:NSLayoutAttributeHeight
-//                                      relatedBy:NSLayoutRelationEqual
-//                                      toItem:self.webView
-//                                      attribute:NSLayoutAttributeHeight
-//                                      multiplier:1.0
-//                                      constant:viewHeight]];
 }
 - (void) uploadQuestionData{
     app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -95,7 +85,8 @@
     
         [localContext MR_save];
     }
-    [Question create:data];
+    [Question create:data[@"question"]];
+    author = [User create:data[@"user"]];
     [self initQuestionData];
     [refreshControl endRefreshing];
 }
@@ -111,15 +102,11 @@
     self.questionCategory.text = self.question.category.title;
     [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
-}
-
-- (void) viewSizeSettings{
-    [self.questionText sizeToFit];
-    self.nestedView.translatesAutoresizingMaskIntoConstraints = YES;
-    self.questionText.scrollEnabled = NO;
-    [self textViewDidChange:self.questionText];
-//    self.questionText.contentSize.height
-    self.nestedView.frame = CGRectMake(0, 0, 320, self.questionText.frame.size.height + 450);
+    
+    [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
+//    [self.authorProfileLink setImage:[author profileImage] forState:UIControlStateNormal];
+//    self.authorProfileLink.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+    [self.authorProfileLink setBackgroundImage:[author profileImage] forState:UIControlStateNormal];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
