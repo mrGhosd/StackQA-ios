@@ -228,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24y-Tb-Rwe">
-                                                <rect key="frame" x="397" y="8" width="195" height="21"/>
+                                                <rect key="frame" x="447" y="8" width="145" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -246,6 +246,12 @@
                                                     <constraint firstAttribute="height" constant="91" id="bDc-JG-pck"/>
                                                 </constraints>
                                             </webView>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Auw-hk-bF3">
+                                                <rect key="frame" x="19" y="4" width="209" height="30"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-HT-xfO">
                                                 <rect key="frame" x="19" y="46" width="560" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -262,6 +268,8 @@
                                             <constraint firstAttribute="trailing" secondItem="sWv-HT-xfO" secondAttribute="trailing" constant="20" id="VpE-6N-BFq"/>
                                             <constraint firstItem="sWv-HT-xfO" firstAttribute="top" secondItem="24y-Tb-Rwe" secondAttribute="bottom" constant="17" id="XBk-eb-ifV"/>
                                             <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="8" id="Z8V-pv-nwT"/>
+                                            <constraint firstItem="Auw-hk-bF3" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="aL7-GV-hvp"/>
+                                            <constraint firstItem="Auw-hk-bF3" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" constant="4" id="aLY-Jn-ywP"/>
                                             <constraint firstItem="24y-Tb-Rwe" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" constant="8" id="eMp-lH-hLj"/>
                                             <constraint firstItem="Dof-xd-zbV" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="ezd-Lf-Alr"/>
                                             <constraint firstAttribute="trailing" secondItem="24y-Tb-Rwe" secondAttribute="trailing" constant="8" id="hq4-oj-B4Y"/>

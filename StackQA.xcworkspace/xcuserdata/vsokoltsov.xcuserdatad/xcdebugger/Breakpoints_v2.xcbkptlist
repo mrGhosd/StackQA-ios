@@ -3640,11 +3640,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/CommentsListViewController.m"
-            timestampString = "452726313.592391"
+            timestampString = "452895341.193249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
             landmarkName = "-changeCommentTextHeightAt:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3656,11 +3656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/CommentsListViewController.m"
-            timestampString = "452726313.592391"
+            timestampString = "452895341.193249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
             landmarkName = "-changeCommentTextHeightAt:"
             landmarkType = "5">
          </BreakpointContent>

@@ -236,14 +236,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(selectedIndex == indexPath.row){
-        
-        if(currentCellHeight <= 30){
-            return 82;
-            
-        } else {
-            return currentCellHeight;
-        }
-        
+        return currentCellHeight + 82;
     } else {
         return 82;
     }
