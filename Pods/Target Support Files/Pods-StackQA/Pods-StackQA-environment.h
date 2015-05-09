@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// CCBottomRefreshControl
+#define COCOAPODS_POD_AVAILABLE_CCBottomRefreshControl
+#define COCOAPODS_VERSION_MAJOR_CCBottomRefreshControl 0
+#define COCOAPODS_VERSION_MINOR_CCBottomRefreshControl 5
+#define COCOAPODS_VERSION_PATCH_CCBottomRefreshControl 0
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
@@ -65,6 +71,12 @@
 #define COCOAPODS_VERSION_MAJOR_MagicalRecord_Core 2
 #define COCOAPODS_VERSION_MINOR_MagicalRecord_Core 2
 #define COCOAPODS_VERSION_PATCH_MagicalRecord_Core 0
+
+// Masonry
+#define COCOAPODS_POD_AVAILABLE_Masonry
+#define COCOAPODS_VERSION_MAJOR_Masonry 0
+#define COCOAPODS_VERSION_MINOR_Masonry 6
+#define COCOAPODS_VERSION_PATCH_Masonry 1
 
 // RDRStickyKeyboardView
 #define COCOAPODS_POD_AVAILABLE_RDRStickyKeyboardView

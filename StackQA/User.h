@@ -28,4 +28,5 @@
 @property (nonatomic, retain) NSMutableSet * comments;
 - (UIImage *) profileImage;
 + (User *) create: (NSDictionary *) params;
+- (NSArray *) getQuestions;
 @end

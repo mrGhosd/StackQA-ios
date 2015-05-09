@@ -13,7 +13,7 @@
 
 @interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property(strong) NSMutableArray *questions;
+@property(strong, nonatomic) NSMutableArray *questions;
 @property (strong) User *user_page;
 @property (strong) SQACategory *category;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addQuestion;

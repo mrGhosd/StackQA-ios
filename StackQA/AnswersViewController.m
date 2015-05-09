@@ -127,7 +127,7 @@
         return;
     }
     
-    if(selectedIndex != -1 && indexPath != nil){
+    if(selectedIndex != -1){
         NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
         selectedIndex = indexPath.row;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -140,7 +140,7 @@
 
 - (void) changeAnswerTextHeightAt:(NSIndexPath *)path{
     CGSize size = [[answersList[path.row] text] sizeWithAttributes:nil];
-    currentCellHeight = size.width / 10;
+    currentCellHeight = size.width / 9;
     [self.tableView cellForRowAtIndexPath:path];
 }
 
@@ -330,14 +330,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(selectedIndex == indexPath.row){
-        
-        if(currentCellHeight <= 110){
-            return 110;
-            
-        } else {
-            return currentCellHeight;
-        }
-        
+        return currentCellHeight + 110;
     } else {
         return 110;
     }

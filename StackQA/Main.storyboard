@@ -228,7 +228,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24y-Tb-Rwe">
-                                                <rect key="frame" x="342" y="8" width="250" height="21"/>
+                                                <rect key="frame" x="397" y="8" width="195" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -239,35 +239,38 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-lL-WR9">
+                                                <rect key="frame" x="19" y="113" width="573" height="91"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="91" id="bDc-JG-pck"/>
+                                                </constraints>
+                                            </webView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-HT-xfO">
-                                                <rect key="frame" x="19" y="46" width="584" height="21"/>
+                                                <rect key="frame" x="19" y="46" width="560" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-lL-WR9">
-                                                <rect key="frame" x="19" y="113" width="573" height="91"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="24y-Tb-Rwe" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" constant="8" id="0A3-82-7DE"/>
-                                            <constraint firstItem="sWv-HT-xfO" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="5RW-Ov-46M"/>
-                                            <constraint firstAttribute="bottom" secondItem="u1a-lL-WR9" secondAttribute="bottom" constant="60" id="B5d-Jz-SwU"/>
-                                            <constraint firstItem="Dof-xd-zbV" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="Bdd-X6-Nie"/>
-                                            <constraint firstItem="sWv-HT-xfO" firstAttribute="top" secondItem="24y-Tb-Rwe" secondAttribute="bottom" constant="17" id="Kit-af-KJf"/>
-                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="LKh-mB-awD"/>
-                                            <constraint firstAttribute="trailing" secondItem="24y-Tb-Rwe" secondAttribute="trailing" constant="8" id="Szq-1K-0vo"/>
-                                            <constraint firstItem="Dof-xd-zbV" firstAttribute="top" secondItem="sWv-HT-xfO" secondAttribute="bottom" constant="17" id="Tri-3W-Kvv"/>
-                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="Dof-xd-zbV" secondAttribute="bottom" constant="8" id="mfk-cc-Rvv"/>
-                                            <constraint firstAttribute="trailing" secondItem="u1a-lL-WR9" secondAttribute="trailing" constant="8" id="oYG-ZZ-fby"/>
+                                            <constraint firstAttribute="bottom" secondItem="u1a-lL-WR9" secondAttribute="bottom" constant="50" id="HLj-PU-xbO"/>
+                                            <constraint firstAttribute="trailing" secondItem="u1a-lL-WR9" secondAttribute="trailing" constant="8" id="Nwt-IE-oTp"/>
+                                            <constraint firstItem="sWv-HT-xfO" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="20" id="P2U-YU-hqM"/>
+                                            <constraint firstItem="Dof-xd-zbV" firstAttribute="top" secondItem="sWv-HT-xfO" secondAttribute="bottom" constant="17" id="PIb-0e-AfQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="sWv-HT-xfO" secondAttribute="trailing" constant="20" id="VpE-6N-BFq"/>
+                                            <constraint firstItem="sWv-HT-xfO" firstAttribute="top" secondItem="24y-Tb-Rwe" secondAttribute="bottom" constant="17" id="XBk-eb-ifV"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="8" id="Z8V-pv-nwT"/>
+                                            <constraint firstItem="24y-Tb-Rwe" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" constant="8" id="eMp-lH-hLj"/>
+                                            <constraint firstItem="Dof-xd-zbV" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="19" id="ezd-Lf-Alr"/>
+                                            <constraint firstAttribute="trailing" secondItem="24y-Tb-Rwe" secondAttribute="trailing" constant="8" id="hq4-oj-B4Y"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="Dof-xd-zbV" secondAttribute="bottom" constant="8" id="k7Z-O6-qcP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fvG-4z-TZV" firstAttribute="width" secondItem="8XB-m5-DFp" secondAttribute="width" id="4yi-v3-3Xy"/>
-                                    <constraint firstItem="fvG-4z-TZV" firstAttribute="height" secondItem="8XB-m5-DFp" secondAttribute="height" id="6dI-jL-dh0"/>
                                     <constraint firstItem="fvG-4z-TZV" firstAttribute="leading" secondItem="8XB-m5-DFp" secondAttribute="leading" id="PIo-gH-lqY"/>
                                     <constraint firstItem="fvG-4z-TZV" firstAttribute="top" secondItem="8XB-m5-DFp" secondAttribute="top" id="c5B-Uo-ai3"/>
                                     <constraint firstAttribute="trailing" secondItem="fvG-4z-TZV" secondAttribute="trailing" id="gi2-MS-YbI"/>
@@ -339,9 +342,9 @@
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
                         <outlet property="questionCategory" destination="Dof-xd-zbV" id="UbB-ng-Pcp"/>
                         <outlet property="questionDate" destination="24y-Tb-Rwe" id="QpL-DM-51s"/>
+                        <outlet property="questionTextHeight" destination="bDc-JG-pck" id="2wa-GG-1I4"/>
                         <outlet property="questionTitle" destination="sWv-HT-xfO" id="xKR-4h-gpd"/>
                         <outlet property="scrollView" destination="8XB-m5-DFp" id="GbP-kP-txq"/>
-                        <outlet property="viewAndScrollViewHeight" destination="6dI-jL-dh0" id="IUc-4A-LAK"/>
                         <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                     </connections>
                 </viewController>
@@ -1693,11 +1696,11 @@
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>
         <segue reference="K5f-lu-PVN"/>
-        <segue reference="1uy-uL-sgR"/>
         <segue reference="Zma-F1-cBs"/>
         <segue reference="x3p-uV-IHe"/>
+        <segue reference="hPV-is-y6G"/>
+        <segue reference="g3P-Gf-qaj"/>
         <segue reference="Mye-8z-EVr"/>
-        <segue reference="q9u-UF-HeO"/>
         <segue reference="jdO-yh-WYz"/>
         <segue reference="pXd-z1-64T"/>
     </inferredMetricsTieBreakers>

@@ -23,6 +23,7 @@
 @interface QuestionsViewController (){
     Question *currentQuestion;
     AuthorizationManager *auth;
+    NSNumber *pageNumber;
     Api *api;
     UIApplication *app;
     NSMutableArray *questionsArray;
@@ -34,6 +35,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageNumber = @1;
+    self.questions = [NSMutableArray new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(answersListForQuestion:) name:@"answersListForQuestion" object:currentQuestion];
     auth = [AuthorizationManager sharedInstance];
@@ -69,7 +72,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [[Api sharedManager] getData:[NSString stringWithFormat:@"/categories/%@/questions", self.category.object_id] andComplition:^(id data, BOOL result){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/categories/%@/questions", self.category.object_id] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseCategoriesQuestions:data];
         } else {
@@ -117,7 +120,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [api getData:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.object_id] andComplition:^(id data, BOOL result){
+    [api sendDataToURL:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.object_id] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseUserQuestionsData:data];
         } else {
@@ -136,11 +139,10 @@
     [self.tableView reloadData];
 }
 - (void) loadQuestions{
-    api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [api getData:@"/questions" andComplition:^(id data, BOOL result){
+    [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseQuestionsData:data];
         } else {
@@ -162,14 +164,15 @@
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     [Question sync:questions];
-    self.questions = [NSMutableArray arrayWithArray:[Question MR_findAll]];
-    [self.tableView reloadData];
+    [self addQuestionsToList:[Question MR_findAll]];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseCategoriesQuestions: (id) data{
     NSMutableArray *questions = data[@"categories"];
     [Question sync:questions];
-    self.questions = [self.category questionsList];
+    for(Question *question in [self.category questionsList]){
+        [self.questions addObject:question];
+    }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -178,8 +181,15 @@
     for(NSDictionary *question in questions){
         [Question create:question];
     }
-    [Question setQuestionsForUser:self.user_page];
-    self.questions = [NSMutableArray arrayWithArray:[self.user_page.questions allObjects]];
+    NSArray *userQuestions = [self.user_page getQuestions];
+    
+    if(questions.count == nil){
+        self.questions = userQuestions;
+    } else {
+        [self.questions addObjectsFromArray: userQuestions];
+    }
+    
+    
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
@@ -192,7 +202,13 @@
     [self toggleCrateQuestionButton];
     [self.tableView reloadData];
 }
-
+- (void) addQuestionsToList:(NSArray *) arr{
+    [self.questions addObjectsFromArray:arr];
+//    for(Question *question in arr){
+//        [self.questions addObjectsFromquestion];
+//    }
+    [self.tableView reloadData];
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -315,8 +331,17 @@
     return correctDate;
 }
 
-
-
+- (void)scrollViewDidScroll: (UIScrollView *)scroll {
+    CGFloat currentOffset = scroll.contentOffset.y;
+    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -80.0) {
+        if(self.questions.count > 0){
+            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
+            [self pageType];
+        }
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

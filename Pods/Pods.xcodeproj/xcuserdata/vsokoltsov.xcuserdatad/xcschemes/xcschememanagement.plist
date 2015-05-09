@@ -2,44 +2,107 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-StackQA-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-CCBottomRefreshControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-MagicalRecord.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-RDRStickyKeyboardView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-SWTableViewCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-SocketRocket.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA-UICKeyChainStore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQA.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>020923B35926DEE95C59BD7D</key>
+		<key>041099E994F214C2B36D5218</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0645D3DDF7A4D0072B73FD9E</key>
+		<key>1BE40A709FAA3DCBD2FA3D9D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1EE6E28D380D948FB1A62316</key>
+		<key>430C657D4F657CE802A60E47</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4092448ACAAADB60D142E399</key>
+		<key>7E2E58A4678A2F05C67C6F66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>45E28C1DF1A3D1CD2106C8F9</key>
+		<key>AC911D93A25A98A19A1C2342</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B647783E71E93AC479750802</key>
+		<key>AD85CBAED7BA173AB7999C45</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8B180526C8A750EB2CA1544</key>
+		<key>C301A8191C2C793787E85CEC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F92EE6366957A280C1120461</key>
+		<key>C53B5CFF3F0D9D8525120366</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8E05B5D6BB6EFF96E562433</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DB1A8882EDFC5ADDC6A1B65C</key>
 		<dict>
 			<key>primary</key>
 			<true/>

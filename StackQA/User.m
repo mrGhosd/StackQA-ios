@@ -7,6 +7,7 @@
 //
 
 #import "User.h"
+#import "Question.h"
 #import <CoreData+MagicalRecord.h>
 
 @implementation User
@@ -77,5 +78,15 @@
     self.statistic.self_answers_count = params[@"statistic"][@"self_answers_count"];
     self.avatar_url = [NSString stringWithFormat:@"%@", params[@"avatar"][@"url"]];
     
+}
+
+- (NSArray *) getQuestions{
+    __block NSArray *questions;
+    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
+        NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", self.object_id];
+        questions = [Question MR_findAllWithPredicate:peopleFilter];
+        [localContext MR_save];
+    }];
+    return questions;
 }
 @end

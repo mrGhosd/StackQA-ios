@@ -78,9 +78,11 @@
 
 + (void) create: (NSDictionary *) params{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        Question *question = [self defineQuestionWithId:params[@"id"] andContext:localContext];
-        [self setParams:params toQuestion:question];
-        [localContext MR_save];
+        if(params != nil){
+            Question *question = [self defineQuestionWithId:params[@"id"] andContext:localContext];
+            [self setParams:params toQuestion:question];
+            [localContext MR_save];
+        }
     }];
 }
 

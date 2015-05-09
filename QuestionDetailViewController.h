@@ -25,6 +25,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *answersCount;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *viewAndScrollViewHeight;
 - (IBAction)questionPopupView:(id)sender;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
 
 
 @end

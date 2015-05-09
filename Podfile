@@ -12,6 +12,7 @@ pod 'UICKeyChainStore'
 pod 'SocketRocket'
 pod 'RDRStickyKeyboardView'
 pod 'UICKeyChainStore'
+pod 'CCBottomRefreshControl'
 end
 
 target 'StackQATests' do
