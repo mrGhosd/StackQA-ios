@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <SWTableViewCell.h>
+#import "Answer.h"
 #import "Question.h"
 
 @interface UserAnswersTableViewCell : SWTableViewCell

@@ -1,127 +1,36 @@
 //
-//  Question.m
+//  QuestionM.m
 //  StackQA
 //
-//  Created by vsokoltsov on 18.01.15.
+//  Created by vsokoltsov on 10.05.15.
 //  Copyright (c) 2015 vsokoltsov. All rights reserved.
 //
 
 #import "Question.h"
-#import "AppDelegate.h"
-#import <CoreData+MagicalRecord.h>
-
 
 @implementation Question
+- (instancetype) initWithParams: (NSDictionary *) params{
+    if(self == [super init]){
+        self.objectId = params[@"id"];
+        self.userId = params[@"user_id"];
+        self.categoryId = params[@"category_id"];
+        self.rate = params[@"rate"];
+        self.views = params[@"views"];
+        self.title = params[@"title"];
+        self.isClosed = (BOOL)[params[@"is_closed"] boolValue];
+        self.createdAt = [self correctConvertOfDate:params[@"created_at"]];
+        self.answersCount = params[@"answers_count"];
+        self.commentsCount = params[@"comments_count"];
+        self.tags = params[@"tag_list"];
+        self.text = params[@"text"];
+    }
+    return self;
+}
 
-@dynamic object_id;
-@dynamic category_id;
-@dynamic rate;
-@dynamic title;
-@dynamic views;
-@dynamic is_closed;
-@dynamic created_at;
-@dynamic user_id;
-@dynamic text;
-@dynamic answers_count;
-@dynamic comments_count;
-@dynamic answers_list;
-@dynamic tags;
-
-+ (NSDate *) correctConvertOfDate:(NSString *) date{
+- (NSDate *) correctConvertOfDate:(NSString *) date{
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *correctDate = [dateFormat dateFromString:date];
     return correctDate;
-}
-+ (void) sync: (NSArray *) params{
-    NSMutableArray *serverObjects = [NSMutableArray new];
-    //Разбиваем пришедшие с сервера вопросы по id
-    [params enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-        [serverObjects addObject:object[@"id"]];
-    }];
-    
-    //Находим вопросы, которых нет на сервере, но есть на устройстве, и удаляем их
-    NSPredicate *questionFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
-    NSArray *deletedQuestions = [Question MR_findAllWithPredicate:questionFilter];
-    for(Question *question in deletedQuestions){
-        [question MR_deleteEntity];
-    }
-    
-    //Создаем массив с id на устройстве и добавляем туда значения id всех вопросов
-    NSMutableArray *deviceObjects = [NSMutableArray new];
-    NSMutableArray *questionsList = [Question MR_findAll];
-    [questionsList enumerateObjectsUsingBlock:^(Question *object, NSUInteger index, BOOL *stop){
-        [deviceObjects addObject:object.object_id];
-    }];
-    
-    [deviceObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-        for(NSDictionary *attr in params){
-            if((BOOL)[object isEqual:attr[@"id"]]){
-                [self create:attr];
-            }
-        }
-    }];
-    
-    //Удаляем из массива объектов с сервера id с устройства
-    [serverObjects removeObjectsInArray:deviceObjects];
-    
-    
-    //Создаем отсутствующие вопросы
-    [serverObjects enumerateObjectsUsingBlock:^(id object, NSUInteger index, BOOL *stop){
-                for(NSDictionary *dict in params){
-                    if(dict[@"id"] == object){
-                        [self create:dict];
-                    }
-                }
-        }];
-}
-
-+ (void) create: (NSDictionary *) params{
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        if(params != nil){
-            Question *question = [self defineQuestionWithId:params[@"id"] andContext:localContext];
-            [self setParams:params toQuestion:question];
-            [localContext MR_save];
-        }
-    }];
-}
-
-+ (Question *) defineQuestionWithId: (id) object_id andContext: (NSManagedObjectContext *) context{
-    Question *q;
-    Question *current_q = [Question MR_findFirstByAttribute:@"object_id" withValue:object_id];
-    if(current_q){
-        q = current_q;
-    } else {
-        q = [Question MR_createInContext:context];
-    }
-    return q;
-}
-
-+ (void) setParams:(NSDictionary *)params toQuestion:(Question *) question{
-    question.object_id = params[@"id"];
-    question.user_id = params[@"user_id"];
-    question.category_id = params[@"category_id"];
-    question.rate = params[@"rate"];
-    question.title = params[@"title"];
-    question.is_closed = (BOOL)[params[@"is_closed"] boolValue];
-    question.created_at = [self correctConvertOfDate:params[@"created_at"]];
-    question.answers_count = params[@"answers_count"];
-    question.comments_count = params[@"comments_count"];
-    question.tags = params[@"tag_list"];
-    question.text = params[@"text"];
-}
-+ (void) setQuestionsForUser:(User *) user{
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", user.object_id];
-        Question *questions = [Question MR_findAllWithPredicate:peopleFilter];
-        [user setValue:[NSMutableSet setWithArray:questions] forKey:@"questions"];
-        [localContext MR_save];
-    }];
-}
-- (void) closeQuestion{
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        self.is_closed = YES;
-        [localContext MR_save];
-    }];
 }
 @end

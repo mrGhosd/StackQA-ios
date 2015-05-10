@@ -70,7 +70,7 @@
 - (NSString *) getCategoryFromMainList{
     NSString *title;
     for(NSDictionary *category in categories){
-        if([self.question.category_id isEqualToNumber:category[@"id"]]){
+        if([self.question.categoryId isEqualToNumber:category[@"id"]]){
             title = category[@"title"];
             selectedCategory = category;
         }
@@ -88,30 +88,30 @@
 */
 
 - (IBAction)saveQuestion:(id)sender {
-    [MBProgressHUD showHUDAddedTo:self.view
-                         animated:YES];
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
-    if (self.question) {
-        Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question.object_id inContext:localContext];
-        question.title = self.questionTitle.text;
-        question.text = self.questionText.text;
-        question.tags = self.questionTags.text;
-        question.category_id = selectedCategory[@"id"];
-        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/%@", question.object_id] andType:@"PUT"];
-    }
-    else {
-        
-        Question *question = [Question MR_createInContext:localContext];
-        if([self.questionTitle.text isEqual: @""] || ![self.questionText.text  isEqual: @""]){
-            question.title = self.questionTitle.text;
-            question.created_at = [NSDate date];
-            question.text = self.questionText.text;
-            [self sendQuestionToServerWithURL:@"/questions" andType:@"POST"];
-        } else {
-            NSLog(@"Error!");
-        }
-    }
-    [localContext MR_save];
+//    [MBProgressHUD showHUDAddedTo:self.view
+//                         animated:YES];
+//    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
+//    if (self.question) {
+//        Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question.objectId inContext:localContext];
+//        question.title = self.questionTitle.text;
+//        question.text = self.questionText.text;
+//        question.tags = self.questionTags.text;
+//        question.categoryId = selectedCategory[@"id"];
+//        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/%@", question.objectId] andType:@"PUT"];
+//    }
+//    else {
+//        
+//        Question *question = [Question MR_createInContext:localContext];
+//        if([self.questionTitle.text isEqual: @""] || ![self.questionText.text  isEqual: @""]){
+//            question.title = self.questionTitle.text;
+//            question.createdAt = [NSDate date];
+//            question.text = self.questionText.text;
+//            [self sendQuestionToServerWithURL:@"/questions" andType:@"POST"];
+//        } else {
+//            NSLog(@"Error!");
+//        }
+//    }
+//    [localContext MR_save];
     
     
 }

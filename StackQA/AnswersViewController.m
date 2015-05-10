@@ -61,7 +61,7 @@
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.objectId ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
          if(success){
              [self parseAnswerData:data];
          } else {
@@ -187,7 +187,7 @@
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
-        if(!self.question.is_closed){
+        if(!self.question.isClosed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
         if(answerItem.user_id == auth.currentUser.object_id){
@@ -265,7 +265,7 @@
 }
 
 - (void) deleteAnswer:(Answer *) answer atIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.objectId, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             [answersList removeObjectAtIndex:path.row];
@@ -307,11 +307,11 @@
     }
 }
 - (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer andIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.object_id, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
-            [self.question closeQuestion];
+//            [self.question closeQuestion];
             [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
             [self loadAnswersList];
         } else {
@@ -320,16 +320,16 @@
     }];
 }
 - (void) changeAnswersRateWithAnswer: (Answer *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
-        if(success){
-            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-            cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
-            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            [self loadAnswersList];
-        } else {
-            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-        }
-    }];
+//    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
+//        if(success){
+//            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+//            cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
+//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+//            [self loadAnswersList];
+//        } else {
+//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+//        }
+//    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -389,24 +389,24 @@
 }
 
 - (IBAction)createAnswer:(id)sender {
-    [self setActionViewBorder];
-    NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
-                                          @"question_id": self.question.object_id,
-                                          @"text": self.actionViewText.text};
-    if([self.actionViewText.text isEqualToString:@""]){
-        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
-    } else {
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
-                         andComplition:^(id data, BOOL success){
-                             if(success){
-                                 self.actionViewText.text = @"";
-                                 [self loadAnswersList];
-                             } else{
-                                 
-                             }
-                         }];
-    }
-    
+//    [self setActionViewBorder];
+//    NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
+//                                          @"question_id": self.question.object_id,
+//                                          @"text": self.actionViewText.text};
+//    if([self.actionViewText.text isEqualToString:@""]){
+//        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
+//    } else {
+//    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
+//                         andComplition:^(id data, BOOL success){
+//                             if(success){
+//                                 self.actionViewText.text = @"";
+//                                 [self loadAnswersList];
+//                             } else{
+//                                 
+//                             }
+//                         }];
+//    }
+//    
 }
 
 - (void)scrollViewDidScroll: (UIScrollView *)scroll {

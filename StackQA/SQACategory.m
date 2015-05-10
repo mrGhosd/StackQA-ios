@@ -99,7 +99,7 @@
 //    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContexnt){
 //        questions = [Question MR_findByAttribute:@"category_id" withValue:self.object_id inContext:localContexnt];
 //    }];
-    questions = [Question MR_findByAttribute:@"category_id" withValue:self.object_id];
+//    questions = [Question MR_findByAttribute:@"category_id" withValue:self.object_id];
     return questions;
 }
 

@@ -69,12 +69,12 @@
 */
 
 - (IBAction)saveComment:(id)sender {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": self.commentText.text}];
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.object_id, self.comment.object_id];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.objectId, @"text": self.commentText.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.comment.object_id];
     
     if(self.answer){
         [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.object_id, self.answer.object_id, self.comment.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, self.comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
         if(success){

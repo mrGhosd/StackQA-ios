@@ -113,7 +113,7 @@
     __block NSArray *questions;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
         NSPredicate *peopleFilter = [NSPredicate predicateWithFormat:@"user_id = %@", self.object_id];
-        questions = [Question MR_findAllWithPredicate:peopleFilter];
+//        questions = [Question MR_findAllWithPredicate:peopleFilter];
         [localContext MR_save];
     }];
     return questions;

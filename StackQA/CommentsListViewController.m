@@ -90,10 +90,10 @@
 - (void) defineCorrectURL{
     if(self.answer){
         currentEntity = self.answer;
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.object_id, self.answer.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
     } else {
         currentEntity = self.question;
-        url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
     }
 }
 - (void) loadCommentsData{
@@ -178,12 +178,12 @@
     }
 }
 - (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": comment.text}];
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.object_id, comment.object_id];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.objectId, @"text": comment.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, comment.object_id];
     
     if(self.answer){
         [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.object_id, self.answer.object_id, comment.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
@@ -305,12 +305,12 @@
 }
 
 - (IBAction)createComment:(id)sender {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.object_id, @"text": self.commentText.text}];
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.object_id];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.objectId, @"text": self.commentText.text}];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
 
     if(self.answer){
         [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.object_id, self.answer.object_id];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
     }
     if([self.commentText.text isEqualToString: @""]){
         [self.commentText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];

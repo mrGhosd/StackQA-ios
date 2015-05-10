@@ -92,7 +92,7 @@
     __block Question *question;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
         NSNumber *questionID = [NSNumber numberWithInteger:sender.tag];
-        question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionID inContext:context];
+//        question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionID inContext:context];
     }];
     chosenQuestion = question;
     [self performSegueWithIdentifier:@"userAnswersQuestion" sender:self];
@@ -158,17 +158,17 @@
 }
 
 - (void) deleteAnswer:(Answer *) answer question: (Question *) question atIndexPath: (NSIndexPath *) path{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
-        if(success){
-            UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-            cell.answerRate.backgroundColor = [UIColor greenColor];
-            [question closeQuestion];
-            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            [self loadUsersAnswers];
-        } else {
-            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-        }
-    }];
+//    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+//        if(success){
+//            UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+//            cell.answerRate.backgroundColor = [UIColor greenColor];
+//            [question closeQuestion];
+//            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+//            [self loadUsersAnswers];
+//        } else {
+//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+//        }
+//    }];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
@@ -193,11 +193,11 @@
     }
 }
 - (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer question: (Question *) question andIndexPath: (NSIndexPath *) path{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", question.object_id, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
-            [question closeQuestion];
+//            [question closeQuestion];
             [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
             [self loadUsersAnswers];
         } else {
@@ -206,7 +206,7 @@
     }];
 }
 - (void) changeAnswersRateWithAnswer: (Answer *) answer question: (Question *) question indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", question.objectId, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
@@ -238,7 +238,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
         QuestionDetailViewController *view = segue.destinationViewController;
-        view.question = [chosenQuestion MR_inThreadContext];
+//        view.question = [chosenQuestion MR_inThreadContext];
     }
     if([[segue identifier] isEqualToString:@"answer_edit"]){
         AnswerDetailViewController *view = segue.destinationViewController;

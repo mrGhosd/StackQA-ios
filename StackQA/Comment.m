@@ -71,7 +71,7 @@
             [Answer create:params[@"answer"]];
         }
         if (params[@"question"] != [NSNull null]){
-            [Question create:params[@"question"]];
+//            [Question create:params[@"question"]];
         }
         [localContext MR_save];
     }];

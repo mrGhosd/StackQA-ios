@@ -173,12 +173,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"showQuestion"]){
         QuestionDetailViewController *view = segue.destinationViewController;
-        view.question = [selectedQuestion MR_inThreadContext];
+//        view.question = [selectedQuestion MR_inThreadContext];
     }
     
     if([[segue identifier] isEqualToString:@"showQuestionAnswers"]){
         AnswersViewController *view = segue.destinationViewController;
-        view.question = [selectedQuestion MR_inThreadContext];
+//        view.question = [selectedQuestion MR_inThreadContext];
     }
     
     if([[segue identifier] isEqualToString:@"editComment"]){
@@ -193,7 +193,7 @@
             a = [selectedComment getEntity];
             q = [a getAnswerQuestion];
         }
-        view.question = [q MR_inThreadContext];
+//        view.question = [q MR_inThreadContext];
         if(a){
             view.answer = [a MR_inThreadContext];
         }
@@ -228,14 +228,14 @@
     NSString *url;
     if([comment.commentable_type isEqualToString:@"Question"]){
         Question *q = [comment getEntity];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.object_id, @"text": comment.text}];
-        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.object_id, comment.object_id];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.objectId, @"text": comment.text}];
+        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.objectId, comment.object_id];
     }
     if ([comment.commentable_type isEqualToString:@"Answer"]){
         Answer *an = [comment getEntity];
         Question *q = [an getAnswerQuestion];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.object_id, @"answer_id": an.object_id, @"text": comment.text}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.object_id, an.object_id, comment.object_id];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){

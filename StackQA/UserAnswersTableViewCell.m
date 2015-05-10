@@ -35,7 +35,7 @@
         [self.answerQuestion setTitle: question.title  forState:UIControlStateNormal];
     }
     self.answerRate.text = [NSString stringWithFormat:@"%@", answer.rate];
-    NSNumber *questionId = question.object_id;
+    NSNumber *questionId = question.objectId;
     
     if(answer.is_helpfull){
         self.answerRate.backgroundColor = [UIColor greenColor];
@@ -47,7 +47,7 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
     [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
-    if(!question.is_closed && !answer.is_helpfull){
+    if(!question.isClosed && !answer.is_helpfull){
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
     }
     

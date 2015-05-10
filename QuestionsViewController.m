@@ -17,7 +17,6 @@
 #import "Question.h"
 #import "SWRevealViewController.h"
 #import "Api.h"
-#import "QuestionM.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AuthorizationManager.h"
 
@@ -165,7 +164,7 @@
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary* quesiton in questions){
-        QuestionM *q = [[QuestionM alloc] initWithParams:quesiton];
+        Question *q = [[Question alloc] initWithParams:quesiton];
         [self.questions addObject:q];
     }
 //    [Question sync:questions];
@@ -174,7 +173,7 @@
 }
 - (void) parseCategoriesQuestions: (id) data{
     NSMutableArray *questions = data[@"categories"];
-    [Question sync:questions];
+//    [Question sync:questions];
     for(Question *question in [self.category questionsList]){
         [self.questions addObject:question];
     }
@@ -184,7 +183,7 @@
 - (void) parseUserQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
     for(NSDictionary *question in questions){
-        [Question create:question];
+//        [Question create:question];
     }
     NSArray *userQuestions = [self.user_page getQuestions];
     
@@ -228,7 +227,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    QuestionM *questionItem = [self.questions objectAtIndex:indexPath.row];
+    Question *questionItem = [self.questions objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell setQuestionData:questionItem];
@@ -266,10 +265,10 @@
         {
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             currentQuestion = self.questions[cellIndexPath.row];
-            [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", currentQuestion.object_id] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
+            [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", currentQuestion.objectId] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
                 if(success){
                     [self.questions removeObjectAtIndex:cellIndexPath.row];
-                    [currentQuestion MR_deleteEntity];
+//                    [currentQuestion MR_deleteEntity];
                     if(self.questions.count == 0){
                         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:cellIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
                     } else {
@@ -288,7 +287,7 @@
 }
 
 
-- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (QuestionM *) question{
+- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (Question *) question{
     if(question.isClosed){
         cell.questionRate.backgroundColor = [UIColor greenColor];
     } else {

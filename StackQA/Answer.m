@@ -89,17 +89,17 @@
     
     //Находим вопросы, которых нет на сервере, но есть на устройстве, и удаляем их
     NSPredicate *questionFilter = [NSPredicate predicateWithFormat:@"NOT (object_id IN %@)", serverObjects];
-    NSArray *deletedQuestions = [Question MR_findAllWithPredicate:questionFilter];
-    for(Answer *answer in deletedQuestions){
-        [[answer MR_inThreadContext] destroy];
-    }
+//    NSArray *deletedQuestions = [Question MR_findAllWithPredicate:questionFilter];
+//    for(Answer *answer in deletedQuestions){
+//        [[answer MR_inThreadContext] destroy];
+//    }
 }
 
 #pragma mark - Question
 - (Question *) getAnswerQuestion{
     __block Question *question;
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
-        question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question_id inContext:context];
+//        question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question_id inContext:context];
     }];
     return question;
 }
@@ -107,29 +107,29 @@
 #pragma mark - User
 + (void) setAnswersToUser: (User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSArray *questions = [Question MR_findAllInContext:localContext];
-        for(Question *q in questions){
-            NSArray *arr = [Answer MR_findByAttribute:@"question_id" withValue:q.object_id inContext:localContext];
-            [q setValue:[NSMutableSet setWithArray:arr] forKey:@"answers"];
-            [localContext MR_save];
-        }
-        NSArray *answersList = [Answer MR_findAllInContext:localContext];
-        NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
-        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
-        [localContext MR_save];
+//        NSArray *questions = [Question MR_findAllInContext:localContext];
+//        for(Question *q in questions){
+//            NSArray *arr = [Answer MR_findByAttribute:@"question_id" withValue:q.object_id inContext:localContext];
+//            [q setValue:[NSMutableSet setWithArray:arr] forKey:@"answers"];
+//            [localContext MR_save];
+//        }
+//        NSArray *answersList = [Answer MR_findAllInContext:localContext];
+//        NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
+//        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
+//        [localContext MR_save];
     }];
 }
 + (void) setAnswersToUser: (User *) user inContext: (NSManagedObjectContext *) localContext{
-    NSArray *questions = [Question MR_findAllInContext:localContext];
-    for(Question *q in questions){
-        NSArray *arr = [Answer MR_findByAttribute:@"question_id" withValue:q.object_id inContext:localContext];
-        [q setValue:[NSMutableSet setWithArray:arr] forKey:@"answers"];
-        [localContext MR_save];
-    }
-    NSArray *answersList = [Answer MR_findAllInContext:localContext];
-    NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
-    [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
-    [localContext MR_save];
+//    NSArray *questions = [Question MR_findAllInContext:localContext];
+//    for(Question *q in questions){
+//        NSArray *arr = [Answer MR_findByAttribute:@"question_id" withValue:q.object_id inContext:localContext];
+//        [q setValue:[NSMutableSet setWithArray:arr] forKey:@"answers"];
+//        [localContext MR_save];
+//    }
+//    NSArray *answersList = [Answer MR_findAllInContext:localContext];
+//    NSArray *answers = [Answer MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
+//    [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:answers] forKey:@"answers"];
+//    [localContext MR_save];
 }
 #pragma mark - CRUD
 + (void) create: (NSDictionary *) params{
@@ -161,7 +161,7 @@
     answer.user_id = params[@"user_id"];
     answer.user_name = params[@"user_name"];
     answer.question_id = params[@"question_id"];
-    answer.created_at = [Question correctConvertOfDate:params[@"created_at"]];
+//    answer.created_at = [Question correctConvertOfDate:params[@"created_at"]];
     answer.text = params[@"text"];
     answer.rate = params[@"rate"];
     answer.comments_count = params[@"comments_count"];
@@ -185,9 +185,9 @@
         [localContext MR_save];
     }];
 }
-+ (NSArray *) answersForQuestion:(Question *)question{
-    NSPredicate *answersFilter = [NSPredicate predicateWithFormat:@"question_id = %@", question.object_id];
-    NSArray *questionAnswers = [Answer MR_findAllWithPredicate:answersFilter];
-    return questionAnswers;
-}
+//+ (NSArray *) answersForQuestion:(Question *)question{
+//////    NSPredicate *answersFilter = [NSPredicate predicateWithFormat:@"question_id = %@", question.object_id];
+////    NSArray *questionAnswers = [Answer MR_findAllWithPredicate:answersFilter];
+////    return questionAnswers;
+//}
 @end
