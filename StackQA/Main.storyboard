@@ -234,7 +234,7 @@
                                                 </constraints>
                                             </webView>
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nVR-n8-7MK">
-                                                <rect key="frame" x="8" y="8" width="586" height="200"/>
+                                                <rect key="frame" x="8" y="8" width="586" height="160"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3l5-oq-DS9">
                                                         <rect key="frame" x="536" y="0.0" width="50" height="200"/>
@@ -271,7 +271,7 @@
                                                             <constraint firstItem="39z-lX-cPO" firstAttribute="leading" secondItem="3l5-oq-DS9" secondAttribute="leading" constant="10" id="wFv-SE-u3f"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-CB-oqj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-CB-oqj">
                                                         <rect key="frame" x="8" y="8" width="150" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -281,7 +281,7 @@
                                                         <rect key="frame" x="8" y="66" width="99" height="21"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-TH-cIa">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-TH-cIa">
                                                         <rect key="frame" x="8" y="31" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -291,12 +291,16 @@
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="0gZ-b1-7Ls"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ZfK-BD-pmm" secondAttribute="bottom" constant="20" id="3R4-JL-I6H"/>
+                                                    <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="96O-Ok-evh"/>
                                                     <constraint firstItem="ZfK-BD-pmm" firstAttribute="top" secondItem="ch1-TH-cIa" secondAttribute="bottom" constant="14" id="FnV-4m-vHM"/>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="MWy-9i-T5v"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" secondItem="ch1-TH-cIa" secondAttribute="trailing" constant="8" id="OFE-L9-LPZ"/>
                                                     <constraint firstItem="ZfK-BD-pmm" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="TI5-7u-kFV"/>
+                                                    <constraint firstItem="OSJ-CB-oqj" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="top" constant="8" id="TYk-n6-LmE"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="top" id="aVU-7V-DML"/>
                                                     <constraint firstAttribute="bottom" secondItem="3l5-oq-DS9" secondAttribute="bottom" id="c6e-Fh-gmJ"/>
+                                                    <constraint firstItem="OSJ-CB-oqj" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="kvP-bQ-REe"/>
                                                     <constraint firstAttribute="trailing" secondItem="3l5-oq-DS9" secondAttribute="trailing" id="lq3-RA-Hlj"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZfK-BD-pmm" secondAttribute="trailing" constant="429" id="pwJ-wA-u7v"/>
                                                 </constraints>
@@ -304,12 +308,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="bottom" constant="8" id="F7J-uC-OUT"/>
                                             <constraint firstAttribute="trailing" secondItem="nVR-n8-7MK" secondAttribute="trailing" id="FEC-Um-0tZ"/>
                                             <constraint firstAttribute="bottom" secondItem="u1a-lL-WR9" secondAttribute="bottom" constant="50" id="HLj-PU-xbO"/>
                                             <constraint firstAttribute="trailing" secondItem="u1a-lL-WR9" secondAttribute="trailing" constant="8" id="Nwt-IE-oTp"/>
                                             <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="8" id="Z8V-pv-nwT"/>
                                             <constraint firstItem="nVR-n8-7MK" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" id="fJU-yh-dS7"/>
-                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="bottom" constant="8" id="gDP-R6-jJj"/>
                                             <constraint firstItem="nVR-n8-7MK" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" id="rrO-Qd-g8O"/>
                                         </constraints>
                                     </view>
