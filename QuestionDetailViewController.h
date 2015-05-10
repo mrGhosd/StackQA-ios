@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreData+MagicalRecord.h>
 #import "Question.h"
+#import <BENTagsView.h>
 
 @interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate>
 @property (strong) Question *question;
@@ -26,6 +27,10 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
 @property (strong, nonatomic) IBOutlet UIButton *authorProfileLink;
 @property (strong, nonatomic) IBOutlet UILabel *questionRate;
+@property (strong, nonatomic) IBOutlet UIView *questionInfoView;
+@property (strong, nonatomic) IBOutlet BENTagsView *tagsView;
+
+
 - (IBAction)showQuestionCategory:(id)sender;
 - (IBAction)showQuestionAuthor:(id)sender;
 

@@ -17,6 +17,7 @@
 #import "Api.h"
 #import "SCategory.h"
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
+#import <BENTagsView.h>
 
 @interface QuestionDetailViewController (){
     Api *api;
@@ -113,6 +114,13 @@
     [self.authorProfileLink setImage:image forState:UIControlStateNormal];
     
     self.questionRate.text = [NSString stringWithFormat: @"%@", self.question.rate];
+    
+    self.tagsView.tagStrings = [self.question breakTagsLine];
+    [self.tagsView setOnColor:[UIColor redColor]];
+//    [self.tagsView setFont:[UIFont fontWithName:@"System" size:8]];
+    [self.tagsView setTagCornerRadius:6];
+    self.tagsView.backgroundColor = [UIColor clearColor];
+//    [self.questionInfoView addSubview:tagView];
 }
 
 - (void)textViewDidChange:(UITextView *)textView

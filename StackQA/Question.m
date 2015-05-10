@@ -40,4 +40,8 @@
     self.tags = params[@"tag_list"];
     self.text = params[@"text"];
 }
+
+- (NSArray *) breakTagsLine{
+    return self.tags.length > 0 ? [self.tags componentsSeparatedByString:@", "] : nil;
+}
 @end

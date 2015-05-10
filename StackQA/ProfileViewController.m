@@ -35,7 +35,7 @@
     auth = [AuthorizationManager sharedInstance];
     paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
     userParams= @[@"Вопросов:", @"Ответов:", @"Комментариев"];
-    userValues = @[auth.currentUser.questions_count, auth.currentUser.answers_count, auth.currentUser.comments_count];
+    userValues = @[auth.currentUser.questionsCount, auth.currentUser.answersCount, auth.currentUser.commentsCount];
     store = [UICKeyChainStore keyChainStore];
     self.userParamsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self defineNavigationPanel];
@@ -43,7 +43,7 @@
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
     self.userAvatar.layer.masksToBounds = YES;
     self.userAvatar.layer.borderWidth = 0;
-    self.userFullName.text = [self.user getCorrectNaming];
+//    self.userFullName.text = [self.user getCorrectNaming];
     [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
     self.signOutButton.layer.cornerRadius = 4.f;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
@@ -144,7 +144,7 @@
 }
 */
 - (IBAction)showUserStatistic:(id)sender {
-    if(self.user.object_id == auth.currentUser.object_id){
+    if(self.user.objectId == auth.currentUser.objectId){
         [self performSegueWithIdentifier:@"user_statistic" sender:self];
     } 
 }

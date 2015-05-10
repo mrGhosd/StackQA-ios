@@ -28,4 +28,5 @@
 @property (nonatomic, retain) SCategory *category;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (void) update: (NSDictionary *)params;
+- (NSArray *) breakTagsLine;
 @end

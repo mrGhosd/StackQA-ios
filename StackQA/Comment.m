@@ -98,8 +98,8 @@
 }
 + (void) setCommentsToUser: (User *) user{
     [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *localContext){
-        NSArray *comments = [Comment MR_findByAttribute:@"user_id" withValue:user.object_id inContext:localContext];
-        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:comments] forKey:@"comments"];
+        NSArray *comments = [Comment MR_findByAttribute:@"user_id" withValue:user.objectId inContext:localContext];
+//        [[user MR_inContext:localContext] setValue:[NSMutableSet setWithArray:comments] forKey:@"comments"];
         [localContext MR_save];
     }];
 }
@@ -109,23 +109,23 @@
     comments = [Comment MR_findAllWithPredicate:commentPredicate];
     return comments;
 }
-- (User *) getUserForComment{
-    User *author = [User MR_findFirstByAttribute:@"object_id" withValue:self.user_id];
-    if(author){
-        return author;
-    } else {
-        __block User *user;
-        [[Api sharedManager] getData:[NSString stringWithFormat: @"/users/%@", self.user_id] andComplition:^(id data, BOOL success){
-            if(success){
-                user = [User create:data];
-            } else {
-            
-            }
-        }];
-        return user;
-    }
-    
-}
+//- (User *) getUserForComment{
+////    User *author = [User MR_findFirstByAttribute:@"object_id" withValue:self.user_id];
+////    if(author){
+////        return author;
+////    } else {
+////        __block User *user;
+////        [[Api sharedManager] getData:[NSString stringWithFormat: @"/users/%@", self.user_id] andComplition:^(id data, BOOL success){
+////            if(success){
+////                user = [User create:data];
+////            } else {
+////            
+////            }
+////        }];
+////        return user;
+////    }
+//    
+//}
 - (id) getEntity{
     id entity = [NSClassFromString(self.commentable_type) MR_findFirstByAttribute:@"object_id" withValue:self.commentable_id];
     return entity;

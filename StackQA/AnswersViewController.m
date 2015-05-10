@@ -190,7 +190,7 @@
         if(!self.question.isClosed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
-        if(answerItem.user_id == auth.currentUser.object_id){
+        if(answerItem.user_id == auth.currentUser.objectId){
             
             [rightUtilityButtons sw_addUtilityButtonWithColor:
              [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]

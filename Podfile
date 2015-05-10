@@ -13,6 +13,7 @@ pod 'SocketRocket'
 pod 'RDRStickyKeyboardView'
 pod 'UICKeyChainStore'
 pod 'UIImage-ResizeMagick'
+pod 'BENTagsView'
 end
 
 target 'StackQATests' do

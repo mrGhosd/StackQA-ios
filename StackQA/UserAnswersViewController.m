@@ -38,7 +38,7 @@
     // Do any additional setup after loading the view.
 }
 - (void) loadUsersAnswers{
-    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", self.user.object_id] andComplition:^(id data, BOOL success){
+    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", self.user.objectId] andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {

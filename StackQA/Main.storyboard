@@ -271,12 +271,34 @@
                                                             <constraint firstItem="39z-lX-cPO" firstAttribute="leading" secondItem="3l5-oq-DS9" secondAttribute="leading" constant="10" id="wFv-SE-u3f"/>
                                                         </constraints>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-CB-oqj">
+                                                        <rect key="frame" x="8" y="8" width="150" height="15"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZfK-BD-pmm" customClass="BENTagsView">
+                                                        <rect key="frame" x="8" y="66" width="99" height="21"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-TH-cIa">
+                                                        <rect key="frame" x="8" y="31" width="42" height="21"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="0gZ-b1-7Ls"/>
+                                                    <constraint firstItem="ZfK-BD-pmm" firstAttribute="top" secondItem="ch1-TH-cIa" secondAttribute="bottom" constant="14" id="FnV-4m-vHM"/>
+                                                    <constraint firstItem="ch1-TH-cIa" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="MWy-9i-T5v"/>
+                                                    <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" secondItem="ch1-TH-cIa" secondAttribute="trailing" constant="8" id="OFE-L9-LPZ"/>
+                                                    <constraint firstItem="ZfK-BD-pmm" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="TI5-7u-kFV"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="top" id="aVU-7V-DML"/>
                                                     <constraint firstAttribute="bottom" secondItem="3l5-oq-DS9" secondAttribute="bottom" id="c6e-Fh-gmJ"/>
                                                     <constraint firstAttribute="trailing" secondItem="3l5-oq-DS9" secondAttribute="trailing" id="lq3-RA-Hlj"/>
+                                                    <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZfK-BD-pmm" secondAttribute="trailing" constant="429" id="pwJ-wA-u7v"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -363,9 +385,13 @@
                         <outlet property="answersCount" destination="Tuj-Gd-gTz" id="nRn-MQ-dVl"/>
                         <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
+                        <outlet property="questionDate" destination="OSJ-CB-oqj" id="JIZ-2Q-h8J"/>
+                        <outlet property="questionInfoView" destination="nVR-n8-7MK" id="58i-EF-tcS"/>
                         <outlet property="questionRate" destination="jsL-Hd-3yT" id="arG-y2-lsZ"/>
                         <outlet property="questionTextHeight" destination="bDc-JG-pck" id="2wa-GG-1I4"/>
+                        <outlet property="questionTitle" destination="ch1-TH-cIa" id="a7R-D2-YgF"/>
                         <outlet property="scrollView" destination="8XB-m5-DFp" id="GbP-kP-txq"/>
+                        <outlet property="tagsView" destination="ZfK-BD-pmm" id="OOA-Gd-kcM"/>
                         <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="categoryQuestionView" id="tDG-Yk-y13"/>
                         <segue destination="Xe2-Wi-8QZ" kind="show" identifier="questionAuthor" id="dmP-y8-1gh"/>
