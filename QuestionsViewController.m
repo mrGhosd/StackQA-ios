@@ -104,7 +104,11 @@
     }
 }
 - (void) handleSingleTap: (UITapGestureRecognizer *)recognizer{
-    [self performSegueWithIdentifier:@"categoryDetail" sender:self];
+    
+    
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
 }
 
 -(void) currentUserValue{

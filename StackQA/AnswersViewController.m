@@ -156,7 +156,7 @@
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.numberOfTouchesRequired=1;
     singleTap.delegate=self;
-//    [[cell.answerText superview] addGestureRecognizer:singleTap];
+//    [cell.answerText addGestureRecognizer:singleTap];
     
     cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
     cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
@@ -379,9 +379,13 @@
 }
 
 - (IBAction)createAnswer:(id)sender {
+    [self setActionViewBorder];
     NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
                                           @"question_id": self.question.object_id,
                                           @"text": self.actionViewText.text};
+    if([self.actionViewText.text isEqualToString:@""]){
+        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
+    } else {
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
                          andComplition:^(id data, BOOL success){
                              if(success){
@@ -391,6 +395,7 @@
                                  
                              }
                          }];
+    }
     
 }
 - (IBAction)showSettings:(id)sender {

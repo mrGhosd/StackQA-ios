@@ -404,9 +404,10 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFM-dg-IaQ">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFM-dg-IaQ">
                                                     <rect key="frame" x="8" y="8" width="200" height="30"/>
                                                     <state key="normal" title="Button">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -436,7 +437,7 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivr-Dm-VXi">
                                 <rect key="frame" x="0.0" y="282" width="600" height="48"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="s" translatesAutoresizingMaskIntoConstraints="NO" id="Wk0-IQ-fLU">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wk0-IQ-fLU">
                                         <rect key="frame" x="8" y="8" width="518" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1726,8 +1727,8 @@
         <segue reference="g3P-Gf-qaj"/>
         <segue reference="hPV-is-y6G"/>
         <segue reference="Mye-8z-EVr"/>
+        <segue reference="84w-cX-ZdW"/>
         <segue reference="jdO-yh-WYz"/>
-        <segue reference="pXd-z1-64T"/>
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>

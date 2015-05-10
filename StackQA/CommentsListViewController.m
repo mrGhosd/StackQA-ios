@@ -12,6 +12,7 @@
 #import "CommentsListViewController.h"
 #import "CommentDetailViewController.h"
 #import <SWTableViewCell.h>
+#import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface CommentsListViewController (){
     id currentEntity;
@@ -118,7 +119,10 @@
     User *cellUser = [cellComment getUserForComment];
     CommentTableViewCell *cell = (CommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.commentText.text = cellComment.text;
-    [cell.userName setTitle:cellUser.email forState:UIControlStateNormal];
+//    [];
+    UIImage* resizedImage = [[cellUser profileImage] resizedImageByMagick: @"32x32#"];
+    [cell.userName setTitle:[cellUser getCorrectNaming] forState:UIControlStateNormal];
+    [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     cell.commentText.editable = NO;
     cell.commentText.scrollEnabled = NO;
     if(auth.currentUser && auth.currentUser.object_id == cellComment.user_id){
@@ -284,14 +288,18 @@
         [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
         url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.object_id, self.answer.object_id];
     }
-    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
-        if(success){
-            self.commentText.text = @"";
-            [self loadCommentsData];
-        } else {
+    if([self.commentText.text isEqualToString: @""]){
+        [self.commentText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
+    } else {
+        [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+            if(success){
+                self.commentText.text = @"";
+                [self loadCommentsData];
+            } else {
         
-        }
-    }];
+            }
+        }];
+    }
     
     
 }
