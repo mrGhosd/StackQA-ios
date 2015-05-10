@@ -15,12 +15,13 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "Api.h"
+#import "SCategory.h"
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface QuestionDetailViewController (){
     Api *api;
     User *author;
-    SQACategory *questionCategory;
+    SCategory *questionCategory;
     AppDelegate *app;
     NSManagedObjectContext *localContext;
     UIRefreshControl *refreshControl;
@@ -53,20 +54,16 @@
     self.questionTextHeight.constant = viewHeight;
 }
 - (void) uploadQuestionData{
-//    app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-//    
-//    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
-//    api = [Api sharedManager];
-//    [MBProgressHUD showHUDAddedTo:self.view
-//                         animated:YES];
-//    Question *currentQuestion = [self.question MR_inContext:localContext];
-//    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.object_id] andComplition:^(id data, BOOL result){
-//        if(result){
-//            [self parseQuestionData:data];
-//        } else {
-//            NSLog(@"data is %@", data);
-//        }
-//    }];
+    api = [Api sharedManager];
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.objectId] andComplition:^(id data, BOOL result){
+        if(result){
+            [self parseQuestionData:data];
+        } else {
+            NSLog(@"data is %@", data);
+        }
+    }];
 }
 -(void) viewDidAppear:(BOOL)animated{
 //    [self uploadQuestionData];
@@ -78,7 +75,9 @@
 }
 
 - (void) parseQuestionData:(id) data{
-    NSMutableDictionary *question = data;
+    [self.question update:data];
+    author = [[User alloc] initWithParams:data[@"user"]];
+    questionCategory = [[SCategory alloc] initWithParams:data[@"category"]];
 //    [Question create:data];
 //    author = [User create:data[@"user"]];
 //    questionCategory = [[SQACategory MR_findByAttribute:@"object_id" withValue:self.question.category_id] firstObject];
@@ -94,12 +93,12 @@
     self.questionTitle.text = self.question.title;
     [self.webView loadHTMLString:self.question.text baseURL:nil];
     self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.createdAt];
-//    [self.questionCategory setTitle:self.question.category.title forState:UIControlStateNormal];
+    [self.questionCategory setTitle:questionCategory.title forState:UIControlStateNormal];
     UIImage* resizedImage = [[questionCategory categoryImage] resizedImageByMagick: @"32x32#"];
     [self.questionCategory setImage:resizedImage forState:UIControlStateNormal];
     
-//    [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answers_count] forState:UIControlStateNormal];
-//    [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.comments_count] forState:UIControlStateNormal];
+    [self.answersCount setTitle:[NSString stringWithFormat:@"%@", self.question.answersCount] forState:UIControlStateNormal];
+    [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.commentsCount] forState:UIControlStateNormal];
     
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
     UIImage *image = [author profileImage];

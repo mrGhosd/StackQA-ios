@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "@implementation QuestionDetailViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-findQuestionAndDelete"
             landmarkType = "5">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-findQuestionAndDelete"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-webViewDidFinishLoad:"
             landmarkType = "5">
          </BreakpointContent>
@@ -872,11 +872,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/User.m"
-            timestampString = "452982944.964961"
+            timestampString = "452984142.898814"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80">
+            startingLineNumber = "81"
+            endingLineNumber = "81">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -998,11 +998,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-resizeView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1382,13 +1382,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "+setParams:toQuestion:"
-            landmarkType = "5">
+            startingLineNumber = "135"
+            endingLineNumber = "135">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1462,13 +1460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "+setQuestionsForUser:"
-            landmarkType = "5">
+            startingLineNumber = "147"
+            endingLineNumber = "147">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1478,13 +1474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "+setParams:toQuestion:"
-            landmarkType = "5">
+            startingLineNumber = "140"
+            endingLineNumber = "140">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1606,13 +1600,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "67"
+            endingLineNumber = "67">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1622,13 +1614,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "70"
+            endingLineNumber = "70">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1638,13 +1628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "107"
+            endingLineNumber = "107">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1654,13 +1642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "84"
+            endingLineNumber = "84">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1670,13 +1656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "101"
+            endingLineNumber = "101">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1686,13 +1670,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "103"
+            endingLineNumber = "103">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1894,13 +1876,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "102"
+            endingLineNumber = "102">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1910,13 +1890,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "98"
+            endingLineNumber = "98">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1926,45 +1904,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/Question.m"
+            timestampString = "452983671.993198"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/Question.m"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "+sync:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "+sync:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            endingLineNumber = "93">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2006,13 +1978,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "90"
+            endingLineNumber = "90">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2022,13 +1992,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "86"
+            endingLineNumber = "86">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2038,13 +2006,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "88"
+            endingLineNumber = "88">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2054,13 +2020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
-            landmarkName = "+setParams:toQuestion:"
-            landmarkType = "5">
+            startingLineNumber = "139"
+            endingLineNumber = "139">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2070,13 +2034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "+setParams:toQuestion:"
-            landmarkType = "5">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2086,13 +2048,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "+create:"
-            landmarkType = "5">
+            startingLineNumber = "115"
+            endingLineNumber = "115">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2102,13 +2062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "+sync:"
-            landmarkType = "5">
+            startingLineNumber = "89"
+            endingLineNumber = "89">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2166,13 +2124,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "+setParams:toQuestion:"
-            landmarkType = "5">
+            startingLineNumber = "141"
+            endingLineNumber = "141">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2230,13 +2186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
-            landmarkName = "-closeQuestion"
-            landmarkType = "5">
+            startingLineNumber = "154"
+            endingLineNumber = "154">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2246,13 +2200,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-closeQuestion"
-            landmarkType = "5">
+            startingLineNumber = "151"
+            endingLineNumber = "151">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2262,13 +2214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-closeQuestion"
-            landmarkType = "5">
+            startingLineNumber = "152"
+            endingLineNumber = "152">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -2742,11 +2692,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2774,11 +2724,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3702,11 +3652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452908543.891843"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3862,13 +3812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Question.m"
-            timestampString = "452981944.324196"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "+setQuestionsForUser:"
-            landmarkType = "5">
+            startingLineNumber = "146"
+            endingLineNumber = "146">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3878,27 +3826,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "452968762.658521"
+            timestampString = "452983671.993198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-initQuestionData"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "QuestionDetailViewController.m"
-            timestampString = "452967225.025662"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>

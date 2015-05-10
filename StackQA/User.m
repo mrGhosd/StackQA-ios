@@ -21,6 +21,7 @@
         self.questionsCount = params[@"questions_count"];
         self.answersCount = params[@"answers_count"];
         self.commentsCount = params[@"comments_count"];
+        self.avatarUrl = params[@"avatar"][@"url"];
     }
     return self;
 }

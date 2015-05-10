@@ -27,4 +27,5 @@
 @property (nonatomic, retain) NSMutableArray *comments;
 @property (nonatomic, retain) SCategory *category;
 - (instancetype) initWithParams: (NSDictionary *) params;
+- (void) update: (NSDictionary *)params;
 @end
