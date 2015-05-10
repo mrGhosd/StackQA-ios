@@ -33,6 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 - (void) uploadCategoriesList{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     [[Api sharedManager] getData:@"/categories" andComplition:^(id data, BOOL success){
         if(success){
             [self parseCategories:data];
@@ -55,6 +57,8 @@
         self.questionCategory.text = [self getCategoryFromMainList];
     }
     [self setupPickerView];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
 }
 
 - (void) setupPickerView{

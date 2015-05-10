@@ -30,4 +30,5 @@
 + (User *) create: (NSDictionary *) params;
 - (NSArray *) getQuestions;
 - (NSString *) getCorrectNaming;
++ (User *) initWithParams:(NSDictionary *) params;
 @end

@@ -8,9 +8,12 @@
 
 #import "User.h"
 #import "Question.h"
+#import "Api.h"
 #import <CoreData+MagicalRecord.h>
 
-@implementation User
+@implementation User{
+    NSManagedObjectContext *context;
+}
 
 @dynamic object_id;
 @dynamic email;
@@ -28,9 +31,35 @@
     NSString *url = [NSString stringWithFormat:@"http://localhost:3000%@", self.avatar_url];
     return url;
 }
-
+//- (instancetype) initWithParams:(NSDictionary *) params{
+//    if(self == [super init]){
+////        if (!self.statistic){;
+////            self.statistic = [SQAStatistic MR_createInContext:context];
+////        }
+//        self.object_id = params[@"id"];
+//        self.email = params[@"email"];
+//        self.surname = [NSString stringWithFormat:@"%@", params[@"surname"]];
+//        self.name = [NSString stringWithFormat:@"%@", params[@"name"]];
+//        self.correct_naming = params[@"correct_naming"];
+//        self.rate = params[@"rate"];
+//        self.questions_count = params[@"questions_count"];
+//        self.answers_count = params[@"answers_count"];
+//        self.comments_count = params[@"comments_count"];
+////        self.statistic.answers_negative_rate_count = params[@"statistic"][@"answers_negative_rate_count"];
+////        self.statistic.answers_positive_rate_count = params[@"statistic"][@"answers_positive_rate_count"];
+////        self.statistic.first_answers_count = params[@"statistic"][@"first_answers_count"];
+////        self.statistic.first_self_answers_count = params[@"statistic"][@"first_self_answers_count"];
+////        self.statistic.helpfull_answers_count = params[@"statistic"][@"helpfull_answers_count"];
+////        self.statistic.questions_negative_rate_count = params[@"statistic"][@"questions_negative_rate_count"];
+////        self.statistic.questions_positive_rate_count = params[@"statistic"][@"questions_positive_rate_count"];
+////        self.statistic.self_answers_count = params[@"statistic"][@"self_answers_count"];
+////        self.avatar_url = [NSString stringWithFormat:@"%@", params[@"avatar"][@"url"]];
+//        [];
+//    }
+//    return self;
+//}
 - (UIImage *) profileImage{
-    UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self fullUrlToUserImage]]]];
+    UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.avatar_url]]]];
     return img;
 }
 
@@ -56,9 +85,9 @@
 }
 
 - (void) setParams:(NSDictionary *)params inContext:(NSManagedObjectContext *) context{
-    if (!self.statistic){;
-        self.statistic = [SQAStatistic MR_createInContext:context];
-    }
+//    if (!self.statistic){;
+//        self.statistic = [SQAStatistic MR_createInContext:context];
+//    }
     self.object_id = params[@"id"];
     self.email = params[@"email"];
     self.surname = [NSString stringWithFormat:@"%@", params[@"surname"]];
@@ -68,15 +97,15 @@
     self.questions_count = params[@"questions_count"];
     self.answers_count = params[@"answers_count"];
     self.comments_count = params[@"comments_count"];
-    self.statistic.answers_negative_rate_count = params[@"statistic"][@"answers_negative_rate_count"];
-    self.statistic.answers_positive_rate_count = params[@"statistic"][@"answers_positive_rate_count"];
-    self.statistic.first_answers_count = params[@"statistic"][@"first_answers_count"];
-    self.statistic.first_self_answers_count = params[@"statistic"][@"first_self_answers_count"];
-    self.statistic.helpfull_answers_count = params[@"statistic"][@"helpfull_answers_count"];
-    self.statistic.questions_negative_rate_count = params[@"statistic"][@"questions_negative_rate_count"];
-    self.statistic.questions_positive_rate_count = params[@"statistic"][@"questions_positive_rate_count"];
-    self.statistic.self_answers_count = params[@"statistic"][@"self_answers_count"];
-    self.avatar_url = [NSString stringWithFormat:@"%@", params[@"avatar"][@"url"]];
+//    self.statistic.answers_negative_rate_count = params[@"statistic"][@"answers_negative_rate_count"];
+//    self.statistic.answers_positive_rate_count = params[@"statistic"][@"answers_positive_rate_count"];
+//    self.statistic.first_answers_count = params[@"statistic"][@"first_answers_count"];
+//    self.statistic.first_self_answers_count = params[@"statistic"][@"first_self_answers_count"];
+//    self.statistic.helpfull_answers_count = params[@"statistic"][@"helpfull_answers_count"];
+//    self.statistic.questions_negative_rate_count = params[@"statistic"][@"questions_negative_rate_count"];
+//    self.statistic.questions_positive_rate_count = params[@"statistic"][@"questions_positive_rate_count"];
+//    self.statistic.self_answers_count = params[@"statistic"][@"self_answers_count"];
+//    self.avatar_url = [NSString stringWithFormat:@"%@", params[@"avatar"][@"url"]];
     
 }
 

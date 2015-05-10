@@ -19,6 +19,7 @@
     NSMutableArray *commentsList;
     NSString *url;
     int selectedIndex;
+    NSNumber *pageNumber;
     float currentCellHeight;
     AuthorizationManager *auth;
     Comment *selectedComment;
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageNumber = @1;
+    commentsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     [self setCommentControl];
@@ -94,7 +97,7 @@
     }
 }
 - (void) loadCommentsData{
-    [[Api sharedManager] sendDataToURL:url parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:url parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseCommentsData:data];
         } else {
@@ -104,8 +107,17 @@
 }
 
 - (void) parseCommentsData: (id) data{
-    [Comment sync:data[@"comments"]];
-    commentsList = [NSMutableArray arrayWithArray:[Comment commentsForCurrentEntity:currentEntity andID:[currentEntity object_id]]];
+    NSMutableArray *comments = data[@"comments"];
+    for(NSDictionary *comment in comments){
+        [Comment create:comment];
+    }
+    NSArray *deviceComments = [Comment commentsForCurrentEntity:currentEntity andID:[currentEntity object_id]];
+    if(comments.count == nil){
+        commentsList = deviceComments;
+    } else {
+        [commentsList addObjectsFromArray:deviceComments];
+    }
+//    commentsList = [NSMutableArray arrayWithArray:[Comment commentsForCurrentEntity:currentEntity andID:[currentEntity object_id]]];
     [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
@@ -276,6 +288,18 @@
         view.question = self.question;
         if(self.answer){
             view.answer = self.answer;
+        }
+    }
+}
+
+- (void)scrollViewDidScroll: (UIScrollView *)scroll {
+    CGFloat currentOffset = scroll.contentOffset.y;
+    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -80.0) {
+        if(commentsList.count > 0){
+            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
+            [self loadCommentsData];
         }
     }
 }

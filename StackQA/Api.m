@@ -12,6 +12,7 @@
 #import <UICKeyChainStore.h>
 #import "ServerError.h"
 
+#define MAIN_URL @"http://localhost:3000"
 @implementation Api{
     AuthorizationManager *auth;
     UICKeyChainStore *store;
@@ -41,7 +42,7 @@ static Api *sharedSingleton_ = nil;
     }
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"GET"
-                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
+                                                                           URLString:[NSString stringWithFormat: @"%@/api/v1%@", MAIN_URL, url]
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     
@@ -71,7 +72,7 @@ static Api *sharedSingleton_ = nil;
         [params addEntriesFromDictionary:accessToken];
     }
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
-                                                                           URLString:[NSString stringWithFormat: @"http://localhost:3000/api/v1%@", url]
+                                                                           URLString:[NSString stringWithFormat: @"%@/api/v1%@", MAIN_URL, url]
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     
@@ -94,7 +95,7 @@ static Api *sharedSingleton_ = nil;
 - (void) getTokenWithParameters:(NSDictionary *)params andComplition:(ResponseCopmlition) complition{
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:@"POST"
-                                                                           URLString:@"http://localhost:3000/oauth/token"
+                                                                           URLString:[NSString stringWithFormat: @"%@/oauth/token", MAIN_URL]
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     
@@ -111,5 +112,8 @@ static Api *sharedSingleton_ = nil;
     }];
     
     [requestAPI start];
+}
+- (NSString *)returnCorrectUrlPrefix:(NSString *)string{
+    return [NSString stringWithFormat:@"%@%@", MAIN_URL, string];
 }
 @end

@@ -60,7 +60,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     Question *currentQuestion = [self.question MR_inContext:localContext];
-    [api getData:[NSString stringWithFormat:@"/questions/%@", currentQuestion.object_id] andComplition:^(id data, BOOL result){
+    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.object_id] andComplition:^(id data, BOOL result){
         if(result){
             [self parseQuestionData:data];
         } else {
@@ -80,15 +80,6 @@
 - (void) parseQuestionData:(id) data{
     NSMutableDictionary *question = data;
     [Question create:data];
-    Question *qw = [Question MR_findFirstByAttribute:@"object_id" withValue:question[@"id"] inContext:localContext];
-    if(qw){
-        Question *q = qw;
-        q.category = [SQACategory MR_createInContext:localContext];
-        q.category.title = question[@"category"][@"title"];
-        q.text = question[@"text"];
-        self.question = q;
-        [localContext MR_save];
-    }
     author = [User create:data[@"user"]];
     questionCategory = [[SQACategory MR_findByAttribute:@"object_id" withValue:self.question.category_id] firstObject];
     [self initQuestionData];

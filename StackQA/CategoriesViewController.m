@@ -66,8 +66,17 @@
 }
 
 - (void) parseCategoriesData:(id) data{
-    [SQACategory sync:data[@"categories"]];
-    categoriesArray = [NSMutableArray arrayWithArray:[SQACategory MR_findAll]];
+    NSArray *categories = data[@"categories"];
+    for(SQACategory *category in categories){
+        [SQACategory create:category];
+    }
+    NSArray *deviceCategories = [SQACategory MR_findAll];
+    if(categories.count == nil){
+        categoriesArray = [NSMutableArray arrayWithArray:deviceCategories];
+    } else {
+        [categoriesArray addObjectsFromArray:deviceCategories];
+    }
+    
     [self.tableView reloadData];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "SQACategory.h"
+#import "Api.h"
 #import <CoreData+MagicalRecord.h>
 #import "Question.h"
 
@@ -86,7 +87,7 @@
 }
 
 - (UIImage *) categoryImage{
-    UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self fullUrlToUserImage]]]];
+    UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.image_url]]]];
     return img;
 }
 - (NSString *) fullUrlToUserImage{

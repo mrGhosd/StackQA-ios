@@ -116,16 +116,12 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-//    [Answer sync:answers];
     for(NSDictionary *answer in answers){
         [Answer create:answer];
     }
-//    [Answer sync:data[@"answers"]];
     NSArray *deviceAnswers = [Answer answersForQuestion:self.question];
     if(answers.count == nil){
         answersList = deviceAnswers;
-//        [answersList addObjectsFromArray:[Answer answersForQuestion:self.question]];
-//        answersList = [NSMutableArray arrayWithArray:[Answer answersForQuestion:self.question]];
     } else {
         [answersList addObjectsFromArray:deviceAnswers];
     }

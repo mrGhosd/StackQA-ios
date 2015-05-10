@@ -89,6 +89,9 @@
     }
 }
 - (void) viewDidAppear:(BOOL)animated{
+   
+}
+- (void) viewWillAppear:(BOOL)animated{
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
         menuID = @[@"logo", @"profile", @"questions", @"categories"];
