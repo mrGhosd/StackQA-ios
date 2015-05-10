@@ -226,13 +226,6 @@
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvG-4z-TZV">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-lL-WR9">
-                                                <rect key="frame" x="19" y="220" width="573" height="91"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="91" id="bDc-JG-pck"/>
-                                                </constraints>
-                                            </webView>
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nVR-n8-7MK">
                                                 <rect key="frame" x="8" y="8" width="586" height="160"/>
                                                 <subviews>
@@ -305,16 +298,53 @@
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZfK-BD-pmm" secondAttribute="trailing" constant="429" id="pwJ-wA-u7v"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L5R-Bh-zVx">
+                                                <rect key="frame" x="8" y="176" width="584" height="36"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-Uj-Xxj">
+                                                        <rect key="frame" x="8" y="4" width="101" height="27"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PC-R5-c6g">
+                                                        <rect key="frame" x="475" y="4" width="101" height="27"/>
+                                                        <state key="normal" title="Button">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.97647064924240112" green="0.9803922176361084" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="LHN-Uj-Xxj" firstAttribute="top" secondItem="L5R-Bh-zVx" secondAttribute="top" constant="4" id="006-tk-7Cu"/>
+                                                    <constraint firstItem="LHN-Uj-Xxj" firstAttribute="leading" secondItem="L5R-Bh-zVx" secondAttribute="leading" constant="8" id="3Jp-Qc-eQ4"/>
+                                                    <constraint firstAttribute="bottom" secondItem="0PC-R5-c6g" secondAttribute="bottom" constant="5" id="6Yw-BE-MoK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0PC-R5-c6g" secondAttribute="trailing" constant="8" id="92m-DB-lUa"/>
+                                                    <constraint firstItem="0PC-R5-c6g" firstAttribute="top" secondItem="L5R-Bh-zVx" secondAttribute="top" constant="4" id="O06-xz-7Mw"/>
+                                                    <constraint firstAttribute="bottom" secondItem="LHN-Uj-Xxj" secondAttribute="bottom" constant="5" id="knG-tX-RJu"/>
+                                                </constraints>
+                                            </view>
+                                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1a-lL-WR9">
+                                                <rect key="frame" x="19" y="220" width="573" height="91"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="91" id="bDc-JG-pck"/>
+                                                </constraints>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="bottom" constant="8" id="F7J-uC-OUT"/>
+                                            <constraint firstAttribute="trailing" secondItem="L5R-Bh-zVx" secondAttribute="trailing" id="DpW-1g-WTk"/>
                                             <constraint firstAttribute="trailing" secondItem="nVR-n8-7MK" secondAttribute="trailing" id="FEC-Um-0tZ"/>
                                             <constraint firstAttribute="bottom" secondItem="u1a-lL-WR9" secondAttribute="bottom" constant="50" id="HLj-PU-xbO"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="L5R-Bh-zVx" secondAttribute="bottom" id="Lp9-sI-fgA"/>
                                             <constraint firstAttribute="trailing" secondItem="u1a-lL-WR9" secondAttribute="trailing" constant="8" id="Nwt-IE-oTp"/>
+                                            <constraint firstItem="L5R-Bh-zVx" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="bottom" id="XDv-Cz-TSi"/>
                                             <constraint firstItem="u1a-lL-WR9" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" constant="8" id="Z8V-pv-nwT"/>
                                             <constraint firstItem="nVR-n8-7MK" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" id="fJU-yh-dS7"/>
+                                            <constraint firstItem="L5R-Bh-zVx" firstAttribute="leading" secondItem="fvG-4z-TZV" secondAttribute="leading" id="jn5-YJ-Myn"/>
                                             <constraint firstItem="nVR-n8-7MK" firstAttribute="top" secondItem="fvG-4z-TZV" secondAttribute="top" id="rrO-Qd-g8O"/>
+                                            <constraint firstItem="u1a-lL-WR9" firstAttribute="top" secondItem="L5R-Bh-zVx" secondAttribute="bottom" constant="8" id="xpW-Th-g4g"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -387,8 +417,11 @@
                     </view>
                     <connections>
                         <outlet property="answersCount" destination="Tuj-Gd-gTz" id="nRn-MQ-dVl"/>
+                        <outlet property="authorProfileLink" destination="0PC-R5-c6g" id="Jrm-P7-w0k"/>
+                        <outlet property="buttonsView" destination="L5R-Bh-zVx" id="9Ge-Hq-kBY"/>
                         <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
+                        <outlet property="questionCategory" destination="LHN-Uj-Xxj" id="XpF-lH-19p"/>
                         <outlet property="questionDate" destination="OSJ-CB-oqj" id="JIZ-2Q-h8J"/>
                         <outlet property="questionInfoView" destination="nVR-n8-7MK" id="58i-EF-tcS"/>
                         <outlet property="questionRate" destination="jsL-Hd-3yT" id="arG-y2-lsZ"/>

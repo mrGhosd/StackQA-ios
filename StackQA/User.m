@@ -29,4 +29,15 @@
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.avatarUrl]]]];
     return img;
 }
+- (NSString *) getCorrectNaming{
+    if(self.correctNaming != nil){
+        return self.correctNaming;
+    } else {
+        if(self.surname != @"" && self.name != @""){
+            return [NSString stringWithFormat:@"%@ %@", self.surname, self.name];
+        } else {
+            return self.email;
+        }
+    }
+}
 @end

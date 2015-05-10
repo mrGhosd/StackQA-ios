@@ -29,6 +29,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *questionRate;
 @property (strong, nonatomic) IBOutlet UIView *questionInfoView;
 @property (strong, nonatomic) IBOutlet BENTagsView *tagsView;
+@property (strong, nonatomic) IBOutlet UIView *buttonsView;
 
 
 - (IBAction)showQuestionCategory:(id)sender;

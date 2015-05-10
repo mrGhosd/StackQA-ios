@@ -25,4 +25,5 @@
 @property (nonatomic, retain) NSMutableSet * comments;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (UIImage *) profileImage;
+- (NSString *) getCorrectNaming;
 @end

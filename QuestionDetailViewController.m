@@ -109,9 +109,10 @@
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.commentsCount] forState:UIControlStateNormal];
     
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
-    UIImage *image = [author profileImage];
+    UIImage *profileImage = [[author profileImage] resizedImageByMagick: @"32x32#"];
     
-    [self.authorProfileLink setImage:image forState:UIControlStateNormal];
+    [self.authorProfileLink setImage:profileImage forState:UIControlStateNormal];
+    [self.authorProfileLink setTitle: [author getCorrectNaming] forState:UIControlStateNormal];
     
     self.questionRate.text = [NSString stringWithFormat: @"%@", self.question.rate];
     
@@ -121,6 +122,8 @@
     [self.tagsView setTagCornerRadius:6];
     self.tagsView.backgroundColor = [UIColor clearColor];
 //    [self.questionInfoView addSubview:tagView];
+    float buttonWidth = self.buttonsView.frame.size.width / 2;
+//    self.authorProfileLink.frame = CGSizeMake(buttonWidth, self.buttonsView.frame.size.height);
 }
 
 - (void)textViewDidChange:(UITextView *)textView

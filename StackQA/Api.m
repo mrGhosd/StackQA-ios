@@ -12,7 +12,7 @@
 #import <UICKeyChainStore.h>
 #import "ServerError.h"
 
-#define MAIN_URL @"http://localhost:3000"
+#define MAIN_URL @"http://192.168.1.180:3000"
 @implementation Api{
     AuthorizationManager *auth;
     UICKeyChainStore *store;
