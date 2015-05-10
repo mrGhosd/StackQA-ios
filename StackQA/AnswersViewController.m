@@ -19,6 +19,7 @@
     Api *api;
     AuthorizationManager *auth;
     float currentCellHeight;
+    NSNumber *pageNumber;
     NSManagedObjectContext *localContext;
     Answer *selectedAnswer;
     Question *questionAnswerSelected;
@@ -32,6 +33,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
+    pageNumber = @1;
+    answersList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
@@ -58,8 +61,7 @@
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    [api getData:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id ]
-     andComplition:^(id data, BOOL success){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
          if(success){
              [self parseAnswerData:data];
          } else {
@@ -113,8 +115,20 @@
 }
 
 - (void) parseAnswerData:(id) data{
-    [Answer sync:data[@"answers"]];
-    answersList = [NSMutableArray arrayWithArray:[Answer answersForQuestion:self.question]];
+    NSArray *answers = data[@"answers"];
+//    [Answer sync:answers];
+    for(NSDictionary *answer in answers){
+        [Answer create:answer];
+    }
+//    [Answer sync:data[@"answers"]];
+    NSArray *deviceAnswers = [Answer answersForQuestion:self.question];
+    if(answers.count == nil){
+        answersList = deviceAnswers;
+//        [answersList addObjectsFromArray:[Answer answersForQuestion:self.question]];
+//        answersList = [NSMutableArray arrayWithArray:[Answer answersForQuestion:self.question]];
+    } else {
+        [answersList addObjectsFromArray:deviceAnswers];
+    }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
@@ -398,6 +412,19 @@
     }
     
 }
+
+- (void)scrollViewDidScroll: (UIScrollView *)scroll {
+    CGFloat currentOffset = scroll.contentOffset.y;
+    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+    
+    if (maximumOffset - currentOffset <= -80.0) {
+        if(answersList.count > 0){
+            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
+            [self loadAnswersList];
+        }
+    }
+}
+
 - (IBAction)showSettings:(id)sender {
 }
 @end
