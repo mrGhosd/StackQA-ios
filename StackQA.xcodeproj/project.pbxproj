@@ -61,6 +61,7 @@
 		646DDF051AB4D9650066F75A /* SQACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DDF041AB4D9650066F75A /* SQACategory.m */; };
 		647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */; };
 		647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C55C21AC36D980011D5FA /* AuthorizationViewController.m */; };
+		6480ED331AFFED660023AFBB /* QuestionM.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED321AFFED660023AFBB /* QuestionM.m */; };
 		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */; };
 		64C69EBB1A6C4F01006AB0AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBA1A6C4F01006AB0AC /* main.m */; };
@@ -72,7 +73,6 @@
 		64C69ED81A6C4F01006AB0AC /* StackQATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69ED71A6C4F01006AB0AC /* StackQATests.m */; };
 		64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EE21A6C4F20006AB0AC /* QuestionsViewController.m */; };
 		64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EE51A6C4F37006AB0AC /* QuestionsFormViewController.m */; };
-		64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EE81A6C52C1006AB0AC /* QuestionDetail.m */; };
 		64C69EEC1A6C52C2006AB0AC /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EEB1A6C52C2006AB0AC /* Question.m */; };
 		64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EEE1A6C5EBC006AB0AC /* QuestionDetailViewController.m */; };
 		64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EF11A6C6FFA006AB0AC /* QuestionsTableViewCell.m */; };
@@ -183,6 +183,8 @@
 		647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersTableViewCell.m; sourceTree = "<group>"; };
 		647C55C11AC36D980011D5FA /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
 		647C55C21AC36D980011D5FA /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
+		6480ED311AFFED660023AFBB /* QuestionM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionM.h; sourceTree = "<group>"; };
+		6480ED321AFFED660023AFBB /* QuestionM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionM.m; sourceTree = "<group>"; };
 		648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuestionsViewController.h; sourceTree = "<group>"; };
 		648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuestionsViewController.m; sourceTree = "<group>"; };
 		64A7B7001AE7C8D3008F6E90 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
@@ -204,8 +206,6 @@
 		64C69EE21A6C4F20006AB0AC /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionsViewController.m; path = ../QuestionsViewController.m; sourceTree = "<group>"; };
 		64C69EE41A6C4F37006AB0AC /* QuestionsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionsFormViewController.h; path = ../QuestionsFormViewController.h; sourceTree = "<group>"; };
 		64C69EE51A6C4F37006AB0AC /* QuestionsFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionsFormViewController.m; path = ../QuestionsFormViewController.m; sourceTree = "<group>"; };
-		64C69EE71A6C52C1006AB0AC /* QuestionDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionDetail.h; sourceTree = "<group>"; };
-		64C69EE81A6C52C1006AB0AC /* QuestionDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionDetail.m; sourceTree = "<group>"; };
 		64C69EEA1A6C52C2006AB0AC /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		64C69EEB1A6C52C2006AB0AC /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
 		64C69EED1A6C5EBC006AB0AC /* QuestionDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionDetailViewController.h; path = ../QuestionDetailViewController.h; sourceTree = "<group>"; };
@@ -398,8 +398,8 @@
 			children = (
 				64C69EEA1A6C52C2006AB0AC /* Question.h */,
 				64C69EEB1A6C52C2006AB0AC /* Question.m */,
-				64C69EE71A6C52C1006AB0AC /* QuestionDetail.h */,
-				64C69EE81A6C52C1006AB0AC /* QuestionDetail.m */,
+				6480ED311AFFED660023AFBB /* QuestionM.h */,
+				6480ED321AFFED660023AFBB /* QuestionM.m */,
 			);
 			name = question;
 			sourceTree = "<group>";
@@ -860,11 +860,11 @@
 				6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */,
 				64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */,
 				64F5679E1ACF07820084AED4 /* ImageView.m in Sources */,
+				6480ED331AFFED660023AFBB /* QuestionM.m in Sources */,
 				642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */,
 				644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */,
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
 				642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */,
-				64C69EE91A6C52C1006AB0AC /* QuestionDetail.m in Sources */,
 				646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */,
 				6465438D1AFD656700C0E10F /* CategoryDetailViewController.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,

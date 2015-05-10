@@ -17,6 +17,7 @@
 #import "Question.h"
 #import "SWRevealViewController.h"
 #import "Api.h"
+#import "QuestionM.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AuthorizationManager.h"
 
@@ -163,8 +164,12 @@
 }
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
-    [Question sync:questions];
-    [self addQuestionsToList:[Question MR_findAll]];
+    for(NSDictionary* quesiton in questions){
+        QuestionM *q = [[QuestionM alloc] initWithParams:quesiton];
+        [self.questions addObject:q];
+    }
+//    [Question sync:questions];
+//    [self addQuestionsToList:[Question MR_findAll]];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseCategoriesQuestions: (id) data{
@@ -223,19 +228,19 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Question *questionItem = [self.questions objectAtIndex:indexPath.row];
+    QuestionM *questionItem = [self.questions objectAtIndex:indexPath.row];
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell setQuestionData:questionItem];
-    cell.questionTitle.text = (Question *)questionItem.title;
-    cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.created_at];
+    cell.questionTitle.text = questionItem.title;
+    cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.createdAt];
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
     [self setQuestionRateViewForCell:cell andItem:questionItem];
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
-    [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answers_count] forState:UIControlStateNormal];
-    [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.comments_count] forState:UIControlStateNormal];
+    [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answersCount] forState:UIControlStateNormal];
+    [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.commentsCount] forState:UIControlStateNormal];
     
-    if(auth.currentUser && [questionItem.user_id integerValue] == [auth.currentUser.object_id integerValue]){
+    if(auth.currentUser && [questionItem.userId integerValue] == [auth.currentUser.object_id integerValue]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -283,8 +288,8 @@
 }
 
 
-- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (Question *) question{
-    if(question.is_closed){
+- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (QuestionM *) question{
+    if(question.isClosed){
         cell.questionRate.backgroundColor = [UIColor greenColor];
     } else {
         cell.questionRate.backgroundColor = [UIColor lightGrayColor];
