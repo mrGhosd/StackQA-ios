@@ -52,7 +52,7 @@
 }
 - (void) pageType{
     if(self.user_page){
-        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correct_naming]];
+        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correctNaming]];
         [self showUserQuestions];
     } else if(self.category){
         [self loadCategoryQuestion];
@@ -120,7 +120,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [api sendDataToURL:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.object_id] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
+    [api sendDataToURL:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseUserQuestionsData:data];
         } else {
@@ -185,13 +185,13 @@
     for(NSDictionary *question in questions){
 //        [Question create:question];
     }
-    NSArray *userQuestions = [self.user_page getQuestions];
+//    NSArray *userQuestions = [self.user_page getQuestions];
     
-    if(questions.count == nil){
-        self.questions = userQuestions;
-    } else {
-        [self.questions addObjectsFromArray: userQuestions];
-    }
+//    if(questions.count == nil){
+//        self.questions = userQuestions;
+//    } else {
+//        [self.questions addObjectsFromArray: userQuestions];
+//    }
     
     
     [self.tableView reloadData];
@@ -239,7 +239,7 @@
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answersCount] forState:UIControlStateNormal];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.commentsCount] forState:UIControlStateNormal];
     
-    if(auth.currentUser && [questionItem.userId integerValue] == [auth.currentUser.object_id integerValue]){
+    if(auth.currentUser && [questionItem.userId integerValue] == [auth.currentUser.objectId integerValue]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]

@@ -133,11 +133,11 @@
     cell.commentText.text = cellComment.text;
 //    [];
     UIImage* resizedImage = [[cellUser profileImage] resizedImageByMagick: @"32x32#"];
-    [cell.userName setTitle:[cellUser getCorrectNaming] forState:UIControlStateNormal];
+//    [cell.userName setTitle:[cellUser getCorrectNaming] forState:UIControlStateNormal];
     [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     cell.commentText.editable = NO;
     cell.commentText.scrollEnabled = NO;
-    if(auth.currentUser && auth.currentUser.object_id == cellComment.user_id){
+    if(auth.currentUser && auth.currentUser.objectId == cellComment.user_id){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -178,7 +178,7 @@
     }
 }
 - (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.objectId, @"text": comment.text}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": comment.text}];
     NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, comment.object_id];
     
     if(self.answer){
@@ -305,7 +305,7 @@
 }
 
 - (IBAction)createComment:(id)sender {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": self.question.objectId, @"text": self.commentText.text}];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
     NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
 
     if(self.answer){

@@ -59,7 +59,7 @@
 
 - (IBAction)answerSave:(id)sender {
     NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer.question_id, self.answer.object_id];
-    NSDictionary *params = @{@"question_id": self.answer.object_id, @"user_id": auth.currentUser.object_id, @"text": self.answerDetailTextView.text };
+    NSDictionary *params = @{@"question_id": self.answer.object_id, @"user_id": auth.currentUser.objectId, @"text": self.answerDetailTextView.text };
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
         if(success){
             [[NSNotificationCenter defaultCenter]

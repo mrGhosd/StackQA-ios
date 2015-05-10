@@ -16,7 +16,6 @@
 		6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */; };
 		64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B851AC82C1E00E0E401 /* AuthorizationManager.m */; };
 		64157B891AC8440300E0E401 /* Authorization.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B881AC8440300E0E401 /* Authorization.m */; };
-		64157B8C1AC8620500E0E401 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B8B1AC8620500E0E401 /* User.m */; };
 		64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64157B8F1AC8728400E0E401 /* ProfileViewController.m */; };
 		6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C21AAC73ED00110D62 /* SWRevealViewController.m */; };
 		6428B0C61AAC777900110D62 /* SidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0C51AAC777900110D62 /* SidebarViewController.m */; };
@@ -62,6 +61,8 @@
 		647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */; };
 		647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C55C21AC36D980011D5FA /* AuthorizationViewController.m */; };
 		6480ED331AFFED660023AFBB /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED321AFFED660023AFBB /* Question.m */; };
+		6480ED361AFFF5260023AFBB /* SCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED351AFFF5260023AFBB /* SCategory.m */; };
+		6480ED391AFFF5C50023AFBB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED381AFFF5C50023AFBB /* User.m */; };
 		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */; };
 		64C69EBB1A6C4F01006AB0AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBA1A6C4F01006AB0AC /* main.m */; };
@@ -112,8 +113,6 @@
 		64157B851AC82C1E00E0E401 /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
 		64157B871AC8440300E0E401 /* Authorization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Authorization.h; path = ../Authorization.h; sourceTree = "<group>"; };
 		64157B881AC8440300E0E401 /* Authorization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Authorization.m; path = ../Authorization.m; sourceTree = "<group>"; };
-		64157B8A1AC8620500E0E401 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		64157B8B1AC8620500E0E401 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		64157B8E1AC8728400E0E401 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		64157B8F1AC8728400E0E401 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		6428B0C11AAC73ED00110D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -184,6 +183,10 @@
 		647C55C21AC36D980011D5FA /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
 		6480ED311AFFED660023AFBB /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		6480ED321AFFED660023AFBB /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		6480ED341AFFF5260023AFBB /* SCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCategory.h; sourceTree = "<group>"; };
+		6480ED351AFFF5260023AFBB /* SCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCategory.m; sourceTree = "<group>"; };
+		6480ED371AFFF5C50023AFBB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		6480ED381AFFF5C50023AFBB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuestionsViewController.h; sourceTree = "<group>"; };
 		648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuestionsViewController.m; sourceTree = "<group>"; };
 		64A7B7001AE7C8D3008F6E90 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
@@ -307,8 +310,8 @@
 		64157B911AC8729C00E0E401 /* user */ = {
 			isa = PBXGroup;
 			children = (
-				64157B8A1AC8620500E0E401 /* User.h */,
-				64157B8B1AC8620500E0E401 /* User.m */,
+				6480ED371AFFF5C50023AFBB /* User.h */,
+				6480ED381AFFF5C50023AFBB /* User.m */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -580,6 +583,8 @@
 			children = (
 				646DDF031AB4D9650066F75A /* SQACategory.h */,
 				646DDF041AB4D9650066F75A /* SQACategory.m */,
+				6480ED341AFFF5260023AFBB /* SCategory.h */,
+				6480ED351AFFF5260023AFBB /* SCategory.m */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				6465438A1AFD5D7700C0E10F /* QuestionCategoryView.m in Sources */,
 				64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */,
 				64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */,
+				6480ED391AFFF5C50023AFBB /* User.m in Sources */,
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
 				6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */,
 				647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */,
@@ -843,7 +849,6 @@
 				644EAB7E1AF7DC34000C921C /* Comment.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
 				6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */,
-				64157B8C1AC8620500E0E401 /* User.m in Sources */,
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
@@ -871,6 +876,7 @@
 				64097AAB1AF96C3B002F44AD /* CommentDetailViewController.m in Sources */,
 				644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */,
 				648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */,
+				6480ED361AFFF5260023AFBB /* SCategory.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,
 				64F567961ACE9FA90084AED4 /* ServerError.m in Sources */,
 				64C69EBB1A6C4F01006AB0AC /* main.m in Sources */,

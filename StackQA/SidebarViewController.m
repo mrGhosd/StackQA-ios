@@ -57,7 +57,7 @@
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2;
         cell.profileImage.layer.masksToBounds = YES;
         cell.profileImage.layer.borderWidth = 0;
-        cell.profileName.text = auth.currentUser.correct_naming;
+        cell.profileName.text = auth.currentUser.correctNaming;
         [cell.profileRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate ] forState:UIControlStateNormal];
         return cell;
     } else {

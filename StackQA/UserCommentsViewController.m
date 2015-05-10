@@ -43,7 +43,7 @@
     [self loadUserCommentsData];
 }
 - (void) loadUserCommentsData{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.object_id] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.objectId] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {
@@ -228,13 +228,13 @@
     NSString *url;
     if([comment.commentable_type isEqualToString:@"Question"]){
         Question *q = [comment getEntity];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.objectId, @"text": comment.text}];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"text": comment.text}];
         url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.objectId, comment.object_id];
     }
     if ([comment.commentable_type isEqualToString:@"Answer"]){
         Answer *an = [comment getEntity];
         Question *q = [an getAnswerQuestion];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.object_id, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
+        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
         url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){

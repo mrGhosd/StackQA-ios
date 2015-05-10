@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class SCategory;
 
 @interface Question : NSObject
 @property (nonatomic, retain) NSNumber * objectId;
@@ -24,5 +25,6 @@
 @property (nonatomic, retain) NSMutableArray * answersList;
 @property (nonatomic, strong) NSMutableArray *answers;
 @property (nonatomic, retain) NSMutableArray *comments;
+@property (nonatomic, retain) SCategory *category;
 - (instancetype) initWithParams: (NSDictionary *) params;
 @end
