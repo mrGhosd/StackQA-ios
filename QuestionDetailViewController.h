@@ -25,6 +25,7 @@
 - (IBAction)questionPopupView:(id)sender;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
 @property (strong, nonatomic) IBOutlet UIButton *authorProfileLink;
+@property (strong, nonatomic) IBOutlet UILabel *questionRate;
 - (IBAction)showQuestionCategory:(id)sender;
 - (IBAction)showQuestionAuthor:(id)sender;
 

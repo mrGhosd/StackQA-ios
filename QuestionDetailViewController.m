@@ -92,7 +92,14 @@
 - (void) initQuestionData{
     self.questionTitle.text = self.question.title;
     [self.webView loadHTMLString:self.question.text baseURL:nil];
-    self.questionDate.text = [NSString stringWithFormat:@"%@", self.question.createdAt];
+    
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"HH:mm:ss dd-MM-yyyy"];
+    
+    NSDate *date = [format dateFromString:[NSString stringWithFormat:@"%@", self.question.createdAt]];
+    NSString* finalDateString = [format stringFromDate:self.question.createdAt];
+    
+    self.questionDate.text = finalDateString;
     [self.questionCategory setTitle:questionCategory.title forState:UIControlStateNormal];
     UIImage* resizedImage = [[questionCategory categoryImage] resizedImageByMagick: @"32x32#"];
     [self.questionCategory setImage:resizedImage forState:UIControlStateNormal];
@@ -104,6 +111,8 @@
     UIImage *image = [author profileImage];
     
     [self.authorProfileLink setImage:image forState:UIControlStateNormal];
+    
+    self.questionRate.text = [NSString stringWithFormat: @"%@", self.question.rate];
 }
 
 - (void)textViewDidChange:(UITextView *)textView
