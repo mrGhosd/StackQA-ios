@@ -29,4 +29,5 @@
 - (UIImage *) profileImage;
 + (User *) create: (NSDictionary *) params;
 - (NSArray *) getQuestions;
+- (NSString *) getCorrectNaming;
 @end

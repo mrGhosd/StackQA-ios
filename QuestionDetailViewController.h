@@ -26,6 +26,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *questionTextHeight;
 @property (strong, nonatomic) IBOutlet UIButton *authorProfileLink;
 - (IBAction)showQuestionCategory:(id)sender;
+- (IBAction)showQuestionAuthor:(id)sender;
+
 
 
 @end

@@ -11,6 +11,7 @@
 #import "QuestionsViewController.h"
 #import "AnswersViewController.h"
 #import "CommentsListViewController.h"
+#import "ProfileViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AppDelegate.h"
 #import "Api.h"
@@ -159,6 +160,10 @@
         QuestionsViewController *view = segue.destinationViewController;
         view.category = questionCategory;
     }
+    if([[segue identifier] isEqualToString:@"questionAuthor"]){
+        ProfileViewController *view = segue.destinationViewController;
+        view.user = author;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -226,5 +231,9 @@
 }
 - (IBAction)showQuestionCategory:(id)sender {
     [self performSegueWithIdentifier:@"categoryQuestionView" sender:self];
+}
+
+- (IBAction)showQuestionAuthor:(id)sender {
+    [self performSegueWithIdentifier:@"questionAuthor" sender:self];
 }
 @end

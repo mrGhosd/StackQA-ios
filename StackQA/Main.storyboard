@@ -247,6 +247,9 @@
                                                     <constraint firstAttribute="height" constant="40" id="RrY-f8-LzG"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="showQuestionAuthor:" destination="Xug-EA-AjG" eventType="touchUpInside" id="yLY-h9-baO"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWv-HT-xfO">
                                                 <rect key="frame" x="19" y="48" width="560" height="21"/>
@@ -363,6 +366,7 @@
                         <outlet property="scrollView" destination="8XB-m5-DFp" id="GbP-kP-txq"/>
                         <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="categoryQuestionView" id="tDG-Yk-y13"/>
+                        <segue destination="Xe2-Wi-8QZ" kind="show" identifier="questionAuthor" id="dmP-y8-1gh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-ye-tND" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1052,7 +1056,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-NP-8e7">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-NP-8e7">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acH-U6-0ZP">
@@ -1285,10 +1289,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Y7-Lq4">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Y7-Lq4">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJp-BV-o12">
@@ -1715,16 +1719,17 @@
         <image name="settings48.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Em-mt-R6W"/>
-        <segue reference="4oy-yi-Vs6"/>
-        <segue reference="Ogc-fD-TQd"/>
-        <segue reference="jdO-yh-WYz"/>
-        <segue reference="pXd-z1-64T"/>
+        <segue reference="dmP-y8-1gh"/>
         <segue reference="x3p-uV-IHe"/>
         <segue reference="tDG-Yk-y13"/>
         <segue reference="Zma-F1-cBs"/>
-        <segue reference="hPV-is-y6G"/>
         <segue reference="g3P-Gf-qaj"/>
+        <segue reference="hPV-is-y6G"/>
         <segue reference="Mye-8z-EVr"/>
+        <segue reference="jdO-yh-WYz"/>
+        <segue reference="pXd-z1-64T"/>
+        <segue reference="5Em-mt-R6W"/>
+        <segue reference="4oy-yi-Vs6"/>
+        <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>
 </document>

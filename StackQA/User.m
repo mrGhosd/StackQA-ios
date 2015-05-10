@@ -89,4 +89,16 @@
     }];
     return questions;
 }
+
+- (NSString *) getCorrectNaming{
+    if(self.correct_naming != nil){
+        return self.correct_naming;
+    } else {
+        if(self.surname != nil && self.name != nil){
+            return [NSString stringWithFormat:@"%@  %@", self.surname, self.name];
+        } else {
+            return self.email;
+        }
+    }
+}
 @end
