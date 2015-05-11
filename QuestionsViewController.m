@@ -72,7 +72,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/categories/%@/questions", self.category.object_id] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/categories/%@/questions", self.category.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseCategoriesQuestions:data];
         } else {
@@ -169,14 +169,15 @@
     }
 //    [Question sync:questions];
 //    [self addQuestionsToList:[Question MR_findAll]];
+    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseCategoriesQuestions: (id) data{
     NSMutableArray *questions = data[@"categories"];
 //    [Question sync:questions];
-    for(Question *question in [self.category questionsList]){
-        [self.questions addObject:question];
-    }
+//    for(Question *question in [self.category questionsList]){
+//        [self.questions addObject:question];
+//    }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }

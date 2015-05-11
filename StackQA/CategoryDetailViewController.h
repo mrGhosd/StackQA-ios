@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "SQACategory.h"
+#import "SCategory.h"
 
 @interface CategoryDetailViewController : ViewController
 @property (strong, nonatomic) IBOutlet UIImageView *categoryImage;
 @property (strong, nonatomic) IBOutlet UILabel *categoryTitle;
 @property (strong, nonatomic) IBOutlet UIWebView *categoryText;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *webViewHeight;
-@property (strong) SQACategory *category;
+@property (strong) SCategory *category;
 @end

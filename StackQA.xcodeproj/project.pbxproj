@@ -57,7 +57,6 @@
 		6469F9B21A70572B00E837E3 /* plus-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B11A70572B00E837E3 /* plus-32.png */; };
 		6469F9B41A70578900E837E3 /* delete_sign-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B31A70578900E837E3 /* delete_sign-32.png */; };
 		6469F9B61A70592500E837E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6469F9B51A70592500E837E3 /* Main.storyboard */; };
-		646DDF051AB4D9650066F75A /* SQACategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 646DDF041AB4D9650066F75A /* SQACategory.m */; };
 		647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */; };
 		647C55C31AC36D980011D5FA /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 647C55C21AC36D980011D5FA /* AuthorizationViewController.m */; };
 		6480ED331AFFED660023AFBB /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED321AFFED660023AFBB /* Question.m */; };
@@ -177,8 +176,6 @@
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
 		6469F9B51A70592500E837E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		646DDF031AB4D9650066F75A /* SQACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQACategory.h; sourceTree = "<group>"; };
-		646DDF041AB4D9650066F75A /* SQACategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQACategory.m; sourceTree = "<group>"; };
 		647BD8971AF027F0002A0B66 /* UserAnswersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnswersTableViewCell.h; sourceTree = "<group>"; };
 		647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersTableViewCell.m; sourceTree = "<group>"; };
 		647C55C11AC36D980011D5FA /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
@@ -587,8 +584,6 @@
 		646DDEFC1AB4D8670066F75A /* category */ = {
 			isa = PBXGroup;
 			children = (
-				646DDF031AB4D9650066F75A /* SQACategory.h */,
-				646DDF041AB4D9650066F75A /* SQACategory.m */,
 				6480ED341AFFF5260023AFBB /* SCategory.h */,
 				6480ED351AFFF5260023AFBB /* SCategory.m */,
 			);
@@ -860,7 +855,6 @@
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
-				646DDF051AB4D9650066F75A /* SQACategory.m in Sources */,
 				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,
 				64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */,
 				64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */,

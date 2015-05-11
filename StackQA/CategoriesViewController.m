@@ -13,11 +13,11 @@
 #import "CategoryTableViewCell.h"
 #import <CoreData+MagicalRecord.h>
 #import "Api.h"
-#import "SQACategory.h"
+#import "SCategory.h"
 
 @interface CategoriesViewController (){
     NSMutableArray *categoriesArray;
-    SQACategory *selectedCategory;
+    SCategory *selectedCategory;
 }
 
 @end
@@ -67,16 +67,16 @@
 
 - (void) parseCategoriesData:(id) data{
     NSArray *categories = data[@"categories"];
-    for(SQACategory *category in categories){
-        [SQACategory create:category];
-    }
-    NSArray *deviceCategories = [SQACategory MR_findAll];
-    if(categories.count == nil){
-        categoriesArray = [NSMutableArray arrayWithArray:deviceCategories];
-    } else {
-        [categoriesArray addObjectsFromArray:deviceCategories];
-    }
-    
+//    for(SCategory *category in categories){
+//        [SCategory create:category];
+//    }
+//    NSArray *deviceCategories = [SCategory MR_findAll];
+//    if(categories.count == nil){
+//        categoriesArray = [NSMutableArray arrayWithArray:deviceCategories];
+//    } else {
+//        [categoriesArray addObjectsFromArray:deviceCategories];
+//    }
+//    
     [self.tableView reloadData];
 }
 
@@ -88,7 +88,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"categoryCell";
-    SQACategory *categoryItem = categoriesArray[indexPath.row];
+    SCategory *categoryItem = categoriesArray[indexPath.row];
     CategoryTableViewCell *cell = (CategoryTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     cell.imageView.image = [categoryItem categoryImage];
     cell.textLabel.text = categoryItem.title;
