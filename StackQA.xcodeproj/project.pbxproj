@@ -152,6 +152,7 @@
 		64413C8D1B01032400AE6C27 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		64413C901B0118FD00AE6C27 /* RatingDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingDelegate.h; sourceTree = "<group>"; };
 		64413C911B0155E800AE6C27 /* QuestionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionDelegate.h; sourceTree = "<group>"; };
+		64413C921B015F4200AE6C27 /* AnswerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswerDelegate.h; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -508,6 +509,7 @@
 			children = (
 				64413C901B0118FD00AE6C27 /* RatingDelegate.h */,
 				64413C911B0155E800AE6C27 /* QuestionDelegate.h */,
+				64413C921B015F4200AE6C27 /* AnswerDelegate.h */,
 			);
 			name = share;
 			sourceTree = "<group>";

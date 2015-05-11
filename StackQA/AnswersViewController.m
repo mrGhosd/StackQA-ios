@@ -41,6 +41,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers) name:@"updateAnswer" object:nil];
     [self setAnswersListData];
     self.tableView.delegate = self;
+    Answer *answer = [[Answer alloc] init];
+//    [];
+    answer.answerDelegate = self;
     
     // Do any additional setup after loading the view.
 }
@@ -116,14 +119,9 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-//    for(NSDictionary *answer in answers){
-//        [Answer create:answer];
-//    }
-//    NSArray *deviceAnswers = [Answer answersForQuestion:self.question];
-    if(answers.count == nil){
-//        answersList = deviceAnswers;
-    } else {
-//        [answersList addObjectsFromArray:deviceAnswers];
+    for(NSMutableDictionary *serverAnswer in answers){
+        Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
+        [answersList addObject:answer];
     }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -159,22 +157,20 @@
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
-//    cell.answerComments.tag = [answerItem.object_id integerValue];
-//    [cell.answerComments setTitle:[NSString stringWithFormat:@"%@", answerItem.comments_count] forState:UIControlStateNormal];
+    [cell.answerComments setTitle:[NSString stringWithFormat:@"%@", answerItem.commentsCount] forState:UIControlStateNormal];
     [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.answerText.exclusiveTouch = YES;
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
     singleTap.numberOfTouchesRequired=1;
     singleTap.delegate=self;
-//    [cell.answerText addGestureRecognizer:singleTap];
     
-//    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
-//    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
-//    if(answerItem.is_helpfull){
-//        cell.answerRate.backgroundColor = [UIColor greenColor];
-//    } else {
-//        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
-//    }
+    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.userName];
+    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
+    if(answerItem.isHelpfull){
+        cell.answerRate.backgroundColor = [UIColor greenColor];
+    } else {
+        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
+    }
     
     if(currentCellHeight <= 30){
         cell.answerTextHeight.constant = 110;
@@ -387,12 +383,30 @@
         view.question = questionAnswerSelected;
     }
 }
-
+- (void) createCallbackWithParams:(NSDictionary *) params andSuccess: (BOOL) success{
+    self.actionViewText.text = @"";
+    if(success){
+        Answer *answer = [[Answer alloc] initWithParams:params];
+        [answersList insertObject:answer atIndex:0];
+        [self.tableView reloadData];
+//        [self.tableView ins];
+//        [self loadAnswersList];
+    } else {
+        
+    }
+}
 - (IBAction)createAnswer:(id)sender {
-//    [self setActionViewBorder];
-//    NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.object_id,
-//                                          @"question_id": self.question.object_id,
-//                                          @"text": self.actionViewText.text};
+    [self setActionViewBorder];
+    NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.objectId,
+                                          @"question_id": self.question.objectId,
+                                          @"text": self.actionViewText.text};
+    if([self.actionViewText.text isEqualToString:@""]){
+        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
+    } else {
+        Answer *answer = [[Answer alloc] init];
+        [answer setDelegate:self];
+        [answer create:answerParams];
+    }
 //    if([self.actionViewText.text isEqualToString:@""]){
 //        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
 //    } else {

@@ -9,8 +9,9 @@
 #import <CoreData+MagicalRecord.h>
 #import <SWTableViewCell.h>
 #import "Question.h"
+#import "AnswerDelegate.h"
 
-@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SWTableViewCellDelegate, UIGestureRecognizerDelegate>
+@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SWTableViewCellDelegate, UIGestureRecognizerDelegate, AnswerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewBottom;

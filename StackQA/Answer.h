@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AnswerDelegate.h"
 @class Question;
 @class User;
 @class Comment;
@@ -25,5 +26,12 @@
 @property (nonatomic, retain) Question *question;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) NSMutableArray *comments;
-
+@property (nonatomic, weak) id<AnswerDelegate> answerDelegate;
+- (instancetype) initWithParams: (NSDictionary *) params;
+- (void) create: (NSDictionary *) params;
+- (void) update: (NSDictionary *) params;
+- (void) setDelegate: (id) delegate;
+- (void) destroy;
+- (void) changeRateWithAction: (NSString *) action;
+- (void) markAsHelpfull;
 @end
