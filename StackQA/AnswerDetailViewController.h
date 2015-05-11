@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "Answer.h"
+#import "AnswerDelegate.h"
 
-@interface AnswerDetailViewController : ViewController
+@interface AnswerDetailViewController : ViewController <AnswerDelegate>
 @property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerDetailTextViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet UITextView *answerDetailTextView;

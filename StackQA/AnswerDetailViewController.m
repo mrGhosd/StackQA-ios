@@ -20,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.answer.answerDelegate = self;
     auth = [AuthorizationManager sharedInstance];
     // Do any additional setup after loading the view.
     self.answerDismissButton.layer.cornerRadius = 5.0;
@@ -42,6 +43,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success{
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"updateAnswer"
+     object:params];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 /*
 #pragma mark - Navigation
@@ -57,18 +64,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (IBAction)answerSave:(id)sender {
-//    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer.questionId, self.answer.objectId];
-//    NSDictionary *params = @{@"question_id": self.answer.objectId, @"user_id": auth.currentUser.objectId, @"text": self.answerDetailTextView.text };
-//    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
-//        if(success){
-//            [[NSNotificationCenter defaultCenter]
-//             postNotificationName:@"updateAnswer"
-//             object:self];
-//            [self dismissViewControllerAnimated:YES completion:nil];
-//        } else {
-//            
-//        }
-//    }];
-//}
+- (IBAction)answerSave:(id)sender {
+    NSDictionary *params = @{@"question_id": self.answer.questionId, @"user_id": auth.currentUser.objectId, @"text": self.answerDetailTextView.text };
+    [self.answer update:params];
+}
 @end

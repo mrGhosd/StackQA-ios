@@ -38,7 +38,7 @@
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers) name:@"updateAnswer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"updateAnswer" object:nil];
     [self setAnswersListData];
     self.tableView.delegate = self;
     Answer *answer = [[Answer alloc] init];
@@ -47,8 +47,17 @@
     
     // Do any additional setup after loading the view.
 }
-- (void) reloadAnswers{
-    [self loadAnswersList];
+- (void) reloadAnswers:(NSNotification *) notification{
+    Answer *updatedAnswer = [[Answer alloc] initWithParams:notification.object];
+    NSUInteger objectId;
+    for(Answer *answer in answersList){
+        if([answer.objectId isEqual:updatedAnswer.objectId]){
+             objectId = [answersList indexOfObject:answer];
+        }
+    }
+    [answersList removeObjectAtIndex:objectId];
+    [answersList insertObject:updatedAnswer atIndex:objectId];
+    [self.tableView reloadData];
 }
 - (void) setAnswersListData{
     if(auth.currentUser){
@@ -121,6 +130,7 @@
     NSArray *answers = data[@"answers"];
     for(NSMutableDictionary *serverAnswer in answers){
         Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
+        [answer setDelegate:self];
         [answersList addObject:answer];
     }
     [self.tableView reloadData];
@@ -186,7 +196,7 @@
         if(!self.question.isClosed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
-        if(answerItem.userId == auth.currentUser.objectId){
+        if([answerItem.userId isEqual: auth.currentUser.objectId]){
             
             [rightUtilityButtons sw_addUtilityButtonWithColor:
              [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -394,6 +404,9 @@
     } else {
         
     }
+}
+- (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success{
+    
 }
 - (IBAction)createAnswer:(id)sender {
     [self setActionViewBorder];

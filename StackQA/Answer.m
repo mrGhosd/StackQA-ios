@@ -37,7 +37,13 @@
 }
 
 - (void) update: (NSDictionary *) params{
-    
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", params[@"question_id"], self.objectId] parameters:@{@"answer": params} requestType:@"PUT" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.answerDelegate updateWithParams:data andSuccess:YES];
+        } else {
+            [self.answerDelegate updateWithParams:data andSuccess:NO];
+        }
+    }];
 }
 
 - (void) destroy{
