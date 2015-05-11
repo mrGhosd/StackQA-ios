@@ -70,7 +70,7 @@
 
 - (IBAction)saveComment:(id)sender {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.comment.object_id];
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.comment.objectId];
     
 //    if(self.answer){
 //        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];

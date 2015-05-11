@@ -1,31 +1,23 @@
 //
 //  Comment.h
-//  
+//  StackQA
 //
-//  Created by vsokoltsov on 04.05.15.
-//
+//  Created by vsokoltsov on 11.05.15.
+//  Copyright (c) 2015 vsokoltsov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
-#import "User.h"
-#import "Answer.h"
+@class User;
+@class Question;
+@class Answer;
 
-@interface Comment : NSManagedObject
-
-@property (nonatomic, retain) NSNumber * object_id;
-@property (nonatomic, retain) NSNumber * commentable_id;
-@property (nonatomic, retain) NSString * commentable_type;
+@interface Comment : NSObject
+@property (nonatomic, retain) NSNumber * objectId;
+@property (nonatomic, retain) NSNumber * commentableId;
+@property (nonatomic, retain) NSString * commentableType;
 @property (nonatomic, retain) NSString * text;
-@property (nonatomic, retain) NSNumber * user_id;
+@property (nonatomic, retain) NSNumber * userId;
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) Answer *answer;
 @property (nonatomic, retain) Question *question;
-
-+ (void) sync: (NSArray *) params;
-+ (void) create: (NSDictionary *) params;
-+ (NSMutableArray *) commentsForCurrentEntity: (id) entity andID:(NSNumber *) objectID;
-- (User *) getUserForComment;
-+ (void) setCommentsToUser: (User *) user;
-- (id) getEntity;
 @end
