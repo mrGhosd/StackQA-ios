@@ -52,13 +52,13 @@
     }];
 }
 - (void) parseData: (id)data{
-    [Comment sync:data[@"users"]];
-    [Comment setCommentsToUser:self.user];
-    for(Comment *comment in self.user.comments){
-        [commentsList addObject:comment];
-    }
-    [self.tableView reloadData];
-    
+//    [Comment sync:data[@"users"]];
+//    [Comment setCommentsToUser:self.user];
+//    for(Comment *comment in self.user.comments){
+//        [commentsList addObject:comment];
+//    }
+//    [self.tableView reloadData];
+//    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -182,21 +182,21 @@
     }
     
     if([[segue identifier] isEqualToString:@"editComment"]){
-        CommentDetailViewController *view = segue.destinationViewController;
-        view.comment = [selectedComment MR_inThreadContext];
-        Question *q;
-        Answer *a;
-        if([selectedComment.commentable_type isEqualToString:@"Question"]){
-            q = [selectedComment getEntity];
-        }
-        if([selectedComment.commentable_type isEqualToString:@"Answer"]){
-            a = [selectedComment getEntity];
-//            q = [a getAnswerQuestion];
-        }
+//        CommentDetailViewController *view = segue.destinationViewController;
+//        view.comment = [selectedComment MR_inThreadContext];
+//        Question *q;
+//        Answer *a;
+//        if([selectedComment.commentable_type isEqualToString:@"Question"]){
+//            q = [selectedComment getEntity];
+//        }
+//        if([selectedComment.commentable_type isEqualToString:@"Answer"]){
+//            a = [selectedComment getEntity];
+////            q = [a getAnswerQuestion];
+//        }
 //        view.question = [q MR_inThreadContext];
-        if(a){
+//        if(a){
 //            view.answer = [a MR_inThreadContext];
-        }
+//        }
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
@@ -226,29 +226,29 @@
 - (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
     NSMutableDictionary *params;
     NSString *url;
-    if([comment.commentable_type isEqualToString:@"Question"]){
-        Question *q = [comment getEntity];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"text": comment.text}];
-        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.objectId, comment.object_id];
-    }
-    if ([comment.commentable_type isEqualToString:@"Answer"]){
-        Answer *an = [comment getEntity];
-//        Question *q = [an getAnswerQuestion];
-//        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
-//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
-    }
+//    if([comment.commentable_type isEqualToString:@"Question"]){
+//        Question *q = [comment getEntity];
+//        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"text": comment.text}];
+//        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.objectId, comment.object_id];
+//    }
+//    if ([comment.commentable_type isEqualToString:@"Answer"]){
+//        Answer *an = [comment getEntity];
+////        Question *q = [an getAnswerQuestion];
+////        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
+////        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
+//    }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
-            [comment MR_deleteEntity];
-            [commentsList removeObjectAtIndex:path.row];
-            if(commentsList.count == 0){
-                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
-            } else {
-                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            }
-            
-        } else {
-            
+//            [comment MR_deleteEntity];
+//            [commentsList removeObjectAtIndex:path.row];
+//            if(commentsList.count == 0){
+//                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
+//            } else {
+//                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+//            }
+//            
+//        } else {
+//            
         }
     }];
 }

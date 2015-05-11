@@ -18,10 +18,12 @@
 #import "SCategory.h"
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 #import <BENTagsView.h>
+#import "AuthorizationManager.h"
 
 @interface QuestionDetailViewController (){
     Api *api;
     User *author;
+    AuthorizationManager *auth;
     SCategory *questionCategory;
     AppDelegate *app;
     NSManagedObjectContext *localContext;
@@ -36,12 +38,27 @@
     [super viewDidLoad];
     self.question.rateDelegate = self;
     self.webView.delegate = self;
+    auth = [AuthorizationManager sharedInstance];
+    [self initMiddleControlButton];
+    [self designControlView];
     [self refreshInit];
     [self resizeView];
     
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+- (void) designControlView{
+    UIView *borderTop = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.controlView.frame.size.width, 2.0f)];
+    borderTop.backgroundColor = [UIColor grayColor];
+    [self.controlView addSubview:borderTop];
+}
+- (void) initMiddleControlButton{
+    if(auth.currentUser && [auth.currentUser.objectId isEqual: self.question.userId]){
+        self.questionAuthorButton.hidden = NO;
+    } else {
+        self.questionAuthorButton.hidden = YES;
+    }
 }
 
 - (void) resizeView{
@@ -183,6 +200,10 @@
         ProfileViewController *view = segue.destinationViewController;
         view.user = author;
     }
+    if([[segue identifier] isEqualToString:@"questionDetailEdit"]){
+        QuestionsFormViewController *view = segue.destinationViewController;
+        view.question = self.question;
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
@@ -200,8 +221,6 @@
 }
 - (IBAction)questionPopupView:(id)sender {
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:
-                                @"+1",
-                                @"-1",
                                 @"Редактировать",
                                 @"Удалить",
                                 nil];
@@ -213,6 +232,7 @@
     switch(buttonIndex)
     {
         case 0:
+            [self performSegueWithIdentifier:@"questionDetailEdit" sender:self];
             break;
         case 1:
             break;

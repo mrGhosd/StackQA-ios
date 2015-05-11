@@ -290,7 +290,6 @@
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="0gZ-b1-7Ls"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ZfK-BD-pmm" secondAttribute="bottom" constant="20" id="3R4-JL-I6H"/>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="96O-Ok-evh"/>
                                                     <constraint firstItem="ZfK-BD-pmm" firstAttribute="top" secondItem="ch1-TH-cIa" secondAttribute="bottom" constant="14" id="FnV-4m-vHM"/>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="MWy-9i-T5v"/>
@@ -434,6 +433,7 @@
                         <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
                         <outlet property="downRateButton" destination="39z-lX-cPO" id="S3W-Lf-HSc"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
+                        <outlet property="questionAuthorButton" destination="yKF-Eg-n6W" id="ejw-Jn-Dpm"/>
                         <outlet property="questionCategory" destination="LHN-Uj-Xxj" id="XpF-lH-19p"/>
                         <outlet property="questionDate" destination="OSJ-CB-oqj" id="JIZ-2Q-h8J"/>
                         <outlet property="questionInfoView" destination="nVR-n8-7MK" id="58i-EF-tcS"/>
@@ -446,6 +446,7 @@
                         <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="categoryQuestionView" id="tDG-Yk-y13"/>
                         <segue destination="Xe2-Wi-8QZ" kind="show" identifier="questionAuthor" id="dmP-y8-1gh"/>
+                        <segue destination="L2G-jD-e0s" kind="presentation" identifier="questionDetailEdit" id="j9r-YK-ysW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-ye-tND" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1804,14 +1805,14 @@
         <segue reference="dmP-y8-1gh"/>
         <segue reference="x3p-uV-IHe"/>
         <segue reference="tDG-Yk-y13"/>
-        <segue reference="Zma-F1-cBs"/>
+        <segue reference="j9r-YK-ysW"/>
         <segue reference="g3P-Gf-qaj"/>
         <segue reference="hPV-is-y6G"/>
         <segue reference="Mye-8z-EVr"/>
         <segue reference="84w-cX-ZdW"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="Ogc-fD-TQd"/>
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
-        <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>
 </document>

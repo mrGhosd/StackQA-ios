@@ -88,6 +88,16 @@
 */
 
 - (IBAction)saveQuestion:(id)sender {
+    NSString *url;
+    NSString *type;
+    if(self.question){
+        url = [NSString stringWithFormat:@"/questions/%@", self.question.objectId];
+        type = @"PUT";
+    } else {
+        url = @"/questions";
+        type = @"POST";
+    }
+    [self sendQuestionToServerWithURL:url andType:type];
 //    [MBProgressHUD showHUDAddedTo:self.view
 //                         animated:YES];
 //    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
@@ -123,6 +133,12 @@
     [[Api sharedManager] sendDataToURL:url parameters:@{@"question": questionParams} requestType:type
                          andComplition:^(id data, BOOL success){
         if(success){
+            if(self.question){
+                [self.question update:data];
+            } else {
+                Question *question = [[Question alloc] initWithParams:data];
+                self.question = question;
+            }
             [self dismissViewControllerAnimated:YES completion:nil];
         } else{
             
