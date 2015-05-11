@@ -11,6 +11,7 @@
 #import "Question.h"
 #import <BENTagsView.h>
 #import "RatingDelegate.h"
+#import "QuestionDelegate.h"
 
 @interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate, RatingDelegate>
 @property (strong) Question *question;

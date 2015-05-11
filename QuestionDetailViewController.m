@@ -37,6 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.question.rateDelegate = self;
+    self.question.questionDelegate = self;
     self.webView.delegate = self;
     auth = [AuthorizationManager sharedInstance];
     [self initMiddleControlButton];
@@ -69,8 +70,9 @@
     float viewHeight;
     CGSize fittingSize = [self.webView sizeThatFits:CGSizeZero];
     viewHeight = size.width / 10.0;
-
-    self.questionTextHeight.constant = viewHeight;
+    if(size.width >= 200){
+        self.questionTextHeight.constant = viewHeight;
+    }
 }
 - (void) uploadQuestionData{
     api = [Api sharedManager];
@@ -85,7 +87,6 @@
     }];
 }
 -(void) viewDidAppear:(BOOL)animated{
-//    [self uploadQuestionData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -104,10 +105,6 @@
     } else {
         [self designRateButtonsForAction:@""];
     }
-    
-//    [Question create:data];
-//    author = [User create:data[@"user"]];
-//    questionCategory = [[SQACategory MR_findByAttribute:@"object_id" withValue:self.question.category_id] firstObject];
     [self initQuestionData];
     [refreshControl endRefreshing];
 }
@@ -144,34 +141,9 @@
     
     self.tagsView.tagStrings = [self.question breakTagsLine];
     [self.tagsView setOnColor:[UIColor redColor]];
-//    [self.tagsView setFont:[UIFont fontWithName:@"System" size:8]];
     [self.tagsView setTagCornerRadius:6];
     self.tagsView.backgroundColor = [UIColor clearColor];
-//    [self.questionInfoView addSubview:tagView];
-    float buttonWidth = self.buttonsView.frame.size.width / 2;
-//    self.authorProfileLink.frame = CGSizeMake(buttonWidth, self.buttonsView.frame.size.height);
 }
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-    CGFloat fixedWidth = 320;
-    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = textView.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    textView.frame = newFrame;
-}
-
--(void) findQuestionAndDelete{
-    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
-    if(self.question){
-//        [self.question MR_deleteEntity];
-        [localContext MR_save];
-    }
-    else{
-        [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Данный вопрос не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    }
-}
-
 
 #pragma mark - Navigation
 
@@ -204,8 +176,9 @@
         QuestionsFormViewController *view = segue.destinationViewController;
         view.question = self.question;
     }
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"destroyQuestionDetail"]){
+        QuestionsViewController *view = segue.destinationViewController;
+    }
 }
 -(IBAction)deleteQuestion:(id)sender {
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Сообшение" message:@"Вы действительно хотите удалить вопрос?" delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
@@ -214,7 +187,6 @@
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     switch(buttonIndex){
             case 1:
-            [self findQuestionAndDelete];
             break;
     }
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -235,6 +207,7 @@
             [self performSegueWithIdentifier:@"questionDetailEdit" sender:self];
             break;
         case 1:
+            [self.question destroy];
             break;
         case 2:
             break;
@@ -316,5 +289,13 @@
 
 - (IBAction)showQuestionAuthor:(id)sender {
     [self performSegueWithIdentifier:@"questionAuthor" sender:self];
+}
+
+- (void) successDestroyCallback{
+    [self performSegueWithIdentifier:@"destroyQuestionDetail" sender:self];
+}
+
+- (void) failedDestroyCallback{
+
 }
 @end

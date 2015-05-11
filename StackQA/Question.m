@@ -55,4 +55,14 @@
         }
     }];
 }
+
+- (void) destroy{
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@", self.objectId] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.questionDelegate successDestroyCallback];
+        } else {
+            [self.questionDelegate failedDestroyCallback];
+        }
+    }];
+}
 @end

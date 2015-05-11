@@ -447,6 +447,7 @@
                         <segue destination="2vF-PV-YRg" kind="show" identifier="categoryQuestionView" id="tDG-Yk-y13"/>
                         <segue destination="Xe2-Wi-8QZ" kind="show" identifier="questionAuthor" id="dmP-y8-1gh"/>
                         <segue destination="L2G-jD-e0s" kind="presentation" identifier="questionDetailEdit" id="j9r-YK-ysW"/>
+                        <segue destination="2vF-PV-YRg" kind="show" identifier="destroyQuestionDetail" id="zlR-QY-YZy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ca-ye-tND" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1804,12 +1805,12 @@
     <inferredMetricsTieBreakers>
         <segue reference="dmP-y8-1gh"/>
         <segue reference="x3p-uV-IHe"/>
-        <segue reference="tDG-Yk-y13"/>
+        <segue reference="zlR-QY-YZy"/>
+        <segue reference="hPV-is-y6G"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="g3P-Gf-qaj"/>
-        <segue reference="hPV-is-y6G"/>
-        <segue reference="Mye-8z-EVr"/>
         <segue reference="84w-cX-ZdW"/>
+        <segue reference="Mye-8z-EVr"/>
         <segue reference="jdO-yh-WYz"/>
         <segue reference="Ogc-fD-TQd"/>
         <segue reference="5Em-mt-R6W"/>
