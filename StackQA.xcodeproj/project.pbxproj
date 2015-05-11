@@ -39,9 +39,9 @@
 		643874221ACAFCD00059EBEC /* mark1.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874211ACAFCD00059EBEC /* mark1.png */; };
 		643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */; };
 		6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */; };
+		64413C8B1B00FF0600AE6C27 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64413C8A1B00FF0600AE6C27 /* Answer.m */; };
 		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
-		644B465C1AC0C6B1002CF50C /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B465B1AC0C6B1002CF50C /* Answer.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
 		644EAB7E1AF7DC34000C921C /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB7D1AF7DC34000C921C /* Comment.m */; };
 		644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */; };
@@ -146,12 +146,12 @@
 		643874261ACB13BD0059EBEC /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
 		643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
 		643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTableViewCell.xib; sourceTree = "<group>"; };
+		64413C891B00FF0600AE6C27 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
+		64413C8A1B00FF0600AE6C27 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
 		644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerTableViewCell.m; sourceTree = "<group>"; };
-		644B465A1AC0C6B1002CF50C /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
-		644B465B1AC0C6B1002CF50C /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		644EAB781AF7D50C000C921C /* CommentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsListViewController.h; sourceTree = "<group>"; };
 		644EAB791AF7D50C000C921C /* CommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListViewController.m; sourceTree = "<group>"; };
 		644EAB7C1AF7DC34000C921C /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -523,8 +523,8 @@
 		644B465D1AC0C6DB002CF50C /* answers */ = {
 			isa = PBXGroup;
 			children = (
-				644B465A1AC0C6B1002CF50C /* Answer.h */,
-				644B465B1AC0C6B1002CF50C /* Answer.m */,
+				64413C891B00FF0600AE6C27 /* Answer.h */,
+				64413C8A1B00FF0600AE6C27 /* Answer.m */,
 			);
 			name = answers;
 			sourceTree = "<group>";
@@ -849,13 +849,13 @@
 				647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
+				64413C8B1B00FF0600AE6C27 /* Answer.m in Sources */,
 				644EAB7E1AF7DC34000C921C /* Comment.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
 				6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */,
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */,
 				644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */,
-				644B465C1AC0C6B1002CF50C /* Answer.m in Sources */,
 				64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */,
 				64157B861AC82C1E00E0E401 /* AuthorizationManager.m in Sources */,
 				6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */,

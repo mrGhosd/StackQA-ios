@@ -57,18 +57,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)answerSave:(id)sender {
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer.question_id, self.answer.object_id];
-    NSDictionary *params = @{@"question_id": self.answer.object_id, @"user_id": auth.currentUser.objectId, @"text": self.answerDetailTextView.text };
-    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
-        if(success){
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"updateAnswer"
-             object:self];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            
-        }
-    }];
-}
+//- (IBAction)answerSave:(id)sender {
+//    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@", self.answer.questionId, self.answer.objectId];
+//    NSDictionary *params = @{@"question_id": self.answer.objectId, @"user_id": auth.currentUser.objectId, @"text": self.answerDetailTextView.text };
+//    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
+//        if(success){
+//            [[NSNotificationCenter defaultCenter]
+//             postNotificationName:@"updateAnswer"
+//             object:self];
+//            [self dismissViewControllerAnimated:YES completion:nil];
+//        } else {
+//            
+//        }
+//    }];
+//}
 @end

@@ -84,22 +84,22 @@
 }
 
 - (void) commentEntityClicked:(UIButton *) sender{
-    UserCommentTableViewCell *cell = [[[[sender superview] superview] superview] superview];
-    NSIndexPath *path = [self.tableView indexPathForCell:cell];
-    Comment *comment = commentsList[path.row];
-    Question *q;
-    NSString *segueIdentifier;
-    if([comment.commentable_type isEqualToString: @"Question" ]){
-        q =[comment getEntity];
-        segueIdentifier = @"showQuestion";
-    }
-    if([comment.commentable_type isEqualToString: @"Answer" ]){
-        Answer *an = [comment getEntity];
-        q = [an getAnswerQuestion];
-        segueIdentifier = @"showQuestionAnswers";
-    }
-    selectedQuestion = q;
-    [self performSegueWithIdentifier:segueIdentifier sender:self];
+//    UserCommentTableViewCell *cell = [[[[sender superview] superview] superview] superview];
+//    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+//    Comment *comment = commentsList[path.row];
+//    Question *q;
+//    NSString *segueIdentifier;
+//    if([comment.commentable_type isEqualToString: @"Question" ]){
+//        q =[comment getEntity];
+//        segueIdentifier = @"showQuestion";
+//    }
+//    if([comment.commentable_type isEqualToString: @"Answer" ]){
+//        Answer *an = [comment getEntity];
+////        q = [an getAnswerQuestion];
+//        segueIdentifier = @"showQuestionAnswers";
+//    }
+//    selectedQuestion = q;
+//    [self performSegueWithIdentifier:segueIdentifier sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -191,11 +191,11 @@
         }
         if([selectedComment.commentable_type isEqualToString:@"Answer"]){
             a = [selectedComment getEntity];
-            q = [a getAnswerQuestion];
+//            q = [a getAnswerQuestion];
         }
 //        view.question = [q MR_inThreadContext];
         if(a){
-            view.answer = [a MR_inThreadContext];
+//            view.answer = [a MR_inThreadContext];
         }
     }
     // Get the new view controller using [segue destinationViewController].
@@ -233,9 +233,9 @@
     }
     if ([comment.commentable_type isEqualToString:@"Answer"]){
         Answer *an = [comment getEntity];
-        Question *q = [an getAnswerQuestion];
-        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
+//        Question *q = [an getAnswerQuestion];
+//        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
+//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){

@@ -35,7 +35,7 @@
     pageNumber = @1;
     commentsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
-    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+//    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     [self setCommentControl];
     selectedIndex = -1;
     [self defineCorrectURL];
@@ -90,7 +90,7 @@
 - (void) defineCorrectURL{
     if(self.answer){
         currentEntity = self.answer;
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
+//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
     } else {
         currentEntity = self.question;
         url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
@@ -182,12 +182,12 @@
     NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, comment.object_id];
     
     if(self.answer){
-        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, comment.object_id];
+//        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
+//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, comment.object_id];
     }
     [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
-            [comment MR_deleteEntity];
+//            [comment MR_deleteEntity];
             [commentsList removeObjectAtIndex:path.row];
             if(commentsList.count == 0){
                 [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
@@ -309,8 +309,8 @@
     NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
 
     if(self.answer){
-        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
+//        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
+//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
     }
     if([self.commentText.text isEqualToString: @""]){
         [self.commentText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];

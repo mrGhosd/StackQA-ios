@@ -116,14 +116,14 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-    for(NSDictionary *answer in answers){
-        [Answer create:answer];
-    }
-    NSArray *deviceAnswers = [Answer answersForQuestion:self.question];
+//    for(NSDictionary *answer in answers){
+//        [Answer create:answer];
+//    }
+//    NSArray *deviceAnswers = [Answer answersForQuestion:self.question];
     if(answers.count == nil){
-        answersList = deviceAnswers;
+//        answersList = deviceAnswers;
     } else {
-        [answersList addObjectsFromArray:deviceAnswers];
+//        [answersList addObjectsFromArray:deviceAnswers];
     }
     [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -159,8 +159,8 @@
     static NSString *CellIdentifier = @"answerCell";
     AnswerTableViewCell *cell = (AnswerTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell.answerText loadHTMLString: answerItem.text baseURL:nil];
-    cell.answerComments.tag = [answerItem.object_id integerValue];
-    [cell.answerComments setTitle:[NSString stringWithFormat:@"%@", answerItem.comments_count] forState:UIControlStateNormal];
+//    cell.answerComments.tag = [answerItem.object_id integerValue];
+//    [cell.answerComments setTitle:[NSString stringWithFormat:@"%@", answerItem.comments_count] forState:UIControlStateNormal];
     [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.answerText.exclusiveTouch = YES;
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
@@ -168,13 +168,13 @@
     singleTap.delegate=self;
 //    [cell.answerText addGestureRecognizer:singleTap];
     
-    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
-    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
-    if(answerItem.is_helpfull){
-        cell.answerRate.backgroundColor = [UIColor greenColor];
-    } else {
-        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
-    }
+//    cell.userName.text = [NSString stringWithFormat:@"%@", answerItem.user_name];
+//    cell.answerRate.text = [NSString stringWithFormat:@"%@", answerItem.rate];
+//    if(answerItem.is_helpfull){
+//        cell.answerRate.backgroundColor = [UIColor greenColor];
+//    } else {
+//        cell.answerRate.backgroundColor = [UIColor lightGrayColor];
+//    }
     
     if(currentCellHeight <= 30){
         cell.answerTextHeight.constant = 110;
@@ -190,7 +190,7 @@
         if(!self.question.isClosed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
-        if(answerItem.user_id == auth.currentUser.objectId){
+        if(answerItem.userId == auth.currentUser.objectId){
             
             [rightUtilityButtons sw_addUtilityButtonWithColor:
              [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
@@ -216,8 +216,8 @@
 }
 - (void) answerCommentsClicked: (UIButton *) sender{
         NSNumber *answerID = [NSNumber numberWithInteger:sender.tag];
-        Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
-        selectedAnswer = answer;
+//        Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
+//        selectedAnswer = answer;
         questionAnswerSelected = self.question;
         [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
 }
@@ -265,11 +265,11 @@
 }
 
 - (void) deleteAnswer:(Answer *) answer atIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.objectId, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.objectId, answer.objectId ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             [answersList removeObjectAtIndex:path.row];
-            [answer MR_deleteEntity];
+//            [answer MR_deleteEntity];
             if(answersList.count == 0){
              [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
             } else {
@@ -307,17 +307,17 @@
     }
 }
 - (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer andIndexPath: (NSIndexPath *) path{
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
-        if(success){
-            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-            cell.answerRate.backgroundColor = [UIColor greenColor];
-//            [self.question closeQuestion];
-            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-            [self loadAnswersList];
-        } else {
-            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-        }
-    }];
+//    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+//        if(success){
+//            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+//            cell.answerRate.backgroundColor = [UIColor greenColor];
+////            [self.question closeQuestion];
+//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+//            [self loadAnswersList];
+//        } else {
+//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+//        }
+//    }];
 }
 - (void) changeAnswersRateWithAnswer: (Answer *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
 //    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){

@@ -51,8 +51,8 @@
 }
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
-    [Answer sync:answers];
-    [Answer setAnswersToUser:self.user];
+//    [Answer sync:answers];
+//    [Answer setAnswersToUser:self.user];
     for(Answer *answer in self.user.answers){
         [usersAnswersList addObject:answer];
     }
@@ -74,10 +74,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Answer *answerItem = usersAnswersList[indexPath.row];
-    Question *questionItem = [answerItem getAnswerQuestion];
+//    Question *questionItem = [answerItem getAnswerQuestion];
     static NSString *CellIdentifier = @"userAnswersCell";
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    [cell setCellDataWithQuestion:questionItem andAnswer:answerItem];
+//    [cell setCellDataWithQuestion:questionItem andAnswer:answerItem];
     [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
     if(currentCellHeight <= 30){
         cell.answerTextHeight.constant = 110;
@@ -136,17 +136,17 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-    Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
-    Question *question = [currentAnswer getAnswerQuestion];
+//    Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
+//    Question *question = [currentAnswer getAnswerQuestion];
     switch (index) {
         case 0:{
-            [self performSegueWithIdentifier:@"answer_edit" sender:currentAnswer];
-            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//            [self performSegueWithIdentifier:@"answer_edit" sender:currentAnswer];
+//            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         }
         case 1:{
             
-            [self deleteAnswer:currentAnswer question:question atIndexPath:cellIndexPath];
+//            [self deleteAnswer:currentAnswer question:question atIndexPath:cellIndexPath];
             break;
         }
         case 2:{
@@ -174,18 +174,18 @@
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
-    Question *question = [currentAnswer getAnswerQuestion];
+//    Question *question = [currentAnswer getAnswerQuestion];
     switch (index) {
         case 0:{
-            [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"plus"];
+//            [self changeAnswersRateWithAnswer:currentAnswer question:Question indexPath: cellIndexPath  andRate:@"plus"];
             break;
         }
         case 1:{
-            [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"minus"];
+//            [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"minus"];
             break;
         }
         case 2:{
-            [self setAnswerAsHelpfullWithAnswer:currentAnswer question:question andIndexPath:cellIndexPath];
+//            [self setAnswerAsHelpfullWithAnswer:currentAnswer question:question andIndexPath:cellIndexPath];
             break;
         }
         default:
@@ -193,7 +193,7 @@
     }
 }
 - (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer question: (Question *) question andIndexPath: (NSIndexPath *) path{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", question.objectId, answer.objectId ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.backgroundColor = [UIColor greenColor];
@@ -206,7 +206,7 @@
     }];
 }
 - (void) changeAnswersRateWithAnswer: (Answer *) answer question: (Question *) question indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", question.objectId, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", question.objectId, answer.objectId ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
             UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
