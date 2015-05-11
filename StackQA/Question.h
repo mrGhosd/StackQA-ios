@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+typedef void(^ApiResponseCopmlition)(id data, BOOL success);
+#import "RatingDelegate.h"
 @class SCategory;
+
 
 @interface Question : NSObject
 @property (nonatomic, retain) NSNumber * objectId;
@@ -26,7 +29,9 @@
 @property (nonatomic, strong) NSMutableArray *answers;
 @property (nonatomic, retain) NSMutableArray *comments;
 @property (nonatomic, retain) SCategory *category;
+@property (nonatomic, weak) id<RatingDelegate> rateDelegate;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (void) update: (NSDictionary *)params;
 - (NSArray *) breakTagsLine;
+- (void) changeQuestionRate: (NSString *) value;
 @end

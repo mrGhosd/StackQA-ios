@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AFNetworking.h>
+
 typedef void(^ResponseCopmlition)(id data, BOOL success);
 typedef void (^requestCompletedBlock)(id);
 typedef void(^requestErrorBlock)(NSError *);

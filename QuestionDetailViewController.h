@@ -10,8 +10,9 @@
 #import <CoreData+MagicalRecord.h>
 #import "Question.h"
 #import <BENTagsView.h>
+#import "RatingDelegate.h"
 
-@interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate>
+@interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate, RatingDelegate>
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -30,6 +31,11 @@
 @property (strong, nonatomic) IBOutlet UIView *questionInfoView;
 @property (strong, nonatomic) IBOutlet BENTagsView *tagsView;
 @property (strong, nonatomic) IBOutlet UIView *buttonsView;
+@property (strong, nonatomic) IBOutlet UIButton *upRateButton;
+@property (strong, nonatomic) IBOutlet UIButton *downRateButton;
+- (IBAction)increaseRate:(id)sender;
+- (IBAction)decreaseRate:(id)sender;
+
 
 
 - (IBAction)showQuestionCategory:(id)sender;

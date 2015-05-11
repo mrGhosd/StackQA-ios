@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.question.rateDelegate = self;
     self.webView.delegate = self;
     [self refreshInit];
     [self resizeView];
@@ -79,6 +80,14 @@
     [self.question update:data];
     author = [[User alloc] initWithParams:data[@"user"]];
     questionCategory = [[SCategory alloc] initWithParams:data[@"category"]];
+    self.upRateButton.layer.cornerRadius = 6.0;
+    self.downRateButton.layer.cornerRadius = 6.0;
+    if(data[@"current_user_voted"] != [NSNull null]){
+        [self designRateButtonsForAction:data[@"current_user_voted"][@"vote_value"]];
+    } else {
+        [self designRateButtonsForAction:@""];
+    }
+    
 //    [Question create:data];
 //    author = [User create:data[@"user"]];
 //    questionCategory = [[SQACategory MR_findByAttribute:@"object_id" withValue:self.question.category_id] firstObject];
@@ -239,6 +248,48 @@
     }
     [self initQuestionData];
 }
+- (IBAction)increaseRate:(id)sender {
+    [self.question changeQuestionRate:@"plus"];
+}
+
+- (IBAction)decreaseRate:(id)sender {
+    [self.question changeQuestionRate:@"minus"];
+}
+- (void) designRateButtonsForAction: (NSString *) action{
+    if([action isEqualToString:@"plus"]){
+        if(self.downRateButton.tag == 2){
+            [self designRateButtonsForAction: @""];
+            return;
+        }
+        self.upRateButton.backgroundColor = [UIColor lightGrayColor];
+        self.upRateButton.tag = 2;
+        self.downRateButton.backgroundColor = [UIColor clearColor];
+        self.downRateButton.tag = 1;
+    } else if([action isEqualToString:@"minus"]){
+        if(self.upRateButton.tag == 2){
+            [self designRateButtonsForAction: @""];
+            return;
+        }
+        self.upRateButton.backgroundColor = [UIColor clearColor];
+        self.upRateButton.tag = 1;
+        self.downRateButton.backgroundColor = [UIColor lightGrayColor];
+        self.downRateButton.tag = 2;
+    } else {
+        self.upRateButton.backgroundColor = [UIColor clearColor];
+        self.upRateButton.tag = 1;
+        self.downRateButton.backgroundColor = [UIColor clearColor];
+        self.downRateButton.tag = 1;
+    }
+}
+- (void) successRateCallbackWithData:(id) data{
+    [self designRateButtonsForAction: data[@"action"]];
+    self.questionRate.text = [data[@"rate"] stringValue];
+}
+- (void) failedRateCallbackWithData: (NSError *) error{
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:@"Вы уж голосовали за данный вопрос с таким результатом" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [av show];
+}
+
 - (IBAction)showQuestionCategory:(id)sender {
     [self performSegueWithIdentifier:@"categoryQuestionView" sender:self];
 }

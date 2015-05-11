@@ -7,6 +7,7 @@
 //
 
 #import "Question.h"
+#import "Api.h"
 
 @implementation Question
 - (instancetype) initWithParams: (NSDictionary *) params{
@@ -43,5 +44,15 @@
 
 - (NSArray *) breakTagsLine{
     return self.tags.length > 0 ? [self.tags componentsSeparatedByString:@", "] : nil;
+}
+
+- (void) changeQuestionRate: (NSString *) value{
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/rate", self.objectId] parameters:@{@"rate": value} requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.rateDelegate successRateCallbackWithData:data];
+        } else {
+            [self.rateDelegate failedRateCallbackWithData:data];
+        }
+    }];
 }
 @end

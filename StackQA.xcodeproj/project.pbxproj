@@ -150,6 +150,7 @@
 		64413C8A1B00FF0600AE6C27 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		64413C8C1B01032400AE6C27 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		64413C8D1B01032400AE6C27 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		64413C901B0118FD00AE6C27 /* RatingDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingDelegate.h; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -369,6 +370,7 @@
 		6428B0BC1AAC68CB00110D62 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				64413C8F1B0118EB00AE6C27 /* share */,
 				644EAB7B1AF7DC2C000C921C /* comment */,
 				6414F8801AD2E28E003B2C15 /* server_error */,
 				6414F87F1AD2E27D003B2C15 /* statistic */,
@@ -498,6 +500,14 @@
 				6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */,
 			);
 			name = profile;
+			sourceTree = "<group>";
+		};
+		64413C8F1B0118EB00AE6C27 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				64413C901B0118FD00AE6C27 /* RatingDelegate.h */,
+			);
+			name = share;
 			sourceTree = "<group>";
 		};
 		644B464E1AC0AC02002CF50C /* answers */ = {

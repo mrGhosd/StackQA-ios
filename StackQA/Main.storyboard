@@ -237,6 +237,9 @@
                                                                 <state key="normal" backgroundImage="up4-32.png">
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="increaseRate:" destination="Xug-EA-AjG" eventType="touchUpInside" id="Ot5-sK-JNI"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsL-Hd-3yT">
                                                                 <rect key="frame" x="5" y="48" width="42" height="21"/>
@@ -249,6 +252,9 @@
                                                                 <state key="normal" backgroundImage="down4-32.png">
                                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <action selector="decreaseRate:" destination="Xug-EA-AjG" eventType="touchUpInside" id="Qfo-xU-s4u"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.83137261867523193" green="0.92941182851791382" blue="0.96078437566757202" alpha="1" colorSpace="deviceRGB"/>
@@ -426,6 +432,7 @@
                         <outlet property="authorProfileLink" destination="0PC-R5-c6g" id="Jrm-P7-w0k"/>
                         <outlet property="buttonsView" destination="L5R-Bh-zVx" id="9Ge-Hq-kBY"/>
                         <outlet property="commentsCount" destination="O0q-iY-qwK" id="zQ0-af-f5d"/>
+                        <outlet property="downRateButton" destination="39z-lX-cPO" id="S3W-Lf-HSc"/>
                         <outlet property="nestedView" destination="fvG-4z-TZV" id="SYU-Xv-oZG"/>
                         <outlet property="questionCategory" destination="LHN-Uj-Xxj" id="XpF-lH-19p"/>
                         <outlet property="questionDate" destination="OSJ-CB-oqj" id="JIZ-2Q-h8J"/>
@@ -435,6 +442,7 @@
                         <outlet property="questionTitle" destination="ch1-TH-cIa" id="a7R-D2-YgF"/>
                         <outlet property="scrollView" destination="8XB-m5-DFp" id="GbP-kP-txq"/>
                         <outlet property="tagsView" destination="ZfK-BD-pmm" id="OOA-Gd-kcM"/>
+                        <outlet property="upRateButton" destination="jGq-xY-UVv" id="ArN-pr-ncq"/>
                         <outlet property="webView" destination="u1a-lL-WR9" id="p1b-vv-NIe"/>
                         <segue destination="2vF-PV-YRg" kind="show" identifier="categoryQuestionView" id="tDG-Yk-y13"/>
                         <segue destination="Xe2-Wi-8QZ" kind="show" identifier="questionAuthor" id="dmP-y8-1gh"/>
