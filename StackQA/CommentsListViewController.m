@@ -148,7 +148,7 @@
     [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     cell.commentText.editable = NO;
     cell.commentText.scrollEnabled = NO;
-    if(auth.currentUser && auth.currentUser.objectId == cellComment.userId){
+    if(auth.currentUser && [auth.currentUser.objectId isEqual: cellComment.userId]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
