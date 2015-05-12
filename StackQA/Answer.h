@@ -33,5 +33,5 @@
 - (void) setDelegate: (id) delegate;
 - (void) destroy;
 - (void) changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path;
-- (void) markAsHelpfull;
+- (void) markAsHelpfullWithPath: (NSIndexPath *) path;
 @end

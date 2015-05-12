@@ -61,7 +61,13 @@
             }];
 }
 
-- (void) markAsHelpfull{
-
+- (void) markAsHelpfullWithPath: (NSIndexPath *) path{
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.questionId, self.objectId ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
+                if(success){
+                    [self.answerDelegate markAsHelpfullCallbackWithParams:data path:path andSuccess:YES];
+                } else {
+                    [self.answerDelegate markAsHelpfullCallbackWithParams:data path:path andSuccess:NO];
+                }
+            }];
 }
 @end

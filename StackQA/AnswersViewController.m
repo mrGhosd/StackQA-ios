@@ -305,7 +305,7 @@
         }
         case 2:
         {
-            [self setAnswerAsHelpfullWithAnswer:currentAnswer andIndexPath:cellIndexPath];
+            [currentAnswer markAsHelpfullWithPath:cellIndexPath];
             break;
         }
         default:
@@ -325,19 +325,6 @@
 //        }
 //    }];
 }
-- (void) changeAnswersRateWithAnswer: (Answer *) answer indexPath: (NSIndexPath *) path andRate: (NSString *) rate{
-//    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.question.object_id, answer.object_id ] parameters:@{@"rate": rate} requestType:@"POST" andComplition:^(id data, BOOL success){
-//        if(success){
-//            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-//            cell.answerRate.text = [NSString stringWithFormat:@"%@", data[@"rate"] ];
-//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-//            [self loadAnswersList];
-//        } else {
-//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-//        }
-//    }];
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return answersList.count;
@@ -433,6 +420,19 @@
         Answer *answer = [[Answer alloc] init];
         [answer setDelegate:self];
         [answer create:answerParams];
+    }
+}
+
+- (void) markAsHelpfullCallbackWithParams:(NSDictionary *)params path:(NSIndexPath *)path andSuccess:(BOOL)success{
+    if(success){
+        AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        cell.answerRate.backgroundColor = [UIColor greenColor];
+        Answer *answer = answersList[path.row];
+        answer.isHelpfull = YES;
+        self.question.isClosed = YES;
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
