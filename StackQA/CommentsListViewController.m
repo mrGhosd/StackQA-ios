@@ -36,6 +36,7 @@
     pageNumber = @1;
     commentsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadComments:) name:@"updateComment" object:nil];
     [self setCommentControl];
     selectedIndex = -1;
     [self defineCorrectURL];
@@ -48,6 +49,29 @@
         [tableView finishInfiniteScroll];
     }];
     // Do any additional setup after loading the view.
+}
+-(void)reloadComments: (NSNotification *) notification{
+    Comment *updatedComment = [[Comment alloc] initWithParams:notification.object];
+    User *user = [[User alloc] initWithParams:notification.object[@"user"]];
+    Question *question = [[Question alloc] initWithParams:notification.object[@"question"]];
+    updatedComment.user = user;
+    updatedComment.question = question;
+    if(notification.object[@"answer"] != [NSNull null]){
+        Answer *answer = [[Answer alloc] initWithParams:notification.object[@"answer"]];
+        updatedComment.answer = answer;
+    }
+    updatedComment.commentDelegate = self;
+    NSUInteger objectId;
+    for(Comment *comment in commentsList){
+        if([comment.objectId isEqual:updatedComment.objectId]){
+            objectId = [commentsList indexOfObject:comment];
+        }
+    }
+    
+    [commentsList removeObjectAtIndex:objectId];
+    [commentsList insertObject:updatedComment atIndex:objectId];
+    [self.tableView reloadData];
+
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -172,7 +196,7 @@
     selectedComment = commentsList[cellIndexPath.row];
     switch (index) {
         case 0:{
-
+            [self performSegueWithIdentifier:@"comment_edit" sender:self];
             break;
         }
         case 1:{
@@ -264,15 +288,15 @@
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 //
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if(selectedIndex == indexPath.row){
-//        return currentCellHeight + 82;
-//    } else {
-//        return 82;
-//    }
-//    
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(selectedIndex == indexPath.row){
+        return currentCellHeight + 82;
+    } else {
+        return 82;
+    }
+    
+}
 //
 - (void) changeCommentTextHeightAt:(NSIndexPath *)path{
     Comment *comment = commentsList[path.row];
@@ -296,16 +320,16 @@
 //    // Pass the selected object to the new view controller.
 //}
 //*/
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if([[segue identifier] isEqualToString:@"comment_edit"]){
-//        CommentDetailViewController *view = segue.destinationViewController;
-//        view.comment = selectedComment;
-//        view.question = self.question;
-//        if(self.answer){
-//            view.answer = self.answer;
-//        }
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if([[segue identifier] isEqualToString:@"comment_edit"]){
+        CommentDetailViewController *view = segue.destinationViewController;
+        view.comment = selectedComment;
+        view.question = self.question;
+        if(self.answer){
+            view.answer = self.answer;
+        }
+    }
+}
 //
 //- (void)scrollViewDidScroll: (UIScrollView *)scroll {
 //    CGFloat currentOffset = scroll.contentOffset.y;

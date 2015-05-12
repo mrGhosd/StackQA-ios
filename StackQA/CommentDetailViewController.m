@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setActionView];
+    self.comment.commentDelegate = self;
     auth = [AuthorizationManager sharedInstance];
     self.commentText.text = self.comment.text;
     self.commentText.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -70,19 +71,22 @@
 
 - (IBAction)saveComment:(id)sender {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
-    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.comment.objectId];
     
-//    if(self.answer){
-//        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-//        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, self.comment.object_id];
-//    }
-    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
-        if(success){
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            
-        }
-    }];
+    if(self.answer){
+        [params addEntriesFromDictionary:@{@"answer_id": self.answer.objectId}];
+    }
+    [self.comment update:params];
+}
+
+- (void) updateWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
+    if(success){
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"updateComment"
+         object:params];
+       [self dismissViewControllerAnimated:YES completion:nil]; 
+    } else {
+    
+    }
 }
 
 - (IBAction)dissmissView:(id)sender {

@@ -38,6 +38,21 @@
         }
     }];
 }
+- (void) update: (NSDictionary *) params {
+    NSString *url;
+    if(self.answer != nil){
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", params[@"question_id"], params[@"answer_id"], self.objectId];
+    } else {
+        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", params[@"question_id"], self.objectId];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"PUT" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.commentDelegate updateWithParams:data andSuccess:YES];
+        } else {
+            [self.commentDelegate updateWithParams:data andSuccess:NO];
+        }
+    }];
+}
 - (void) destroyWithPath:(NSIndexPath *) path{
     NSString *url = [self convertCorrectUrl];
     [[Api sharedManager] sendDataToURL:url parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){

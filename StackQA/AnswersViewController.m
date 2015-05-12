@@ -95,7 +95,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 - (void) viewWillAppear:(BOOL)animated{
-    if(answersList.count ==nil){
+    if(answersList.count == nil){
         [self loadAnswersList];
     }
 }

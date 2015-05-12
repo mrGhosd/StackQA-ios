@@ -11,7 +11,7 @@
 #import "Question.h"
 #import "Answer.h"
 
-@interface CommentDetailViewController : ViewController
+@interface CommentDetailViewController : ViewController <CommentDelegate>
 @property (strong) Comment *comment;
 @property (strong) Question *question;
 @property (strong) Answer *answer;
