@@ -44,7 +44,6 @@
     [self designControlView];
     [self refreshInit];
     [self resizeView];
-    
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView{
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -90,7 +89,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self uploadQuestionData];
 }
 
@@ -144,7 +142,10 @@
     [self.tagsView setTagCornerRadius:6];
     self.tagsView.backgroundColor = [UIColor clearColor];
 }
-
+- (void) viewDidDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

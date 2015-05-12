@@ -20,4 +20,5 @@
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) Answer *answer;
 @property (nonatomic, retain) Question *question;
+- (instancetype) initWithParams: (NSDictionary *)params;
 @end

@@ -44,8 +44,7 @@
     Answer *answer = [[Answer alloc] init];
 //    [];
     answer.answerDelegate = self;
-    
-    // Do any additional setup after loading the view.
+
 }
 - (void) reloadAnswers:(NSNotification *) notification{
     Answer *updatedAnswer = [[Answer alloc] initWithParams:notification.object];
@@ -70,10 +69,9 @@
     }
 }
 - (void) loadAnswersList{
-    api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.objectId ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.objectId ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
          if(success){
              [self parseAnswerData:data];
          } else {
@@ -128,12 +126,14 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-    for(NSMutableDictionary *serverAnswer in answers){
-        Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
-        [answer setDelegate:self];
-        [answersList addObject:answer];
+    if(data[@"answers"] != [NSNull null]){
+        for(NSMutableDictionary *serverAnswer in answers){
+            Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
+            [answer setDelegate:self];
+            [answersList addObject:answer];
+        }
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
 }
@@ -386,8 +386,6 @@
         Answer *answer = [[Answer alloc] initWithParams:params];
         [answersList insertObject:answer atIndex:0];
         [self.tableView reloadData];
-//        [self.tableView ins];
-//        [self loadAnswersList];
     } else {
         
     }
@@ -436,16 +434,15 @@
     }
 }
 
-- (void)scrollViewDidScroll: (UIScrollView *)scroll {
-    CGFloat currentOffset = scroll.contentOffset.y;
-    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
-    
-    if (maximumOffset - currentOffset <= -80.0) {
-        if(answersList.count > 0){
-            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
-            [self loadAnswersList];
-        }
-    }
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+                     withVelocity:(CGPoint)velocity
+              targetContentOffset:(inout CGPoint *)targetContentOffset {
+    [self loadAnswersList];
+}
+
+- (void) viewDidDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (IBAction)showSettings:(id)sender {
