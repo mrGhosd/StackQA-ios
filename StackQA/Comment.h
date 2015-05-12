@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CommentDelegate.h"
 @class User;
 @class Question;
 @class Answer;
@@ -20,5 +21,12 @@
 @property (nonatomic, retain) User *user;
 @property (nonatomic, retain) Answer *answer;
 @property (nonatomic, retain) Question *question;
+
+@property (nonatomic, weak) id<CommentDelegate> commentDelegate;
+
 - (instancetype) initWithParams: (NSDictionary *)params;
+- (void) create: (NSDictionary *) params;
+- (void) update: (NSDictionary *) params;
+- (void) setDelegate: (id) delegate;
+- (void) destroyWithPath:(NSIndexPath *) path;
 @end

@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "Question.h"
 #import "Answer.h"
+#import "CommentDelegate.h"
 
-@interface CommentsListViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CommentsListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate>
 @property (strong) Question *question;
 @property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

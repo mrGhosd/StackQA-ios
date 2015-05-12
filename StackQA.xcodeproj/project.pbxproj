@@ -112,6 +112,7 @@
 		640DC3801ADD860700CE22DA /* settings48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings48.png; sourceTree = "<group>"; };
 		640DC3821ADD96CC00CE22DA /* up-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up-32.png"; sourceTree = "<group>"; };
 		640DC3841ADD96DB00CE22DA /* down-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down-32.png"; sourceTree = "<group>"; };
+		641085771B02A8530003FAF3 /* CommentDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentDelegate.h; sourceTree = "<group>"; };
 		64124A191AB987230009C034 /* move9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = move9.png; sourceTree = "<group>"; };
 		6414F8791AD2D9B6003B2C15 /* StatisticViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticViewController.h; sourceTree = "<group>"; };
 		6414F87A1AD2D9B6003B2C15 /* StatisticViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticViewController.m; sourceTree = "<group>"; };
@@ -525,6 +526,7 @@
 				64413C901B0118FD00AE6C27 /* RatingDelegate.h */,
 				64413C911B0155E800AE6C27 /* QuestionDelegate.h */,
 				64413C921B015F4200AE6C27 /* AnswerDelegate.h */,
+				641085771B02A8530003FAF3 /* CommentDelegate.h */,
 			);
 			name = share;
 			sourceTree = "<group>";

@@ -136,7 +136,6 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-    NSMutableArray *answersTransfer = [NSMutableArray new];
     if(data[@"answers"] != [NSNull null]){
         for(NSMutableDictionary *serverAnswer in answers){
             Answer *answer = [[Answer alloc] initWithParams:serverAnswer];

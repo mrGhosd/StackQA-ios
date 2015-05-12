@@ -7,6 +7,10 @@
 //
 
 #import "Comment.h"
+#import "Api.h"
+#import "Question.h"
+#import "Answer.h"
+#import "User.h"
 
 @implementation Comment
 - (instancetype) initWithParams: (NSDictionary *)params{
@@ -18,5 +22,38 @@
         self.text = params[@"text"];
     }
     return self;
+}
+- (void) create: (NSDictionary *) params{
+    NSString *url;
+    if(self.answer != nil){
+        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", params[@"question_id"], params[@"answer_id"]];
+    } else {
+        url = [NSString stringWithFormat:@"/questions/%@/comments", params[@"question_id"]];
+    }
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.commentDelegate createCallbackWithParams:data andSuccess:YES];
+        } else {
+            [self.commentDelegate createCallbackWithParams:data andSuccess:NO];
+        }
+    }];
+}
+- (void) destroyWithPath:(NSIndexPath *) path{
+    NSString *url = [self convertCorrectUrl];
+    [[Api sharedManager] sendDataToURL:url parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.commentDelegate destroyCallback:YES path:path];
+        } else {
+            [self.commentDelegate destroyCallback:NO path:path];
+        }
+    }];
+}
+- (NSString *) convertCorrectUrl{
+    if(self.answer != [NSNull null]){
+        return [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.objectId,
+                self.objectId];
+    } else {
+        return [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.objectId];
+    }
 }
 @end

@@ -12,6 +12,7 @@
 #import "CommentsListViewController.h"
 #import "CommentDetailViewController.h"
 #import <SWTableViewCell.h>
+#import <UIScrollView+InfiniteScroll.h>
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface CommentsListViewController (){
@@ -39,6 +40,13 @@
     selectedIndex = -1;
     [self defineCorrectURL];
     [self loadCommentsData];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
+        [self loadCommentsData];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -106,19 +114,23 @@
 //
 - (void) parseCommentsData: (id) data{
     NSMutableArray *comments = data[@"comments"];
-    for(NSDictionary *commentServer in comments){
-        Comment *comment = [[Comment alloc] initWithParams:commentServer];
-        User *user = [[User alloc] initWithParams:commentServer[@"user"]];
-        Question *question = [[Question alloc] initWithParams:commentServer[@"question"]];
-        comment.user = user;
-        comment.question = question;
-        if(commentServer[@"answer"] != [NSNull null]){
-            Answer *answer = [[Answer alloc] initWithParams:commentServer[@"answer"]];
-            comment.answer = answer;
+    if(data[@"comments"] != [NSNull null]){
+        for(NSDictionary *commentServer in comments){
+            Comment *comment = [[Comment alloc] initWithParams:commentServer];
+            User *user = [[User alloc] initWithParams:commentServer[@"user"]];
+            Question *question = [[Question alloc] initWithParams:commentServer[@"question"]];
+            comment.user = user;
+            comment.question = question;
+            if(commentServer[@"answer"] != [NSNull null]){
+                Answer *answer = [[Answer alloc] initWithParams:commentServer[@"answer"]];
+                comment.answer = answer;
+            }
+            comment.commentDelegate = self;
+            [commentsList addObject:comment];
         }
-        [commentsList addObject:comment];
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -155,27 +167,31 @@
     return cell;
 }
 //
-//- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
-//    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-//    selectedComment = commentsList[cellIndexPath.row];
-//    switch (index) {
-//        case 0:{
-//            [self performSegueWithIdentifier:@"comment_edit" sender:self];
-//            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//            break;
-//        }
-//        case 1:{
-//            [self deleteComment:selectedComment AtPath:cellIndexPath];
-////            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
-//            break;
-//        }
-//        case 2:{
-//            break;
-//        }
-//        default:
-//            break;
-//    }
-//}
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    selectedComment = commentsList[cellIndexPath.row];
+    switch (index) {
+        case 0:{
+
+            break;
+        }
+        case 1:{
+            [selectedComment destroyWithPath:cellIndexPath];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void) destroyCallback:(BOOL)success path:(NSIndexPath *)path{
+    if(success){
+        [commentsList removeObjectAtIndex:path.row];
+        [self.tableView reloadData];
+    } else {
+    
+    }
+}
 //- (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
 //    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": comment.text}];
 //    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, comment.object_id];
@@ -227,26 +243,26 @@
     return commentsList.count;
 }
 //
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self.view endEditing:YES];
-//    if(selectedIndex == indexPath.row){
-//        selectedIndex = -1;
-//        [self changeCommentTextHeightAt:indexPath];
-//        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//        return;
-//    }
-//    
-//    if(selectedIndex != -1){
-//        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
-//        selectedIndex = indexPath.row;
-//        [self changeCommentTextHeightAt:indexPath];
-//        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
-//    
-//    selectedIndex = indexPath.row;
-//    [self changeCommentTextHeightAt:indexPath];
-//    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.view endEditing:YES];
+    if(selectedIndex == indexPath.row){
+        selectedIndex = -1;
+    
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        return;
+    }
+    
+    if(selectedIndex != -1){
+        NSIndexPath *prevPath = [NSIndexPath indexPathForRow:selectedIndex inSection:0];
+        selectedIndex = indexPath.row;
+        [self changeCommentTextHeightAt:indexPath];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:prevPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    
+    selectedIndex = indexPath.row;
+    [self changeCommentTextHeightAt:indexPath];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 //
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
@@ -258,12 +274,12 @@
 //    
 //}
 //
-//- (void) changeCommentTextHeightAt:(NSIndexPath *)path{
-//    Comment *comment = commentsList[path.row];
-//    CGSize size = [comment.text sizeWithAttributes:nil];
-//    currentCellHeight = size.width / 20;
-//    [self.tableView cellForRowAtIndexPath:path];
-//}
+- (void) changeCommentTextHeightAt:(NSIndexPath *)path{
+    Comment *comment = commentsList[path.row];
+    CGSize size = [comment.text sizeWithAttributes:nil];
+    currentCellHeight = size.width / 20;
+    [self.tableView cellForRowAtIndexPath:path];
+}
 //
 ////- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 ////{
@@ -303,27 +319,30 @@
 //    }
 //}
 //
-//- (IBAction)createComment:(id)sender {
-//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
-//    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments", self.question.objectId];
-//
-//    if(self.answer){
-////        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-////        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments", self.question.objectId, self.answer.object_id];
-//    }
-//    if([self.commentText.text isEqualToString: @""]){
-//        [self.commentText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
-//    } else {
-//        [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
-//            if(success){
-//                self.commentText.text = @"";
-//                [self loadCommentsData];
-//            } else {
-//        
-//            }
-//        }];
-//    }
-//    
-//    
-//}
+- (IBAction)createComment:(id)sender {
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
+    if(self.answer){
+        [params addEntriesFromDictionary:@{@"answer_id": self.answer.objectId}];
+    }
+    Comment *comment = [[Comment alloc] init];
+    comment.commentDelegate = self;
+    [comment create:params];
+}
+- (void) createCallbackWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
+    if(success){
+        Comment *comment = [[Comment alloc] initWithParams:params];
+        Question *question = [[Question alloc] initWithParams:params[@"question"]] ;
+        User *user = [[User alloc] initWithParams:params[@"user"]];
+        if(params[@"answer"] != [NSNull null]){
+            Answer *answer = [[Answer alloc] initWithParams:params[@"answer"]];
+            comment.answer = answer;
+        }
+        comment.question = question;
+        comment.user = user;
+        [commentsList insertObject:comment atIndex:0];
+        [self.tableView reloadData];
+    } else {
+        
+    }
+}
 @end
