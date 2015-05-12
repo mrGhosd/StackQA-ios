@@ -41,11 +41,16 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *touched = menuID[indexPath.row];
-    [self performSegueWithIdentifier:touched sender:self];
+    if(indexPath.row == 0){
+        return;
+    } else {
+        NSString *touched = menuID[indexPath.row];
+        [self performSegueWithIdentifier:touched sender:self];
+    }
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+//    tableView.backgroundColor = [UIColor colorWithRed:.2 green:.2 blue:.2 alpha:1];
     return menuItems.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -56,15 +61,26 @@
         cell.profileImage.image = [auth.currentUser profileImage];
         cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2;
         cell.profileImage.layer.masksToBounds = YES;
-        cell.profileImage.layer.borderWidth = 0;
+        cell.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
+        cell.profileImage.layer.borderWidth = 1.0;
+//        cell.profileImage.layer.borderWidth = 0;
         cell.profileName.text = auth.currentUser.correctNaming;
+        cell.backgroundColor = [UIColor clearColor];
+//        cell.backgroundColor = [UIColor colorWithRed:.28 green:.28 blue:.28 alpha:1];
         [cell.profileRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate ] forState:UIControlStateNormal];
         return cell;
     } else {
         static NSString *CellIdentifier = @"Cell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        cell.textLabel.text = menuItems[indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+        if(indexPath.row == 0){
+            [cell.textLabel setFont:[UIFont fontWithName:@"System" size:22.0]];
+            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        }else {
+            cell.textLabel.text = menuItems[indexPath.row];
+            cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+            cell.backgroundColor = [UIColor clearColor];
+        }
+//        cell.backgroundColor = [UIColor colorWithRed:.28 green:.28 blue:.28 alpha:1];
         return cell;
     }
 }
@@ -106,9 +122,9 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 1 && auth.currentUser){
-        return 100;
+        return 85;
     } else {
-        return 44;
+        return 49;
     }
 }
 /*
