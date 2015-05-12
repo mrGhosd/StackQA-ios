@@ -330,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "346"
@@ -1652,7 +1652,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
@@ -1668,7 +1668,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "363"
@@ -1684,7 +1684,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "362"
@@ -1700,7 +1700,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "352"
@@ -1732,7 +1732,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109877.143378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "452"
@@ -2010,7 +2010,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "302"
@@ -2026,7 +2026,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "311"
@@ -2132,7 +2132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "391"
@@ -2628,11 +2628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216">
+            startingLineNumber = "223"
+            endingLineNumber = "223">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2642,11 +2642,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231">
+            startingLineNumber = "238"
+            endingLineNumber = "238">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2656,11 +2656,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196">
+            startingLineNumber = "203"
+            endingLineNumber = "203">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2670,11 +2670,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221">
+            startingLineNumber = "228"
+            endingLineNumber = "228">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2684,11 +2684,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219">
+            startingLineNumber = "226"
+            endingLineNumber = "226">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2714,11 +2714,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Answer.m"
-            timestampString = "453077615.129611"
+            timestampString = "453109322.305275"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213">
+            startingLineNumber = "220"
+            endingLineNumber = "220">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2776,7 +2776,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
@@ -2856,7 +2856,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
@@ -3078,7 +3078,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
+            timestampString = "453109499.072667"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "394"
@@ -3352,22 +3352,6 @@
             startingLineNumber = "134"
             endingLineNumber = "134"
             landmarkName = "-parseAnswerData:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453079086.34074"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "409"
-            endingLineNumber = "409"
-            landmarkName = "-updateWithParams:andSuccess:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

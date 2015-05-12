@@ -295,12 +295,12 @@
     switch (index) {
         case 0:
         {
-            [self changeAnswersRateWithAnswer:currentAnswer indexPath: cellIndexPath  andRate:@"plus"];
+            [currentAnswer changeRateWithAction:@"plus"andIndexPAth:cellIndexPath];
             break;
         }
         case 1:
         {
-            [self changeAnswersRateWithAnswer:currentAnswer indexPath: cellIndexPath  andRate:@"minus"];
+            [currentAnswer changeRateWithAction:@"minus" andIndexPAth:cellIndexPath];
             break;
         }
         case 2:
@@ -405,8 +405,22 @@
         
     }
 }
-- (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success{
-    
+- (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success{
+    if(success){
+        AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        cell.answerRate.text = [NSString stringWithFormat:@"%@", params[@"rate"] ];
+        NSInteger objectId;
+        for(Answer *answer in answersList){
+            if([answer.objectId isEqual:params[@"object_id"]]){
+                objectId = [answersList indexOfObject:answer];
+            }
+        }
+        Answer *changedAnswer = [answersList objectAtIndex:objectId];
+        changedAnswer.rate = params[@"rate"];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    }
 }
 - (IBAction)createAnswer:(id)sender {
     [self setActionViewBorder];
@@ -420,20 +434,6 @@
         [answer setDelegate:self];
         [answer create:answerParams];
     }
-//    if([self.actionViewText.text isEqualToString:@""]){
-//        [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
-//    } else {
-//    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.object_id] parameters:@{@"answer": answerParams} requestType:@"POST"
-//                         andComplition:^(id data, BOOL success){
-//                             if(success){
-//                                 self.actionViewText.text = @"";
-//                                 [self loadAnswersList];
-//                             } else{
-//                                 
-//                             }
-//                         }];
-//    }
-//    
 }
 
 - (void)scrollViewDidScroll: (UIScrollView *)scroll {

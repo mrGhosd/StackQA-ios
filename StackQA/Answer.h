@@ -32,6 +32,6 @@
 - (void) update: (NSDictionary *) params;
 - (void) setDelegate: (id) delegate;
 - (void) destroy;
-- (void) changeRateWithAction: (NSString *) action;
+- (void) changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path;
 - (void) markAsHelpfull;
 @end

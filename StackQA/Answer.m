@@ -50,8 +50,15 @@
     
 }
 
-- (void) changeRateWithAction: (NSString *) action{
-
+- (void) changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path{
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/rate", self.questionId,
+                                        self.objectId ] parameters:@{@"rate": action} requestType:@"POST" andComplition:^(id data, BOOL success){
+                if(success){
+                    [self.answerDelegate changeRateCallbackWithParams:data path: path andSuccess:YES];
+                } else {
+                    [self.answerDelegate changeRateCallbackWithParams:data path: path andSuccess:NO];
+                }
+            }];
 }
 
 - (void) markAsHelpfull{
