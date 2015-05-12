@@ -437,6 +437,7 @@
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
                      withVelocity:(CGPoint)velocity
               targetContentOffset:(inout CGPoint *)targetContentOffset {
+    pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
     [self loadAnswersList];
 }
 
