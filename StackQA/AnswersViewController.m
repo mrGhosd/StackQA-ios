@@ -13,6 +13,7 @@
 #import "AnswerTableViewCell.h"
 #import "AuthorizationManager.h"
 #import <MBProgressHUD.h>
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface AnswersViewController (){
     int selectedIndex;
@@ -24,6 +25,7 @@
     Answer *selectedAnswer;
     Question *questionAnswerSelected;
     NSMutableArray *answersList;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -44,7 +46,13 @@
     Answer *answer = [[Answer alloc] init];
 //    [];
     answer.answerDelegate = self;
-
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
+        [self loadAnswersList];
+        [tableView finishInfiniteScroll];
+    }];
 }
 - (void) reloadAnswers:(NSNotification *) notification{
     Answer *updatedAnswer = [[Answer alloc] initWithParams:notification.object];
@@ -87,7 +95,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
 - (void) viewWillAppear:(BOOL)animated{
-    [self loadAnswersList];
+    if(answersList.count ==nil){
+        [self loadAnswersList];
+    }
 }
 - (void)keyboardWillShow:(NSNotification*)notification {
     NSDictionary *keyboardValues = [notification userInfo];
@@ -126,6 +136,7 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
+    NSMutableArray *answersTransfer = [NSMutableArray new];
     if(data[@"answers"] != [NSNull null]){
         for(NSMutableDictionary *serverAnswer in answers){
             Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
@@ -434,12 +445,13 @@
     }
 }
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-                     withVelocity:(CGPoint)velocity
-              targetContentOffset:(inout CGPoint *)targetContentOffset {
-    pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
-    [self loadAnswersList];
-}
+
+//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
+//                     withVelocity:(CGPoint)velocity
+//              targetContentOffset:(inout CGPoint *)targetContentOffset {
+//    pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
+//    [self loadAnswersList];
+//}
 
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];

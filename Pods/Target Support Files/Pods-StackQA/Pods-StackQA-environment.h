@@ -102,3 +102,9 @@
 #define COCOAPODS_VERSION_MINOR_UIImage_ResizeMagick 0
 #define COCOAPODS_VERSION_PATCH_UIImage_ResizeMagick 1
 
+// UIScrollView-InfiniteScroll
+#define COCOAPODS_POD_AVAILABLE_UIScrollView_InfiniteScroll
+#define COCOAPODS_VERSION_MAJOR_UIScrollView_InfiniteScroll 0
+#define COCOAPODS_VERSION_MINOR_UIScrollView_InfiniteScroll 7
+#define COCOAPODS_VERSION_PATCH_UIScrollView_InfiniteScroll 2
+

@@ -14,9 +14,10 @@ pod 'RDRStickyKeyboardView'
 pod 'UICKeyChainStore'
 pod 'UIImage-ResizeMagick'
 pod 'BENTagsView'
+pod 'UIScrollView-InfiniteScroll'
 end
 
 target 'StackQATests' do
-
+pod 'Specta'
 end
 

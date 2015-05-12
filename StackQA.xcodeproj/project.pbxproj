@@ -49,7 +49,6 @@
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
 		644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */; };
-		646543381AFBA78800C0E10F /* QuestionViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543371AFBA78800C0E10F /* QuestionViewControllerTest.m */; };
 		646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543771AFBF3C800C0E10F /* UserCommentsViewController.m */; };
 		6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */; };
 		6465437F1AFD3D6000C0E10F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437E1AFD3D6000C0E10F /* CategoriesViewController.m */; };
@@ -76,7 +75,6 @@
 		64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EC31A6C4F01006AB0AC /* ViewController.m */; };
 		64C69EC91A6C4F01006AB0AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C69EC81A6C4F01006AB0AC /* Images.xcassets */; };
 		64C69ECC1A6C4F01006AB0AC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64C69ECA1A6C4F01006AB0AC /* LaunchScreen.xib */; };
-		64C69ED81A6C4F01006AB0AC /* StackQATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69ED71A6C4F01006AB0AC /* StackQATests.m */; };
 		64C69EE31A6C4F20006AB0AC /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EE21A6C4F20006AB0AC /* QuestionsViewController.m */; };
 		64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EE51A6C4F37006AB0AC /* QuestionsFormViewController.m */; };
 		64C69EEF1A6C5EBC006AB0AC /* QuestionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EEE1A6C5EBC006AB0AC /* QuestionDetailViewController.m */; };
@@ -90,6 +88,7 @@
 		64F5679E1ACF07820084AED4 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5679D1ACF07820084AED4 /* ImageView.m */; };
 		64F567A01ACF07910084AED4 /* ImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F5679F1ACF07910084AED4 /* ImageView.xib */; };
 		85DE37E0200C23155A10D8FE /* libPods-StackQA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */; };
+		E669C34ACD2D7E0FB1EC289C /* libPods-StackQATests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4B555D9EF6DDA2054400A8A /* libPods-StackQATests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +103,8 @@
 
 /* Begin PBXFileReference section */
 		0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EA85A2B2044ED18E82303D6 /* Pods-StackQATests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQATests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQATests/Pods-StackQATests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E76E9A33D74CE7449938A9E /* Pods-StackQATests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQATests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StackQATests/Pods-StackQATests.release.xcconfig"; sourceTree = "<group>"; };
 		59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.debug.xcconfig"; sourceTree = "<group>"; };
 		64097AA91AF96C3B002F44AD /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
 		64097AAA1AF96C3B002F44AD /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
@@ -169,7 +170,6 @@
 		644EAB791AF7D50C000C921C /* CommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListViewController.m; sourceTree = "<group>"; };
 		644FE0DC1AF80AFB0059E830 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
-		646543371AFBA78800C0E10F /* QuestionViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewControllerTest.m; sourceTree = "<group>"; };
 		646543761AFBF3C800C0E10F /* UserCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentsViewController.h; sourceTree = "<group>"; };
 		646543771AFBF3C800C0E10F /* UserCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentsViewController.m; sourceTree = "<group>"; };
 		646543791AFC0AD000C0E10F /* UserCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentTableViewCell.h; sourceTree = "<group>"; };
@@ -215,7 +215,6 @@
 		64C69ECB1A6C4F01006AB0AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		64C69ED11A6C4F01006AB0AC /* StackQATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StackQATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C69ED61A6C4F01006AB0AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64C69ED71A6C4F01006AB0AC /* StackQATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StackQATests.m; sourceTree = "<group>"; };
 		64C69EE11A6C4F20006AB0AC /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionsViewController.h; path = ../QuestionsViewController.h; sourceTree = "<group>"; };
 		64C69EE21A6C4F20006AB0AC /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionsViewController.m; path = ../QuestionsViewController.m; sourceTree = "<group>"; };
 		64C69EE41A6C4F37006AB0AC /* QuestionsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionsFormViewController.h; path = ../QuestionsFormViewController.h; sourceTree = "<group>"; };
@@ -236,6 +235,7 @@
 		64F5679D1ACF07820084AED4 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		64F5679F1ACF07910084AED4 /* ImageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageView.xib; sourceTree = "<group>"; };
 		9282C7A4F351AC4371BB6A4C /* Pods-StackQA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StackQA.release.xcconfig"; path = "Pods/Target Support Files/Pods-StackQA/Pods-StackQA.release.xcconfig"; sourceTree = "<group>"; };
+		F4B555D9EF6DDA2054400A8A /* libPods-StackQATests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StackQATests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +251,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E669C34ACD2D7E0FB1EC289C /* libPods-StackQATests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +263,8 @@
 			children = (
 				59D33AF41C08481A842855BA /* Pods-StackQA.debug.xcconfig */,
 				9282C7A4F351AC4371BB6A4C /* Pods-StackQA.release.xcconfig */,
+				1EA85A2B2044ED18E82303D6 /* Pods-StackQATests.debug.xcconfig */,
+				3E76E9A33D74CE7449938A9E /* Pods-StackQATests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -677,8 +680,6 @@
 		64C69ED41A6C4F01006AB0AC /* StackQATests */ = {
 			isa = PBXGroup;
 			children = (
-				64C69ED71A6C4F01006AB0AC /* StackQATests.m */,
-				646543371AFBA78800C0E10F /* QuestionViewControllerTest.m */,
 				64C69ED51A6C4F01006AB0AC /* Supporting Files */,
 			);
 			path = StackQATests;
@@ -696,6 +697,7 @@
 			isa = PBXGroup;
 			children = (
 				0A6B621E56EE27401DA4E77E /* libPods-StackQA.a */,
+				F4B555D9EF6DDA2054400A8A /* libPods-StackQATests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -726,9 +728,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64C69EDE1A6C4F01006AB0AC /* Build configuration list for PBXNativeTarget "StackQATests" */;
 			buildPhases = (
+				8FE316D5EABBD841613727B3 /* Check Pods Manifest.lock */,
 				64C69ECD1A6C4F01006AB0AC /* Sources */,
 				64C69ECE1A6C4F01006AB0AC /* Frameworks */,
 				64C69ECF1A6C4F01006AB0AC /* Resources */,
+				3AE8597EB2B7A6F107DD3E73 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -848,6 +852,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StackQA/Pods-StackQA-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3AE8597EB2B7A6F107DD3E73 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-StackQATests/Pods-StackQATests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FE316D5EABBD841613727B3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		F631FB30637D82C3D6DC49F3 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -920,8 +954,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				646543381AFBA78800C0E10F /* QuestionViewControllerTest.m in Sources */,
-				64C69ED81A6C4F01006AB0AC /* StackQATests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1093,7 @@
 		};
 		64C69EDF1A6C4F01006AB0AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EA85A2B2044ED18E82303D6 /* Pods-StackQATests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1080,6 +1113,7 @@
 		};
 		64C69EE01A6C4F01006AB0AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3E76E9A33D74CE7449938A9E /* Pods-StackQATests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

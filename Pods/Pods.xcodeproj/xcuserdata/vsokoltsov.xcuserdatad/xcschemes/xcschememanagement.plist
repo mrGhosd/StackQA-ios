@@ -49,7 +49,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-StackQA-UIScrollView-InfiniteScroll.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-StackQA.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQATests-Specta.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-StackQATests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -57,52 +72,67 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2248FD0D1ACC6DAECA09D297</key>
+		<key>12EEDC08EEF5D84049B06058</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7035088D426C385D5C8DADDC</key>
+		<key>1435A364266DB3E7F95B032E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>959C4C81F53104BFB20A71CC</key>
+		<key>1A88C61EB91E57401E08BC61</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9FF65A4B8CCEC1B47751E183</key>
+		<key>1BE8E50E4569DD27512B8D6F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2047F51026D1DB6828F9E9E</key>
+		<key>2698FD858829625640EEB2E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B80D0263F2A37459688396BE</key>
+		<key>3E4A3FE91214DA05CA067EE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BEB88EC1994F0C003A59647A</key>
+		<key>8BA17EA5956A9710A98ACD6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC17BAF89CE70BFE1FA91C72</key>
+		<key>91A789323A288C155CD5ABE5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6DDBB74F39195B7CDE63DE6</key>
+		<key>B9F00A02D977F1EBBF0D1B60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F8AFD021B7346ADB89B3E804</key>
+		<key>CEB3BCBE9CE94E183994AB7A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF4F470B0919C8BA82830419</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2380428014AA305661D1FD6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E5DA707AA87E8313CF6107FA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

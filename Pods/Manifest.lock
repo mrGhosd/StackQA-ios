@@ -27,9 +27,11 @@ PODS:
   - MBProgressHUD (0.9.1)
   - RDRStickyKeyboardView (0.0.2)
   - SocketRocket (0.3.1-beta2)
+  - Specta (1.0.0)
   - SWTableViewCell (0.3.7)
   - UICKeyChainStore (2.0.4)
   - UIImage-ResizeMagick (0.0.1)
+  - UIScrollView-InfiniteScroll (0.7.2)
 
 DEPENDENCIES:
   - AFNetworking
@@ -38,9 +40,11 @@ DEPENDENCIES:
   - MBProgressHUD
   - RDRStickyKeyboardView
   - SocketRocket
+  - Specta
   - SWTableViewCell (~> 0.3.7)
   - UICKeyChainStore
   - UIImage-ResizeMagick
+  - UIScrollView-InfiniteScroll
 
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
@@ -49,8 +53,10 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
   SocketRocket: 7284ab9370a06c99aba92b2fe3a32aedd0f9a6fa
+  Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7
+  UIScrollView-InfiniteScroll: cfa860f96f5a2e3b4575d59fe6d08d337093ac2a
 
 COCOAPODS: 0.34.4
