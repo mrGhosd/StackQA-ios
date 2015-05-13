@@ -19,5 +19,7 @@ end
 
 target 'StackQATests' do
 pod 'Specta'
+pod 'Expecta'
+pod 'OCMockito'
 end
 

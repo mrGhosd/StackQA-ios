@@ -21,10 +21,14 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - BENTagsView (0.9.0)
+  - Expecta (1.0.0)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9.1)
+  - OCHamcrest (4.1.1)
+  - OCMockito (1.4.0):
+    - OCHamcrest (~> 4.0)
   - RDRStickyKeyboardView (0.0.2)
   - SocketRocket (0.3.1-beta2)
   - Specta (1.0.0)
@@ -36,8 +40,10 @@ PODS:
 DEPENDENCIES:
   - AFNetworking
   - BENTagsView
+  - Expecta
   - MagicalRecord
   - MBProgressHUD
+  - OCMockito
   - RDRStickyKeyboardView
   - SocketRocket
   - Specta
@@ -49,8 +55,11 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   BENTagsView: 1a6ade3a65b7e677ea7482c1c08983ab4db532d5
+  Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
+  OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
   SocketRocket: 7284ab9370a06c99aba92b2fe3a32aedd0f9a6fa
   Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
