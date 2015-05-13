@@ -43,7 +43,7 @@ describe(@"Question model class", ^{
             expect(question.tags).to.equal(nil);
         });
     });
-    
+
     describe(@"update", ^{
         it(@"set parameters for question instance", ^{
             Question *question = [[Question alloc] init];
@@ -54,19 +54,19 @@ describe(@"Question model class", ^{
         });
     });
     
-    describe(@"#changeQuestionRate", ^{
-        context(@"with success callback", ^{
-
-//            
-            it(@"get success callback with parameters hash", ^{
-            });
+    describe(@"#breakTagsLine", ^{
+        Question *question = [[Question alloc] initWithParams:questionParams];
+        
+        it(@"return an array of splitted tags", ^{
+            expect([question breakTagsLine]).to.equal(@[@"First", @"second", @"third"]);
         });
         
-        context(@"with failure callback", ^{
-            
+        it(@"return nil", ^{
+            question.tags = nil;
+            expect([question breakTagsLine]).to.equal(nil);
         });
     });
-    
+
     
     
     
