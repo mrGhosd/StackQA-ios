@@ -10,6 +10,8 @@
 #import "ServerConnection.h"
 #import <Kiwi.h>
 #import <Nocilla.h>
+#import <AFNetworking/AFNetworking.h>
+
 #define TestNeedsToWaitForBlock() __block BOOL blockFinished = NO
 #define BlockFinished() blockFinished = YES
 #define WaitForBlock() while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !blockFinished)
@@ -17,7 +19,7 @@
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"start", ^{
     __block ServerConnection *serverConnection;
-//
+    
     beforeAll(^{
         [[LSNocilla sharedInstance] start];
     });
@@ -27,21 +29,23 @@ describe(@"start", ^{
     afterEach(^{
         [[LSNocilla sharedInstance] clearStubs];
     });
-//
+    
     it(@"return false if status 404", ^{
         __block BOOL result;
-        stubRequest(@"POST", @"http://localhost:3000/api/v1/questions").
-        withHeaders(@{@"Content-Type": @"application/json"}).
-        andReturn(404);
+        stubRequest(@"POST", @"http://localhost:3000/api/v1/quesitons").
+        andReturn(404).
+        withHeaders(@{@"Content-Type": @"application/json"});
         
         serverConnection = [ServerConnection new];
-        serverConnection.url = @"/questions";
+        serverConnection.url = @"/quesitons";
         serverConnection.requestType = @"POST";
         serverConnection.params = @{};
 
         [serverConnection startWithParams:^(id data, BOOL success){
             result = success;
         }];
+        
+        
         [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
     });
 //

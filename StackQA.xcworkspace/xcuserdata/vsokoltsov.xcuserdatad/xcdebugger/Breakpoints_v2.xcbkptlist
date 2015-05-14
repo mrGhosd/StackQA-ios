@@ -3328,11 +3328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQATests/ServerConnectionSpec.m"
-            timestampString = "453323284.373646"
+            timestampString = "453330432.494526"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121">
+            startingLineNumber = "125"
+            endingLineNumber = "125">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3341,46 +3341,30 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StackQATests/ServerConnectionSpec.m"
-            timestampString = "453323284.373646"
+            filePath = "StackQA/ServerConnection.m"
+            timestampString = "453327496.566315"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "SPEC_BEGIN()"
-            landmarkType = "6">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42+[ServerConnectionSpec buildExampleGroups]_block_invoke_4"
-                  moduleName = "StackQATests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/StackQATests/ServerConnectionSpec.m"
-                  timestampString = "453323285.117508"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "1364">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42+[ServerConnectionSpec buildExampleGroups]_block_invoke_4"
-                  moduleName = "StackQATests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/StackQATests/ServerConnectionSpec.m"
-                  timestampString = "453323285.118141"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "1386">
-               </Location>
-            </Locations>
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-startWithParams:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/ServerConnection.m"
+            timestampString = "453327497.620937"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "-startWithParams:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
