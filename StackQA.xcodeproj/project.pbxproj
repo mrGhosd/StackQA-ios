@@ -34,6 +34,7 @@
 		6428B0E31AACF3DF00110D62 /* news-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E21AACF3DF00110D62 /* news-32.png */; };
 		6428B0E71AACF4B200110D62 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B0E61AACF4B200110D62 /* Api.m */; };
 		6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E91AAE0AF500110D62 /* eye110.png */; };
+		642B5C001B04F42C004CEAA4 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */; };
 		642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE631AD339440093A5D2 /* SQAStatistic.m */; };
 		642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */; };
 		643874181ACAF3820059EBEC /* user7.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874171ACAF3820059EBEC /* user7.png */; };
@@ -144,6 +145,8 @@
 		6428B0E51AACF4B200110D62 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.h; sourceTree = "<group>"; };
 		6428B0E61AACF4B200110D62 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.m; sourceTree = "<group>"; };
 		6428B0E91AAE0AF500110D62 /* eye110.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye110.png; sourceTree = "<group>"; };
+		642B5BFE1B04F42C004CEAA4 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
+		642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		642FAE621AD339440093A5D2 /* SQAStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQAStatistic.h; sourceTree = "<group>"; };
 		642FAE631AD339440093A5D2 /* SQAStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQAStatistic.m; sourceTree = "<group>"; };
 		642FAE661AD346EF0093A5D2 /* StatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticTableViewCell.h; sourceTree = "<group>"; };
@@ -486,6 +489,8 @@
 			children = (
 				6428B0E51AACF4B200110D62 /* Api.h */,
 				6428B0E61AACF4B200110D62 /* Api.m */,
+				642B5BFE1B04F42C004CEAA4 /* ServerConnection.h */,
+				642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -943,6 +948,7 @@
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,
 				64C69EC41A6C4F01006AB0AC /* ViewController.m in Sources */,
 				646543831AFD3EC200C0E10F /* CategoryTableViewCell.m in Sources */,
+				642B5C001B04F42C004CEAA4 /* ServerConnection.m in Sources */,
 				64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */,
 				6465437F1AFD3D6000C0E10F /* CategoriesViewController.m in Sources */,
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,

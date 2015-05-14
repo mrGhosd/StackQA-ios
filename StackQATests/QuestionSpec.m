@@ -12,10 +12,13 @@
 #import "Api.h"
 #import "QuestionsViewController.h"
 #import <Expecta/Expecta.h>
-//#import "RatingDelegate.h"
-//#define MOCKITO_SHORTHAND
-//#import <OCMockito/OCMockito.h>
+#import "RatingDelegate.h"
+#define HC_SHORTHAND
+#import <OCHamcrest/OCHamcrest.h>
 
+#define MOCKITO_SHORTHAND
+#import <OCMockito/OCMockito.h>
+//#import "Nocilla.h"
 
 SpecBegin(QuestionSpec)
 describe(@"Question model class", ^{
@@ -67,10 +70,12 @@ describe(@"Question model class", ^{
         });
     });
     
-    
+    describe(@"changeQuestionRate: (NSString *) value", ^{
+        
+        it(@"call api method 'send data'", ^{
 
-    
-    
+        });
+    });
     
 });
 SpecEnd
