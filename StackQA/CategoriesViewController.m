@@ -14,10 +14,13 @@
 #import <CoreData+MagicalRecord.h>
 #import "Api.h"
 #import "SCategory.h"
+#import <UIScrollView+InfiniteScroll.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface CategoriesViewController (){
     NSMutableArray *categoriesArray;
     SCategory *selectedCategory;
+    NSNumber *pageNumber;
 }
 
 @end
@@ -26,8 +29,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageNumber = @1;
     categoriesArray = [NSMutableArray new];
     [self defineNavigationPanel];
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInteger:[pageNumber integerValue] + 1];
+        [self loadCategories];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 
@@ -51,7 +61,9 @@
 }
 
 - (void) loadCategories{
-    [[Api sharedManager] sendDataToURL:@"/categories" parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [[Api sharedManager] sendDataToURL:@"/categories" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseCategoriesData:data];
         } else {
@@ -66,18 +78,15 @@
 }
 
 - (void) parseCategoriesData:(id) data{
-    NSArray *categories = data[@"categories"];
-//    for(SCategory *category in categories){
-//        [SCategory create:category];
-//    }
-//    NSArray *deviceCategories = [SCategory MR_findAll];
-//    if(categories.count == nil){
-//        categoriesArray = [NSMutableArray arrayWithArray:deviceCategories];
-//    } else {
-//        [categoriesArray addObjectsFromArray:deviceCategories];
-//    }
-//    
-    [self.tableView reloadData];
+    NSArray *answers = data[@"categories"];
+    if(data[@"categories"] != [NSNull null]){
+        for(NSMutableDictionary *serverCategory in answers){
+            SCategory *category = [[SCategory alloc] initWithParams:serverCategory];
+            [categoriesArray addObject:category];
+        }
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

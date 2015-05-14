@@ -19,6 +19,7 @@
 #import "Api.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "AuthorizationManager.h"
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface QuestionsViewController (){
     Question *currentQuestion;
@@ -44,6 +45,13 @@
     [self pageType];
     [self.tableView reloadData];
     [self toggleCrateQuestionButton];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInteger:[pageNumber integerValue] + 1];
+        [self pageType];
+        [tableView finishInfiniteScroll];
+    }];
 }
 
 - (void) answersListForQuestion:(NSNotification *) notification{
@@ -174,11 +182,13 @@
 }
 - (void) parseCategoriesQuestions: (id) data{
     NSMutableArray *questions = data[@"categories"];
-//    [Question sync:questions];
-//    for(Question *question in [self.category questionsList]){
-//        [self.questions addObject:question];
-//    }
-    [self.tableView reloadData];
+    if(data[@"categories"] != [NSNull null]){
+        for(NSMutableDictionary *serverQuestion in questions){
+            Question *category = [[Question alloc] initWithParams:serverQuestion];
+            [self.questions addObject:category];
+        }
+        [self.tableView reloadData];
+    }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseUserQuestionsData:(id) data{
@@ -334,18 +344,6 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *correctDate = [dateFormat dateFromString:date];
     return correctDate;
-}
-
-- (void)scrollViewDidScroll: (UIScrollView *)scroll {
-    CGFloat currentOffset = scroll.contentOffset.y;
-    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
-    
-    if (maximumOffset - currentOffset <= -80.0) {
-        if(self.questions.count > 0){
-            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
-            [self pageType];
-        }
-    }
 }
 /*
 // Override to support conditional editing of the table view.
