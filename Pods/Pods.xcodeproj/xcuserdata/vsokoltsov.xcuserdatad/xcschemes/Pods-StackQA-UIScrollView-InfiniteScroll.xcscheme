@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "83B76C56EEBFE824C1A43615"
+               BlueprintIdentifier = "A4EE31CF882FC6839A99E444"
                BuildableName = "libPods-StackQA-UIScrollView-InfiniteScroll.a"
                BlueprintName = "Pods-StackQA-UIScrollView-InfiniteScroll"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <Specta/Specta.h>
 #import "Question.h"
 #import "Api.h"
 #import "QuestionsViewController.h"

@@ -8,12 +8,16 @@
 
 #import <XCTest/XCTest.h>
 #import "ServerConnection.h"
-#import <Kiwi/Kiwi.h>
+#import <Kiwi.h>
 #import <Nocilla.h>
+#define TestNeedsToWaitForBlock() __block BOOL blockFinished = NO
+#define BlockFinished() blockFinished = YES
+#define WaitForBlock() while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !blockFinished)
 
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"start", ^{
-    
+    __block ServerConnection *serverConnection;
+//
     beforeAll(^{
         [[LSNocilla sharedInstance] start];
     });
@@ -23,39 +27,36 @@ describe(@"start", ^{
     afterEach(^{
         [[LSNocilla sharedInstance] clearStubs];
     });
-
+//
     it(@"return false if status 404", ^{
         __block BOOL result;
-        ServerConnection *serverConnection = [[ServerConnection alloc] init];
+        stubRequest(@"POST", @"http://localhost:3000/api/v1/questions").
+        withHeaders(@{@"Content-Type": @"application/json"}).
+        andReturn(404);
+        
+        serverConnection = [ServerConnection new];
         serverConnection.url = @"/questions";
         serverConnection.requestType = @"POST";
         serverConnection.params = @{};
-        stubRequest(@"POST", @"http://localhost:3000/api/v1/questions").
-        andReturn(404).
-        withHeaders(@{@"Content-Type": @"application/json"});
 
         [serverConnection startWithParams:^(id data, BOOL success){
             result = success;
-            
         }];
         [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
     });
+//
+//    it(@"return true if status 200", ^{
+//        __block BOOL result;
+//        stubRequest(@"GET", @"http://localhost:3000/api/v1/questions").
+//        andReturn(200).
+//        withHeaders(@{@"Content-Type": @"application/json"});
+//        
+//        [serverConnection startWithParams:^(id data, BOOL success){
+//            result = success;
+//            
+//        }];
+//        [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
+//    });
     
-    it(@"return true if status 200", ^{
-        __block BOOL result;
-        ServerConnection *serverConnection = [[ServerConnection alloc] init];
-        serverConnection.url = @"/questions";
-        serverConnection.requestType = @"GET";
-        serverConnection.params = @{};
-        stubRequest(@"GET", @"http://localhost:3000/api/v1/questions").
-        andReturn(200).
-        withHeaders(@{@"Content-Type": @"application/json"});
-        
-        [serverConnection startWithParams:^(id data, BOOL success){
-            result = success;
-            
-        }];
-        [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
-    });
 });
 SPEC_END

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "018B95D215500DD09ECB624B"
+               BlueprintIdentifier = "4CDB284C50ECEF7F8A30E865"
                BuildableName = "libPods-StackQA-AFNetworking.a"
                BlueprintName = "Pods-StackQA-AFNetworking"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -9,7 +9,6 @@ pod 'SWTableViewCell', '~> 0.3.7'
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'UICKeyChainStore'
-pod 'SocketRocket'
 pod 'RDRStickyKeyboardView'
 pod 'UICKeyChainStore'
 pod 'UIImage-ResizeMagick'
@@ -18,7 +17,6 @@ pod 'UIScrollView-InfiniteScroll'
 end
 
 target 'StackQATests' do
-pod 'Specta'
 pod 'Expecta'
 pod 'OCMockito'
 pod 'Nocilla'

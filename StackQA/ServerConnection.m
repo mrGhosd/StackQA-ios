@@ -14,10 +14,13 @@
 @synthesize url;
 @synthesize requestType;
 @synthesize params;
+NSString const *mainURL = @"http://localhost:3000";
+
 - (void) startWithParams: (ResponseCopmlition) complition{
+    NSString *finalURL = [NSString stringWithFormat:@"%@/api/v1%@", mainURL, url];
     ResponseCopmlition response = [complition copy];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:requestType
-                                                                           URLString:[NSString stringWithFormat: @"%@/api/v1%@", MAIN_URL, url]
+                                                                           URLString: finalURL
                                                                           parameters: params
                                                                                error:nil] mutableCopy];
     

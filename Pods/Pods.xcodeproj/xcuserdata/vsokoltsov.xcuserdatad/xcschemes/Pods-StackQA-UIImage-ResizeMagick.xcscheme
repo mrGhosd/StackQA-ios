@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0510"
+   LastUpgradeVersion = "0640"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E39523C500B032014F22EF8D"
+               BlueprintIdentifier = "2DD8FDCD2B9DD8DA68CF4CB5"
                BuildableName = "libPods-StackQA-UIImage-ResizeMagick.a"
                BlueprintName = "Pods-StackQA-UIImage-ResizeMagick"
                ReferencedContainer = "container:Pods.xcodeproj">
