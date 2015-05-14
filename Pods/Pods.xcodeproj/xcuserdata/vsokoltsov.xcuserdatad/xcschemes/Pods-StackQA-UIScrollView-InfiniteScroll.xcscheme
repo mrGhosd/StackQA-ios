@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD6FB04843FC114F1A468E47"
+               BlueprintIdentifier = "83B76C56EEBFE824C1A43615"
                BuildableName = "libPods-StackQA-UIScrollView-InfiniteScroll.a"
                BlueprintName = "Pods-StackQA-UIScrollView-InfiniteScroll"
                ReferencedContainer = "container:Pods.xcodeproj">

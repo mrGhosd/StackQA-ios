@@ -22,10 +22,12 @@ PODS:
     - AFNetworking/NSURLSession
   - BENTagsView (0.9.0)
   - Expecta (1.0.0)
+  - Kiwi (2.3.1)
   - MagicalRecord (2.2):
     - MagicalRecord/Core
   - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9.1)
+  - Nocilla (0.9.0)
   - OCHamcrest (4.1.1)
   - OCMockito (1.4.0):
     - OCHamcrest (~> 4.0)
@@ -41,8 +43,10 @@ DEPENDENCIES:
   - AFNetworking
   - BENTagsView
   - Expecta
+  - Kiwi
   - MagicalRecord
   - MBProgressHUD
+  - Nocilla
   - OCMockito
   - RDRStickyKeyboardView
   - SocketRocket
@@ -56,8 +60,10 @@ SPEC CHECKSUMS:
   AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
   BENTagsView: 1a6ade3a65b7e677ea7482c1c08983ab4db532d5
   Expecta: 32604574add2c46a36f8d2f716b6c5736eb75024
+  Kiwi: f038a6c61f7a9e4d7766bff5717aa3b3fdb75f55
   MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  Nocilla: d7d96e8a11e363f0d7c976d48b320c43d61fb471
   OCHamcrest: 6f03ffa81d12feab872638490a44ab0a6d3aca10
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
