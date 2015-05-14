@@ -41,5 +41,21 @@ describe(@"start", ^{
         [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
     });
     
+    it(@"return true if status 200", ^{
+        __block BOOL result;
+        ServerConnection *serverConnection = [[ServerConnection alloc] init];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"GET";
+        serverConnection.params = @{};
+        stubRequest(@"GET", @"http://localhost:3000/api/v1/questions").
+        andReturn(200).
+        withHeaders(@{@"Content-Type": @"application/json"});
+        
+        [serverConnection startWithParams:^(id data, BOOL success){
+            result = success;
+            
+        }];
+        [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
+    });
 });
 SPEC_END
