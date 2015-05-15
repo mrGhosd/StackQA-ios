@@ -22,6 +22,7 @@
     NSMutableArray *commentsList;
     float currentCellHeight;
     int selectedIndex;
+    Answer *selectedAnswer;
     Question *selectedQuestion;
     NSNumber *pageNumber;
     Comment *selectedComment;
@@ -37,10 +38,10 @@
     [super viewDidLoad];
     pageNumber = @1;
     selectedIndex = -1;
-    localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     auth = [AuthorizationManager sharedInstance];
     commentsList = [NSMutableArray new];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadComments:) name:@"updateComment" object:nil];
+    [self loadUserCommentsData];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
@@ -49,9 +50,33 @@
     }];
     // Do any additional setup after loading the view.
 }
+
+-(void)reloadComments: (NSNotification *) notification{
+    Comment *updatedComment = [[Comment alloc] initWithParams:notification.object];
+    User *user = [[User alloc] initWithParams:notification.object[@"user"]];
+    Question *question = [[Question alloc] initWithParams:notification.object[@"question"]];
+    updatedComment.user = user;
+    updatedComment.question = question;
+    if(notification.object[@"answer"] != [NSNull null]){
+        Answer *answer = [[Answer alloc] initWithParams:notification.object[@"answer"]];
+        updatedComment.answer = answer;
+    }
+    updatedComment.commentDelegate = self;
+    NSUInteger objectId = 0;
+    for(Comment *comment in commentsList){
+        if([comment.objectId isEqual:updatedComment.objectId]){
+            objectId = [commentsList indexOfObject:comment];
+        }
+    }
+    
+    [commentsList removeObjectAtIndex:objectId];
+    [commentsList insertObject:updatedComment atIndex:objectId];
+    [self.tableView reloadData];
+}
+
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self loadUserCommentsData];
+//    [self loadUserCommentsData];
 }
 - (void) loadUserCommentsData{
     [MBProgressHUD showHUDAddedTo:self.view
@@ -71,6 +96,7 @@
             Comment *comment = [[Comment alloc] initWithParams:commentServer];
             User *user = [[User alloc] initWithParams:commentServer[@"user"]];
             Question *question = [[Question alloc] initWithParams:commentServer[@"question"]];
+            comment.commentDelegate = self;
             comment.user = user;
             comment.question = question;
             if(commentServer[@"answer"] != [NSNull null]){
@@ -89,6 +115,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) viewWillDisappear:(BOOL)animated{
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -210,21 +240,11 @@
     }
     
     if([[segue identifier] isEqualToString:@"editComment"]){
-//        CommentDetailViewController *view = segue.destinationViewController;
-//        view.comment = [selectedComment MR_inThreadContext];
-//        Question *q;
-//        Answer *a;
-//        if([selectedComment.commentable_type isEqualToString:@"Question"]){
-//            q = [selectedComment getEntity];
-//        }
-//        if([selectedComment.commentable_type isEqualToString:@"Answer"]){
-//            a = [selectedComment getEntity];
-////            q = [a getAnswerQuestion];
-//        }
-//        view.question = [q MR_inThreadContext];
-//        if(a){
-//            view.answer = [a MR_inThreadContext];
-//        }
+        CommentDetailViewController *view = segue.destinationViewController;
+        view.comment = selectedComment;
+        view.question  = selectedComment.question;
+        view.answer = selectedComment.answer;
+        
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

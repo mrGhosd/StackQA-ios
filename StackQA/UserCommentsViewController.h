@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "User.h"
+#import "CommentDelegate.h"
 
-@interface UserCommentsViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
+@interface UserCommentsViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) User *user;
 @end

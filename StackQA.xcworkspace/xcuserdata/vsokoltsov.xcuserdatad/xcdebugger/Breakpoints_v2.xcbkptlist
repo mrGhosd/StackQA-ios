@@ -2773,22 +2773,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StackQA/CommentDetailViewController.m"
-            timestampString = "453162441.357683"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
             timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
@@ -2950,11 +2934,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/UserCommentsViewController.m"
-            timestampString = "453408451.083959"
+            timestampString = "453410743.332324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -3508,22 +3492,6 @@
             startingLineNumber = "245"
             endingLineNumber = "245"
             landmarkName = "-answerCommentsClicked:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/UserCommentsViewController.m"
-            timestampString = "453409838.759192"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-commentEntityClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
