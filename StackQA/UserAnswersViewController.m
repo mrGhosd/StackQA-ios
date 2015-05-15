@@ -14,10 +14,13 @@
 #import "AuthorizationManager.h"
 #import "AnswerDetailViewController.h"
 #import "UserAnswersTableViewCell.h"
+#import <MBProgressHUD.h>
+#import <UIScrollView+InfiniteScroll.h>
 
 @interface UserAnswersViewController (){
     AuthorizationManager *auth;
     Question *chosenQuestion;
+    NSNumber *pageNumber;
     float currentCellHeight;
     int selectedIndex;
     NSMutableArray *usersAnswersList;
@@ -31,14 +34,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     selectedIndex = -1;
+    pageNumber = @1;
     usersAnswersList = [NSMutableArray new];
     answerQuestionsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     [self loadUsersAnswers];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
+        [self loadUsersAnswers];
+        [tableView finishInfiniteScroll];
+    }];
+    
     // Do any additional setup after loading the view.
 }
 - (void) loadUsersAnswers{
-    [[Api sharedManager] getData:[NSString stringWithFormat:@"/users/%@/answers", self.user.objectId] andComplition:^(id data, BOOL success){
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/users/%@/answers", self.user.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {
@@ -51,12 +65,17 @@
 }
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
-//    [Answer sync:answers];
-//    [Answer setAnswersToUser:self.user];
-    for(Answer *answer in self.user.answers){
-        [usersAnswersList addObject:answer];
+    if(data[@"user"] != [NSNull null]){
+        for(NSMutableDictionary *serverAnswer in answers){
+            Question *question = [[Question alloc] initWithParams:serverAnswer[@"question"]];
+            Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
+            [answer setDelegate:self];
+            answer.question = question;
+            [usersAnswersList addObject:answer];
+        }
+        [self.tableView reloadData];
     }
-    [self.tableView reloadData];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
 }
 - (void)didReceiveMemoryWarning {
@@ -74,10 +93,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Answer *answerItem = usersAnswersList[indexPath.row];
-//    Question *questionItem = [answerItem getAnswerQuestion];
+    Question *questionItem = answerItem.question;
     static NSString *CellIdentifier = @"userAnswersCell";
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    [cell setCellDataWithQuestion:questionItem andAnswer:answerItem];
+    [cell setCellDataWithQuestion:questionItem andAnswer:answerItem];
     [cell.answerQuestion addTarget:self action:@selector(answerQuestionClicked:) forControlEvents:UIControlEventTouchUpInside];
     if(currentCellHeight <= 30){
         cell.answerTextHeight.constant = 110;
