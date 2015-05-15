@@ -28,6 +28,7 @@
     Api *api;
     UIApplication *app;
     NSMutableArray *questionsArray;
+    NSArray *searchResults;
 }
 
 @end
@@ -225,16 +226,25 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return self.questions.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+        
+    } else {
+        return [self.questions count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Question *questionItem = [self.questions objectAtIndex:indexPath.row];
+    Question *questionItem;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        questionItem = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        questionItem = [self.questions objectAtIndex:indexPath.row];
+    }
     static NSString *CellIdentifier = @"questionCell";
-    QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell setQuestionData:questionItem];
     cell.questionTitle.text = questionItem.title;
     cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.createdAt];
@@ -339,6 +349,20 @@
     NSDate *correctDate = [dateFormat dateFromString:date];
     return correctDate;
 }
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"title contains[c] %@", searchText];
+    searchResults = [self.questions filteredArrayUsingPredicate:resultPredicate];
+}
+- (BOOL) searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString{
+    [self filterContentForSearchText:searchString
+    scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+    objectAtIndex:[self.searchDisplayController.searchBar
+    selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

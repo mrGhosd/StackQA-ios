@@ -11,7 +11,7 @@
 #import "User.h"
 #import "SCategory.h"
 
-@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate>
+@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property(strong, nonatomic) NSMutableArray *questions;
 @property (strong) User *user_page;
