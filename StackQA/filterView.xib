@@ -52,7 +52,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="answersCountFilter" destination="p1N-FW-pcH" id="egr-zD-cDX"/>
+                <outlet property="commentCountFilter" destination="egD-GX-R0V" id="Tr6-1L-Q3h"/>
                 <outlet property="rateFilter" destination="BfT-MZ-2eu" id="PaL-BF-7vF"/>
+                <outlet property="viewsCountFilter" destination="nI2-Lb-G5W" id="NAB-Pk-JdQ"/>
             </connections>
         </view>
     </objects>
