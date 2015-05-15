@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3CF9369C72AB7C5E03B26C54"
+               BlueprintIdentifier = "045B1971E22512BC5C55B49A"
                BuildableName = "libPods-StackQATests-Nocilla.a"
                BlueprintName = "Pods-StackQATests-Nocilla"
                ReferencedContainer = "container:Pods.xcodeproj">

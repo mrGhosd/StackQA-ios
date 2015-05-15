@@ -10,7 +10,8 @@
 #import "ServerConnection.h"
 #import <Kiwi.h>
 #import <Nocilla.h>
-#import <AFNetworking/AFNetworking.h>
+#import <OHHTTPStubs.h>
+#import <OHHTTPStubsResponse.h>
 
 #define TestNeedsToWaitForBlock() __block BOOL blockFinished = NO
 #define BlockFinished() blockFinished = YES
@@ -21,46 +22,40 @@ describe(@"start", ^{
     __block ServerConnection *serverConnection;
     
     beforeAll(^{
-        [[LSNocilla sharedInstance] start];
+//        [[LSNocilla sharedInstance] start];
     });
     afterAll(^{
-        [[LSNocilla sharedInstance] stop];
+//        [[LSNocilla sharedInstance] stop];
     });
     afterEach(^{
-        [[LSNocilla sharedInstance] clearStubs];
+//        [[LSNocilla sharedInstance] clearStubs];
+        [OHHTTPStubs removeAllStubs];
     });
     
     it(@"return false if status 404", ^{
         __block BOOL result;
-        stubRequest(@"POST", @"http://localhost:3000/api/v1/quesitons").
-        andReturn(404).
-        withHeaders(@{@"Content-Type": @"application/json"});
-        
-        serverConnection = [ServerConnection new];
-        serverConnection.url = @"/quesitons";
-        serverConnection.requestType = @"POST";
-        serverConnection.params = @{};
-
-        [serverConnection startWithParams:^(id data, BOOL success){
-            result = success;
+        __block id serverData;
+    
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
         }];
         
         
+        serverConnection = [ServerConnection new];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"POST";
+        serverConnection.params = @{};
+        
+
+        [serverConnection startWithParams:^(id data, BOOL success){
+            serverData = data;
+            result = success;
+        }];
+
         [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
     });
-//
-//    it(@"return true if status 200", ^{
-//        __block BOOL result;
-//        stubRequest(@"GET", @"http://localhost:3000/api/v1/questions").
-//        andReturn(200).
-//        withHeaders(@{@"Content-Type": @"application/json"});
-//        
-//        [serverConnection startWithParams:^(id data, BOOL success){
-//            result = success;
-//            
-//        }];
-//        [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
-//    });
     
 });
 SPEC_END

@@ -43,7 +43,7 @@
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
     self.userAvatar.layer.masksToBounds = YES;
     self.userAvatar.layer.borderWidth = 0;
-//    self.userFullName.text = [self.user getCorrectNaming];
+    self.userFullName.text = [self.user getCorrectNaming];
     [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
     self.signOutButton.layer.cornerRadius = 4.f;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];

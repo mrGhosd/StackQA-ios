@@ -21,5 +21,6 @@ pod 'Expecta'
 pod 'OCMockito'
 pod 'Nocilla'
 pod 'Kiwi'
+pod 'OHHTTPStubs'
 end
 
