@@ -11,8 +11,9 @@
 #import <SWTableViewCell.h>
 #import <CoreData/CoreData.h>
 #import <CoreData+MagicalRecord.h>
+#import "AnswerDelegate.h"
 
-@interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate>
+@interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, AnswerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) User *user;
 @end

@@ -10,7 +10,7 @@
 
 @optional
 - (void) createCallbackWithParams:(NSDictionary *) params andSuccess: (BOOL) success;
-- (void) destroyCallback: (BOOL) success;
+- (void) destroyCallback: (BOOL) success path: (NSIndexPath *) path;
 - (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success;
 - (void) markAsHelpfullCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *)path andSuccess: (BOOL) success;
 - (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success;

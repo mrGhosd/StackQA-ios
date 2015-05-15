@@ -43,22 +43,7 @@
         self.answerRate.backgroundColor = [UIColor lightGrayColor];
     }
     
-    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
-    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
-    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
-    if(!question.isClosed && !answer.isHelpfull){
-        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
-    }
     
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
-                                                 icon:[UIImage imageNamed:@"edit-32.png"]];
-    [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
-    self.leftUtilityButtons = leftUtilityButtons;
-    self.rightUtilityButtons = rightUtilityButtons;
-    self.delegate = self;
     
     self.answerQuestion.tag = [questionId integerValue];
     

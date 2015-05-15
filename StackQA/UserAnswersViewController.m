@@ -20,6 +20,7 @@
 @interface UserAnswersViewController (){
     AuthorizationManager *auth;
     Question *chosenQuestion;
+    Answer *currentAnswer;
     NSNumber *pageNumber;
     float currentCellHeight;
     int selectedIndex;
@@ -80,7 +81,6 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -103,17 +103,32 @@
     } else {
         cell.answerTextHeight.constant = currentCellHeight;
     }
+    
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
+    [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
+    if(!questionItem.isClosed && !answerItem.isHelpfull){
+        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
+    }
+    
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                 icon:[UIImage imageNamed:@"edit-32.png"]];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
+    cell.leftUtilityButtons = leftUtilityButtons;
+    cell.rightUtilityButtons = rightUtilityButtons;
+    cell.delegate = self;
+    
     return cell;
 }
 
 - (void) answerQuestionClicked: (UIButton *) sender{
     UserAnswersTableViewCell *cell = (UserAnswersTableViewCell *)[sender superview];
-    __block Question *question;
-    [MagicalRecord saveWithBlockAndWait:^(NSManagedObjectContext *context){
-        NSNumber *questionID = [NSNumber numberWithInteger:sender.tag];
-//        question = [Question MR_findFirstByAttribute:@"object_id" withValue:questionID inContext:context];
-    }];
-    chosenQuestion = question;
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    
+    chosenQuestion = [usersAnswersList[path.row] question];
     [self performSegueWithIdentifier:@"userAnswersQuestion" sender:self];
 }
 
@@ -155,17 +170,15 @@
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-//    Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
-//    Question *question = [currentAnswer getAnswerQuestion];
+    currentAnswer = usersAnswersList[cellIndexPath.row];
     switch (index) {
         case 0:{
-//            [self performSegueWithIdentifier:@"answer_edit" sender:currentAnswer];
-//            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [self performSegueWithIdentifier:@"answer_edit" sender:currentAnswer];
+            [self.tableView reloadRowsAtIndexPaths:@[cellIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
         }
         case 1:{
-            
-//            [self deleteAnswer:currentAnswer question:question atIndexPath:cellIndexPath];
+            [currentAnswer destroyWithIndexPath:cellIndexPath];
             break;
         }
         case 2:{
@@ -193,18 +206,17 @@
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
-//    Question *question = [currentAnswer getAnswerQuestion];
     switch (index) {
         case 0:{
-//            [self changeAnswersRateWithAnswer:currentAnswer question:Question indexPath: cellIndexPath  andRate:@"plus"];
+            [currentAnswer changeRateWithAction:@"plus" andIndexPAth:cellIndexPath];
             break;
         }
         case 1:{
-//            [self changeAnswersRateWithAnswer:currentAnswer question:question indexPath: cellIndexPath  andRate:@"minus"];
+            [currentAnswer changeRateWithAction:@"minus" andIndexPAth:cellIndexPath];
             break;
         }
         case 2:{
-//            [self setAnswerAsHelpfullWithAnswer:currentAnswer question:question andIndexPath:cellIndexPath];
+            [currentAnswer markAsHelpfullWithPath:cellIndexPath];
             break;
         }
         default:
@@ -257,11 +269,49 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([[segue identifier] isEqualToString:@"userAnswersQuestion"]){
         QuestionDetailViewController *view = segue.destinationViewController;
-//        view.question = [chosenQuestion MR_inThreadContext];
+        view.question = chosenQuestion;
     }
     if([[segue identifier] isEqualToString:@"answer_edit"]){
         AnswerDetailViewController *view = segue.destinationViewController;
         view.answer = sender;
+    }
+}
+- (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success{
+    if(success){
+        UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        cell.answerRate.text = [NSString stringWithFormat:@"%@", params[@"rate"] ];
+        NSInteger objectId;
+        for(Answer *answer in usersAnswersList){
+            if([answer.objectId isEqual:params[@"object_id"]]){
+                objectId = [usersAnswersList indexOfObject:answer];
+            }
+        }
+        Answer *changedAnswer = [usersAnswersList objectAtIndex:objectId];
+        changedAnswer.rate = params[@"rate"];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+- (void) markAsHelpfullCallbackWithParams:(NSDictionary *)params path:(NSIndexPath *)path andSuccess:(BOOL)success{
+    if(success){
+        UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        cell.answerRate.backgroundColor = [UIColor greenColor];
+        Answer *answer = usersAnswersList[path.row];
+        answer.isHelpfull = YES;
+        answer.question.isClosed = YES;
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+- (void) destroyCallback: (BOOL) success path: (NSIndexPath *) path {
+    if(success){
+        NSInteger indexPath = path.row;
+        [usersAnswersList removeObjectAtIndex:path.row];
+        [self.tableView reloadData];
+    } else {
+    
     }
 }
 

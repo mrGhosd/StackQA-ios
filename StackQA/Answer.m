@@ -7,6 +7,7 @@
 //
 
 #import "Answer.h"
+#import "Question.h"
 #import "Api.h"
 
 @implementation Answer
@@ -46,8 +47,14 @@
     }];
 }
 
-- (void) destroy{
-    
+- (void) destroyWithIndexPath:(NSIndexPath *) path{
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", self.question.objectId, self.objectId] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.answerDelegate destroyCallback:YES path:path];
+        } else {
+            [self.answerDelegate destroyCallback:YES path:path];
+        }
+    }];
 }
 
 - (void) changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path{
