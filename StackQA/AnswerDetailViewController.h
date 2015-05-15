@@ -18,5 +18,8 @@
 - (IBAction)answerSave:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *answerSaveButton;
 @property (strong, nonatomic) IBOutlet UIButton *answerDismissButton;
+@property (strong, nonatomic) IBOutlet UIView *controlView;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *controlViewBottomMargin;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
 
 @end

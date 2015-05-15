@@ -39,6 +39,7 @@
     usersAnswersList = [NSMutableArray new];
     answerQuestionsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"reloadAnswers" object:nil];
     [self loadUsersAnswers];
     
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
@@ -50,6 +51,20 @@
     
     // Do any additional setup after loading the view.
 }
+
+- (void) reloadAnswers:(NSNotification *) notification{
+    Answer *updatedAnswer = [[Answer alloc] initWithParams:notification.object];
+    NSUInteger objectId = 0;
+    for(Answer *answer in usersAnswersList){
+        if([answer.objectId isEqual:updatedAnswer.objectId]){
+            objectId = [usersAnswersList indexOfObject:answer];
+        }
+    }
+    [usersAnswersList removeObjectAtIndex:objectId];
+    [usersAnswersList insertObject:updatedAnswer atIndex:objectId];
+    [self.tableView reloadData];
+}
+
 - (void) loadUsersAnswers{
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];

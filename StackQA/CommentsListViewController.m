@@ -50,6 +50,7 @@
     }];
     // Do any additional setup after loading the view.
 }
+
 -(void)reloadComments: (NSNotification *) notification{
     Comment *updatedComment = [[Comment alloc] initWithParams:notification.object];
     User *user = [[User alloc] initWithParams:notification.object[@"user"]];
@@ -61,7 +62,7 @@
         updatedComment.answer = answer;
     }
     updatedComment.commentDelegate = self;
-    NSUInteger objectId;
+    NSUInteger objectId = 0;
     for(Comment *comment in commentsList){
         if([comment.objectId isEqual:updatedComment.objectId]){
             objectId = [commentsList indexOfObject:comment];
@@ -71,7 +72,6 @@
     [commentsList removeObjectAtIndex:objectId];
     [commentsList insertObject:updatedComment atIndex:objectId];
     [self.tableView reloadData];
-
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];

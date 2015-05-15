@@ -40,7 +40,7 @@
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"updateAnswer" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"reloadAnswers" object:nil];
     [self setAnswersListData];
     self.tableView.delegate = self;
     Answer *answer = [[Answer alloc] init];

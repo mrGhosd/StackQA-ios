@@ -26,6 +26,7 @@
     self.answerDismissButton.layer.cornerRadius = 5.0;
     self.answerSaveButton.layer.cornerRadius = 5.0;
     self.answerDetailTextView.text = self.answer.text;
+    self.answerDetailTextView.autocorrectionType = UITextAutocorrectionTypeNo;
 
     float viewHeight;
     CGSize size = [self.answerDetailTextView.text sizeWithAttributes:nil];
@@ -39,15 +40,43 @@
     self.answerDetailTextViewHeightConstraint.constant = viewHeight;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+
+- (void)keyboardWillShow:(NSNotification*)notification {
+    NSDictionary *keyboardValues = [notification userInfo];
+    id keyboardSize = keyboardValues[@"UIKeyboardFrameEndUserInfoKey"];
+    CGRect keyboardFrame = [keyboardSize CGRectValue];
+    int orientation = (int)[[UIDevice currentDevice] orientation];
+    float textViewConstraint = keyboardFrame.size.height;
+    self.scrollViewBottomMargin.constant = textViewConstraint + self.controlView.frame.size.height;
+    self.controlViewBottomMargin.constant = textViewConstraint;
+}
+- (void) keyboardWillHide:(NSNotification *) notification{
+    self.controlViewBottomMargin.constant = 0.0;
+    self.scrollViewBottomMargin.constant = self.controlView.frame.size.height;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success{
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"updateAnswer"
-     object:params];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if(success){
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"reloadAnswers"
+         object:params];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 /*

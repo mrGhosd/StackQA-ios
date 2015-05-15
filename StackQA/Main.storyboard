@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b3L-mm-faj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b3L-mm-faj">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -863,42 +863,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-H5-EYU">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-H5-EYU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-Nc-eme">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8fu-Nc-eme">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Jd-clY">
-                                                <rect key="frame" x="8" y="532" width="140" height="60"/>
-                                                <color key="backgroundColor" red="0.29286650060000002" green="1" blue="0.03287868477" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="87I-w4-VAC"/>
-                                                    <constraint firstAttribute="width" constant="140" id="c2e-Cv-be0"/>
-                                                </constraints>
-                                                <state key="normal" title="Сохранить">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="answerSave:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="wn6-WC-eXU"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-4C-1wA">
-                                                <rect key="frame" x="452" y="532" width="140" height="60"/>
-                                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="a2z-wR-Ge0"/>
-                                                    <constraint firstAttribute="width" constant="140" id="aE5-vQ-ej9"/>
-                                                </constraints>
-                                                <state key="normal" title="Отмена">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="dissmissDetailAnswerView:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="Xzu-2C-KNG"/>
-                                                </connections>
-                                            </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hDV-zT-XcO">
                                                 <rect key="frame" x="8" y="48" width="584" height="476"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -912,12 +882,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="PLH-Jd-clY" secondAttribute="bottom" constant="8" id="9QI-l2-Lbk"/>
-                                            <constraint firstAttribute="bottom" secondItem="f1z-4C-1wA" secondAttribute="bottom" constant="8" id="IBN-Ta-lK1"/>
-                                            <constraint firstAttribute="trailing" secondItem="f1z-4C-1wA" secondAttribute="trailing" constant="8" id="KHf-8k-o2c"/>
                                             <constraint firstAttribute="trailing" secondItem="hDV-zT-XcO" secondAttribute="trailing" constant="8" id="NON-Pr-tSB"/>
-                                            <constraint firstItem="f1z-4C-1wA" firstAttribute="top" secondItem="hDV-zT-XcO" secondAttribute="bottom" constant="8" id="X3O-u5-9kK"/>
-                                            <constraint firstItem="PLH-Jd-clY" firstAttribute="leading" secondItem="8fu-Nc-eme" secondAttribute="leading" constant="8" id="bBz-jR-Abl"/>
                                             <constraint firstItem="hDV-zT-XcO" firstAttribute="top" secondItem="8fu-Nc-eme" secondAttribute="top" constant="50" id="k5f-hW-snM"/>
                                             <constraint firstItem="hDV-zT-XcO" firstAttribute="leading" secondItem="8fu-Nc-eme" secondAttribute="leading" constant="8" id="mt2-LV-XvL"/>
                                         </constraints>
@@ -931,13 +896,60 @@
                                     <constraint firstAttribute="trailing" secondItem="8fu-Nc-eme" secondAttribute="trailing" id="fhI-83-pQc"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-oK-0O9">
+                                <rect key="frame" x="0.0" y="406" width="600" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1z-4C-1wA">
+                                        <rect key="frame" x="462" y="4" width="130" height="35"/>
+                                        <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="CEr-SS-olD"/>
+                                            <constraint firstAttribute="width" constant="130" id="s7g-oO-B0m"/>
+                                        </constraints>
+                                        <state key="normal" title="Отмена">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dissmissDetailAnswerView:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="ynd-mH-Qyz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-Jd-clY">
+                                        <rect key="frame" x="8" y="4" width="130" height="35"/>
+                                        <color key="backgroundColor" red="0.29286650060000002" green="1" blue="0.03287868477" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="YD2-Gu-xed"/>
+                                            <constraint firstAttribute="height" constant="35" id="u8q-Fy-kZZ"/>
+                                        </constraints>
+                                        <state key="normal" title="Сохранить">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="answerSave:" destination="5E5-Ym-Sk5" eventType="touchUpInside" id="j5E-NS-yoc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="PLH-Jd-clY" firstAttribute="top" secondItem="OLZ-oK-0O9" secondAttribute="top" constant="4" id="8j9-L1-le6"/>
+                                    <constraint firstAttribute="bottom" secondItem="PLH-Jd-clY" secondAttribute="bottom" constant="5" id="MZG-WR-0NE"/>
+                                    <constraint firstItem="PLH-Jd-clY" firstAttribute="leading" secondItem="OLZ-oK-0O9" secondAttribute="leading" constant="8" id="QaM-3C-EUs"/>
+                                    <constraint firstAttribute="trailing" secondItem="f1z-4C-1wA" secondAttribute="trailing" constant="8" id="QkG-vN-gIJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="f1z-4C-1wA" secondAttribute="bottom" constant="5" id="wJc-Ju-pjl"/>
+                                    <constraint firstItem="f1z-4C-1wA" firstAttribute="top" secondItem="OLZ-oK-0O9" secondAttribute="top" constant="4" id="xlQ-pu-w87"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="OLZ-oK-0O9" firstAttribute="leading" secondItem="Hya-rT-aRd" secondAttribute="leadingMargin" constant="-16" id="0Gf-BK-hzW"/>
                             <constraint firstItem="oHC-H5-EYU" firstAttribute="leading" secondItem="Hya-rT-aRd" secondAttribute="leadingMargin" constant="-16" id="4ny-oF-8He"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oHC-H5-EYU" secondAttribute="trailing" constant="-16" id="SaT-k8-Dg7"/>
-                            <constraint firstItem="W79-Bz-wnz" firstAttribute="top" secondItem="oHC-H5-EYU" secondAttribute="bottom" id="i4c-qO-Y6h"/>
+                            <constraint firstItem="W79-Bz-wnz" firstAttribute="top" secondItem="OLZ-oK-0O9" secondAttribute="bottom" id="UaM-f5-FRL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OLZ-oK-0O9" secondAttribute="trailing" constant="-16" id="bHv-Po-Pwr"/>
                             <constraint firstItem="oHC-H5-EYU" firstAttribute="top" secondItem="Hya-rT-aRd" secondAttribute="topMargin" id="l9L-dx-8yn"/>
+                            <constraint firstItem="W79-Bz-wnz" firstAttribute="top" secondItem="oHC-H5-EYU" secondAttribute="bottom" constant="45" id="lhy-0t-mO5"/>
                         </constraints>
                     </view>
                     <connections>
@@ -945,6 +957,9 @@
                         <outlet property="answerDetailTextViewHeightConstraint" destination="qkm-7y-f9V" id="jBd-uN-0fG"/>
                         <outlet property="answerDismissButton" destination="f1z-4C-1wA" id="4PT-RF-3ac"/>
                         <outlet property="answerSaveButton" destination="PLH-Jd-clY" id="f2w-Om-56O"/>
+                        <outlet property="controlView" destination="OLZ-oK-0O9" id="Hi3-UU-Tv0"/>
+                        <outlet property="controlViewBottomMargin" destination="UaM-f5-FRL" id="rUi-hp-Xwi"/>
+                        <outlet property="scrollViewBottomMargin" destination="lhy-0t-mO5" id="l6x-ef-FwL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qj0-O7-5jw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1664,7 +1679,7 @@
                     <connections>
                         <outlet property="tableView" destination="cxD-cN-4JU" id="k3l-Hz-Od8"/>
                         <segue destination="Xug-EA-AjG" kind="show" identifier="userAnswersQuestion" id="xUG-jW-SU9"/>
-                        <segue destination="5E5-Ym-Sk5" kind="show" identifier="answer_edit" id="wbe-Bg-hYN"/>
+                        <segue destination="5E5-Ym-Sk5" kind="presentation" identifier="answer_edit" id="wbe-Bg-hYN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GRi-lf-lls" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1803,17 +1818,17 @@
         <image name="up4-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dmP-y8-1gh"/>
-        <segue reference="x3p-uV-IHe"/>
-        <segue reference="K5f-lu-PVN"/>
-        <segue reference="Ogc-fD-TQd"/>
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
+        <segue reference="Ogc-fD-TQd"/>
+        <segue reference="K5f-lu-PVN"/>
+        <segue reference="x3p-uV-IHe"/>
+        <segue reference="dmP-y8-1gh"/>
         <segue reference="hPV-is-y6G"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="g3P-Gf-qaj"/>
-        <segue reference="84w-cX-ZdW"/>
-        <segue reference="Mye-8z-EVr"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="wbe-Bg-hYN"/>
+        <segue reference="84w-cX-ZdW"/>
     </inferredMetricsTieBreakers>
 </document>
