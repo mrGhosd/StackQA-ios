@@ -260,8 +260,7 @@
             break;
         }
         case 1:{
-            [self deleteComment:selectedComment AtPath:cellIndexPath];
-            //            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
+            [selectedComment destroyWithPath:cellIndexPath];
             break;
         }
         case 2:{
@@ -271,44 +270,12 @@
             break;
     }
 }
-- (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
-    NSMutableDictionary *params;
-    NSString *url;
-//    if([comment.commentable_type isEqualToString:@"Question"]){
-//        Question *q = [comment getEntity];
-//        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"text": comment.text}];
-//        url = [NSString stringWithFormat:@"/questions/%@/comments/%@", q.objectId, comment.object_id];
-//    }
-//    if ([comment.commentable_type isEqualToString:@"Answer"]){
-//        Answer *an = [comment getEntity];
-////        Question *q = [an getAnswerQuestion];
-////        params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": q.objectId, @"answer_id": an.object_id, @"text": comment.text}];
-////        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", q.objectId, an.object_id, comment.object_id];
-//    }
-    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
-        if(success){
-//            [comment MR_deleteEntity];
-//            [commentsList removeObjectAtIndex:path.row];
-//            if(commentsList.count == 0){
-//                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
-//            } else {
-//                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-//            }
-//            
-//        } else {
-//            
-        }
-    }];
+- (void) destroyCallback:(BOOL)success path:(NSIndexPath *)path{
+    if(success){
+        [commentsList removeObjectAtIndex:path.row];
+        [self.tableView reloadData];
+    } else {
+        
+    }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
