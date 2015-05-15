@@ -13,14 +13,17 @@
 #import "AnswersViewController.h"
 #import "Comment.h"
 #import "Api.h"
-#import <CoreData+MagicalRecord.h>
 #import "AuthorizationManager.h"
+#import <MBProgressHUD.h>
+#import <UIScrollView+InfiniteScroll.h>
+#import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface UserCommentsViewController (){
     NSMutableArray *commentsList;
     float currentCellHeight;
     int selectedIndex;
     Question *selectedQuestion;
+    NSNumber *pageNumber;
     Comment *selectedComment;
     NSManagedObjectContext *localContext;
     AuthorizationManager *auth;
@@ -32,10 +35,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    pageNumber = @1;
     selectedIndex = -1;
     localContext = [NSManagedObjectContext MR_contextForCurrentThread];
     auth = [AuthorizationManager sharedInstance];
     commentsList = [NSMutableArray new];
+    
+    self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
+    [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
+        pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
+        [self loadUserCommentsData];
+        [tableView finishInfiniteScroll];
+    }];
     // Do any additional setup after loading the view.
 }
 - (void) viewWillAppear:(BOOL)animated{
@@ -43,7 +54,9 @@
     [self loadUserCommentsData];
 }
 - (void) loadUserCommentsData{
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.objectId] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             [self parseData:data];
         } else {
@@ -52,13 +65,25 @@
     }];
 }
 - (void) parseData: (id)data{
-//    [Comment sync:data[@"users"]];
-//    [Comment setCommentsToUser:self.user];
-//    for(Comment *comment in self.user.comments){
-//        [commentsList addObject:comment];
-//    }
-//    [self.tableView reloadData];
-//    
+    NSMutableArray *comments = data[@"users"];
+    if(data[@"users"] != [NSNull null]){
+        for(NSDictionary *commentServer in comments){
+            Comment *comment = [[Comment alloc] initWithParams:commentServer];
+            User *user = [[User alloc] initWithParams:commentServer[@"user"]];
+            Question *question = [[Question alloc] initWithParams:commentServer[@"question"]];
+            comment.user = user;
+            comment.question = question;
+            if(commentServer[@"answer"] != [NSNull null]){
+                Answer *answer = [[Answer alloc] initWithParams:commentServer[@"answer"]];
+                comment.answer = answer;
+            }
+            comment.commentDelegate = self;
+            [commentsList addObject:comment];
+        }
+        [self.tableView reloadData];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +95,9 @@
     static NSString *CellIdentifier = @"commentCell";
     Comment *commentItem = commentsList[indexPath.row];
     UserCommentTableViewCell *cell = (UserCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    UIImage* resizedImage = [[commentItem.user profileImage] resizedImageByMagick: @"32x32#"];
+//    [cell. setTitle:[commentItem.user getCorrectNaming] forState:UIControlStateNormal];
+//    [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     [cell setParametersForComment:commentItem];
     [cell.commentEntityLink addTarget:self action:@selector(commentEntityClicked:) forControlEvents:UIControlEventTouchUpInside];
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];

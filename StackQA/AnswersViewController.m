@@ -37,6 +37,7 @@
     selectedIndex = -1;
     pageNumber = @1;
     answersList = [NSMutableArray new];
+    self.question.answers = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
@@ -141,7 +142,10 @@
             Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
             [answer setDelegate:self];
             [answersList addObject:answer];
+            [self.question.answers addObject:answer];
+            [self.question.answersList addObject:answer];
         }
+        [self.question.answers arrayByAddingObjectsFromArray:answersList];
         [self.tableView reloadData];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -181,6 +185,7 @@
     [cell.answerComments addTarget:self action:@selector(answerCommentsClicked:) forControlEvents:UIControlEventTouchUpInside];
     cell.answerText.exclusiveTouch = YES;
     UITapGestureRecognizer* singleTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
+    cell.answerComments.tag = [answerItem.objectId integerValue];
     singleTap.numberOfTouchesRequired=1;
     singleTap.delegate=self;
     
@@ -231,11 +236,17 @@
     return YES;
 }
 - (void) answerCommentsClicked: (UIButton *) sender{
-        NSNumber *answerID = [NSNumber numberWithInteger:sender.tag];
+    NSNumber *answerID = [NSNumber numberWithInteger:sender.tag];
 //        Answer *answer = [Answer MR_findFirstByAttribute:@"object_id" withValue:answerID];
 //        selectedAnswer = answer;
         questionAnswerSelected = self.question;
-        [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
+    for(Answer *answer in self.question.answers){
+        if([answer.objectId isEqual:answerID]){
+            selectedAnswer = answer;
+        }
+    }
+        
+    [self performSegueWithIdentifier:@"commentsAnswerView" sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -285,7 +296,6 @@
         if(success){
             AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
             [answersList removeObjectAtIndex:path.row];
-//            [answer MR_deleteEntity];
             if(answersList.count == 0){
              [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
             } else {

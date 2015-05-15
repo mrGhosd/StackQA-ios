@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,39 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158635.520382"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "-keyboardWillShow:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158635.520382"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "-keyboardWillShow:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158635.520382"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -346,11 +314,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158635.520382"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-keyboardWillShow:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409129.066725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-keyboardWillShow:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409129.066725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-keyboardWillShow:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1540,11 +1540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1556,11 +1556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-changeAnswerTextHeightAt:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1572,11 +1572,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1588,11 +1588,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "366"
+            endingLineNumber = "366"
             landmarkName = "-setActionViewBorder"
             landmarkType = "5">
          </BreakpointContent>
@@ -1604,11 +1604,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-setActionViewBorder"
             landmarkType = "5">
          </BreakpointContent>
@@ -1620,27 +1620,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "-setActionViewBorder"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
             endingLineNumber = "359"
-            landmarkName = "-setActionViewBorder"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
             landmarkName = "-tableView:heightForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1652,11 +1652,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1668,11 +1668,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "461"
-            endingLineNumber = "461"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "-showSettings:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1884,11 +1884,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1900,11 +1900,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1930,11 +1930,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
+            startingLineNumber = "282"
+            endingLineNumber = "282"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1946,11 +1946,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "312"
-            endingLineNumber = "312"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
             landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1962,11 +1962,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "321"
-            endingLineNumber = "321"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2068,11 +2068,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "388"
-            endingLineNumber = "388"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2084,11 +2084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
             landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2100,11 +2100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
             landmarkName = "-swipeableTableViewCell:didTriggerRightUtilityButtonWithIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2372,11 +2372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158601.294262"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2404,11 +2404,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2420,11 +2420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-handleSingleTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2584,11 +2584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-setAnswerAsHelpfullWithAnswer:andIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2600,23 +2600,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
-            landmarkName = "-deleteAnswer:atIndexPath:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
@@ -2632,11 +2616,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "-deleteAnswer:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2648,11 +2632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "295"
-            endingLineNumber = "295"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
             landmarkName = "-deleteAnswer:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2664,11 +2648,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "387"
-            endingLineNumber = "387"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "-deleteAnswer:atIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409305.46452"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2680,11 +2680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
             landmarkName = "-deleteAnswer:atIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2696,11 +2696,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Comment.m"
-            timestampString = "453162441.357683"
+            timestampString = "453408205.093981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169">
+            startingLineNumber = "176"
+            endingLineNumber = "176">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2790,11 +2790,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "234"
-            endingLineNumber = "234"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-answerCommentsClicked:"
             landmarkType = "5">
             <Locations>
@@ -2838,11 +2838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2854,11 +2854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-handleSingleTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2870,11 +2870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
             landmarkName = "-handleSingleTap:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2886,11 +2886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453161673.836437"
+            timestampString = "453409305.46452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "391"
-            endingLineNumber = "391"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2950,11 +2950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/UserCommentsViewController.m"
-            timestampString = "452800779.512457"
+            timestampString = "453408451.083959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -2966,11 +2966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/Comment.m"
-            timestampString = "453162441.357683"
+            timestampString = "453408205.093981"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163">
+            startingLineNumber = "170"
+            endingLineNumber = "170">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2980,7 +2980,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/UserCommentTableViewCell.m"
-            timestampString = "452797441.115614"
+            timestampString = "453408244.426414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -2996,11 +2996,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswersViewController.m"
-            timestampString = "453158635.520382"
+            timestampString = "453409129.066725"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-viewWillAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3476,6 +3476,38 @@
             startingLineNumber = "230"
             endingLineNumber = "230"
             landmarkName = "-swipeableTableViewCell:didTriggerLeftUtilityButtonWithIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409129.066725"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-parseAnswerData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/AnswersViewController.m"
+            timestampString = "453409320.574065"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "-answerCommentsClicked:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

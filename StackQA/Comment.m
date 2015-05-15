@@ -71,4 +71,11 @@
         return [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.objectId];
     }
 }
+- (id) getParentEntity{
+    if(self.answer){
+        return self.answer;
+    } else {
+        return self.question;
+    }
+}
 @end

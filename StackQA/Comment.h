@@ -29,4 +29,5 @@
 - (void) update: (NSDictionary *) params;
 - (void) setDelegate: (id) delegate;
 - (void) destroyWithPath:(NSIndexPath *) path;
+- (id) getParentEntity;
 @end

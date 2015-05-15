@@ -24,16 +24,16 @@
     self.commentText.scrollEnabled = NO;
     self.commentText.text = comment.text;
     self.commentEntityLink.tag = [comment.objectId integerValue];
-//    id entity = [comment getEntity];
+    id entity = [comment getParentEntity];
     NSString *buttonTitle;
     UIImage *buttonImage;
-//    if([comment.commentable_type isEqualToString:@"Question"]){
-//        buttonTitle = [entity title];
-//        buttonImage = [UIImage imageNamed:@"ask_question-32.png"];
-//    } else {
-//        buttonTitle = [entity text];
-//        buttonImage = [UIImage imageNamed:@"answers-32.png"];
-//    }
+    if([comment.commentableType isEqualToString:@"Question"]){
+        buttonTitle = [entity title];
+        buttonImage = [UIImage imageNamed:@"ask_question-32.png"];
+    } else {
+        buttonTitle = [entity text];
+        buttonImage = [UIImage imageNamed:@"answers-32.png"];
+    }
     [self.commentEntityLink setTitle:buttonTitle forState:UIControlStateNormal];
     [self.commentEntityLink setImage:buttonImage forState:UIControlStateNormal];
 }
