@@ -112,22 +112,22 @@
 }
 
 - (void) commentEntityClicked:(UIButton *) sender{
-//    UserCommentTableViewCell *cell = [[[[sender superview] superview] superview] superview];
-//    NSIndexPath *path = [self.tableView indexPathForCell:cell];
-//    Comment *comment = commentsList[path.row];
-//    Question *q;
-//    NSString *segueIdentifier;
-//    if([comment.commentable_type isEqualToString: @"Question" ]){
-//        q =[comment getEntity];
-//        segueIdentifier = @"showQuestion";
-//    }
-//    if([comment.commentable_type isEqualToString: @"Answer" ]){
-//        Answer *an = [comment getEntity];
-////        q = [an getAnswerQuestion];
-//        segueIdentifier = @"showQuestionAnswers";
-//    }
-//    selectedQuestion = q;
-//    [self performSegueWithIdentifier:segueIdentifier sender:self];
+    UserCommentTableViewCell *cell = [[[[sender superview] superview] superview] superview];
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    Comment *comment = commentsList[path.row];
+    Question *q;
+    NSString *segueIdentifier;
+    if([comment.commentableType isEqualToString: @"Question" ]){
+        q = comment.question;
+        segueIdentifier = @"showQuestion";
+    }
+    if([comment.commentableType isEqualToString: @"Answer" ]){
+        Answer *an = comment.answer;
+        q = comment.question;
+        segueIdentifier = @"showQuestionAnswers";
+    }
+    selectedQuestion = q;
+    [self performSegueWithIdentifier:segueIdentifier sender:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -201,12 +201,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"showQuestion"]){
         QuestionDetailViewController *view = segue.destinationViewController;
-//        view.question = [selectedQuestion MR_inThreadContext];
+        view.question = selectedQuestion ;
     }
     
     if([[segue identifier] isEqualToString:@"showQuestionAnswers"]){
         AnswersViewController *view = segue.destinationViewController;
-//        view.question = [selectedQuestion MR_inThreadContext];
+        view.question = selectedQuestion;
     }
     
     if([[segue identifier] isEqualToString:@"editComment"]){
