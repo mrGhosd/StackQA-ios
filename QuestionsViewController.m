@@ -60,7 +60,7 @@
 }
 - (void) pageType{
     if(self.user_page){
-        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", self.user_page.correctNaming]];
+        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", [self.user_page getCorrectNaming]]];
         [self showUserQuestions];
     } else if(self.category){
         [self loadCategoryQuestion];

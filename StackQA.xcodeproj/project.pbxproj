@@ -35,7 +35,6 @@
 		6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */ = {isa = PBXBuildFile; fileRef = 6428B0E91AAE0AF500110D62 /* eye110.png */; };
 		642B5C001B04F42C004CEAA4 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */; };
 		642B5C041B04F69C004CEAA4 /* ServerConnectionSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B5C031B04F69C004CEAA4 /* ServerConnectionSpec.m */; };
-		642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE631AD339440093A5D2 /* SQAStatistic.m */; };
 		642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */; };
 		643874181ACAF3820059EBEC /* user7.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874171ACAF3820059EBEC /* user7.png */; };
 		6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6438741D1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m */; };
@@ -49,6 +48,7 @@
 		64413C961B017A5100AE6C27 /* sidebar-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64413C951B017A5100AE6C27 /* sidebar-background.png */; };
 		64413C981B017AB400AE6C27 /* cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64413C971B017AB400AE6C27 /* cell-background.png */; };
 		64413C9A1B017DFE00AE6C27 /* bg-sb-test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64413C991B017DFE00AE6C27 /* bg-sb-test.jpg */; };
+		644582AE1B06955C0020440B /* SStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 644582AD1B06955C0020440B /* SStatistic.m */; };
 		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
@@ -149,8 +149,6 @@
 		642B5BFE1B04F42C004CEAA4 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		642B5C031B04F69C004CEAA4 /* ServerConnectionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnectionSpec.m; sourceTree = "<group>"; };
-		642FAE621AD339440093A5D2 /* SQAStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQAStatistic.h; sourceTree = "<group>"; };
-		642FAE631AD339440093A5D2 /* SQAStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQAStatistic.m; sourceTree = "<group>"; };
 		642FAE661AD346EF0093A5D2 /* StatisticTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticTableViewCell.h; sourceTree = "<group>"; };
 		642FAE671AD346EF0093A5D2 /* StatisticTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticTableViewCell.m; sourceTree = "<group>"; };
 		643874171ACAF3820059EBEC /* user7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user7.png; sourceTree = "<group>"; };
@@ -172,6 +170,8 @@
 		64413C951B017A5100AE6C27 /* sidebar-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sidebar-background.png"; sourceTree = "<group>"; };
 		64413C971B017AB400AE6C27 /* cell-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-background.png"; sourceTree = "<group>"; };
 		64413C991B017DFE00AE6C27 /* bg-sb-test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-sb-test.jpg"; sourceTree = "<group>"; };
+		644582AC1B06955C0020440B /* SStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SStatistic.h; sourceTree = "<group>"; };
+		644582AD1B06955C0020440B /* SStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SStatistic.m; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -291,8 +291,8 @@
 		6414F87F1AD2E27D003B2C15 /* statistic */ = {
 			isa = PBXGroup;
 			children = (
-				642FAE621AD339440093A5D2 /* SQAStatistic.h */,
-				642FAE631AD339440093A5D2 /* SQAStatistic.m */,
+				644582AC1B06955C0020440B /* SStatistic.h */,
+				644582AD1B06955C0020440B /* SStatistic.m */,
 			);
 			name = statistic;
 			sourceTree = "<group>";
@@ -927,6 +927,7 @@
 				644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */,
 				6414F87B1AD2D9B6003B2C15 /* StatisticViewController.m in Sources */,
 				647BD8991AF027F0002A0B66 /* UserAnswersTableViewCell.m in Sources */,
+				644582AE1B06955C0020440B /* SStatistic.m in Sources */,
 				6428B0E71AACF4B200110D62 /* Api.m in Sources */,
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
 				64413C8B1B00FF0600AE6C27 /* Answer.m in Sources */,
@@ -945,7 +946,6 @@
 				642FAE681AD346EF0093A5D2 /* StatisticTableViewCell.m in Sources */,
 				644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */,
 				643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */,
-				642FAE641AD339440093A5D2 /* SQAStatistic.m in Sources */,
 				646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */,
 				6465438D1AFD656700C0E10F /* CategoryDetailViewController.m in Sources */,
 				64C69EF31A6C6FFA006AB0AC /* QuestionsTableViewCell.m in Sources */,

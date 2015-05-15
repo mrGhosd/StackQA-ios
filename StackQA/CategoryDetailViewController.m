@@ -24,7 +24,7 @@
     self.categoryTitle.text = self.category.title;
     [self.categoryText loadHTMLString:self.category.desc baseURL:nil];
     CGSize size = [self.category.desc sizeWithAttributes:nil];
-    currentHeight = size.width / 10;
+    currentHeight = size.width / 8;
     if(currentHeight >= 100){
         self.webViewHeight.constant = currentHeight;
     }

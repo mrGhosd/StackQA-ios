@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class SStatistic;
 
 @interface User : NSObject
 @property (nonatomic, retain) NSString * email;
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) NSMutableSet * questions;
 @property (nonatomic, retain) NSMutableSet * answers;
 @property (nonatomic, retain) NSMutableSet * comments;
+@property (nonatomic, strong) SStatistic * statistic;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (UIImage *) profileImage;
 - (NSString *) getCorrectNaming;

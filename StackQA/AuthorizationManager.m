@@ -11,6 +11,7 @@
 #import <CoreData+MagicalRecord.h>
 #import <UICKeyChainStore.h>
 #import "Api.h"
+#import "SStatistic.h"
 
 @implementation AuthorizationManager{
     Api *api;
@@ -86,6 +87,7 @@ static AuthorizationManager *sharedSingleton_ = nil;
                 current_user.answersCount = data[@"answers_count"];
                 current_user.commentsCount = data[@"comments_count"];
                 current_user.avatarUrl = [NSString stringWithFormat:@"%@", data[@"avatar"][@"url"]];
+                current_user.statistic = [[SStatistic alloc] initWithParams:data[@"statistic"]];
                 self.currentUser = current_user;
                 [localContext MR_saveToPersistentStoreAndWait];
                 [[NSNotificationCenter defaultCenter]

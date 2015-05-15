@@ -8,10 +8,13 @@
 
 #import "StatisticViewController.h"
 #import "StatisticTableViewCell.h"
+#import "SStatistic.h"
+
 @interface StatisticViewController (){
     NSArray *userStatList;
     NSArray *userStatValuesList;
     AuthorizationManager *auth;
+    SStatistic *statistic;
 }
 
 @end
@@ -22,10 +25,18 @@
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
     userStatList = @[@"Рейтинг", @"Ответов", @"+ за вопрос", @"- за вопрос", @"+ за ответ", @"- за ответ", @"Полезных ответов на вопрос", @"Первых ответов на вопрос", @"Первых ответов на свои вопросы", @"Ответов на свои вопросы"];
-//    userStatValuesList = @[ auth.currentUser.rate, auth.currentUser.answersCount, auth.currentUser.statistic.questions_positive_rate_count, auth.currentUser.statistic.questions_negative_rate_count,
-//        auth.currentUser.statistic.answers_positive_rate_count, auth.currentUser.statistic.answers_negative_rate_count, auth.currentUser.statistic.helpfull_answers_count,
-//                        auth.currentUser.statistic.first_answers_count, auth.currentUser.statistic.first_self_answers_count, auth.currentUser.statistic.self_answers_count];
-//    self.tableView.dataSource = self;
+    statistic = auth.currentUser.statistic;
+    userStatValuesList = @[ auth.currentUser.rate,
+                            auth.currentUser.answersCount,
+                            statistic.questions_positive_rate_count,
+                            statistic.questions_negative_rate_count,
+                            statistic.answers_positive_rate_count,
+                            auth.currentUser.statistic.answers_negative_rate_count,
+                            auth.currentUser.statistic.helpfull_answers_count,
+                            auth.currentUser.statistic.first_answers_count,
+                            auth.currentUser.statistic.first_self_answers_count,
+                            auth.currentUser.statistic.self_answers_count];
+    self.tableView.dataSource = self;
     self.tableView.delegate = self;
     // Do any additional setup after loading the view.
 }

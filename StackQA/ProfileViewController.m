@@ -131,7 +131,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self performSegueWithIdentifier:paramsIDs[indexPath.row] sender:self];
+    if([self.user.objectId isEqual:auth.currentUser.objectId]){
+        [self performSegueWithIdentifier:paramsIDs[indexPath.row] sender:self];
+    }
 }
 
 /*
