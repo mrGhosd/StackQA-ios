@@ -192,20 +192,14 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseUserQuestionsData:(id) data{
-    NSMutableArray *questions = data[@"questions"];
-    for(NSDictionary *question in questions){
-//        [Question create:question];
+    NSMutableArray *questions = data[@"users"];
+    if(data[@"questions"] != [NSNull null]){
+        for(NSMutableDictionary *serverQuestion in questions){
+            Question *category = [[Question alloc] initWithParams:serverQuestion];
+            [self.questions addObject:category];
+        }
+        [self.tableView reloadData];
     }
-//    NSArray *userQuestions = [self.user_page getQuestions];
-    
-//    if(questions.count == nil){
-//        self.questions = userQuestions;
-//    } else {
-//        [self.questions addObjectsFromArray: userQuestions];
-//    }
-    
-    
-    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
