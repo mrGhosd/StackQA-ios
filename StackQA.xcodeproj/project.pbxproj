@@ -49,6 +49,8 @@
 		64413C981B017AB400AE6C27 /* cell-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64413C971B017AB400AE6C27 /* cell-background.png */; };
 		64413C9A1B017DFE00AE6C27 /* bg-sb-test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 64413C991B017DFE00AE6C27 /* bg-sb-test.jpg */; };
 		644582AE1B06955C0020440B /* SStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 644582AD1B06955C0020440B /* SStatistic.m */; };
+		644582B01B06A9590020440B /* filterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 644582AF1B06A9590020440B /* filterView.xib */; };
+		644582B31B06AA5C0020440B /* QuestionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 644582B21B06AA5C0020440B /* QuestionFilter.m */; };
 		644B46511AC0AC28002CF50C /* AnswersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46501AC0AC28002CF50C /* AnswersViewController.m */; };
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
@@ -172,6 +174,9 @@
 		64413C991B017DFE00AE6C27 /* bg-sb-test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bg-sb-test.jpg"; sourceTree = "<group>"; };
 		644582AC1B06955C0020440B /* SStatistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SStatistic.h; sourceTree = "<group>"; };
 		644582AD1B06955C0020440B /* SStatistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SStatistic.m; sourceTree = "<group>"; };
+		644582AF1B06A9590020440B /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = filterView.xib; sourceTree = "<group>"; };
+		644582B11B06AA5C0020440B /* QuestionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFilter.h; sourceTree = "<group>"; };
+		644582B21B06AA5C0020440B /* QuestionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFilter.m; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -482,6 +487,9 @@
 			children = (
 				64C69EF01A6C6FFA006AB0AC /* QuestionsTableViewCell.h */,
 				64C69EF11A6C6FFA006AB0AC /* QuestionsTableViewCell.m */,
+				644582AF1B06A9590020440B /* filterView.xib */,
+				644582B11B06AA5C0020440B /* QuestionFilter.h */,
+				644582B21B06AA5C0020440B /* QuestionFilter.m */,
 			);
 			name = questions;
 			sourceTree = "<group>";
@@ -812,6 +820,7 @@
 				64F567A01ACF07910084AED4 /* ImageView.xib in Resources */,
 				64413C941B01770E00AE6C27 /* star138.png in Resources */,
 				6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */,
+				644582B01B06A9590020440B /* filterView.xib in Resources */,
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
 				643874181ACAF3820059EBEC /* user7.png in Resources */,
 				6428B0EA1AAE0AF500110D62 /* eye110.png in Resources */,
@@ -932,6 +941,7 @@
 				6428B0CA1AAC77A100110D62 /* RightPanelViewController.m in Sources */,
 				64413C8B1B00FF0600AE6C27 /* Answer.m in Sources */,
 				64157B891AC8440300E0E401 /* Authorization.m in Sources */,
+				644582B31B06AA5C0020440B /* QuestionFilter.m in Sources */,
 				6438741F1ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.m in Sources */,
 				64157B901AC8728400E0E401 /* ProfileViewController.m in Sources */,
 				64D8E3391AE9B488006EB1CD /* UserAnswersViewController.m in Sources */,
