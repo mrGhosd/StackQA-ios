@@ -46,7 +46,7 @@ describe(@"start", ^{
         serverConnection = [ServerConnection new];
         serverConnection.url = @"/questions";
         serverConnection.requestType = @"POST";
-        serverConnection.params = @{};
+        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
         
 
         [serverConnection startWithParams:^(id data, BOOL success){
@@ -55,6 +55,54 @@ describe(@"start", ^{
         }];
 
         [[expectFutureValue(theValue(result)) shouldEventually] beFalse];
+    });
+    
+    it(@"return true if status 200", ^{
+        __block BOOL result;
+        __block id serverData;
+        
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        
+        serverConnection = [ServerConnection new];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"POST";
+        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
+        
+        
+        [serverConnection startWithParams:^(id data, BOOL success){
+            serverData = data;
+            result = success;
+        }];
+        
+        [[expectFutureValue(theValue(result)) shouldEventually] beTrue];
+    });
+    
+    it(@"data is json string, if status 200", ^{
+        __block BOOL result;
+        __block id serverData;
+        
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        
+        serverConnection = [ServerConnection new];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"POST";
+        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
+        
+        
+        [serverConnection startWithParams:^(id data, BOOL success){
+            serverData = data;
+            result = success;
+        }];
+        
+        [[expectFutureValue(serverData) shouldEventually] equal:@[@"data"]];
     });
     
 });
