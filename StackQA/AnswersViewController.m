@@ -208,6 +208,7 @@
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
+        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"child1.png"]];
         if(!self.question.isClosed){
             [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
         }
@@ -325,25 +326,16 @@
         }
         case 2:
         {
+            [currentAnswer complainToAnswerWithPath:cellIndexPath];
+            break;
+        }
+        case 3:{
             [currentAnswer markAsHelpfullWithPath:cellIndexPath];
             break;
         }
         default:
             break;
     }
-}
-- (void) setAnswerAsHelpfullWithAnswer:(Answer *)answer andIndexPath: (NSIndexPath *) path{
-//    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@/helpfull", self.question.objectId, answer.object_id ] parameters:nil requestType:@"POST" andComplition:^(id data, BOOL success){
-//        if(success){
-//            AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-//            cell.answerRate.backgroundColor = [UIColor greenColor];
-////            [self.question closeQuestion];
-//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-//            [self loadAnswersList];
-//        } else {
-//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-//        }
-//    }];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
@@ -369,8 +361,6 @@
     topView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
     [self.actionView addSubview:topView];
 }
-
-
 - (void) setActionViewTextBorder{
     [self.actionViewText.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [self.actionViewText.layer setBorderWidth:2.0];
@@ -383,12 +373,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"answer_edit"]){
         AnswerDetailViewController *view = segue.destinationViewController;
@@ -453,18 +437,16 @@
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
-
-
-//- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView
-//                     withVelocity:(CGPoint)velocity
-//              targetContentOffset:(inout CGPoint *)targetContentOffset {
-//    pageNumber = [NSNumber numberWithInt:[pageNumber integerValue] + 1];
-//    [self loadAnswersList];
-//}
-
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (void) complaintToAnswerWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path{
+    if(success){
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+    
+    }
 }
 
 - (IBAction)showSettings:(id)sender {

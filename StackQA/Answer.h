@@ -34,4 +34,5 @@
 - (void) destroyWithIndexPath:(NSIndexPath *) path;
 - (void) changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path;
 - (void) markAsHelpfullWithPath: (NSIndexPath *) path;
+- (void) complainToAnswerWithPath: (NSIndexPath *) path;
 @end

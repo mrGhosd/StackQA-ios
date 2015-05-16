@@ -218,11 +218,6 @@
     switch (index) {
         case 0:{
             [selectedComment complainToCommentWithPath:cellIndexPath];
-//            [self performSegueWithIdentifier:@"comment_edit" sender:self];
-            break;
-        }
-        case 1:{
-//            [selectedComment destroyWithPath:cellIndexPath];
             break;
         }
         default:

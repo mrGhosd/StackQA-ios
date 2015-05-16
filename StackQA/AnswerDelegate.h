@@ -14,5 +14,5 @@
 - (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success;
 - (void) markAsHelpfullCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *)path andSuccess: (BOOL) success;
 - (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success;
-
+- (void) complaintToAnswerWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path;
 @end

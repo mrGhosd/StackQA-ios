@@ -77,4 +77,15 @@
                 }
             }];
 }
+- (void) complainToAnswerWithPath: (NSIndexPath *) path{
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/answers/%@/complaints", self.questionId, self.objectId];
+    NSMutableDictionary *params =[NSMutableDictionary dictionaryWithDictionary:@{@"complaintable_type": @"Answer", @"complaintable_id": self.objectId}];
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.answerDelegate complaintToAnswerWithSuccess:YES andIndexPath:path];
+        } else {
+            [self.answerDelegate complaintToAnswerWithSuccess:NO andIndexPath:path];
+        }
+    }];
+}
 @end
