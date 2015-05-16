@@ -115,9 +115,8 @@
         [view addGestureRecognizer:singleFingerTap];
         return view;
     } else {
-        filterView = [[[NSBundle mainBundle] loadNibNamed:@"filterView" owner:self options:nil] firstObject];   
+        filterView = [[[NSBundle mainBundle] loadNibNamed:@"filterView" owner:self options:nil] firstObject];
         filterView.delegate = self;
-        filterView.rateFilter.selected = YES;
         return filterView;
     }
 }
@@ -383,7 +382,7 @@
 
 - (void) sortByComments{
     [self resetAllHighlights];
-    filterView.commentCountFilter.selected = YES;
+    filterView.commentCountFilter.highlighted = YES;
     pageNumber = @1;
     self.questions = [NSMutableArray new];
     defaultQuestionURL = @"/questions/filter";
@@ -393,7 +392,6 @@
 
 - (void) sortByRate{
     [self resetAllHighlights];
-    filterView.rateFilter.selected = YES;
     pageNumber = @1;
     self.questions = [NSMutableArray new];
     defaultQuestionURL = @"/questions/filter";
@@ -403,8 +401,9 @@
 
 - (void) sortByViews{
     [self resetAllHighlights];
-    filterView.viewsCountFilter.selected = YES;
     pageNumber = @1;
+    filterView.viewsCountFilter.layer.borderWidth = 2.0f;
+    filterView.viewsCountFilter.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.questions = [NSMutableArray new];
     defaultQuestionURL = @"/questions/filter";
     filter = @"views";
