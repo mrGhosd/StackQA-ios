@@ -63,12 +63,12 @@
         }
     }];
 }
-- (NSString *) convertCorrectUrl{
-    if(self.answer != [NSNull null]){
-        return [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.objectId,
+- (NSMutableString *) convertCorrectUrl{
+    if(self.answer != nil){
+        return [NSMutableString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.objectId,
                 self.objectId];
     } else {
-        return [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.objectId];
+        return [NSMutableString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, self.objectId];
     }
 }
 - (id) getParentEntity{
@@ -77,5 +77,16 @@
     } else {
         return self.question;
     }
+}
+- (void) complainToCommentWithPath: (NSIndexPath *) path{
+    NSString *url = [NSString stringWithFormat:@"%@/complaints", [self convertCorrectUrl]];
+    NSMutableDictionary *params =[NSMutableDictionary dictionaryWithDictionary:@{@"complaintable_type": @"Comment", @"complaintable_id": self.objectId}];
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        if(success){
+            [self.commentDelegate complaintToCommentWithSuccess:YES andIndexPath:path];
+        } else {
+            [self.commentDelegate complaintToCommentWithSuccess:NO andIndexPath:path];
+        }
+    }];
 }
 @end

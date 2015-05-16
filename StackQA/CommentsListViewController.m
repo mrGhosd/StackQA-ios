@@ -172,6 +172,11 @@
     [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     cell.commentText.editable = NO;
     cell.commentText.scrollEnabled = NO;
+    NSMutableArray *leftUtilityButtons = [NSMutableArray new];
+    if(auth.currentUser){
+        [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"child1.png"]];
+        cell.leftUtilityButtons = leftUtilityButtons;
+    }
     if(auth.currentUser && [auth.currentUser.objectId isEqual: cellComment.userId]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
         [rightUtilityButtons sw_addUtilityButtonWithColor:
@@ -180,8 +185,8 @@
         [rightUtilityButtons sw_addUtilityButtonWithColor:
          [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f] icon:[UIImage imageNamed:@"delete_sign-32.png"]];
         cell.rightUtilityButtons = rightUtilityButtons;
-        cell.delegate = self;
     }
+    cell.delegate = self;
     
     if(currentCellHeight <= 30){
         cell.commentTextHeight.constant = 33;
@@ -207,6 +212,23 @@
             break;
     }
 }
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
+    NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+    selectedComment = commentsList[cellIndexPath.row];
+    switch (index) {
+        case 0:{
+            [selectedComment complainToCommentWithPath:cellIndexPath];
+//            [self performSegueWithIdentifier:@"comment_edit" sender:self];
+            break;
+        }
+        case 1:{
+//            [selectedComment destroyWithPath:cellIndexPath];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 - (void) destroyCallback:(BOOL)success path:(NSIndexPath *)path{
     if(success){
@@ -216,34 +238,6 @@
     
     }
 }
-//- (void) deleteComment:(Comment *) comment AtPath: (NSIndexPath *) path{
-//    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": comment.text}];
-//    NSString *url = [NSString stringWithFormat:@"/questions/%@/comments/%@", self.question.objectId, comment.object_id];
-//    
-//    if(self.answer){
-////        [params addEntriesFromDictionary:@{@"answer_id": self.answer.object_id}];
-////        url = [NSString stringWithFormat:@"/questions/%@/answers/%@/comments/%@", self.question.objectId, self.answer.object_id, comment.object_id];
-//    }
-//    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"DELETE" andComplition:^(id data, BOOL success){
-//        if(success){
-////            [comment MR_deleteEntity];
-//            [commentsList removeObjectAtIndex:path.row];
-//            if(commentsList.count == 0){
-//                [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
-//            } else {
-//                [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-//            }
-//        
-//        } else {
-//        
-//        }
-//    }];
-//}
-//- (void)tappedTextView:(UITapGestureRecognizer *)tapGesture {
-//    CommentTableViewCell *cell = [[[tapGesture view] superview] superview];
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-//    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-//}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     if(commentsList.count != nil){
         self.tableView.backgroundView = nil;
@@ -304,22 +298,6 @@
     currentCellHeight = size.width / 20;
     [self.tableView cellForRowAtIndexPath:path];
 }
-//
-////- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-////{
-////    
-////}
-//
-//
-///*
-//#pragma mark - Navigation
-//
-//// In a storyboard-based application, you will often want to do a little preparation before navigation
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//}
-//*/
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"comment_edit"]){
         CommentDetailViewController *view = segue.destinationViewController;
@@ -330,19 +308,6 @@
         }
     }
 }
-//
-//- (void)scrollViewDidScroll: (UIScrollView *)scroll {
-//    CGFloat currentOffset = scroll.contentOffset.y;
-//    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
-//    
-//    if (maximumOffset - currentOffset <= -80.0) {
-//        if(commentsList.count > 0){
-//            pageNumber = [NSNumber numberWithInt:[pageNumber intValue] + 1];
-//            [self loadCommentsData];
-//        }
-//    }
-//}
-//
 - (IBAction)createComment:(id)sender {
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
     if(self.answer){
@@ -367,6 +332,13 @@
         [self.tableView reloadData];
     } else {
         
+    }
+}
+- (void) complaintToCommentWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path{
+    if(success){
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+    
     }
 }
 @end

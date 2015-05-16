@@ -12,5 +12,5 @@
 - (void) createCallbackWithParams:(NSDictionary *) params andSuccess: (BOOL) success;
 - (void) destroyCallback: (BOOL) success path:(NSIndexPath *) path;
 - (void) updateWithParams:(NSDictionary *) params andSuccess:(BOOL) success;
-
+- (void) complaintToCommentWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path;
 @end

@@ -30,4 +30,5 @@
 - (void) setDelegate: (id) delegate;
 - (void) destroyWithPath:(NSIndexPath *) path;
 - (id) getParentEntity;
+- (void) complainToCommentWithPath: (NSIndexPath *) path;
 @end
