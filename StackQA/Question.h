@@ -37,4 +37,5 @@ typedef void(^ApiResponseCopmlition)(id data, BOOL success);
 - (NSArray *) breakTagsLine;
 - (void) changeQuestionRate: (NSString *) value;
 - (void) destroy;
+- (void) complaintToQuestion;
 @end

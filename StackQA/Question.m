@@ -65,4 +65,11 @@
         }
     }];
 }
+- (void) complaintToQuestion{
+    NSString *url = [NSString stringWithFormat:@"/questions/%@/complaints", self.objectId];
+    NSMutableDictionary *params =[NSMutableDictionary dictionaryWithDictionary:@{@"complaintable_type": @"Question", @"complaintable_id": self.objectId}];
+    [[Api sharedManager] sendDataToURL:url parameters:params requestType:@"POST" andComplition:^(id data, BOOL success){
+        [self.questionDelegate complainToQuestion];
+    }];
+}
 @end

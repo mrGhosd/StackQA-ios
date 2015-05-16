@@ -11,4 +11,5 @@
 @optional
 - (void) successDestroyCallback;
 - (void) failedDestroyCallback;
+- (void) complainToQuestion;
 @end

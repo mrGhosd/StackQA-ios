@@ -242,6 +242,10 @@
     }
     [self initQuestionData];
 }
+- (IBAction)complainToQuestion:(id)sender {
+    [self.question complaintToQuestion];
+}
+
 - (IBAction)increaseRate:(id)sender {
     [self.question changeQuestionRate:@"plus"];
 }
@@ -295,7 +299,10 @@
 - (void) successDestroyCallback{
     [self performSegueWithIdentifier:@"destroyQuestionDetail" sender:self];
 }
-
+- (void) complainToQuestion{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+    [alert show];
+}
 - (void) failedDestroyCallback{
 
 }

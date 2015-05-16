@@ -304,6 +304,15 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHJ-sG-LCk">
+                                                        <rect key="frame" x="8" y="128" width="24" height="24"/>
+                                                        <state key="normal" backgroundImage="child1.png">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="complainToQuestion:" destination="Xug-EA-AjG" eventType="touchUpInside" id="TGt-be-xwN"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -311,11 +320,13 @@
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="top" secondItem="OSJ-CB-oqj" secondAttribute="bottom" constant="8" id="96O-Ok-evh"/>
                                                     <constraint firstItem="ZfK-BD-pmm" firstAttribute="top" secondItem="ch1-TH-cIa" secondAttribute="bottom" constant="14" id="FnV-4m-vHM"/>
                                                     <constraint firstItem="ch1-TH-cIa" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="MWy-9i-T5v"/>
+                                                    <constraint firstItem="AHJ-sG-LCk" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="N8Y-h3-uEX"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" secondItem="ch1-TH-cIa" secondAttribute="trailing" constant="8" id="OFE-L9-LPZ"/>
                                                     <constraint firstItem="ZfK-BD-pmm" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="TI5-7u-kFV"/>
                                                     <constraint firstItem="OSJ-CB-oqj" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="top" constant="8" id="TYk-n6-LmE"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="top" secondItem="nVR-n8-7MK" secondAttribute="top" id="aVU-7V-DML"/>
                                                     <constraint firstAttribute="bottom" secondItem="3l5-oq-DS9" secondAttribute="bottom" id="c6e-Fh-gmJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AHJ-sG-LCk" secondAttribute="bottom" constant="8" id="dw6-hz-pNn"/>
                                                     <constraint firstItem="OSJ-CB-oqj" firstAttribute="leading" secondItem="nVR-n8-7MK" secondAttribute="leading" constant="8" id="kvP-bQ-REe"/>
                                                     <constraint firstAttribute="trailing" secondItem="3l5-oq-DS9" secondAttribute="trailing" id="lq3-RA-Hlj"/>
                                                     <constraint firstItem="3l5-oq-DS9" firstAttribute="leading" relation="lessThanOrEqual" secondItem="ZfK-BD-pmm" secondAttribute="trailing" constant="429" id="pwJ-wA-u7v"/>
@@ -1831,6 +1842,7 @@
     <resources>
         <image name="answers-32.png" width="32" height="32"/>
         <image name="chat-32.png" width="32" height="32"/>
+        <image name="child1.png" width="24" height="24"/>
         <image name="down4-32.png" width="32" height="32"/>
         <image name="eye110.png" width="32" height="32"/>
         <image name="mark1.png" width="32" height="32"/>
@@ -1842,14 +1854,14 @@
         <image name="up4-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Ogc-fD-TQd"/>
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
-        <segue reference="Ogc-fD-TQd"/>
-        <segue reference="uQv-Ln-Urv"/>
         <segue reference="dmP-y8-1gh"/>
         <segue reference="qso-7B-GJb"/>
         <segue reference="pXd-z1-64T"/>
-        <segue reference="xPL-nT-syk"/>
+        <segue reference="zlR-QY-YZy"/>
+        <segue reference="g3P-Gf-qaj"/>
         <segue reference="hPV-is-y6G"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="jdO-yh-WYz"/>

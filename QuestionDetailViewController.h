@@ -36,6 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *downRateButton;
 @property (strong, nonatomic) IBOutlet UIButton *questionAuthorButton;
 @property (strong, nonatomic) IBOutlet UIView *controlView;
+- (IBAction)complainToQuestion:(id)sender;
 
 - (IBAction)increaseRate:(id)sender;
 - (IBAction)decreaseRate:(id)sender;
