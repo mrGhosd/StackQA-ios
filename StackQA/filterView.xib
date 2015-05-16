@@ -15,27 +15,39 @@
                     <state key="normal" backgroundImage="mark1.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="filterByRate:" destination="iN0-l3-epB" eventType="touchUpInside" id="QzT-Vt-lE2"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egD-GX-R0V">
                     <rect key="frame" x="440" y="8" width="50" height="34"/>
                     <state key="normal" backgroundImage="chat-32.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="filterByComment:" destination="iN0-l3-epB" eventType="touchUpInside" id="icn-cR-Vlk"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI2-Lb-G5W">
                     <rect key="frame" x="528" y="8" width="50" height="34"/>
                     <state key="normal" backgroundImage="eye110.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="filterByViews:" destination="iN0-l3-epB" eventType="touchUpInside" id="TzV-zV-nDs"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1N-FW-pcH">
                     <rect key="frame" x="98" y="8" width="50" height="34"/>
                     <state key="normal" backgroundImage="answers-32.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="filterByAnswer:" destination="iN0-l3-epB" eventType="touchUpInside" id="6UC-A9-fR3"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="BfT-MZ-2eu" secondAttribute="bottom" constant="8" id="12u-p5-dHQ"/>
                 <constraint firstItem="egD-GX-R0V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="30l-ue-80X"/>

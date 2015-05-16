@@ -19,14 +19,22 @@
 */
 
 - (IBAction)filterByRate:(id)sender {
+    self.rateFilter.highlighted = YES;
+    [self.delegate sortByRate];
 }
 
 - (IBAction)filterByAnswer:(id)sender {
+    self.answersCountFilter.highlighted = YES;
+    [self.delegate sortByAnswer];
 }
 
 - (IBAction)filterByComment:(id)sender {
+    self.commentCountFilter.highlighted = YES;
+    [self.delegate sortByComments];
 }
 
 - (IBAction)filterByViews:(id)sender {
+    self.viewsCountFilter.highlighted = YES;
+    [self.delegate sortByViews];
 }
 @end

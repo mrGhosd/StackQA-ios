@@ -30,6 +30,9 @@
     UIApplication *app;
     NSMutableArray *questionsArray;
     NSArray *searchResults;
+    QuestionFilter *filterView;
+    NSString *defaultQuestionURL;
+    NSString *filter;
 }
 
 @end
@@ -43,6 +46,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(answersListForQuestion:) name:@"answersListForQuestion" object:currentQuestion];
     auth = [AuthorizationManager sharedInstance];
+    defaultQuestionURL = @"/questions";
+    filter = @"";
     [self defineNavigationPanel];
     [self pageType];
     [self.tableView reloadData];
@@ -110,9 +115,10 @@
         [view addGestureRecognizer:singleFingerTap];
         return view;
     } else {
-        QuestionFilter *view = [[[NSBundle mainBundle] loadNibNamed:@"filterView" owner:self options:nil] firstObject];
-        view.rateFilter.highlighted = YES;
-        return view;
+        filterView = [[[NSBundle mainBundle] loadNibNamed:@"filterView" owner:self options:nil] firstObject];   
+        filterView.delegate = self;
+        filterView.rateFilter.selected = YES;
+        return filterView;
     }
 }
 - (void) handleSingleTap: (UITapGestureRecognizer *)recognizer{
@@ -154,7 +160,7 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [[Api sharedManager] sendDataToURL:@"/questions" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
+    [[Api sharedManager] sendDataToURL:defaultQuestionURL parameters:@{@"page": pageNumber, @"filter": filter} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseQuestionsData:data];
         } else {
@@ -175,13 +181,13 @@
 }
 - (void) parseQuestionsData:(id) data{
     NSMutableArray *questions = data[@"questions"];
-    for(NSDictionary* quesiton in questions){
-        Question *q = [[Question alloc] initWithParams:quesiton];
-        [self.questions addObject:q];
+    if(data[@"questions"] != [NSNull null]){
+        for(NSMutableDictionary *serverQuestion in questions){
+            Question *question = [[Question alloc] initWithParams:serverQuestion];
+            [self.questions addObject:question];
+        }
+        [self.tableView reloadData];
     }
-//    [Question sync:questions];
-//    [self addQuestionsToList:[Question MR_findAll]];
-    [self.tableView reloadData];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void) parseCategoriesQuestions: (id) data{
@@ -286,7 +292,6 @@
             [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", currentQuestion.objectId] parameters:@{} requestType:@"DELETE" andComplition:^(id data, BOOL success){
                 if(success){
                     [self.questions removeObjectAtIndex:cellIndexPath.row];
-//                    [currentQuestion MR_deleteEntity];
                     if(self.questions.count == 0){
                         [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:cellIndexPath.section] withRowAnimation:UITableViewRowAnimationFade];
                     } else {
@@ -364,5 +369,52 @@
     selectedScopeButtonIndex]]];
     
     return YES;
+}
+
+- (void) sortByAnswer{
+    [self resetAllHighlights];
+    filterView.answersCountFilter.selected = YES;
+    pageNumber = @1;
+    self.questions = [NSMutableArray new];
+    defaultQuestionURL = @"/questions/filter";
+    filter = @"answers_count";
+    [self loadQuestions];
+}
+
+- (void) sortByComments{
+    [self resetAllHighlights];
+    filterView.commentCountFilter.selected = YES;
+    pageNumber = @1;
+    self.questions = [NSMutableArray new];
+    defaultQuestionURL = @"/questions/filter";
+    filter = @"comments_count";
+    [self loadQuestions];
+}
+
+- (void) sortByRate{
+    [self resetAllHighlights];
+    filterView.rateFilter.selected = YES;
+    pageNumber = @1;
+    self.questions = [NSMutableArray new];
+    defaultQuestionURL = @"/questions/filter";
+    filter = @"rate";
+    [self loadQuestions];
+}
+
+- (void) sortByViews{
+    [self resetAllHighlights];
+    filterView.viewsCountFilter.selected = YES;
+    pageNumber = @1;
+    self.questions = [NSMutableArray new];
+    defaultQuestionURL = @"/questions/filter";
+    filter = @"views";
+    [self loadQuestions];
+}
+
+- (void) resetAllHighlights{
+    filterView.rateFilter.selected = NO;
+    filterView.answersCountFilter.selected = NO;
+    filterView.commentCountFilter.selected = NO;
+    filterView.viewsCountFilter.selected = NO;
 }
 @end

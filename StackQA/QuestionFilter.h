@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "FilterDelegate.h"
 
 @interface QuestionFilter : UIView
+@property (nonatomic, weak) id<FilterDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UIButton *rateFilter;
 @property (strong, nonatomic) IBOutlet UIButton *answersCountFilter;
 @property (strong, nonatomic) IBOutlet UIButton *commentCountFilter;

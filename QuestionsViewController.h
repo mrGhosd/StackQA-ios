@@ -10,8 +10,9 @@
 #import "SWTableViewCell.h"
 #import "User.h"
 #import "SCategory.h"
+#import "FilterDelegate.h"
 
-@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate>
+@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, FilterDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property(strong, nonatomic) NSMutableArray *questions;
 @property (strong) User *user_page;

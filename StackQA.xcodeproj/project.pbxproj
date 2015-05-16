@@ -177,6 +177,7 @@
 		644582AF1B06A9590020440B /* filterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = filterView.xib; sourceTree = "<group>"; };
 		644582B11B06AA5C0020440B /* QuestionFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionFilter.h; sourceTree = "<group>"; };
 		644582B21B06AA5C0020440B /* QuestionFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionFilter.m; sourceTree = "<group>"; };
+		644582B41B06B3760020440B /* FilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDelegate.h; sourceTree = "<group>"; };
 		644B464F1AC0AC28002CF50C /* AnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswersViewController.h; sourceTree = "<group>"; };
 		644B46501AC0AC28002CF50C /* AnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswersViewController.m; sourceTree = "<group>"; };
 		644B46551AC0BFE6002CF50C /* AnswerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerTableViewCell.h; sourceTree = "<group>"; };
@@ -546,6 +547,7 @@
 				64413C911B0155E800AE6C27 /* QuestionDelegate.h */,
 				64413C921B015F4200AE6C27 /* AnswerDelegate.h */,
 				641085771B02A8530003FAF3 /* CommentDelegate.h */,
+				644582B41B06B3760020440B /* FilterDelegate.h */,
 			);
 			name = share;
 			sourceTree = "<group>";
