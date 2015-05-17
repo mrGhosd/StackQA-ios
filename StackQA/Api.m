@@ -85,7 +85,8 @@ static Api *sharedSingleton_ = nil;
         response(responseObject, YES);
         self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        response(error, NO);
+        NSDictionary *errorDict = @{@"operation": operation, @"error": error};
+        response(errorDict, NO);
     }];
     
     [requestAPI start];
@@ -107,7 +108,8 @@ static Api *sharedSingleton_ = nil;
         response(responseObject, YES);
         self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        response(error, NO);
+        NSDictionary *errorDict = @{@"operation": operation, @"error": error};
+        response(errorDict, NO);
     }];
     
     [requestAPI start];

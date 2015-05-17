@@ -18,6 +18,7 @@
 #import "SCategory.h"
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 #import <BENTagsView.h>
+#import "ServerError.h"
 #import "AuthorizationManager.h"
 
 @interface QuestionDetailViewController (){
@@ -26,6 +27,7 @@
     AuthorizationManager *auth;
     SCategory *questionCategory;
     AppDelegate *app;
+    ServerError *serverError;
     NSManagedObjectContext *localContext;
     UIRefreshControl *refreshControl;
 }
@@ -77,11 +79,13 @@
     api = [Api sharedManager];
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
-    [api getData:[NSString stringWithFormat:@"/questions/%@", self.question.objectId] andComplition:^(id data, BOOL result){
+    [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", self.question.objectId]  parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
             [self parseQuestionData:data];
         } else {
-            NSLog(@"data is %@", data);
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }
@@ -305,5 +309,20 @@
 }
 - (void) failedDestroyCallback{
 
+}
+
+- (void) handleServerErrorWithError:(id)error{ 
+    UIButton *errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    errorButton.backgroundColor = [UIColor lightGrayColor];
+    [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+    [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+    [self.scrollView addSubview:errorButton];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
+
+- (void) sendRequest{
+    [self uploadQuestionData];
 }
 @end

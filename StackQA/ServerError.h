@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ServerErrorDelegate.h"
 
 @interface ServerError : NSObject
 @property (nonatomic) int *status;
 @property (nonatomic, retain) NSHTTPURLResponse *failedResponse;
 @property (nonatomic, retain) NSMutableDictionary *message;
+@property (nonatomic, retain) NSString *messageText;
+@property (nonatomic, weak) id<ServerErrorDelegate> delegate;
 - (instancetype) initWithData:(id) data;
 - (instancetype) initWithError:(NSError *) error;
+- (void) handle;
 @end

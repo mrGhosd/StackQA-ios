@@ -12,8 +12,9 @@
 #import <BENTagsView.h>
 #import "RatingDelegate.h"
 #import "QuestionDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate, RatingDelegate>
+@interface QuestionDetailViewController : UIViewController <UITextViewDelegate, UIWebViewDelegate, RatingDelegate, ServerErrorDelegate>
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet UILabel *questionTitle;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

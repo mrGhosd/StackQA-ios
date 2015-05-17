@@ -206,6 +206,7 @@
 		6469F9B11A70572B00E837E3 /* plus-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "plus-32.png"; path = "../plus-32.png"; sourceTree = "<group>"; };
 		6469F9B31A70578900E837E3 /* delete_sign-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "delete_sign-32.png"; path = "../delete_sign-32.png"; sourceTree = "<group>"; };
 		6469F9B51A70592500E837E3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		647342571B092B2E00BAA99B /* ServerErrorDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerErrorDelegate.h; sourceTree = "<group>"; };
 		647BD8971AF027F0002A0B66 /* UserAnswersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnswersTableViewCell.h; sourceTree = "<group>"; };
 		647BD8981AF027F0002A0B66 /* UserAnswersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersTableViewCell.m; sourceTree = "<group>"; };
 		647C55C11AC36D980011D5FA /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
@@ -562,6 +563,7 @@
 				64413C921B015F4200AE6C27 /* AnswerDelegate.h */,
 				641085771B02A8530003FAF3 /* CommentDelegate.h */,
 				644582B41B06B3760020440B /* FilterDelegate.h */,
+				647342571B092B2E00BAA99B /* ServerErrorDelegate.h */,
 			);
 			name = share;
 			sourceTree = "<group>";

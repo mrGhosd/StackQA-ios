@@ -10,7 +10,6 @@
 #import "Question.h"
 #import "Api.h"
 #import "QuestionsViewController.h"
-#import <Expecta/Expecta.h>
 #import "RatingDelegate.h"
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>

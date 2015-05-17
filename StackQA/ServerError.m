@@ -7,29 +7,26 @@
 //
 
 #import "ServerError.h"
+#import <AFNetworking.h>
 
 @implementation ServerError
 - (instancetype) initWithData:(id) data{
-    self = [super init];
-    [self convertFromDataToError:data];
+    if(self == [super init]){
+        [self convertFromDataToError:data];
+    }
     return self;
 }
-- (instancetype) initWithError:(NSError *) error{
-    self = [super init];
-    [self parseError:error];
-    return self;
-}
+
 - (void) convertFromDataToError:(id) data{
-    NSError *error = (NSError *) data;
-    [self parseError:error];
+    NSError *error = (NSError *) data[@"error"];
+    AFHTTPRequestOperation *operation = (AFHTTPRequestOperation *) data[@"operation"];
+    [self parseErrorWithError:error andOperation:operation];
 }
-- (void) parseError:(NSError *) error{
-    NSError *jsonError = nil;
-    NSDictionary *userErrors = error.userInfo;
-    NSDictionary* errorText = [NSJSONSerialization JSONObjectWithData:userErrors[@"com.alamofire.serialization.response.error.data"] options:kNilOptions error:&jsonError];
-    NSHTTPURLResponse *response = userErrors[@"com.alamofire.serialization.response.error.response"];
-    self.failedResponse = response;
-    self.message = [NSMutableDictionary dictionaryWithDictionary:errorText];
-    self.status = response.statusCode;
+- (void) parseErrorWithError:(NSError *) error andOperation: (AFHTTPRequestOperation *) operation{
+    self.status = operation.response.statusCode;
+    self.messageText = [error localizedDescription];
+}
+- (void) handle{
+    [self.delegate handleServerErrorWithError:self];
 }
 @end

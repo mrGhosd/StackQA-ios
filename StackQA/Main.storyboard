@@ -288,7 +288,7 @@
                                                             <constraint firstItem="39z-lX-cPO" firstAttribute="leading" secondItem="3l5-oq-DS9" secondAttribute="leading" constant="10" id="wFv-SE-u3f"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-CB-oqj">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSJ-CB-oqj">
                                                         <rect key="frame" x="8" y="8" width="150" height="15"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,7 +298,7 @@
                                                         <rect key="frame" x="8" y="66" width="99" height="21"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-TH-cIa">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-TH-cIa">
                                                         <rect key="frame" x="8" y="31" width="42" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -339,7 +339,7 @@
                                                         <rect key="frame" x="8" y="4" width="101" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal" title="Button">
+                                                        <state key="normal">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -351,7 +351,7 @@
                                                         <rect key="frame" x="475" y="4" width="101" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="Button">
+                                                        <state key="normal">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -408,7 +408,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tuj-Gd-gTz">
                                         <rect key="frame" x="22" y="4" width="79" height="52"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                        <state key="normal" title="100" image="answers-32.png">
+                                        <state key="normal" image="answers-32.png">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -419,7 +419,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-iY-qwK">
                                         <rect key="frame" x="505" y="8" width="78" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <state key="normal" title="100" image="chat-32.png">
+                                        <state key="normal" image="chat-32.png">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -1854,17 +1854,17 @@
         <image name="up4-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ogc-fD-TQd"/>
-        <segue reference="5Em-mt-R6W"/>
-        <segue reference="4oy-yi-Vs6"/>
         <segue reference="dmP-y8-1gh"/>
-        <segue reference="qso-7B-GJb"/>
-        <segue reference="pXd-z1-64T"/>
+        <segue reference="x3p-uV-IHe"/>
         <segue reference="zlR-QY-YZy"/>
-        <segue reference="g3P-Gf-qaj"/>
         <segue reference="hPV-is-y6G"/>
+        <segue reference="g3P-Gf-qaj"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="pXd-z1-64T"/>
         <segue reference="wbe-Bg-hYN"/>
+        <segue reference="4oy-yi-Vs6"/>
+        <segue reference="Ogc-fD-TQd"/>
+        <segue reference="5Em-mt-R6W"/>
     </inferredMetricsTieBreakers>
 </document>
