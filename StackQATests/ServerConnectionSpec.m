@@ -19,6 +19,25 @@
 
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"ServerConnection instance attributes", ^{
+    __block ServerConnection *serverConnection;
+    beforeAll(^{
+        serverConnection = [ServerConnection new];
+    });
+    
+    it(@"should have url property", ^{
+        serverConnection.url = @"/questions";
+        [[serverConnection.url should] equal:@"/questions"];
+    });
+    
+    it(@"should have requestType property", ^{
+        serverConnection.requestType = @"POST";
+        [[serverConnection.requestType should] equal:@"POST"];
+    });
+    
+    it(@"should have params property", ^{
+        serverConnection.params = @{@"foo": @"bar"};
+        [[serverConnection.params should] equal:@{@"foo": @"bar"}];
+    });
 
 });
 
