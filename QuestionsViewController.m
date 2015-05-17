@@ -21,18 +21,23 @@
 #import "AuthorizationManager.h"
 #import <UIScrollView+InfiniteScroll.h>
 #import "QuestionFilter.h"
+#import "ServerError.h"
 
 @interface QuestionsViewController (){
     Question *currentQuestion;
     AuthorizationManager *auth;
     NSNumber *pageNumber;
+    NSString *mainURL;
     Api *api;
     UIApplication *app;
+    ServerError *serverError;
     NSMutableArray *questionsArray;
     NSArray *searchResults;
     QuestionFilter *filterView;
     NSString *defaultQuestionURL;
     NSString *filter;
+    UIRefreshControl *refreshControl;
+    UIButton *errorButton;
 }
 
 @end
@@ -48,6 +53,7 @@
     auth = [AuthorizationManager sharedInstance];
     defaultQuestionURL = @"/questions";
     filter = @"";
+    [self refreshInit];
     [self defineNavigationPanel];
     [self pageType];
     [self.tableView reloadData];
@@ -68,14 +74,27 @@
 - (void) pageType{
     if(self.user_page){
         [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", [self.user_page getCorrectNaming]]];
-        [self showUserQuestions];
+        mainURL = [NSString stringWithFormat:@"/users/%@/questions", self.user_page.objectId];
     } else if(self.category){
-        [self loadCategoryQuestion];
+        mainURL = [NSString stringWithFormat:@"/categories/%@/questions", self.category.objectId];
     }
     else {
-        [self showQuestions];
+        mainURL = @"/questions";
     }
+    [self loadQuestions];
 }
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadLatestQuestions) forControlEvents:UIControlEventValueChanged];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if(self.category != nil){
         return 100;
@@ -83,19 +102,12 @@
         return 50;
     }
 }
-- (void) loadCategoryQuestion{
-    [MBProgressHUD showHUDAddedTo:self.view
-                         animated:YES];
-    
-    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/categories/%@/questions", self.category.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
-        if(result){
-            [self parseCategoriesQuestions:data];
-        } else {
-            NSLog(@"data is %@", data);
-        }
-    }];
-    [self.tableView reloadData];
+- (void) loadLatestQuestions{
+    self.questions = [NSMutableArray new];
+    pageNumber = @1;
+    [self loadQuestions];
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0.1f)];
@@ -131,22 +143,6 @@
 - (void) showQuestions{
     [self loadQuestions];
 }
-
-- (void) showUserQuestions{
-    api = [Api sharedManager];
-    [MBProgressHUD showHUDAddedTo:self.view
-                         animated:YES];
-    
-    [api sendDataToURL:[NSString stringWithFormat:@"/users/%@/questions", self.user_page.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL result){
-        if(result){
-            [self parseUserQuestionsData:data];
-        } else {
-            NSLog(@"data is %@", data);
-        }
-    }];
-    [self.tableView reloadData];
-}
-
 - (void) toggleCrateQuestionButton{
     if([[AuthorizationManager sharedInstance] currentUser]){
         self.addQuestion.enabled = YES;
@@ -159,14 +155,20 @@
     [MBProgressHUD showHUDAddedTo:self.view
                          animated:YES];
     
-    [[Api sharedManager] sendDataToURL:defaultQuestionURL parameters:@{@"page": pageNumber, @"filter": filter} requestType:@"GET" andComplition:^(id data, BOOL result){
+    [[Api sharedManager] sendDataToURL:mainURL parameters:@{@"page": pageNumber, @"filter": filter} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
+            errorButton.hidden = YES;
+            errorButton = nil;
+            [errorButton removeFromSuperview];
             [self parseQuestionsData:data];
         } else {
-            NSLog(@"data is %@", data);
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
     [self.tableView reloadData];
+    [refreshControl endRefreshing];
 }
 
 -(void) defineNavigationPanel{
@@ -179,33 +181,18 @@
     }
 }
 - (void) parseQuestionsData:(id) data{
-    NSMutableArray *questions = data[@"questions"];
-    if(data[@"questions"] != [NSNull null]){
+    NSMutableArray *questions;
+    if(data[@"questions"] != nil){
+        questions = data[@"questions"];
+    } else if(data[@"categories"] != nil){
+        questions = data[@"categories"];
+    } else if(data[@"users"] != nil){
+        questions = data[@"users"];
+    }
+    if(questions != [NSNull null]){
         for(NSMutableDictionary *serverQuestion in questions){
             Question *question = [[Question alloc] initWithParams:serverQuestion];
             [self.questions addObject:question];
-        }
-        [self.tableView reloadData];
-    }
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-}
-- (void) parseCategoriesQuestions: (id) data{
-    NSMutableArray *questions = data[@"categories"];
-    if(data[@"categories"] != [NSNull null]){
-        for(NSMutableDictionary *serverQuestion in questions){
-            Question *category = [[Question alloc] initWithParams:serverQuestion];
-            [self.questions addObject:category];
-        }
-        [self.tableView reloadData];
-    }
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-}
-- (void) parseUserQuestionsData:(id) data{
-    NSMutableArray *questions = data[@"users"];
-    if(data[@"questions"] != [NSNull null]){
-        for(NSMutableDictionary *serverQuestion in questions){
-            Question *category = [[Question alloc] initWithParams:serverQuestion];
-            [self.questions addObject:category];
         }
         [self.tableView reloadData];
     }
@@ -420,5 +407,23 @@
     filterView.answersCountFilter.selected = NO;
     filterView.commentCountFilter.selected = NO;
     filterView.viewsCountFilter.selected = NO;
+}
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
+
+- (void) sendRequest{
+    [self loadQuestions];
 }
 @end

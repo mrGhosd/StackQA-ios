@@ -11,8 +11,9 @@
 #import "User.h"
 #import "SCategory.h"
 #import "FilterDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, FilterDelegate>
+@interface QuestionsViewController : UITableViewController <SWTableViewCellDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchDisplayDelegate, FilterDelegate, ServerErrorDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property(strong, nonatomic) NSMutableArray *questions;
 @property (strong) User *user_page;
