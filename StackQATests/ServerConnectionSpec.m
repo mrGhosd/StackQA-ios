@@ -20,35 +20,27 @@
 SPEC_BEGIN(ServerConnectionSpec)
 describe(@"start", ^{
     __block ServerConnection *serverConnection;
+    __block BOOL result;
+    __block id serverData;
     
-    beforeAll(^{
-//        [[LSNocilla sharedInstance] start];
-    });
-    afterAll(^{
-//        [[LSNocilla sharedInstance] stop];
-    });
     afterEach(^{
-//        [[LSNocilla sharedInstance] clearStubs];
         [OHHTTPStubs removeAllStubs];
     });
     
-    it(@"return false if status 404", ^{
-        __block BOOL result;
-        __block id serverData;
+    beforeEach(^{
+        serverConnection = [ServerConnection new];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"POST";
+        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
+    });
     
+    it(@"return false if status 404", ^{
         [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
             return YES;
         } withStubResponse:^(NSURLRequest *request){
             return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
         }];
-        
-        
-        serverConnection = [ServerConnection new];
-        serverConnection.url = @"/questions";
-        serverConnection.requestType = @"POST";
-        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
-        
-
+    
         [serverConnection startWithParams:^(id data, BOOL success){
             serverData = data;
             result = success;
@@ -58,20 +50,11 @@ describe(@"start", ^{
     });
     
     it(@"return true if status 200", ^{
-        __block BOOL result;
-        __block id serverData;
-        
         [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
             return YES;
         } withStubResponse:^(NSURLRequest *request){
             return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
         }];
-        
-        serverConnection = [ServerConnection new];
-        serverConnection.url = @"/questions";
-        serverConnection.requestType = @"POST";
-        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
-        
         
         [serverConnection startWithParams:^(id data, BOOL success){
             serverData = data;
@@ -82,21 +65,12 @@ describe(@"start", ^{
     });
     
     it(@"data is json string, if status 200", ^{
-        __block BOOL result;
-        __block id serverData;
         
         [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
             return YES;
         } withStubResponse:^(NSURLRequest *request){
             return [OHHTTPStubsResponse responseWithJSONObject:@[@"data"] statusCode:200 headers:@{@"Content-Type": @"application/json"}];
         }];
-        
-        serverConnection = [ServerConnection new];
-        serverConnection.url = @"/questions";
-        serverConnection.requestType = @"POST";
-        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
-        
-        
         [serverConnection startWithParams:^(id data, BOOL success){
             serverData = data;
             result = success;
@@ -107,20 +81,11 @@ describe(@"start", ^{
 
     
     it(@"data is nil, if status is error", ^{
-        __block BOOL result;
-        __block id serverData;
-        
         [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
             return YES;
         } withStubResponse:^(NSURLRequest *request){
             return [OHHTTPStubsResponse responseWithJSONObject:@[@"error"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
         }];
-        
-        serverConnection = [ServerConnection new];
-        serverConnection.url = @"/questions";
-        serverConnection.requestType = @"POST";
-        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
-        
         
         [serverConnection startWithParams:^(id data, BOOL success){
             serverData = data;
