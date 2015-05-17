@@ -3088,11 +3088,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQATests/ServerConnectionSpec.m"
-            timestampString = "453545859.614193"
+            timestampString = "453552498.396665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158">
+            startingLineNumber = "162"
+            endingLineNumber = "162">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3102,12 +3102,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQATests/ServerConnectionSpec.m"
-            timestampString = "453545859.614193"
+            timestampString = "453552498.396665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "SPEC_BEGIN()"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "describe()"
             landmarkType = "6">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3454,12 +3454,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQATests/ServerConnectionSpec.m"
-            timestampString = "453545859.614193"
+            timestampString = "453552498.396665"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "SPEC_BEGIN()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "describe()"
             landmarkType = "6">
          </BreakpointContent>
       </BreakpointProxy>

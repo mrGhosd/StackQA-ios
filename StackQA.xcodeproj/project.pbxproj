@@ -42,6 +42,7 @@
 		643874221ACAFCD00059EBEC /* mark1.png in Resources */ = {isa = PBXBuildFile; fileRef = 643874211ACAFCD00059EBEC /* mark1.png */; };
 		643874291ACB13BD0059EBEC /* SidebarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */; };
 		6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */; };
+		643FD68B1B088FFF0006CD2E /* ApiSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 643FD68A1B088FFF0006CD2E /* ApiSpec.m */; };
 		64413C8B1B00FF0600AE6C27 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64413C8A1B00FF0600AE6C27 /* Answer.m */; };
 		64413C8E1B01032400AE6C27 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 64413C8D1B01032400AE6C27 /* Comment.m */; };
 		64413C941B01770E00AE6C27 /* star138.png in Resources */ = {isa = PBXBuildFile; fileRef = 64413C931B01770E00AE6C27 /* star138.png */; };
@@ -162,6 +163,7 @@
 		643874261ACB13BD0059EBEC /* SidebarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarTableViewCell.h; sourceTree = "<group>"; };
 		643874271ACB13BD0059EBEC /* SidebarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarTableViewCell.m; sourceTree = "<group>"; };
 		643874281ACB13BD0059EBEC /* SidebarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SidebarTableViewCell.xib; sourceTree = "<group>"; };
+		643FD68A1B088FFF0006CD2E /* ApiSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApiSpec.m; sourceTree = "<group>"; };
 		64413C891B00FF0600AE6C27 /* Answer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Answer.h; sourceTree = "<group>"; };
 		64413C8A1B00FF0600AE6C27 /* Answer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Answer.m; sourceTree = "<group>"; };
 		64413C8C1B01032400AE6C27 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -543,6 +545,15 @@
 			name = profile;
 			sourceTree = "<group>";
 		};
+		643FD68E1B08A3650006CD2E /* API */ = {
+			isa = PBXGroup;
+			children = (
+				642B5C031B04F69C004CEAA4 /* ServerConnectionSpec.m */,
+				643FD68A1B088FFF0006CD2E /* ApiSpec.m */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		64413C8F1B0118EB00AE6C27 /* share */ = {
 			isa = PBXGroup;
 			children = (
@@ -706,9 +717,9 @@
 		64C69ED41A6C4F01006AB0AC /* StackQATests */ = {
 			isa = PBXGroup;
 			children = (
+				643FD68E1B08A3650006CD2E /* API */,
 				64C69ED51A6C4F01006AB0AC /* Supporting Files */,
 				641085781B02B8E00003FAF3 /* QuestionSpec.m */,
-				642B5C031B04F69C004CEAA4 /* ServerConnectionSpec.m */,
 			);
 			path = StackQATests;
 			sourceTree = "<group>";
@@ -989,6 +1000,7 @@
 				6410857B1B02C3A00003FAF3 /* QuestionsViewController.m in Sources */,
 				64A3B6771B060EC800932482 /* ServerConnection.m in Sources */,
 				641085791B02B8E00003FAF3 /* QuestionSpec.m in Sources */,
+				643FD68B1B088FFF0006CD2E /* ApiSpec.m in Sources */,
 				642B5C041B04F69C004CEAA4 /* ServerConnectionSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1133,8 +1145,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
+					"<Multiple",
+					"values>",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1153,8 +1166,9 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
+					"<Multiple",
+					"values>",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				INFOPLIST_FILE = StackQATests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

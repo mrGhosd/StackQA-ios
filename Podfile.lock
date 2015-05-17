@@ -33,6 +33,7 @@ PODS:
     - OCHamcrest (~> 4.0)
   - OHHTTPStubs (4.0.1)
   - RDRStickyKeyboardView (0.0.2)
+  - Specta (1.0.0)
   - SWTableViewCell (0.3.7)
   - UICKeyChainStore (2.0.4)
   - UIImage-ResizeMagick (0.0.1)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - OCMockito
   - OHHTTPStubs
   - RDRStickyKeyboardView
+  - Specta
   - SWTableViewCell (~> 0.3.7)
   - UICKeyChainStore
   - UIImage-ResizeMagick
@@ -66,6 +68,7 @@ SPEC CHECKSUMS:
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   OHHTTPStubs: 69b1d48b7dfe838a355fdf48d8592d1042e3d85f
   RDRStickyKeyboardView: e78b8bed5c3ff01e42af9747cd942445ee762b93
+  Specta: 96fe05fe5c7348b5223f85e862904f6e832abb14
   SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
   UICKeyChainStore: 69eb0c3a6f669bccf16ba88de3b9069b71501361
   UIImage-ResizeMagick: f08c2d14d1e8a5f0b402185408785540562f2fe7

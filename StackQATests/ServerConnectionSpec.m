@@ -18,7 +18,11 @@
 #define WaitForBlock() while (CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0, true) && !blockFinished)
 
 SPEC_BEGIN(ServerConnectionSpec)
-describe(@"start", ^{
+describe(@"ServerConnection instance attributes", ^{
+
+});
+
+describe(@"#start", ^{
     __block ServerConnection *serverConnection;
     __block BOOL result;
     __block id serverData;
