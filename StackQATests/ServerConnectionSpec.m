@@ -104,6 +104,31 @@ describe(@"start", ^{
         
         [[expectFutureValue(serverData) shouldEventually] equal:@[@"data"]];
     });
+
     
+    it(@"data is nil, if status is error", ^{
+        __block BOOL result;
+        __block id serverData;
+        
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@[@"error"] statusCode:404 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        
+        serverConnection = [ServerConnection new];
+        serverConnection.url = @"/questions";
+        serverConnection.requestType = @"POST";
+        serverConnection.params = @{@"text": @"text", @"title": @"title", @"category_id": @"1"};
+        
+        
+        [serverConnection startWithParams:^(id data, BOOL success){
+            serverData = data;
+            result = success;
+        }];
+        
+        [[expectFutureValue(serverData) shouldEventually] beKindOfClass:[NSError class]];
+    });
+
 });
 SPEC_END

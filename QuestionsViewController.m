@@ -327,7 +327,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showQuestion"]) {
-        Question *question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        Question *question;
+        if(self.searchDisplayController.active){
+                question = [searchResults objectAtIndex:self.searchDisplayController.searchResultsTableView.indexPathForSelectedRow.row];
+        } else {
+            question = [self.questions objectAtIndex:[[self.tableView indexPathForSelectedRow] row]];
+        }
         QuestionDetailViewController *detail = segue.destinationViewController;
         detail.question = question;
     }
