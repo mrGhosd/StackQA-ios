@@ -11,5 +11,5 @@
 @optional
 - (void) successDestroyCallback;
 - (void) failedDestroyCallback;
-- (void) complainToQuestion;
+- (void) complainToQuestionWithData:(id) data andSuccess: (BOOL) success;
 @end

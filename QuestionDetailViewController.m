@@ -28,6 +28,7 @@
     SCategory *questionCategory;
     AppDelegate *app;
     ServerError *serverError;
+    UIButton *errorButton;
     NSManagedObjectContext *localContext;
     UIRefreshControl *refreshControl;
 }
@@ -81,6 +82,7 @@
                          animated:YES];
     [api sendDataToURL:[NSString stringWithFormat:@"/questions/%@", self.question.objectId]  parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL result){
         if(result){
+            errorButton.hidden = YES;
             [self parseQuestionData:data];
         } else {
             serverError = [[ServerError alloc] initWithData:data];
@@ -288,8 +290,16 @@
     self.questionRate.text = [data[@"rate"] stringValue];
 }
 - (void) failedRateCallbackWithData: (NSError *) error{
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:@"Вы уж голосовали за данный вопрос с таким результатом" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [av show];
+    serverError = [[ServerError alloc] initWithData:error];
+    serverError.delegate = self;
+    if(serverError.status){
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:@"Вы уж голосовали за данный вопрос с таким результатом" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [av show];
+    } else {
+        [serverError handle];
+    }
+    
 }
 
 - (IBAction)showQuestionCategory:(id)sender {
@@ -303,21 +313,34 @@
 - (void) successDestroyCallback{
     [self performSegueWithIdentifier:@"destroyQuestionDetail" sender:self];
 }
-- (void) complainToQuestion{
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
-    [alert show];
+- (void) complainToQuestionWithData:(id) data andSuccess: (BOOL) success{
+    if(success){
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+        [alert show];
+    } else {
+        serverError = [[ServerError alloc] initWithData:data];
+        serverError.delegate = self;
+        if(serverError.status == nil){
+            [serverError handle];
+        }
+    }
+    
 }
 - (void) failedDestroyCallback{
 
 }
 
 - (void) handleServerErrorWithError:(id)error{ 
-    UIButton *errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    errorButton.backgroundColor = [UIColor lightGrayColor];
-    [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
-    [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
-    [self.scrollView addSubview:errorButton];
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:errorButton];
+    }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
 }
