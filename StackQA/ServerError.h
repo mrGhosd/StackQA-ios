@@ -18,4 +18,5 @@
 - (instancetype) initWithData:(id) data;
 - (instancetype) initWithError:(NSError *) error;
 - (void) handle;
+- (void) callErrorHAndlerWithoutData;
 @end

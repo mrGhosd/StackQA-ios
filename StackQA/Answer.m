@@ -52,7 +52,7 @@
         if(success){
             [self.answerDelegate destroyCallback:YES path:path];
         } else {
-            [self.answerDelegate destroyCallback:YES path:path];
+            [self.answerDelegate destroyCallback:NO path:path];
         }
     }];
 }

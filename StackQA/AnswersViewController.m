@@ -286,8 +286,7 @@
             break;
         }
         case 1:{
-            
-            [self deleteAnswer:selectedAnswer atIndexPath:cellIndexPath];
+            [selectedAnswer destroyWithIndexPath:cellIndexPath];
             break;
         }
         case 2:{
@@ -310,6 +309,9 @@
             }
             [self loadAnswersList];
         } else {
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
             [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
         }
     }];
@@ -409,7 +411,13 @@
     } else {
         errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
         errorButton.backgroundColor = [UIColor lightGrayColor];
-        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
         [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
         [self.tableView addSubview:errorButton];
@@ -422,6 +430,7 @@
 }
 - (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success{
     if(success){
+        errorButton.hidden = NO;
         AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         cell.answerRate.text = [NSString stringWithFormat:@"%@", params[@"rate"] ];
         NSInteger objectId;
@@ -434,11 +443,15 @@
         changedAnswer.rate = params[@"rate"];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 - (IBAction)createAnswer:(id)sender {
     [self setActionViewBorder];
+    errorButton.hidden = NO;
     NSMutableDictionary *answerParams = @{@"user_id": auth.currentUser.objectId,
                                           @"question_id": self.question.objectId,
                                           @"text": self.actionViewText.text};
@@ -453,6 +466,7 @@
 
 - (void) markAsHelpfullCallbackWithParams:(NSDictionary *)params path:(NSIndexPath *)path andSuccess:(BOOL)success{
     if(success){
+        errorButton.hidden = NO;
         AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         cell.answerRate.backgroundColor = [UIColor greenColor];
         Answer *answer = answersList[path.row];
@@ -460,6 +474,9 @@
         self.question.isClosed = YES;
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
@@ -469,9 +486,31 @@
 }
 - (void) complaintToAnswerWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path{
     if(success){
+        errorButton.hidden = NO;
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-    
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+
+- (void) destroyCallback: (BOOL) success path: (NSIndexPath *) path{
+    if(success){
+        errorButton.hidden = NO;
+        AnswerTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
+        [answersList removeObjectAtIndex:path.row];
+        if(answersList.count == 0){
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:path.section] withRowAnimation:UITableViewRowAnimationFade];
+        } else {
+            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    } else {
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 

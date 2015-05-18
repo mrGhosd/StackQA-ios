@@ -34,6 +34,11 @@
     }
     
 }
+
+- (void) callErrorHAndlerWithoutData{
+    [self.delegate handleServerErrorWithError:self];
+}
+
 - (void) handle{
     if(self.status == @0){
         [self.delegate handleServerErrorWithError:self];
