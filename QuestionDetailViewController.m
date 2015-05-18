@@ -189,8 +189,8 @@
 }
 - (IBAction)questionPopupView:(id)sender {
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:
-                                @"Редактировать",
-                                @"Удалить",
+                                NSLocalizedString(@"question-edit", nil),
+                                NSLocalizedString(@"question-destroy", nil),
                                 nil];
         popup.tag = 1;
         [popup showInView:self.nestedView];

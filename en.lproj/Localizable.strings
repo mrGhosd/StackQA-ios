@@ -21,6 +21,9 @@
 "question-category" = "Category";
 "question-tags" = "Tags";
 
+"question-edit" = "Edit";
+"question-destroy" = "Delete";
+
 "question-save-form" = "Save";
 "question-cancel-form" = "Cancel";
 
@@ -28,3 +31,7 @@
 
 "have_voted" = "You've already vote on this question with this sign";
 "question_complaint" = "In meaning time this content will be watched by administrator";
+
+/*ANSWERS*/
+
+"empty_answers_list" = "There is no answers for that question";

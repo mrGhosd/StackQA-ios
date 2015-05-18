@@ -258,7 +258,7 @@
         return 1;
     } else{
         UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.layer.frame.size.width, 500)];
-        messageLabel.text = @"Ответов для данного вопроса нет";
+        messageLabel.text = NSLocalizedString(@"empty_answers_list", nil);
         messageLabel.textColor = [UIColor blackColor];
         messageLabel.numberOfLines = 0;
         messageLabel.textAlignment = NSTextAlignmentCenter;
