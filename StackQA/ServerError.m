@@ -35,7 +35,7 @@
     
 }
 - (void) handle{
-    if(self.status == nil){
+    if(self.status == @0){
         [self.delegate handleServerErrorWithError:self];
     } else if ([self.status isEqual:@422]){
         [self.delegate handleServerFormErrorWithError:self];

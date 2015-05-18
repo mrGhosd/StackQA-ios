@@ -185,6 +185,11 @@ numberOfRowsInComponent:(NSInteger)component{
     [alert show];
     
 }
+- (void) handleServerErrorWithError:(id) error{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:serverError.messageText delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+    [alert show];
+}
+
 - (IBAction)hideForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
