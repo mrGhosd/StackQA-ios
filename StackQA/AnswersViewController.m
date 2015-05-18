@@ -45,6 +45,7 @@
     self.sendButton.layer.cornerRadius = 5;
     self.settingsButton.layer.cornerRadius = 5;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"reloadAnswers" object:nil];
+    [self refreshInit];
     [self setAnswersListData];
     self.tableView.delegate = self;
     Answer *answer = [[Answer alloc] init];
@@ -91,8 +92,10 @@
              serverError = [[ServerError alloc] initWithData:data];
              serverError.delegate = self;
              [serverError handle];
+             [refreshControl endRefreshing];
          }
      }];
+    [self.tableView reloadData];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -143,7 +146,7 @@
 
 - (void) parseAnswerData:(id) data{
     NSArray *answers = data[@"answers"];
-    if(data[@"answers"] != [NSNull null]){
+    if(answers != nil){
         for(NSMutableDictionary *serverAnswer in answers){
             Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
             [answer setDelegate:self];
@@ -154,6 +157,7 @@
         [self.question.answers arrayByAddingObjectsFromArray:answersList];
         [self.tableView reloadData];
     }
+    [refreshControl endRefreshing];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
 }
@@ -424,6 +428,22 @@
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
+}
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(uploadAnswerData) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) uploadAnswerData{
+    pageNumber = @1;
+    answersList = [NSMutableArray new];
+    [self loadAnswersList];
 }
 - (void)sendRequest{
     [self loadAnswersList];
