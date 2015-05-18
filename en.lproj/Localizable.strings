@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  StackQA
+
+  Created by vsokoltsov on 18.05.15.
+  Copyright (c) 2015 vsokoltsov. All rights reserved.
+*/
+"sidebar-profile" = "My profile";
+"sidebar-questions" = "Questions";
+"sidebar-categories" = "Categories";
+"sidebar-sign-in" = "Sign in";
+"sidebar-sign-up" = "Sign up";

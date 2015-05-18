@@ -111,11 +111,11 @@
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
         menuID = @[@"logo", @"profile", @"questions", @"categories"];
-        menuItems = @[@"StackQ&A", @"Профиль", @"Вопросы", @"Категории"];
+        menuItems = @[@"StackQ&A", @"Профиль", NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
         menuIcons = @[@"", @"user7.png", @"ask_question-32.png", @"category.png"];
     } else {
         menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories", @"feedbacks", @"callbacks", @"news"];
-        menuItems = @[@"StackQ&A", @"Логин", @"Регистрация", @"Вопросы", @"Категории", @"Отзывы", @"Обратная связь", @"Новости"];
+        menuItems = @[@"StackQ&A", NSLocalizedString(@"sidebar-sign-in", nil), NSLocalizedString(@"sidebar-sign-up", nil), NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil), @"Отзывы", @"Обратная связь", @"Новости"];
         menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png",@"response-32.png", @"feedback-32.png", @"news-32.png"];
     }
     [self.tableView reloadData];
