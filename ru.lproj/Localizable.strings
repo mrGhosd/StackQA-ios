@@ -36,3 +36,7 @@
 /*ANSWERS*/
 
 "empty_answers_list" = "Ответов на данный вопрос нет";
+
+/*COMMENTS*/
+
+"empty_comments_list" = "Комментариев нет";

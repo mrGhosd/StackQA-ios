@@ -35,3 +35,7 @@
 /*ANSWERS*/
 
 "empty_answers_list" = "There is no answers for that question";
+
+/*COMMENTS*/
+
+"empty_comments_list" = "There is no comments here";

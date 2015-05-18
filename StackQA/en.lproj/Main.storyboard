@@ -665,7 +665,7 @@
                                             <constraint firstAttribute="width" constant="106" id="BeA-o9-aIw"/>
                                             <constraint firstAttribute="height" constant="30" id="IbA-iz-IYB"/>
                                         </constraints>
-                                        <state key="normal" title="Сохранить">
+                                        <state key="normal" title="Save">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -680,7 +680,7 @@
                                             <constraint firstAttribute="height" constant="30" id="WJP-Rh-4Vy"/>
                                             <constraint firstAttribute="width" constant="106" id="p7o-Dz-Pi2"/>
                                         </constraints>
-                                        <state key="normal" title="Отмена">
+                                        <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
