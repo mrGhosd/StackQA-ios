@@ -49,6 +49,7 @@
 - (void) changeQuestionRate: (NSString *) value{
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/rate", self.objectId] parameters:@{@"rate": value} requestType:@"POST" andComplition:^(id data, BOOL success){
         if(success){
+            self.rate = data[@"rate"];
             [self.rateDelegate successRateCallbackWithData:data];
         } else {
             [self.rateDelegate failedRateCallbackWithData:data];

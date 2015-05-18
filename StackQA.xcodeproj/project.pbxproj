@@ -56,6 +56,8 @@
 		644B46581AC0BFE6002CF50C /* AnswerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644B46561AC0BFE6002CF50C /* AnswerTableViewCell.m */; };
 		644EAB7A1AF7D50C000C921C /* CommentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 644EAB791AF7D50C000C921C /* CommentsListViewController.m */; };
 		644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */; };
+		646413551B0A900500773913 /* AnswerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 646413541B0A900500773913 /* AnswerSpec.m */; };
+		646413561B0A903900773913 /* Answer.m in Sources */ = {isa = PBXBuildFile; fileRef = 64413C8A1B00FF0600AE6C27 /* Answer.m */; };
 		646543781AFBF3C800C0E10F /* UserCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 646543771AFBF3C800C0E10F /* UserCommentsViewController.m */; };
 		6465437B1AFC0AD000C0E10F /* UserCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437A1AFC0AD000C0E10F /* UserCommentTableViewCell.m */; };
 		6465437F1AFD3D6000C0E10F /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6465437E1AFD3D6000C0E10F /* CategoriesViewController.m */; };
@@ -190,6 +192,7 @@
 		644EAB791AF7D50C000C921C /* CommentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsListViewController.m; sourceTree = "<group>"; };
 		644FE0DC1AF80AFB0059E830 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
 		644FE0DD1AF80AFB0059E830 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		646413541B0A900500773913 /* AnswerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerSpec.m; sourceTree = "<group>"; };
 		646543761AFBF3C800C0E10F /* UserCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentsViewController.h; sourceTree = "<group>"; };
 		646543771AFBF3C800C0E10F /* UserCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCommentsViewController.m; sourceTree = "<group>"; };
 		646543791AFC0AD000C0E10F /* UserCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCommentTableViewCell.h; sourceTree = "<group>"; };
@@ -730,6 +733,7 @@
 				643FD68E1B08A3650006CD2E /* API */,
 				64C69ED51A6C4F01006AB0AC /* Supporting Files */,
 				641085781B02B8E00003FAF3 /* QuestionSpec.m */,
+				646413541B0A900500773913 /* AnswerSpec.m */,
 			);
 			path = StackQATests;
 			sourceTree = "<group>";
@@ -1010,7 +1014,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6410857B1B02C3A00003FAF3 /* QuestionsViewController.m in Sources */,
+				646413561B0A903900773913 /* Answer.m in Sources */,
 				64A3B6771B060EC800932482 /* ServerConnection.m in Sources */,
+				646413551B0A900500773913 /* AnswerSpec.m in Sources */,
 				641085791B02B8E00003FAF3 /* QuestionSpec.m in Sources */,
 				643FD68B1B088FFF0006CD2E /* ApiSpec.m in Sources */,
 				642B5C041B04F69C004CEAA4 /* ServerConnectionSpec.m in Sources */,
@@ -1106,6 +1112,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1142,6 +1149,7 @@
 				INFOPLIST_FILE = StackQA/Base.lproj/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-all_load";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
