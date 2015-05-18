@@ -28,10 +28,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
+    [self localizeTitles];
+    
+    
     auth = [AuthorizationManager sharedInstance];
+    
     [self uploadCategoriesList];
 }
-
+- (void) localizeTitles{
+    [self.saveQuestionButton setTitle:NSLocalizedString(@"question-save-form", nil) forState:UIControlStateNormal];
+    [self.dismissFormButton setTitle:NSLocalizedString(@"question-cancel-form", nil) forState:UIControlStateNormal];
+    self.questionTitle.placeholder = NSLocalizedString(@"question-title", nil);
+    self.questionTags.placeholder = NSLocalizedString(@"question-tags", nil);
+    self.questionCategory.placeholder = NSLocalizedString(@"question-category", nil);
+//    [self.questionText ]
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

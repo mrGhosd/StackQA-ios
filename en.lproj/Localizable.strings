@@ -19,6 +19,10 @@
 "question-title" = "Title";
 "question-body" = "Text";
 "question-category" = "Category";
+"question-tags" = "Tags";
+
+"question-save-form" = "Save";
+"question-cancel-form" = "Cancel";
 
 "have_voted" = "You've already vote on this question with this sign";
 "question_complaint" = "In meaning time this content will be watched by administrator";

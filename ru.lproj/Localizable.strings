@@ -19,6 +19,10 @@
 "question-title" = "Заголовок";
 "question-body" = "Текст";
 "question-category" = "Категория";
+"question-tags" = "Теги";
+
+"question-save-form" = "Сохранить";
+"question-cancel-form" = "Отмена";
 
 "have_voted" = "Вы уж голосовали за данный вопрос с таким результатом";
 "question_complaint" = "В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!";
