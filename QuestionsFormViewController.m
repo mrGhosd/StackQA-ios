@@ -168,6 +168,21 @@ numberOfRowsInComponent:(NSInteger)component{
     self.questionCategory.text = categories[row][@"title"];
 }
 - (void) handleServerFormErrorWithError: (id) error{
+    NSMutableString *finalResult = [NSMutableString stringWithString:@""];
+    NSMutableString *attribute;
+    
+    for (NSString *key in [serverError.message allKeys]){
+        NSString *localizedStringName = [NSString stringWithFormat:@"question-%@", key];
+        attribute = NSLocalizedString(localizedStringName, nil);
+        [finalResult appendString:[NSString stringWithFormat:@"%@ - ",attribute]];
+        
+        for(NSString *message in serverError.message[key]){
+            [finalResult appendString:[NSString stringWithFormat:@"%@ ", message]];
+        }
+        
+    }
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:finalResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+    [alert show];
     
 }
 - (IBAction)hideForm:(id)sender {

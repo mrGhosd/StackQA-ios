@@ -5,8 +5,20 @@
   Created by vsokoltsov on 18.05.15.
   Copyright (c) 2015 vsokoltsov. All rights reserved.
 */
+/*COMMON*/
+"system-message-title" = "Message";
+
+/*SIDEBAR*/
 "sidebar-profile" = "My profile";
 "sidebar-questions" = "Questions";
 "sidebar-categories" = "Categories";
 "sidebar-sign-in" = "Sign in";
 "sidebar-sign-up" = "Sign up";
+
+/*QUESTIONS*/
+"question-title" = "Title";
+"question-body" = "Text";
+"question-category" = "Category";
+
+"have_voted" = "You've already vote on this question with this sign";
+"question_complaint" = "In meaning time this content will be watched by administrator";

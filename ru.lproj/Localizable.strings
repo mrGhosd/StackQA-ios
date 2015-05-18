@@ -5,8 +5,20 @@
   Created by vsokoltsov on 18.05.15.
   Copyright (c) 2015 vsokoltsov. All rights reserved.
 */
+/*COMMON*/
+"system-message-title" = "Сообщение";
+
+/*SIDEBAR*/
 "sidebar-profile" = "Мой профиль";
 "sidebar-questions" = "Вопросы";
 "sidebar-categories" = "Категории";
 "sidebar-sign-in" = "Логин";
 "sidebar-sign-up" = "Регистрация";
+
+/*QUESTIONS*/
+"question-title" = "Заголовок";
+"question-body" = "Текст";
+"question-category" = "Категория";
+
+"have_voted" = "Вы уж голосовали за данный вопрос с таким результатом";
+"question_complaint" = "В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!";

@@ -187,17 +187,6 @@
         QuestionsViewController *view = segue.destinationViewController;
     }
 }
--(IBAction)deleteQuestion:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Сообшение" message:@"Вы действительно хотите удалить вопрос?" delegate:self cancelButtonTitle:@"Нет" otherButtonTitles:@"Да", nil];
-    [alert show];
-}
--(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    switch(buttonIndex){
-            case 1:
-            break;
-    }
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 - (IBAction)questionPopupView:(id)sender {
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:
                                 @"Редактировать",
@@ -293,7 +282,7 @@
     serverError = [[ServerError alloc] initWithData:error];
     serverError.delegate = self;
     if(serverError.status){
-        UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:@"Вы уж голосовали за данный вопрос с таким результатом" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"have_voted", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         
         [av show];
     } else {
@@ -315,7 +304,7 @@
 }
 - (void) complainToQuestionWithData:(id) data andSuccess: (BOOL) success{
     if(success){
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"В ближайшее время данный контент будет рассмотрен администраторами. Спасибо!" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"question_complaint", nil) delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
         [alert show];
     } else {
         serverError = [[ServerError alloc] initWithData:data];
