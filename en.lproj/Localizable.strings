@@ -24,5 +24,7 @@
 "question-save-form" = "Save";
 "question-cancel-form" = "Cancel";
 
+"question-form-error-blank" = "Can't be blank";
+
 "have_voted" = "You've already vote on this question with this sign";
 "question_complaint" = "In meaning time this content will be watched by administrator";

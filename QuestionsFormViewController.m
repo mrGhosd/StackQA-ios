@@ -40,7 +40,7 @@
     [self.dismissFormButton setTitle:NSLocalizedString(@"question-cancel-form", nil) forState:UIControlStateNormal];
     self.questionTitle.placeholder = NSLocalizedString(@"question-title", nil);
     self.questionTags.placeholder = NSLocalizedString(@"question-tags", nil);
-    self.questionCategory.placeholder = NSLocalizedString(@"question-category", nil);
+    self.questionCategory.placeholder = NSLocalizedString(@"question-tags", nil);
 //    [self.questionText ]
 }
 - (void)didReceiveMemoryWarning {
@@ -130,7 +130,7 @@
     NSArray *importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
     for(UITextField *field in importantFields){
         if([field.text isEqualToString:@""]){
-            field.placeholder = @"Не может быть пустым";
+            field.placeholder = NSLocalizedString(@"question-form-error-blank", nil);
             field.layer.borderWidth = 1.0f;
             field.layer.borderColor = [[UIColor redColor] CGColor];
         }

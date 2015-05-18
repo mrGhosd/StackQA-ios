@@ -249,10 +249,10 @@
 		64C891D11B09F7A1008A44F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		64C891D31B09F7A3008A44F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		64C891D51B09F8D1008A44F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
-		64C891D81B09F8D6008A44F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		64C891D91B09F965008A44F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
 		64C891DB1B09F96D008A44F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = ru; path = ru.lproj/Info.plist; sourceTree = "<group>"; };
 		64C891DC1B09F970008A44F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
+		64C891E01B0A34D6008A44F4 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64D86BD81B07ED99002E05A9 /* child1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = child1.png; sourceTree = "<group>"; };
 		64D8E3371AE9B488006EB1CD /* UserAnswersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAnswersViewController.h; sourceTree = "<group>"; };
 		64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAnswersViewController.m; sourceTree = "<group>"; };
@@ -1050,7 +1050,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				64C891D51B09F8D1008A44F4 /* en */,
-				64C891D81B09F8D6008A44F4 /* ru */,
+				64C891E01B0A34D6008A44F4 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
