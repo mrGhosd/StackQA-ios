@@ -367,7 +367,7 @@
     filterView.answersCountFilter.selected = YES;
     pageNumber = @1;
     self.questions = [NSMutableArray new];
-    defaultQuestionURL = @"/questions/filter";
+    mainURL = @"/questions/filter";
     filter = @"answers_count";
     [self loadQuestions];
 }
@@ -377,7 +377,7 @@
     filterView.commentCountFilter.highlighted = YES;
     pageNumber = @1;
     self.questions = [NSMutableArray new];
-    defaultQuestionURL = @"/questions/filter";
+    mainURL = @"/questions/filter";
     filter = @"comments_count";
     [self loadQuestions];
 }
@@ -386,7 +386,7 @@
     [self resetAllHighlights];
     pageNumber = @1;
     self.questions = [NSMutableArray new];
-    defaultQuestionURL = @"/questions/filter";
+    mainURL = @"/questions/filter";
     filter = @"rate";
     [self loadQuestions];
 }
@@ -397,7 +397,7 @@
     filterView.viewsCountFilter.layer.borderWidth = 2.0f;
     filterView.viewsCountFilter.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.questions = [NSMutableArray new];
-    defaultQuestionURL = @"/questions/filter";
+    mainURL = @"/questions/filter";
     filter = @"views";
     [self loadQuestions];
 }

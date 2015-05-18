@@ -23,10 +23,22 @@
     [self parseErrorWithError:error andOperation:operation];
 }
 - (void) parseErrorWithError:(NSError *) error andOperation: (AFHTTPRequestOperation *) operation{
-    self.status = operation.response.statusCode;
+    self.status = [NSNumber numberWithInteger:operation.response.statusCode];
     self.messageText = [error localizedDescription];
+    NSDictionary *userInfo = [error userInfo];
+    NSData *messageData = userInfo[@"com.alamofire.serialization.response.error.data"];
+    if(messageData){
+        NSError *errorJson=nil;
+        NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:messageData options:kNilOptions error:&errorJson];
+        self.message = [NSMutableDictionary dictionaryWithDictionary:responseDict];
+    }
+    
 }
 - (void) handle{
-    [self.delegate handleServerErrorWithError:self];
+    if(self.status == nil){
+        [self.delegate handleServerErrorWithError:self];
+    } else if ([self.status isEqual:@422]){
+        [self.delegate handleServerFormErrorWithError:self];
+    }
 }
 @end

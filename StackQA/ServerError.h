@@ -10,7 +10,7 @@
 #import "ServerErrorDelegate.h"
 
 @interface ServerError : NSObject
-@property (nonatomic) int *status;
+@property (nonatomic, strong) NSNumber *status;
 @property (nonatomic, retain) NSHTTPURLResponse *failedResponse;
 @property (nonatomic, retain) NSMutableDictionary *message;
 @property (nonatomic, retain) NSString *messageText;

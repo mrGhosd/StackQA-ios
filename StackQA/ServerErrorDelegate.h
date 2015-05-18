@@ -9,5 +9,5 @@
 
 @optional
 - (void) handleServerErrorWithError:(id) error;
-
+- (void) handleServerFormErrorWithError: (id) error;
 @end

@@ -10,12 +10,15 @@
 #import <CoreData+MagicalRecord.h>
 #import "Api.h"
 #import "AuthorizationManager.h"
+#import "ServerError.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 @interface QuestionsFormViewController (){
     AuthorizationManager *auth;
     NSMutableArray *categories;
     NSDictionary *selectedCategory;
     UIPickerView *picker;
+    ServerError *serverError;
+    NSArray *importantFields;
 }
 
 @end
@@ -24,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
     auth = [AuthorizationManager sharedInstance];
     [self uploadCategoriesList];
 }
@@ -73,6 +77,8 @@
         if([self.question.categoryId isEqualToNumber:category[@"id"]]){
             title = category[@"title"];
             selectedCategory = category;
+        } else {
+            selectedCategory = @{@"id": @""};
         }
     }
     return title;
@@ -88,6 +94,12 @@
 */
 
 - (IBAction)saveQuestion:(id)sender {
+    NSArray *importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
+    for(UITextField *field in importantFields){
+        field.layer.borderWidth = 1.0f;
+        field.layer.borderColor = [[UIColor clearColor] CGColor];
+    }
+
     NSString *url;
     NSString *type;
     if(self.question){
@@ -97,39 +109,24 @@
         url = @"/questions";
         type = @"POST";
     }
-    [self sendQuestionToServerWithURL:url andType:type];
-//    [MBProgressHUD showHUDAddedTo:self.view
-//                         animated:YES];
-//    NSManagedObjectContext *localContext    = [NSManagedObjectContext MR_contextForCurrentThread];
-//    if (self.question) {
-//        Question *question = [Question MR_findFirstByAttribute:@"object_id" withValue:self.question.objectId inContext:localContext];
-//        question.title = self.questionTitle.text;
-//        question.text = self.questionText.text;
-//        question.tags = self.questionTags.text;
-//        question.categoryId = selectedCategory[@"id"];
-//        [self sendQuestionToServerWithURL:[NSString stringWithFormat:@"/questions/%@", question.objectId] andType:@"PUT"];
-//    }
-//    else {
-//        
-//        Question *question = [Question MR_createInContext:localContext];
-//        if([self.questionTitle.text isEqual: @""] || ![self.questionText.text  isEqual: @""]){
-//            question.title = self.questionTitle.text;
-//            question.createdAt = [NSDate date];
-//            question.text = self.questionText.text;
-//            [self sendQuestionToServerWithURL:@"/questions" andType:@"POST"];
-//        } else {
-//            NSLog(@"Error!");
-//        }
-//    }
-//    [localContext MR_save];
-    
-    
+    if([self.questionTitle.text isEqualToString:@""] || [self.questionText.text isEqualToString:@""] || [self.questionCategory.text isEqualToString:@""]){
+        [self displayErrors];
+    } else {
+        [self sendQuestionToServerWithURL:url andType:type];
+    }
 }
-
+- (void) displayErrors{
+    NSArray *importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
+    for(UITextField *field in importantFields){
+        if([field.text isEqualToString:@""]){
+            field.placeholder = @"Не может быть пустым";
+            field.layer.borderWidth = 1.0f;
+            field.layer.borderColor = [[UIColor redColor] CGColor];
+        }
+    }
+}
 - (void) sendQuestionToServerWithURL:(NSString *) url andType: (NSString *) type{
-    NSMutableDictionary *questionParams = @{@"title": self.questionTitle.text, @"text": self.questionText.text,
-                                            @"user_id": auth.currentUser.objectId,
-                                            @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text };
+        NSMutableDictionary *questionParams =[NSMutableDictionary dictionaryWithDictionary: @{@"title": self.questionTitle.text, @"text": self.questionText.text, @"user_id": auth.currentUser.objectId, @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text }];
     [[Api sharedManager] sendDataToURL:url parameters:@{@"question": questionParams} requestType:type
                          andComplition:^(id data, BOOL success){
         if(success){
@@ -141,7 +138,9 @@
             }
             [self dismissViewControllerAnimated:YES completion:nil];
         } else{
-            
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -167,6 +166,9 @@ numberOfRowsInComponent:(NSInteger)component{
       inComponent:(NSInteger)component{
     selectedCategory = [NSDictionary dictionaryWithDictionary:categories[row]];
     self.questionCategory.text = categories[row][@"title"];
+}
+- (void) handleServerFormErrorWithError: (id) error{
+    
 }
 - (IBAction)hideForm:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

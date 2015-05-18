@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Question.h"
+#import "ServerErrorDelegate.h"
 
-@interface QuestionsFormViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+@interface QuestionsFormViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, ServerErrorDelegate>
 @property(strong) Question *question;
 @property (strong, nonatomic) IBOutlet UITextField *questionTitle;
 @property (strong, nonatomic) IBOutlet UITextField *questionCategory;
