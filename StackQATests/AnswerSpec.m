@@ -83,4 +83,131 @@ describe(@"#update", ^{
         [[[viewController shouldEventually] receive] updateWithParams:answerParams andSuccess:YES];
     });
 });
+
+describe(@"destroyWithIndexPath", ^{
+    it(@"successfully destroy answer", ^{
+        answer = [[Answer alloc] init];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:answerParams statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer destroyWithIndexPath:path];
+        
+        [[[viewController shouldEventually] receive] destroyCallback:YES path:path];
+    });
+    
+    it(@"failed to destroy answer", ^{
+        answer = [[Answer alloc] init];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:answerParams statusCode:400 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer destroyWithIndexPath:path];
+        
+        [[[viewController shouldEventually] receive] destroyCallback:NO path:path];
+    });
+});
+
+describe(@"changeRateWithAction: (NSString *) action andIndexPAth: (NSIndexPath *) path", ^{
+    it(@"successfully increase answers rate", ^{
+        answer = [[Answer alloc] initWithParams:answerParams];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@{@"rate": @1, @"action": @"plus", @"object_id": answer.objectId} statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer changeRateWithAction:@"plus" andIndexPAth:path];
+        
+        [[expectFutureValue(answer.rate) shouldEventually] equal:@1];
+    });
+    
+    it(@"successfully decrease answers rate", ^{
+        answer = [[Answer alloc] initWithParams:answerParams];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:@{@"rate": @-1, @"action": @"minus", @"object_id": answer.objectId} statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer changeRateWithAction:@"minus" andIndexPAth:path];
+        
+        [[expectFutureValue(answer.rate) shouldEventually] equal:@-1];
+    });
+});
+
+describe(@"- (void) markAsHelpfullWithPath: (NSIndexPath *) path", ^{
+    it(@"it successfully mark answer as helpfull", ^{
+        answer = [[Answer alloc] initWithParams:answerParams];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:answerParams statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer markAsHelpfullWithPath:path];
+        
+        [[[viewController shouldEventually] receive] markAsHelpfullCallbackWithParams:answerParams path:path andSuccess:YES];
+    });
+});
+
+describe(@"- (void) complainToAnswerWithPath: (NSIndexPath *) path", ^{
+    it(@"succesfully make complaint on answer", ^{
+        answer = [[Answer alloc] initWithParams:answerParams];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:answerParams statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer complainToAnswerWithPath:path];
+        
+        [[[viewController shouldEventually] receive] complaintToAnswerWithSuccess:YES andIndexPath:path];
+    });
+    
+    it(@"failed in complain to answer", ^{
+        answer = [[Answer alloc] initWithParams:answerParams];
+        [OHHTTPStubs stubRequestsPassingTest:^(NSURLRequest *request){
+            return YES;
+        } withStubResponse:^(NSURLRequest *request){
+            return [OHHTTPStubsResponse responseWithJSONObject:answerParams statusCode:400 headers:@{@"Content-Type": @"application/json"}];
+        }];
+        NSIndexPath *path = [NSIndexPath new];
+        
+        viewController = [[AnswersViewController alloc] init];
+        answer.answerDelegate = viewController;
+        
+        [answer complainToAnswerWithPath:path];
+        
+        [[[viewController shouldEventually] receive] complaintToAnswerWithSuccess:NO andIndexPath:path];
+    });
+});
 SPEC_END
