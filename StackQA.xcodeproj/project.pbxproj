@@ -79,6 +79,11 @@
 		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64A3B6771B060EC800932482 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */; };
 		64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */; };
+		64ACE07C1B0AA6FC00E68BF3 /* green-round-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE07B1B0AA6FC00E68BF3 /* green-round-button.png */; };
+		64ACE07E1B0AAA2A00E68BF3 /* success-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE07D1B0AAA2A00E68BF3 /* success-check.png */; };
+		64ACE0801B0AAB3E00E68BF3 /* send-message.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE07F1B0AAB3E00E68BF3 /* send-message.png */; };
+		64ACE0821B0AACBB00E68BF3 /* white-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE0811B0AACBB00E68BF3 /* white-tag.png */; };
+		64ACE0861B0AAD4200E68BF3 /* greem-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE0851B0AAD4200E68BF3 /* greem-tag.png */; };
 		64C69EBB1A6C4F01006AB0AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBA1A6C4F01006AB0AC /* main.m */; };
 		64C69EBE1A6C4F01006AB0AC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBD1A6C4F01006AB0AC /* AppDelegate.m */; };
 		64C69EC11A6C4F01006AB0AC /* StackQA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64C69EBF1A6C4F01006AB0AC /* StackQA.xcdatamodeld */; };
@@ -227,6 +232,11 @@
 		648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuestionsViewController.m; sourceTree = "<group>"; };
 		64A7B7001AE7C8D3008F6E90 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
 		64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailViewController.m; sourceTree = "<group>"; };
+		64ACE07B1B0AA6FC00E68BF3 /* green-round-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-round-button.png"; sourceTree = "<group>"; };
+		64ACE07D1B0AAA2A00E68BF3 /* success-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success-check.png"; sourceTree = "<group>"; };
+		64ACE07F1B0AAB3E00E68BF3 /* send-message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-message.png"; sourceTree = "<group>"; };
+		64ACE0811B0AACBB00E68BF3 /* white-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white-tag.png"; sourceTree = "<group>"; };
+		64ACE0851B0AAD4200E68BF3 /* greem-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greem-tag.png"; sourceTree = "<group>"; };
 		64C69EB51A6C4F01006AB0AC /* StackQA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackQA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C69EBA1A6C4F01006AB0AC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		64C69EBC1A6C4F01006AB0AC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -366,6 +376,11 @@
 		6428B0BA1AAC68BB00110D62 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				64ACE0851B0AAD4200E68BF3 /* greem-tag.png */,
+				64ACE0811B0AACBB00E68BF3 /* white-tag.png */,
+				64ACE07F1B0AAB3E00E68BF3 /* send-message.png */,
+				64ACE07D1B0AAA2A00E68BF3 /* success-check.png */,
+				64ACE07B1B0AA6FC00E68BF3 /* green-round-button.png */,
 				64D86BD81B07ED99002E05A9 /* child1.png */,
 				64413C991B017DFE00AE6C27 /* bg-sb-test.jpg */,
 				64413C971B017AB400AE6C27 /* cell-background.png */,
@@ -850,8 +865,10 @@
 				64C891D01B09F7A1008A44F4 /* Localizable.strings in Resources */,
 				64E9C5F21AE4445A0055B325 /* correct6.png in Resources */,
 				64C69EFB1A6C726B006AB0AC /* ask_question-32.png in Resources */,
+				64ACE0801B0AAB3E00E68BF3 /* send-message.png in Resources */,
 				64F567A01ACF07910084AED4 /* ImageView.xib in Resources */,
 				64413C941B01770E00AE6C27 /* star138.png in Resources */,
+				64ACE07E1B0AAA2A00E68BF3 /* success-check.png in Resources */,
 				6438742A1ACB13BD0059EBEC /* SidebarTableViewCell.xib in Resources */,
 				644582B01B06A9590020440B /* filterView.xib in Resources */,
 				6469F9B21A70572B00E837E3 /* plus-32.png in Resources */,
@@ -870,14 +887,17 @@
 				6480ED3D1B0005AD0023AFBB /* up4-32.png in Resources */,
 				64D86BD91B07ED99002E05A9 /* child1.png in Resources */,
 				64413C961B017A5100AE6C27 /* sidebar-background.png in Resources */,
+				64ACE0821B0AACBB00E68BF3 /* white-tag.png in Resources */,
 				6428B0D61AACF1E300110D62 /* create1.png in Resources */,
 				6428B0DF1AACF2BE00110D62 /* response-32.png in Resources */,
+				64ACE0861B0AAD4200E68BF3 /* greem-tag.png in Resources */,
 				64C69EF81A6C71D7006AB0AC /* group-32.png in Resources */,
 				6428B0CC1AAC78A900110D62 /* menu-32.png in Resources */,
 				640DC3851ADD96DB00CE22DA /* down-32.png in Resources */,
 				6428B0D71AACF1E300110D62 /* login17.png in Resources */,
 				643874201ACAFBFC0059EBEC /* ProfileSidebarTableViewCell.xib in Resources */,
 				6428B0DD1AACF28E00110D62 /* category.png in Resources */,
+				64ACE07C1B0AA6FC00E68BF3 /* green-round-button.png in Resources */,
 				6469F9B01A7049B300E837E3 /* edit-32.png in Resources */,
 				6480ED3C1B0005AD0023AFBB /* down4-32.png in Resources */,
 				64C69EC91A6C4F01006AB0AC /* Images.xcassets in Resources */,

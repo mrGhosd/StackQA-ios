@@ -42,3 +42,13 @@
 
 "empty_comments_list" = "There is no comments here";
 "comment-text" = "Text";
+
+/*AUTHENTICATION*/
+
+"sign_in" = "Sign in";
+"sign_up" = "Sign up";
+
+"auth-email" = "Email";
+"auth-password" = "Password";
+"auth-password-confirmation" = "Confirm password";
+

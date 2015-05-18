@@ -62,12 +62,12 @@ static Api *sharedSingleton_ = nil;
 }
 
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
+    NSMutableDictionary *copiedParams = [params mutableCopy];
+    params = [[NSMutableDictionary alloc] init];
     ResponseCopmlition response = [complition copy];
     store = [UICKeyChainStore keyChainStore];
     if([store objectForKeyedSubscript:@"access_token"]){
-        NSMutableDictionary *copiedParams = [params mutableCopy];
         NSMutableDictionary *accessToken = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
-        params = [[NSMutableDictionary alloc] init];
         [params addEntriesFromDictionary:copiedParams];
         [params addEntriesFromDictionary:accessToken];
     }
