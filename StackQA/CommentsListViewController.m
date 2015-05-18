@@ -13,6 +13,8 @@
 #import "CommentDetailViewController.h"
 #import <SWTableViewCell.h>
 #import <UIScrollView+InfiniteScroll.h>
+#import "ServerError.h"
+#import <MBProgressHUD.h>
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface CommentsListViewController (){
@@ -25,6 +27,9 @@
     AuthorizationManager *auth;
     Comment *selectedComment;
     NSManagedObjectContext *localContext;
+    UIButton *errorButton;
+    UIRefreshControl *refreshControl;
+    ServerError *serverError;
 }
 
 @end
@@ -37,6 +42,7 @@
     commentsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadComments:) name:@"updateComment" object:nil];
+    [self refreshInit];
     [self setCommentControl];
     selectedIndex = -1;
     [self defineCorrectURL];
@@ -49,6 +55,23 @@
         [tableView finishInfiniteScroll];
     }];
     // Do any additional setup after loading the view.
+}
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(uploadCommentData) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) uploadCommentData{
+    pageNumber = @1;
+    commentsList = [NSMutableArray new];
+    [self loadCommentsData];
 }
 
 -(void)reloadComments: (NSNotification *) notification{
@@ -131,14 +154,16 @@
         if(success){
             [self parseCommentsData:data];
         } else {
-        
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }
 //
 - (void) parseCommentsData: (id) data{
     NSMutableArray *comments = data[@"comments"];
-    if(data[@"comments"] != [NSNull null]){
+    if(comments != nil){
         for(NSDictionary *commentServer in comments){
             Comment *comment = [[Comment alloc] initWithParams:commentServer];
             User *user = [[User alloc] initWithParams:commentServer[@"user"]];
@@ -153,6 +178,7 @@
             [commentsList addObject:comment];
         }
         [self.tableView reloadData];
+        [refreshControl endRefreshing];
     }
     
 }
@@ -314,6 +340,7 @@
 }
 - (void) createCallbackWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
     if(success){
+        errorButton.hidden = YES;
         Comment *comment = [[Comment alloc] initWithParams:params];
         Question *question = [[Question alloc] initWithParams:params[@"question"]] ;
         User *user = [[User alloc] initWithParams:params[@"user"]];
@@ -326,14 +353,41 @@
         [commentsList insertObject:comment atIndex:0];
         [self.tableView reloadData];
     } else {
-        
+        serverError = [[ServerError alloc] initWithData:params];
+        serverError.delegate = self;
+        [serverError handle];
     }
 }
 - (void) complaintToCommentWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path{
     if(success){
+        errorButton.hidden = YES;
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
-    
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
     }
+}
+
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.tableView reloadData];
+    [refreshControl endRefreshing];
 }
 @end

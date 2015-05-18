@@ -10,8 +10,9 @@
 #import "Question.h"
 #import "Answer.h"
 #import "CommentDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface CommentsListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate>
+@interface CommentsListViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate, ServerErrorDelegate>
 @property (strong) Question *question;
 @property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

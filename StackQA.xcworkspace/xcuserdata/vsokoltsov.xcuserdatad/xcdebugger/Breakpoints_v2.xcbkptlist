@@ -2898,11 +2898,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/CommentsListViewController.m"
-            timestampString = "453506267.453005"
+            timestampString = "453663377.153661"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "-createCallbackWithParams:andSuccess:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3397,6 +3397,22 @@
                   offsetFromSymbolStart = "64">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StackQA/CommentsListViewController.m"
+            timestampString = "453663716.904955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-loadCommentsData"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
