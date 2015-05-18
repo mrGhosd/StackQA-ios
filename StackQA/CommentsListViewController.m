@@ -152,6 +152,7 @@
 - (void) loadCommentsData{
     [[Api sharedManager] sendDataToURL:url parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
             [self parseCommentsData:data];
         } else {
             serverError = [[ServerError alloc] initWithData:data];
@@ -256,7 +257,9 @@
         [commentsList removeObjectAtIndex:path.row];
         [self.tableView reloadData];
     } else {
-    
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
     }
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -383,11 +386,12 @@
         }
         [errorButton setTitle:errorText forState:UIControlStateNormal];
         [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
-        [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+        [errorButton addTarget:self action:@selector(uploadCommentData) forControlEvents:UIControlEventTouchUpInside];
         [self.tableView addSubview:errorButton];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.tableView reloadData];
     [refreshControl endRefreshing];
 }
+
 @end
