@@ -9,9 +9,12 @@
 #import "CommentDetailViewController.h"
 #import "Api.h"
 #import "AuthorizationManager.h"
+#import "ServerError.h"
 
 @interface CommentDetailViewController (){
     AuthorizationManager *auth;
+    UIButton *errorButton;
+    ServerError *serverError;
 }
 
 @end
@@ -80,16 +83,55 @@
 
 - (void) updateWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
     if(success){
+        errorButton.hidden = YES;
+        
         [[NSNotificationCenter defaultCenter]
          postNotificationName:@"updateComment"
          object:params];
        [self dismissViewControllerAnimated:YES completion:nil]; 
     } else {
-    
+        serverError = [[ServerError alloc] initWithData:params];
+        serverError.delegate = self;
+        [serverError handle];
     }
 }
 
 - (IBAction)dissmissView:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.scrollView addSubview:errorButton];
+    }
+}
+
+- (void) handleServerFormErrorWithError:(id)error{
+    NSMutableString *finalResult = [NSMutableString stringWithString:@""];
+    NSMutableString *attribute;
+    
+    for (NSString *key in [serverError.message allKeys]){
+        NSString *localizedStringName = [NSString stringWithFormat:@"comment-%@", key];
+        attribute = NSLocalizedString(localizedStringName, nil);
+        [finalResult appendString:[NSString stringWithFormat:@"%@ - ",attribute]];
+        
+        for(NSString *message in serverError.message[key]){
+            [finalResult appendString:[NSString stringWithFormat:@"%@ ", message]];
+        }
+        
+    }
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:finalResult delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil, nil];
+    [alert show];
 }
 @end

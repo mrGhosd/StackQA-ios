@@ -10,8 +10,9 @@
 #import "Comment.h"
 #import "Question.h"
 #import "Answer.h"
+#import "ServerErrorDelegate.h"
 
-@interface CommentDetailViewController : ViewController <CommentDelegate>
+@interface CommentDetailViewController : ViewController <CommentDelegate, ServerErrorDelegate>
 @property (strong) Comment *comment;
 @property (strong) Question *question;
 @property (strong) Answer *answer;
