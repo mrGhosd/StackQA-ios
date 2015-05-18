@@ -976,6 +976,7 @@
                         <outlet property="answerSaveButton" destination="PLH-Jd-clY" id="f2w-Om-56O"/>
                         <outlet property="controlView" destination="OLZ-oK-0O9" id="Hi3-UU-Tv0"/>
                         <outlet property="controlViewBottomMargin" destination="UaM-f5-FRL" id="rUi-hp-Xwi"/>
+                        <outlet property="scrollView" destination="oHC-H5-EYU" id="Cgw-E2-IFK"/>
                         <outlet property="scrollViewBottomMargin" destination="lhy-0t-mO5" id="l6x-ef-FwL"/>
                     </connections>
                 </viewController>

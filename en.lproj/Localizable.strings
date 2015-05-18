@@ -36,6 +36,7 @@
 /*ANSWERS*/
 
 "empty_answers_list" = "There is no answers for that question";
+"answer-text" = "Text";
 
 /*COMMENTS*/
 

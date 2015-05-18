@@ -37,6 +37,7 @@
 /*ANSWERS*/
 
 "empty_answers_list" = "Ответов на данный вопрос нет";
+"answer-text" = "Текст";
 
 /*COMMENTS*/
 

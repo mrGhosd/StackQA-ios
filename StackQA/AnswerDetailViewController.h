@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "Answer.h"
 #import "AnswerDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface AnswerDetailViewController : ViewController <AnswerDelegate>
+@interface AnswerDetailViewController : ViewController <AnswerDelegate, ServerErrorDelegate>
 @property (strong) Answer *answer;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *answerDetailTextViewHeightConstraint;
 @property (strong, nonatomic) IBOutlet UITextView *answerDetailTextView;
@@ -21,5 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIView *controlView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *controlViewBottomMargin;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollViewBottomMargin;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
