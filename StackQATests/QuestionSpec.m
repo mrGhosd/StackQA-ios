@@ -22,10 +22,15 @@
 
 SPEC_BEGIN(QuestionSpec)
 describe(@"Question model class", ^{
+    
     NSDictionary *questionParamsHash = @{@"id": @1, @"title": @"TestTitle",
     @"text": @"TestText", @"category_id": @1, @"tag_list": @"First, second, third"};
 
     __block NSMutableDictionary *questionParams = [NSDictionary dictionaryWithDictionary:questionParamsHash];
+    
+    afterEach(^{
+        [OHHTTPStubs removeAllStubs];
+    });
 
     describe(@"creation of class instance", ^{
         it(@"create an question with parameters", ^{
