@@ -1185,8 +1185,8 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EGY-Im-9NZ">
                                                 <rect key="frame" x="100" y="8" width="401" height="29"/>
                                                 <segments>
-                                                    <segment title="Авторизация"/>
-                                                    <segment title="Регистрация"/>
+                                                    <segment title="Sign in"/>
+                                                    <segment title="Sign up"/>
                                                 </segments>
                                                 <connections>
                                                     <action selector="switchViews:" destination="ch4-W7-k0g" eventType="valueChanged" id="2RS-L9-7kz"/>
@@ -1215,7 +1215,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="d0U-f7-gfc"/>
                                                         </constraints>
-                                                        <state key="normal" title="Отправить" backgroundImage="green-round-button.png">
+                                                        <state key="normal" title="Sign up" backgroundImage="green-round-button.png">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -1243,12 +1243,12 @@
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TxU-Od-UJR" userLabel="loginView">
                                                 <rect key="frame" x="0.0" y="44" width="600" height="493"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-qh-Lhj">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-qh-Lhj">
                                                         <rect key="frame" x="99" y="58" width="404" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-sy-Gvk">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-sy-Gvk">
                                                         <rect key="frame" x="99" y="68" width="404" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -1258,7 +1258,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="cRY-r3-Gwt"/>
                                                         </constraints>
-                                                        <state key="normal" title="Войти" backgroundImage="green-round-button.png">
+                                                        <state key="normal" title="Sign in" backgroundImage="green-round-button.png">
                                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
