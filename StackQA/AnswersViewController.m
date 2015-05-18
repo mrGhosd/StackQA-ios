@@ -14,6 +14,7 @@
 #import "AuthorizationManager.h"
 #import <MBProgressHUD.h>
 #import <UIScrollView+InfiniteScroll.h>
+#import "ServerError.h"
 
 @interface AnswersViewController (){
     int selectedIndex;
@@ -26,6 +27,8 @@
     Question *questionAnswerSelected;
     NSMutableArray *answersList;
     UIRefreshControl *refreshControl;
+    ServerError *serverError;
+    UIButton *errorButton;
 }
 
 @end
@@ -82,9 +85,12 @@
                          animated:YES];
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers", self.question.objectId ] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
          if(success){
+             errorButton.hidden = YES;
              [self parseAnswerData:data];
          } else {
-             
+             serverError = [[ServerError alloc] initWithData:data];
+             serverError.delegate = self;
+             [serverError handle];
          }
      }];
 }
@@ -391,8 +397,28 @@
         [answersList insertObject:answer atIndex:0];
         [self.tableView reloadData];
     } else {
-        
+        serverError = [[ServerError alloc] initWithData:params];
+        serverError.delegate = self;
+        [serverError handle];
     }
+}
+
+- (void) handleServerErrorWithError:(id) error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
+- (void)sendRequest{
+    [self loadAnswersList];
 }
 - (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success{
     if(success){

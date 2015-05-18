@@ -10,8 +10,10 @@
 #import <SWTableViewCell.h>
 #import "Question.h"
 #import "AnswerDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SWTableViewCellDelegate, UIGestureRecognizerDelegate, AnswerDelegate>
+@interface AnswersViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, SWTableViewCellDelegate, UIGestureRecognizerDelegate, AnswerDelegate, ServerErrorDelegate>
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) Question *question;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewBottom;
