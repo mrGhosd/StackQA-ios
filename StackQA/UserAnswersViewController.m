@@ -14,6 +14,7 @@
 #import "AuthorizationManager.h"
 #import "AnswerDetailViewController.h"
 #import "UserAnswersTableViewCell.h"
+#import "ServerError.h"
 #import <MBProgressHUD.h>
 #import <UIScrollView+InfiniteScroll.h>
 
@@ -26,6 +27,9 @@
     int selectedIndex;
     NSMutableArray *usersAnswersList;
     NSMutableArray *answerQuestionsList;
+    UIRefreshControl *refreshControl;
+    ServerError *serverError;
+    UIButton *errorButton;
 }
 
 @end
@@ -39,6 +43,7 @@
     usersAnswersList = [NSMutableArray new];
     answerQuestionsList = [NSMutableArray new];
     auth = [AuthorizationManager sharedInstance];
+    [self refreshInit];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadAnswers:) name:@"reloadAnswers" object:nil];
     [self loadUsersAnswers];
     
@@ -70,18 +75,39 @@
                          animated:YES];
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/users/%@/answers", self.user.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
             [self parseData:data];
         } else {
-            
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadLatestAnswers) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) loadLatestAnswers{
+    pageNumber = @1;
+    usersAnswersList = [NSMutableArray new];
+    [self loadUsersAnswers];
+}
+
+
 - (void) viewDidAppear:(BOOL)animated{
     [self.tableView reloadData];
 }
 - (void) parseData:(NSDictionary *) data{
     NSArray *answers = data[@"users"];
-    if(data[@"user"] != [NSNull null]){
+    if(answers != [NSNull null]){
         for(NSMutableDictionary *serverAnswer in answers){
             Question *question = [[Question alloc] initWithParams:serverAnswer[@"question"]];
             Answer *answer = [[Answer alloc] initWithParams:serverAnswer];
@@ -91,6 +117,7 @@
         }
         [self.tableView reloadData];
     }
+    [refreshControl endRefreshing];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
 }
@@ -203,21 +230,6 @@
             break;
     }
 }
-
-- (void) deleteAnswer:(Answer *) answer question: (Question *) question atIndexPath: (NSIndexPath *) path{
-//    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/questions/%@/answers/%@", question.object_id, answer.object_id ] parameters:nil requestType:@"DELETE" andComplition:^(id data, BOOL success){
-//        if(success){
-//            UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
-//            cell.answerRate.backgroundColor = [UIColor greenColor];
-//            [question closeQuestion];
-//            [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
-//            [self loadUsersAnswers];
-//        } else {
-//            [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
-//        }
-//    }];
-}
-
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerLeftUtilityButtonWithIndex:(NSInteger)index {
     NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
     Answer *currentAnswer = usersAnswersList[cellIndexPath.row];
@@ -329,6 +341,21 @@
     
     }
 }
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLatestAnswers) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
+
 
 
 @end

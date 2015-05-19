@@ -76,7 +76,6 @@
 		6480ED391AFFF5C50023AFBB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480ED381AFFF5C50023AFBB /* User.m */; };
 		6480ED3C1B0005AD0023AFBB /* down4-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6480ED3A1B0005AD0023AFBB /* down4-32.png */; };
 		6480ED3D1B0005AD0023AFBB /* up4-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 6480ED3B1B0005AD0023AFBB /* up4-32.png */; };
-		648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */; };
 		64A3B6771B060EC800932482 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 642B5BFF1B04F42C004CEAA4 /* ServerConnection.m */; };
 		64A7B7021AE7C8D3008F6E90 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */; };
 		64ACE07C1B0AA6FC00E68BF3 /* green-round-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ACE07B1B0AA6FC00E68BF3 /* green-round-button.png */; };
@@ -228,8 +227,6 @@
 		6480ED381AFFF5C50023AFBB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		6480ED3A1B0005AD0023AFBB /* down4-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "down4-32.png"; sourceTree = "<group>"; };
 		6480ED3B1B0005AD0023AFBB /* up4-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "up4-32.png"; sourceTree = "<group>"; };
-		648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserQuestionsViewController.h; sourceTree = "<group>"; };
-		648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserQuestionsViewController.m; sourceTree = "<group>"; };
 		64A7B7001AE7C8D3008F6E90 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
 		64A7B7011AE7C8D3008F6E90 /* AnswerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailViewController.m; sourceTree = "<group>"; };
 		64ACE07B1B0AA6FC00E68BF3 /* green-round-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green-round-button.png"; sourceTree = "<group>"; };
@@ -354,8 +351,6 @@
 			children = (
 				64157B8E1AC8728400E0E401 /* ProfileViewController.h */,
 				64157B8F1AC8728400E0E401 /* ProfileViewController.m */,
-				648F4E3B1AD6C52E00DECF49 /* UserQuestionsViewController.h */,
-				648F4E3C1AD6C52E00DECF49 /* UserQuestionsViewController.m */,
 				64D8E3371AE9B488006EB1CD /* UserAnswersViewController.h */,
 				64D8E3381AE9B488006EB1CD /* UserAnswersViewController.m */,
 				646543761AFBF3C800C0E10F /* UserCommentsViewController.h */,
@@ -1021,7 +1016,6 @@
 				6428B0C31AAC73ED00110D62 /* SWRevealViewController.m in Sources */,
 				64097AAB1AF96C3B002F44AD /* CommentDetailViewController.m in Sources */,
 				644FE0DE1AF80AFB0059E830 /* CommentTableViewCell.m in Sources */,
-				648F4E3D1AD6C52E00DECF49 /* UserQuestionsViewController.m in Sources */,
 				6480ED361AFFF5260023AFBB /* SCategory.m in Sources */,
 				64C69EE61A6C4F37006AB0AC /* QuestionsFormViewController.m in Sources */,
 				64F567961ACE9FA90084AED4 /* ServerError.m in Sources */,

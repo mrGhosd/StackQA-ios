@@ -12,8 +12,9 @@
 #import <CoreData/CoreData.h>
 #import <CoreData+MagicalRecord.h>
 #import "AnswerDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, AnswerDelegate>
+@interface UserAnswersViewController : ViewController <UITableViewDataSource, UITableViewDelegate, SWTableViewCellDelegate, AnswerDelegate, ServerErrorDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) User *user;
 @end
