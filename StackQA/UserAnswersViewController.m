@@ -150,7 +150,7 @@
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"up-32.png"]];
     [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor yellowColor] icon:[UIImage imageNamed:@"down-32.png"]];
-    if(!questionItem.isClosed && !answerItem.isHelpfull){
+    if(!questionItem.isClosed && !answerItem.isHelpfull && [questionItem.userId isEqual:self.user.objectId]){
         [leftUtilityButtons sw_addUtilityButtonWithColor:[UIColor greenColor] icon:[UIImage imageNamed:@"correct6.png"]];
     }
     
@@ -305,9 +305,10 @@
 }
 - (void) changeRateCallbackWithParams:(NSDictionary *) params path:(NSIndexPath *) path andSuccess: (BOOL) success{
     if(success){
+        errorButton.hidden = YES;
         UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         cell.answerRate.text = [NSString stringWithFormat:@"%@", params[@"rate"] ];
-        NSInteger objectId;
+        NSInteger objectId = 0;
         for(Answer *answer in usersAnswersList){
             if([answer.objectId isEqual:params[@"object_id"]]){
                 objectId = [usersAnswersList indexOfObject:answer];
@@ -317,11 +318,15 @@
         changedAnswer.rate = params[@"rate"];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
+        serverError = [[ServerError alloc] initWithData:params];
+        serverError.delegate = self;
+        [serverError handle];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 - (void) markAsHelpfullCallbackWithParams:(NSDictionary *)params path:(NSIndexPath *)path andSuccess:(BOOL)success{
     if(success){
+        errorButton.hidden = YES;
         UserAnswersTableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
         cell.answerRate.backgroundColor = [UIColor greenColor];
         Answer *answer = usersAnswersList[path.row];
@@ -329,6 +334,9 @@
         answer.question.isClosed = YES;
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationFade];
     } else {
+        serverError = [[ServerError alloc] initWithData:params];
+        serverError.delegate = self;
+        [serverError handle];
         [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
@@ -338,7 +346,10 @@
         [usersAnswersList removeObjectAtIndex:path.row];
         [self.tableView reloadData];
     } else {
-    
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
+        [self.tableView reloadRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 - (void) handleServerErrorWithError:(id)error{
@@ -347,7 +358,13 @@
     } else {
         errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
         errorButton.backgroundColor = [UIColor lightGrayColor];
-        [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
         [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [errorButton addTarget:self action:@selector(loadLatestAnswers) forControlEvents:UIControlEventTouchUpInside];
         [self.tableView addSubview:errorButton];
@@ -355,7 +372,4 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
 }
-
-
-
 @end
