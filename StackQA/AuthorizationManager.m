@@ -75,25 +75,10 @@ static AuthorizationManager *sharedSingleton_ = nil;
 - (void) getCurrentUserProfileWithEmail:(NSString *)email andPassword: (NSString *)password{
     [[Api sharedManager] getData:@"/profiles/me" andComplition:^(id data, BOOL success){
         if(success){
-            [MagicalRecord saveUsingCurrentThreadContextWithBlockAndWait:^(NSManagedObjectContext *localContext){
-                User *current_user = [[User alloc] init];
-                current_user.objectId = data[@"id"];
-                current_user.email = data[@"email"];
-                current_user.surname = [NSString stringWithFormat:@"%@", data[@"surname"]];
-                current_user.name = [NSString stringWithFormat:@"%@", data[@"name"]];
-                current_user.correctNaming = data[@"correct_naming"];
-                current_user.rate = data[@"rate"];
-                current_user.questionsCount = data[@"questions_count"];
-                current_user.answersCount = data[@"answers_count"];
-                current_user.commentsCount = data[@"comments_count"];
-                current_user.avatarUrl = [NSString stringWithFormat:@"%@", data[@"avatar"][@"url"]];
-                current_user.statistic = [[SStatistic alloc] initWithParams:data[@"statistic"]];
-                self.currentUser = current_user;
-                [localContext MR_saveToPersistentStoreAndWait];
+                self.currentUser = [[User alloc] initWithParams:data];
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"getCurrentUser"
                  object:self];
-            }];
         } else {
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"errorUserProfileDownloadMessage"

@@ -121,11 +121,11 @@
             break;
             
         case 3:
-            textViewConstraint = keyboardFrame.size.width;
+            textViewConstraint = keyboardFrame.size.height;
             break;
             
         case 4:
-            textViewConstraint = keyboardFrame.size.width;
+            textViewConstraint = keyboardFrame.size.height;
             break;
         
         default:
@@ -478,6 +478,7 @@
     if([self.actionViewText.text isEqualToString:@""]){
         [self.actionViewText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
     } else {
+        [self setActionViewTextBorder];
         Answer *answer = [[Answer alloc] init];
         [answer setDelegate:self];
         [answer create:answerParams];

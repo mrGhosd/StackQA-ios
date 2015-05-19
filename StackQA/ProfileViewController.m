@@ -15,11 +15,17 @@
 #import "UserAnswersViewController.h"
 #import "UserCommentsViewController.h"
 #import "ImageView.h"
+#import "ServerError.h"
+#import "Api.h"
+#import <MBProgressHUD.h>
 
 @interface ProfileViewController (){
     AuthorizationManager *auth;
     UICKeyChainStore *store;
     ImageView *imageWrapper;
+    UIButton *errorButton;
+    UIRefreshControl *refreshControl;
+    ServerError *serverError;
     NSArray *paramsIDs;
     NSArray *userParams;
     NSArray *userValues;
@@ -33,27 +39,61 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImageView) name:@"hideImageView" object:nil];
     auth = [AuthorizationManager sharedInstance];
-    paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
-    userParams= @[NSLocalizedString(@"questions-count", nil), NSLocalizedString(@"answers-count", nil), NSLocalizedString(@"comments-count", nil)];
-    userValues = @[auth.currentUser.questionsCount, auth.currentUser.answersCount, auth.currentUser.commentsCount];
     store = [UICKeyChainStore keyChainStore];
     self.userParamsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self defineNavigationPanel];
+    [self refreshInit];
+    [self loadProfile];
+
+    // Do any additional setup after loading the view.
+}
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.scrollView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadProfile) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) loadProfile{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[Api sharedManager] sendDataToURL:[NSString stringWithFormat:@"/users/%@", self.user.objectId] parameters:@{} requestType:@"GET" andComplition:^(id data, BOOL success){
+        if(success){
+            errorButton.hidden = YES;
+            [self parseUserdata:data];
+        } else {
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
+        }
+    }];
+}
+
+- (void) parseUserdata: (id) data{
+    self.user = [[User alloc] initWithParams:data];
+    paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
+    userParams= @[NSLocalizedString(@"questions-count", nil), NSLocalizedString(@"answers-count", nil), NSLocalizedString(@"comments-count", nil)];
+    userValues = @[self.user.questionsCount, self.user.answersCount, self.user.commentsCount];
     self.userAvatar.image = [self.user profileImage];
     self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
     self.userAvatar.layer.masksToBounds = YES;
     self.userAvatar.layer.borderWidth = 0;
     self.userFullName.text = [self.user getCorrectNaming];
-    [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
+    [self.userRate setTitle:[NSString stringWithFormat:@"%@", self.user.rate] forState:UIControlStateNormal];
     if(auth.currentUser && [auth.currentUser.objectId isEqual: self.user.objectId ]){
         self.signOutButton.hidden = NO;
     } else {
         self.signOutButton.hidden = YES;
     }
-
-    // Do any additional setup after loading the view.
+    [refreshControl endRefreshing];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.userParamsTable reloadData];
+    
 }
-
 - (void) dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -146,7 +186,7 @@
 }
 */
 - (IBAction)showUserStatistic:(id)sender {
-    if(self.user.objectId == auth.currentUser.objectId){
+    if([self.user.objectId isEqual: auth.currentUser.objectId]){
         [self performSegueWithIdentifier:@"user_statistic" sender:self];
     } 
 }
@@ -160,8 +200,9 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([[segue identifier] isEqualToString:@"show_statistic"]){
+    if([[segue identifier] isEqualToString:@"user_statistic"]){
         StatisticViewController *view = segue.destinationViewController;
+        view.user = self.user;
     }
     if([[segue identifier] isEqualToString:@"user_questions"]){
         QuestionsViewController *view = segue.destinationViewController;
@@ -175,5 +216,26 @@
         UserAnswersViewController *view = segue.destinationViewController;
         view.user = self.user;
     }
+}
+
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadProfile) forControlEvents:UIControlEventTouchUpInside];
+        [self.scrollView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 @end

@@ -147,7 +147,9 @@
     NSArray *importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
     for(UITextField *field in importantFields){
         if([field.text isEqualToString:@""]){
-            field.placeholder = NSLocalizedString(@"question-form-error-blank", nil);
+            if(field != self.questionText){
+                field.placeholder = NSLocalizedString(@"question-form-error-blank", nil);
+            }
             field.layer.borderWidth = 1.0f;
             field.layer.borderColor = [[UIColor redColor] CGColor];
         }

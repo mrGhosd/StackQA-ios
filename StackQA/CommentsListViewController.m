@@ -333,13 +333,18 @@
     }
 }
 - (IBAction)createComment:(id)sender {
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser.objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
-    if(self.answer){
-        [params addEntriesFromDictionary:@{@"answer_id": self.answer.objectId}];
+    if([self.commentText.text isEqualToString:@""]){
+        [self.commentText.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:0.5] CGColor]];
+    } else {
+        [self setTextViewBorder];
+        NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"user_id": auth.currentUser. objectId, @"question_id": self.question.objectId, @"text": self.commentText.text}];
+        if(self.answer){
+            [params addEntriesFromDictionary:@{@"answer_id": self.answer.objectId}];
+        }
+        Comment *comment = [[Comment alloc] init];
+        comment.commentDelegate = self;
+        [comment create:params];
     }
-    Comment *comment = [[Comment alloc] init];
-    comment.commentDelegate = self;
-    [comment create:params];
 }
 - (void) createCallbackWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
     if(success){

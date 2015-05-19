@@ -71,7 +71,7 @@ static Api *sharedSingleton_ = nil;
         [params addEntriesFromDictionary:copiedParams];
         [params addEntriesFromDictionary:accessToken];
     }
-    NSString *userLocale = [[NSLocale currentLocale] localeIdentifier];
+    NSString *userLocale = [[NSLocale preferredLanguages] objectAtIndex:0];
     [params addEntriesFromDictionary:@{@"device_locale": userLocale}];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
                                                                            URLString:[NSString stringWithFormat: @"%@/api/v1%@", MAIN_URL, url]
