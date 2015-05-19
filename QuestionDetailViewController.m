@@ -136,7 +136,7 @@
     [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", self.question.commentsCount] forState:UIControlStateNormal];
     
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
-    UIImage *profileImage = [[author profileImage] resizedImageByMagick: @"32x32#"];
+    UIImage *profileImage = [[author profileImage] resizedImageByMagick: @"24x24#"];
     
 //    [self.authorProfileLink setImage:profileImage forState:UIControlStateNormal];
     [self.authorProfileLink setTitle: [author getCorrectNaming] forState:UIControlStateNormal];

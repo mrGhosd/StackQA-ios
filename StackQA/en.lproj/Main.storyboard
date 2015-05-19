@@ -130,7 +130,7 @@
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGx-PR-i8G">
                                             <rect key="frame" x="87" y="37" width="472" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -341,6 +341,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Ogd-fs-Y8n"/>
                                                         </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <state key="normal" backgroundImage="greem-tag.png">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -350,9 +351,10 @@
                                                             <action selector="showQuestionCategory:" destination="Xug-EA-AjG" eventType="touchUpInside" id="GpB-dN-MDL"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PC-R5-c6g">
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PC-R5-c6g">
                                                         <rect key="frame" x="486" y="4" width="90" height="60"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" backgroundImage="white-tag.png">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -440,7 +442,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Tuj-Gd-gTz" secondAttribute="bottom" constant="8" id="VFB-MP-eml"/>
                                     <constraint firstItem="Tuj-Gd-gTz" firstAttribute="leading" secondItem="cPS-IS-TKD" secondAttribute="leading" constant="17" id="VzJ-QT-moj"/>
@@ -577,7 +579,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wk0-IQ-fLU" secondAttribute="bottom" constant="8" id="0tM-n5-2Dy"/>
                                     <constraint firstAttribute="bottom" secondItem="sqH-0z-IcO" secondAttribute="bottom" constant="8" id="CRy-Gp-Ru7"/>
@@ -834,7 +836,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Iyz-1J-Xgt" secondAttribute="bottom" constant="6" id="5Pd-Wq-4kN"/>
                                     <constraint firstItem="yzR-9W-VAa" firstAttribute="top" secondItem="T0z-3g-isZ" secondAttribute="top" constant="6" id="7cn-rr-eU9"/>
@@ -1855,11 +1857,11 @@
         <segue reference="jdO-yh-WYz"/>
         <segue reference="dmP-y8-1gh"/>
         <segue reference="x3p-uV-IHe"/>
-        <segue reference="uQv-Ln-Urv"/>
+        <segue reference="zlR-QY-YZy"/>
         <segue reference="g3P-Gf-qaj"/>
-        <segue reference="hPV-is-y6G"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="Mye-8z-EVr"/>
+        <segue reference="q9u-UF-HeO"/>
         <segue reference="84w-cX-ZdW"/>
         <segue reference="j2K-an-z6G"/>
         <segue reference="4oy-yi-Vs6"/>

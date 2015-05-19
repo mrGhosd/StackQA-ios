@@ -344,6 +344,7 @@
 - (void) createCallbackWithParams:(NSDictionary *)params andSuccess:(BOOL)success{
     if(success){
         errorButton.hidden = YES;
+        self.commentText.text = @"";
         Comment *comment = [[Comment alloc] initWithParams:params];
         Question *question = [[Question alloc] initWithParams:params[@"question"]] ;
         User *user = [[User alloc] initWithParams:params[@"user"]];
