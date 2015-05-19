@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AuthorizationViewController.m"
-            timestampString = "449937245.26145"
+            timestampString = "453743325.00185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "@implementation AuthorizationViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AuthorizationViewController.m"
-            timestampString = "449937245.26145"
+            timestampString = "453743325.00185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177">
+            startingLineNumber = "180"
+            endingLineNumber = "180">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -950,11 +950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "-parseCategories:"
             landmarkType = "5">
          </BreakpointContent>
@@ -966,11 +966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "-parseCategories:"
             landmarkType = "5">
          </BreakpointContent>
@@ -982,11 +982,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-uploadCategoriesList"
             landmarkType = "5">
          </BreakpointContent>
@@ -998,11 +998,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-uploadCategoriesList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1152,11 +1152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-initViewData"
             landmarkType = "5">
          </BreakpointContent>
@@ -1168,11 +1168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-getCategoryFromMainList"
             landmarkType = "5">
          </BreakpointContent>
@@ -1348,11 +1348,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-getCategoryFromMainList"
             landmarkType = "5">
          </BreakpointContent>
@@ -2196,11 +2196,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "453593985.573762"
+            timestampString = "453741902.79251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2693,22 +2693,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "QuestionsFormViewController.m"
-            timestampString = "453649540.253801"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
             timestampString = "453593985.573762"
             startingColumnNumber = "9223372036854775807"
@@ -2850,11 +2834,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "453641485.265936"
+            timestampString = "453741902.79251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
             landmarkName = "-actionSheet:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3278,11 +3262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionDetailViewController.m"
-            timestampString = "453733363.218932"
+            timestampString = "453741902.79251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "-sendRequest"
             landmarkType = "5">
          </BreakpointContent>
@@ -3310,11 +3294,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-sendQuestionToServerWithURL:andType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3326,11 +3310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuestionsFormViewController.m"
-            timestampString = "453650235.064986"
+            timestampString = "453756526.798486"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-sendQuestionToServerWithURL:andType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3429,6 +3413,102 @@
             endingLineNumber = "14"
             landmarkName = "-initWithParams:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuestionsFormViewController.h"
+            timestampString = "453755750.019687"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "questionCategory"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[QuestionsFormViewController questionCategory]"
+                  moduleName = "StackQA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/QuestionsFormViewController.h"
+                  timestampString = "453755750.03359"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[QuestionsFormViewController setQuestionCategory:]"
+                  moduleName = "StackQA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/QuestionsFormViewController.h"
+                  timestampString = "453755750.033792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuestionsFormViewController.h"
+            timestampString = "453755911.197148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "saveQuestionButton"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[QuestionsFormViewController saveQuestionButton]"
+                  moduleName = "StackQA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/QuestionsFormViewController.h"
+                  timestampString = "453755785.906295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[QuestionsFormViewController setSaveQuestionButton:]"
+                  moduleName = "StackQA"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vsokoltsov/iOS_projects/StackQA/QuestionsFormViewController.h"
+                  timestampString = "453755785.906688"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "31">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

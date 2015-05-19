@@ -138,7 +138,6 @@
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
     UIImage *profileImage = [[author profileImage] resizedImageByMagick: @"24x24#"];
     
-//    [self.authorProfileLink setImage:profileImage forState:UIControlStateNormal];
     [self.authorProfileLink setTitle: [author getCorrectNaming] forState:UIControlStateNormal];
     
     self.questionRate.text = [NSString stringWithFormat: @"%@", self.question.rate];
@@ -148,6 +147,11 @@
     [self.tagsView setTagCornerRadius:6];
     self.tagsView.backgroundColor = [UIColor clearColor];
 }
+
+- (void) setTagsOnQuestionView{
+    
+}
+
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];

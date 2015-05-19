@@ -53,6 +53,10 @@
 "auth-password" = "Пароль";
 "auth-password-confirmation" = "Подтверждение пароля";
 
+"thank-for-reg" = "Спасибо за регистрацию";
+
+"empty-user" = "Такого пользователя не существует";
+
 /*PROFILE*/
 "questions-count" = "Вопросов";
 "answers-count" = "Ответов";

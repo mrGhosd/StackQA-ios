@@ -97,7 +97,7 @@ static AuthorizationManager *sharedSingleton_ = nil;
         } else {
             [[NSNotificationCenter defaultCenter]
              postNotificationName:@"errorUserProfileDownloadMessage"
-             object:self];
+             object:data];
         }
     }];
 }

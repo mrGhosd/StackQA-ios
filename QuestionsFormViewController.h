@@ -18,7 +18,9 @@
 @property (strong, nonatomic) IBOutlet UITextField *questionTags;
 - (IBAction)saveQuestion:(id)sender;
 - (IBAction)hideForm:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *dismissFormButton;
-@property (strong, nonatomic) IBOutlet UIButton *saveQuestionButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *dismissFormButton;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *saveQuestionButton;
+
 
 @end

@@ -52,6 +52,10 @@
 "auth-password" = "Password";
 "auth-password-confirmation" = "Confirm password";
 
+"thank-for-reg" = "Thank you for registration!";
+
+"empty-user" = "User doesn't exists";
+
 /*PROFILE*/
 "questions-count" = "Questions";
 "answers-count" = "Answers";

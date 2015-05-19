@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerErrorDelegate.h"
 
-@interface AuthorizationViewController : UIViewController
+@interface AuthorizationViewController : UIViewController <ServerErrorDelegate>
 @property (nonatomic) NSInteger *firstView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *actionSegment;

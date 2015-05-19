@@ -29,19 +29,34 @@
     [super viewDidLoad];
     importantFields = @[self.questionTitle, self.questionText, self.questionCategory];
     [self localizeTitles];
+    [self styleTextView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
     
+    [self.view addGestureRecognizer:tap];
     
     auth = [AuthorizationManager sharedInstance];
     
     [self uploadCategoriesList];
 }
+-(void)dismissKeyboard {
+    [self.questionText resignFirstResponder];
+    [self.questionTitle resignFirstResponder];
+    [self.questionTags resignFirstResponder];
+    [self.questionCategory resignFirstResponder];
+}
 - (void) localizeTitles{
-    [self.saveQuestionButton setTitle:NSLocalizedString(@"question-save-form", nil) forState:UIControlStateNormal];
-    [self.dismissFormButton setTitle:NSLocalizedString(@"question-cancel-form", nil) forState:UIControlStateNormal];
     self.questionTitle.placeholder = NSLocalizedString(@"question-title", nil);
     self.questionTags.placeholder = NSLocalizedString(@"question-tags", nil);
-    self.questionCategory.placeholder = NSLocalizedString(@"question-tags", nil);
+    self.questionCategory.placeholder = NSLocalizedString(@"question-category", nil);
 //    [self.questionText ]
+}
+- (void) styleTextView{
+    self.questionText.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:0.5] CGColor];
+    self.questionText.layer.borderWidth = 2.0f;
+    self.questionText.layer.cornerRadius = 5.0;
+    self.questionText.clipsToBounds = YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -54,7 +69,9 @@
         if(success){
             [self parseCategories:data];
         } else {
-        
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }

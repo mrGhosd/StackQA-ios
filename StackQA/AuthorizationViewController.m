@@ -89,7 +89,7 @@
     [self performSegueWithIdentifier:@"profile_view" sender:self ];
 }
 - (void) errorUserProfileDownload{
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Ошибка" message:@"Такой пользователь не найден" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message-title", nil) message:NSLocalizedString(@"empty-user", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
 }
 
@@ -106,9 +106,9 @@
         fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
     }
     if(error.message[@"error"]){
-        fullMessage = @"Такого пользователя не существует";
+        fullMessage = NSLocalizedString(@"empty-user", nil);
     }
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message-title", nil) message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
 }
 
@@ -129,7 +129,10 @@
         NSString *message = [NSString stringWithFormat:@"password_confirmation %@", error.message[@"password confirmation"][0]];
         fullMessage = [NSString stringWithFormat:@"%@ \n %@", fullMessage, message];
     }
-    UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    if([error.status isEqual:@400]){
+        fullMessage = NSLocalizedString(@"server-connection-disabled", nil);
+    }
+    UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message-title", nil) message:fullMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [av show];
 }
 - (void) markFieldAsError:(UITextView *) field{
@@ -157,7 +160,7 @@
     
     [[AuthorizationManager sharedInstance] signUpWithParams:@{@"user": users} andComplition:^(id data, BOOL success){
         if(success){
-            UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Сообщение" message:@"Спасибо за регистрацию!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            UIAlertView *av = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"system-message-title", nil) message: NSLocalizedString(@"thank-for-reg", nil) delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
             [av show];
         } else {
             ServerError *error = [[ServerError alloc] initWithData:data];

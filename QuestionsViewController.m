@@ -417,7 +417,7 @@
         [errorButton setTitle:[error messageText] forState:UIControlStateNormal];
         [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         [errorButton addTarget:self action:@selector(sendRequest) forControlEvents:UIControlEventTouchUpInside];
-        [self.tableView addSubview:errorButton];
+        [self.view addSubview:errorButton];
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
