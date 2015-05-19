@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ServerErrorDelegate.h"
 
-@interface CategoriesViewController : ViewController
+@interface CategoriesViewController : ViewController <ServerErrorDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

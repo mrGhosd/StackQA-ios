@@ -14,6 +14,7 @@
 #import <CoreData+MagicalRecord.h>
 #import "Api.h"
 #import "SCategory.h"
+#import "ServerError.h"
 #import <UIScrollView+InfiniteScroll.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 
@@ -21,6 +22,9 @@
     NSMutableArray *categoriesArray;
     SCategory *selectedCategory;
     NSNumber *pageNumber;
+    UIButton *errorButton;
+    ServerError *serverError;
+    UIRefreshControl *refreshControl;
 }
 
 @end
@@ -32,6 +36,7 @@
     pageNumber = @1;
     categoriesArray = [NSMutableArray new];
     [self defineNavigationPanel];
+    [self refreshInit];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
         pageNumber = [NSNumber numberWithInteger:[pageNumber integerValue] + 1];
@@ -39,6 +44,21 @@
         [tableView finishInfiniteScroll];
     }];
     // Do any additional setup after loading the view.
+}
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadLatestCategories) forControlEvents:UIControlEventValueChanged];
+}
+- (void) loadLatestCategories{
+    pageNumber = @1;
+    categoriesArray = [NSMutableArray new];
+    [self loadCategories];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,11 +85,15 @@
                          animated:YES];
     [[Api sharedManager] sendDataToURL:@"/categories" parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
             [self parseCategoriesData:data];
         } else {
-            
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -86,6 +110,7 @@
         }
         [self.tableView reloadData];
     }
+    [refreshControl endRefreshing];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
@@ -114,7 +139,26 @@
         view.category = selectedCategory;
     }
 }
-
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLatestCategories) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
+}
 /*
 #pragma mark - Navigation
 
