@@ -1482,7 +1482,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zcI-oM-DeX">
                                                 <rect key="frame" x="150" y="488" width="300" height="35"/>
                                                 <color key="backgroundColor" red="1" green="0.44705885648727417" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
-                                                <state key="normal" title="Выйти">
+                                                <state key="normal" title="Sign out">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1855,7 +1855,7 @@
         <segue reference="jdO-yh-WYz"/>
         <segue reference="dmP-y8-1gh"/>
         <segue reference="x3p-uV-IHe"/>
-        <segue reference="zlR-QY-YZy"/>
+        <segue reference="uQv-Ln-Urv"/>
         <segue reference="g3P-Gf-qaj"/>
         <segue reference="hPV-is-y6G"/>
         <segue reference="j9r-YK-ysW"/>

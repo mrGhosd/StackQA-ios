@@ -52,3 +52,23 @@
 "auth-password" = "Password";
 "auth-password-confirmation" = "Confirm password";
 
+/*PROFILE*/
+"questions-count" = "Questions";
+"answers-count" = "Answers";
+"comments-count" = "Comments";
+
+"user-questions-title" = "questions";
+
+/*STATISTIC*/
+
+"rating" = "Rate";
+"answers" = "Answers";
+"positive_questions_count" = "+ for question";
+"negative_questions_count" = "- for question";
+"positive_answers_count" = "+ for answer";
+"negative_answers_count" = "- for answer";
+"helpfull_answers" = "Helpfull answers";
+"first_answer" = "First answers";
+"first_answers_on_own_questions" = "First answer on own question";
+"own_questions_answers" = "Own questions answers";
+

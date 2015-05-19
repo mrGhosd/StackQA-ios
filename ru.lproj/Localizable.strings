@@ -43,3 +43,32 @@
 
 "empty_comments_list" = "Комментариев нет";
 "comment-text" = "Текст";
+
+/*AUTHENTICATION*/
+
+"sign_in" = "Войти";
+"sign_up" = "Зарегистрироваться";
+
+"auth-email" = "Электронная почта";
+"auth-password" = "Пароль";
+"auth-password-confirmation" = "Подтверждение пароля";
+
+/*PROFILE*/
+"questions-count" = "Вопросов";
+"answers-count" = "Ответов";
+"comments-count" = "Комментариев";
+
+"user-questions-title" = "вопросы";
+
+/*STATISTIC*/
+
+"rating" = "Рейтинг";
+"answers" = "Ответов";
+"positive_questions_count" = "+ за вопрос";
+"negative_questions_count" = "- за вопрос";
+"positive_answers_count" = "+ за ответ";
+"negative_answers_count" = "- за ответ";
+"helpfull_answers" = "Полезных ответов на вопрос";
+"first_answer" = "Первых ответов на вопрос";
+"first_answers_on_own_questions" = "Первых ответов на свои вопросы";
+"own_questions_answers" = "Ответов на свои вопросы";

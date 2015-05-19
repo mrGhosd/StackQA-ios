@@ -73,7 +73,7 @@
 }
 - (void) pageType{
     if(self.user_page){
-        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - вопросы", [self.user_page getCorrectNaming]]];
+        [self.navigationItem setTitle:[NSString stringWithFormat:@"%@ - %@", [self.user_page getCorrectNaming], NSLocalizedString(@"user-questions-title", nil) ] ];
         mainURL = [NSString stringWithFormat:@"/users/%@/questions", self.user_page.objectId];
     } else if(self.category){
         mainURL = [NSString stringWithFormat:@"/categories/%@/questions", self.category.objectId];

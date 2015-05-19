@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     auth = [AuthorizationManager sharedInstance];
-    userStatList = @[@"Рейтинг", @"Ответов", @"+ за вопрос", @"- за вопрос", @"+ за ответ", @"- за ответ", @"Полезных ответов на вопрос", @"Первых ответов на вопрос", @"Первых ответов на свои вопросы", @"Ответов на свои вопросы"];
+    userStatList = @[NSLocalizedString(@"rating", nil), NSLocalizedString(@"answers", nil), NSLocalizedString(@"positive_questions_count", nil), NSLocalizedString(@"negative_questions_count", nil),NSLocalizedString(@"positive_answers_count", nil), NSLocalizedString(@"negative_answers_count", nil), NSLocalizedString(@"helpfull_answers", nil), NSLocalizedString(@"first_answer", nil), NSLocalizedString(@"first_answers_on_own_questions", nil), NSLocalizedString(@"own_questions_answers", nil)];
     statistic = auth.currentUser.statistic;
     userStatValuesList = @[ auth.currentUser.rate,
                             auth.currentUser.answersCount,

@@ -34,7 +34,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideImageView) name:@"hideImageView" object:nil];
     auth = [AuthorizationManager sharedInstance];
     paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
-    userParams= @[@"Вопросов:", @"Ответов:", @"Комментариев"];
+    userParams= @[NSLocalizedString(@"questions-count", nil), NSLocalizedString(@"answers-count", nil), NSLocalizedString(@"comments-count", nil)];
     userValues = @[auth.currentUser.questionsCount, auth.currentUser.answersCount, auth.currentUser.commentsCount];
     store = [UICKeyChainStore keyChainStore];
     self.userParamsTable.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
