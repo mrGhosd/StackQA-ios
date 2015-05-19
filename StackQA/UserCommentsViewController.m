@@ -16,6 +16,7 @@
 #import "AuthorizationManager.h"
 #import <MBProgressHUD.h>
 #import <UIScrollView+InfiniteScroll.h>
+#import "ServerError.h"
 #import <UIImage-ResizeMagick/UIImage+ResizeMagick.h>
 
 @interface UserCommentsViewController (){
@@ -28,6 +29,9 @@
     Comment *selectedComment;
     NSManagedObjectContext *localContext;
     AuthorizationManager *auth;
+    UIButton *errorButton;
+    UIRefreshControl *refreshControl;
+    ServerError *serverError;
 }
 
 @end
@@ -41,6 +45,7 @@
     auth = [AuthorizationManager sharedInstance];
     commentsList = [NSMutableArray new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadComments:) name:@"updateComment" object:nil];
+    [self refreshInit];
     [self loadUserCommentsData];
     self.tableView.infiniteScrollIndicatorStyle = UIActivityIndicatorViewStyleWhite;
     [self.tableView addInfiniteScrollWithHandler:^(UITableView* tableView) {
@@ -83,12 +88,33 @@
                          animated:YES];
     [[Api sharedManager] sendDataToURL:[NSString stringWithFormat: @"/users/%@/comments", self.user.objectId] parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
+            errorButton.hidden = YES;
             [self parseData:data];
         } else {
-            
+            serverError = [[ServerError alloc] initWithData:data];
+            serverError.delegate = self;
+            [serverError handle];
         }
     }];
 }
+
+- (void) refreshInit{
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    [self.tableView addSubview:refreshView]; //the tableView is a IBOutlet
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor whiteColor];
+    refreshControl.backgroundColor = [UIColor grayColor];
+    [refreshView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(loadLatestComments) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void) loadLatestComments{
+    pageNumber = @1;
+    commentsList = [NSMutableArray new];
+    [self loadUserCommentsData];
+}
+
 - (void) parseData: (id)data{
     NSMutableArray *comments = data[@"users"];
     if(data[@"users"] != [NSNull null]){
@@ -108,6 +134,7 @@
         }
         [self.tableView reloadData];
     }
+    [refreshControl endRefreshing];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
 }
@@ -125,9 +152,6 @@
     static NSString *CellIdentifier = @"commentCell";
     Comment *commentItem = commentsList[indexPath.row];
     UserCommentTableViewCell *cell = (UserCommentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    UIImage* resizedImage = [[commentItem.user profileImage] resizedImageByMagick: @"32x32#"];
-//    [cell. setTitle:[commentItem.user getCorrectNaming] forState:UIControlStateNormal];
-//    [cell.userName setImage:resizedImage forState:UIControlStateNormal];
     [cell setParametersForComment:commentItem];
     [cell.commentEntityLink addTarget:self action:@selector(commentEntityClicked:) forControlEvents:UIControlEventTouchUpInside];
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
@@ -272,10 +296,33 @@
 }
 - (void) destroyCallback:(BOOL)success path:(NSIndexPath *)path{
     if(success){
+        errorButton.hidden = YES;
         [commentsList removeObjectAtIndex:path.row];
         [self.tableView reloadData];
     } else {
-        
+        serverError = [[ServerError alloc] init];
+        serverError.delegate = self;
+        [serverError callErrorHAndlerWithoutData];
     }
+}
+- (void) handleServerErrorWithError:(id)error{
+    if(errorButton){
+        errorButton.hidden = NO;
+    } else {
+        errorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 40)];
+        errorButton.backgroundColor = [UIColor lightGrayColor];
+        NSString *errorText;
+        if([error messageText]){
+            errorText = [error messageText];
+        } else {
+            errorText = NSLocalizedString(@"server-connection-disabled", nil);
+        }
+        [errorButton setTitle:errorText forState:UIControlStateNormal];
+        [errorButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
+        [errorButton addTarget:self action:@selector(loadLatestComments) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView addSubview:errorButton];
+    }
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [refreshControl endRefreshing];
 }
 @end

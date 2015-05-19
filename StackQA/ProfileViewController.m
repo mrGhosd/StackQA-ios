@@ -45,11 +45,6 @@
     self.userAvatar.layer.borderWidth = 0;
     self.userFullName.text = [self.user getCorrectNaming];
     [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
-    self.signOutButton.layer.cornerRadius = 4.f;
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
-    singleTap.numberOfTapsRequired = 1;
-    [self.userAvatar setUserInteractionEnabled:YES];
-    [self.userAvatar addGestureRecognizer:singleTap];
 
     // Do any additional setup after loading the view.
 }

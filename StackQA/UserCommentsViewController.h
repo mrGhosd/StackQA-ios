@@ -9,8 +9,9 @@
 #import "ViewController.h"
 #import "User.h"
 #import "CommentDelegate.h"
+#import "ServerErrorDelegate.h"
 
-@interface UserCommentsViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate>
+@interface UserCommentsViewController : ViewController <UITableViewDataSource, UITableViewDelegate, CommentDelegate, ServerErrorDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong) User *user;
 @end
