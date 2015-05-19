@@ -14,8 +14,16 @@
     if(self == [super init]){
         self.objectId = params[@"id"];
         self.email = params[@"email"];
-        self.surname = [NSString stringWithFormat:@"%@", params[@"surname"]];
-        self.name = [NSString stringWithFormat:@"%@", params[@"name"]];
+        if(params[@"surname"]== [NSNull null]){
+            self.surname = @"";
+        } else {
+            self.surname = params[@"surname"];
+        }
+        if(params[@"name"] == [NSNull null]){
+            self.name = @"";
+        } else {
+            self.name = params[@"name"];
+        }
         self.correctNaming = params[@"correct_naming"];
         self.rate = params[@"rate"];
         self.questionsCount = params[@"questions_count"];
@@ -30,14 +38,14 @@
     return img;
 }
 - (NSString *) getCorrectNaming{
-    if(self.correctNaming != nil){
-        return self.correctNaming;
+    NSString *trimSurname  = [self.surname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *trimName  = [self.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
+    if((![self.surname  isEqualToString: @""] && ![self.name  isEqualToString: @""]) &&
+       (self.surname.length > 0 || self.name.length > 0)){
+        return [NSString stringWithFormat:@"%@ %@", self.surname, self.name];
     } else {
-        if(self.surname != @"" && self.name != @""){
-            return [NSString stringWithFormat:@"%@ %@", self.surname, self.name];
-        } else {
-            return self.email;
-        }
+        return self.email;
     }
 }
 @end

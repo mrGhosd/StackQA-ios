@@ -64,7 +64,7 @@
         cell.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
         cell.profileImage.layer.borderWidth = 1.0;
 //        cell.profileImage.layer.borderWidth = 0;
-        cell.profileName.text = auth.currentUser.correctNaming;
+        cell.profileName.text = [auth.currentUser getCorrectNaming];
         cell.backgroundColor = [UIColor clearColor];
 //        cell.backgroundColor = [UIColor colorWithRed:.28 green:.28 blue:.28 alpha:1];
         [cell.profileRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate ] forState:UIControlStateNormal];

@@ -138,7 +138,7 @@
     [self.authorProfileLink setTitle:nil forState:UIControlStateNormal];
     UIImage *profileImage = [[author profileImage] resizedImageByMagick: @"32x32#"];
     
-    [self.authorProfileLink setImage:profileImage forState:UIControlStateNormal];
+//    [self.authorProfileLink setImage:profileImage forState:UIControlStateNormal];
     [self.authorProfileLink setTitle: [author getCorrectNaming] forState:UIControlStateNormal];
     
     self.questionRate.text = [NSString stringWithFormat: @"%@", self.question.rate];
@@ -249,6 +249,9 @@
     [self.question changeQuestionRate:@"minus"];
 }
 - (void) designRateButtonsForAction: (NSString *) action{
+    if(action == [NSNull null]){
+        return;
+    }
     if([action isEqualToString:@"plus"]){
         if(self.downRateButton.tag == 2){
             [self designRateButtonsForAction: @""];

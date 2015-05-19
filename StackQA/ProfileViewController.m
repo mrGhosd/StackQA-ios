@@ -45,6 +45,11 @@
     self.userAvatar.layer.borderWidth = 0;
     self.userFullName.text = [self.user getCorrectNaming];
     [self.userRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate] forState:UIControlStateNormal];
+    if(auth.currentUser && auth.currentUser.objectId == self.user.objectId){
+        self.signOutButton.hidden = NO;
+    } else {
+        self.signOutButton.hidden = YES;
+    }
 
     // Do any additional setup after loading the view.
 }

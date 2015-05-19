@@ -25,6 +25,7 @@
     [self.categoryText loadHTMLString:self.category.desc baseURL:nil];
     CGSize size = [self.category.desc sizeWithAttributes:nil];
     currentHeight = size.width / 8;
+    self.categoryText.delegate = self;
     if(currentHeight >= 100){
         self.webViewHeight.constant = currentHeight;
     }
@@ -37,7 +38,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
+    if ( inType == UIWebViewNavigationTypeLinkClicked ) {
+        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+        return NO;
+    }
+    return YES;
+}
 /*
 #pragma mark - Navigation
 
