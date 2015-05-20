@@ -66,6 +66,7 @@
                             <constraint firstItem="QPr-7g-SDj" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="8IP-00-cJc"/>
                             <constraint firstItem="mWc-nm-VWS" firstAttribute="top" secondItem="Cob-e8-sIx" secondAttribute="bottom" constant="20" id="8N2-0e-aXU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2yt-cd-ZlU" secondAttribute="trailing" constant="10" id="AsL-h0-7MA"/>
+                            <constraint firstItem="QPr-7g-SDj" firstAttribute="top" secondItem="2yt-cd-ZlU" secondAttribute="bottom" constant="8" id="Idw-ds-dW0"/>
                             <constraint firstItem="2yt-cd-ZlU" firstAttribute="top" secondItem="mWc-nm-VWS" secondAttribute="bottom" constant="20" id="Juh-bG-JQV"/>
                             <constraint firstItem="2yt-cd-ZlU" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="MLn-Yg-US0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mWc-nm-VWS" secondAttribute="trailing" constant="10" id="NwH-eP-eE3"/>
@@ -338,8 +339,11 @@
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHN-Uj-Xxj">
                                                         <rect key="frame" x="8" y="4" width="101" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="yTl-UN-wtW"/>
+                                                        </constraints>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <state key="normal">
+                                                        <state key="normal" backgroundImage="greem-tag.png">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -350,8 +354,11 @@
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PC-R5-c6g">
                                                         <rect key="frame" x="475" y="4" width="101" height="27"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="Evw-l9-5PU"/>
+                                                        </constraints>
                                                         <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal">
+                                                        <state key="normal" backgroundImage="white-tag.png">
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -437,7 +444,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Tuj-Gd-gTz" secondAttribute="bottom" constant="8" id="VFB-MP-eml"/>
                                     <constraint firstItem="Tuj-Gd-gTz" firstAttribute="leading" secondItem="cPS-IS-TKD" secondAttribute="leading" constant="17" id="VzJ-QT-moj"/>
@@ -566,7 +573,7 @@
                                             <constraint firstAttribute="width" constant="58" id="5UX-fW-RP0"/>
                                             <constraint firstAttribute="height" constant="32" id="BzW-mm-zAh"/>
                                         </constraints>
-                                        <state key="normal" image="message.png">
+                                        <state key="normal" backgroundImage="send-message.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -574,7 +581,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="Wk0-IQ-fLU" secondAttribute="bottom" constant="8" id="0tM-n5-2Dy"/>
                                     <constraint firstAttribute="bottom" secondItem="sqH-0z-IcO" secondAttribute="bottom" constant="8" id="CRy-Gp-Ru7"/>
@@ -809,13 +816,13 @@
                             <view tag="2" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0z-3g-isZ">
                                 <rect key="frame" x="0.0" y="132" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-9W-VAa">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-9W-VAa">
                                         <rect key="frame" x="528" y="6" width="58" height="32"/>
                                         <color key="backgroundColor" red="0.31467074969999997" green="1" blue="0.30157442699999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="58" id="HCz-pO-ZBz"/>
                                         </constraints>
-                                        <state key="normal" image="message.png">
+                                        <state key="normal" backgroundImage="send-message.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -823,37 +830,19 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iyz-1J-Xgt">
-                                        <rect key="frame" x="80" y="6" width="440" height="32"/>
+                                        <rect key="frame" x="8" y="6" width="512" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAX-8u-3oC">
-                                        <rect key="frame" x="8" y="6" width="58" height="32"/>
-                                        <color key="backgroundColor" red="0.87843143940000001" green="0.87843143940000001" blue="0.87843143940000001" alpha="1" colorSpace="deviceRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="oG9-k8-jXY"/>
-                                        </constraints>
-                                        <state key="normal" image="settings48.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showSettings:" destination="8TF-aP-r7l" eventType="touchUpInside" id="8GX-uf-Vh8"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="Iyz-1J-Xgt" secondAttribute="centerX" id="FGj-gj-V5x"/>
+                                    <constraint firstItem="Iyz-1J-Xgt" firstAttribute="leading" secondItem="T0z-3g-isZ" secondAttribute="leading" constant="8" id="9en-SC-cva"/>
                                     <constraint firstAttribute="trailing" secondItem="yzR-9W-VAa" secondAttribute="trailing" constant="14" id="M4l-wc-mwH"/>
                                     <constraint firstItem="yzR-9W-VAa" firstAttribute="leading" secondItem="Iyz-1J-Xgt" secondAttribute="trailing" constant="8" id="QQt-pX-b4p"/>
-                                    <constraint firstItem="Iyz-1J-Xgt" firstAttribute="leading" secondItem="pAX-8u-3oC" secondAttribute="trailing" constant="8" id="YUu-DW-WgJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="pAX-8u-3oC" secondAttribute="bottom" constant="6" id="bQq-pF-tjl"/>
                                     <constraint firstAttribute="bottom" secondItem="yzR-9W-VAa" secondAttribute="bottom" constant="6" id="d1C-Ue-p6v"/>
                                     <constraint firstItem="Iyz-1J-Xgt" firstAttribute="top" secondItem="T0z-3g-isZ" secondAttribute="top" constant="6" id="lLi-25-FEI"/>
-                                    <constraint firstItem="pAX-8u-3oC" firstAttribute="leading" secondItem="T0z-3g-isZ" secondAttribute="leading" constant="8" id="oSp-e9-03S"/>
-                                    <constraint firstAttribute="centerY" secondItem="Iyz-1J-Xgt" secondAttribute="centerY" id="v1b-Fs-Y3A"/>
-                                    <constraint firstItem="pAX-8u-3oC" firstAttribute="top" secondItem="T0z-3g-isZ" secondAttribute="top" constant="6" id="vrP-u0-hT0"/>
                                     <constraint firstItem="yzR-9W-VAa" firstAttribute="top" secondItem="T0z-3g-isZ" secondAttribute="top" constant="6" id="wdA-jI-6Ta"/>
                                     <constraint firstAttribute="bottom" secondItem="Iyz-1J-Xgt" secondAttribute="bottom" constant="6" id="ypT-Fn-X2c"/>
                                 </constraints>
@@ -874,7 +863,6 @@
                         <outlet property="actionView" destination="T0z-3g-isZ" id="F6d-up-wxW"/>
                         <outlet property="actionViewText" destination="Iyz-1J-Xgt" id="u3M-S4-4Du"/>
                         <outlet property="sendButton" destination="yzR-9W-VAa" id="1ec-Gq-bBD"/>
-                        <outlet property="settingsButton" destination="pAX-8u-3oC" id="Kw3-Cu-fvr"/>
                         <outlet property="tableView" destination="TLS-zL-hgS" id="Kgk-Kc-fws"/>
                         <outlet property="tableViewBottom" destination="oZm-1y-xxk" id="C5k-ku-fIN"/>
                         <outlet property="textViewBottom" destination="jUW-ab-2WZ" id="rK9-LV-eNS"/>
@@ -1188,7 +1176,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-NP-8e7">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDp-NP-8e7">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acH-U6-0ZP">
@@ -1421,10 +1409,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Y7-Lq4">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Y7-Lq4">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CJp-BV-o12">
@@ -1540,6 +1528,7 @@
                         <barButtonItem key="leftBarButtonItem" image="menu-32.png" id="Sui-qw-sU9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="scrollView" destination="iCF-7w-aPY" id="MfK-Fd-VxU"/>
                         <outlet property="sidebarButton" destination="Sui-qw-sU9" id="wbp-Kf-8lK"/>
                         <outlet property="signOutButton" destination="zcI-oM-DeX" id="Muu-A8-eqK"/>
                         <outlet property="userAvatar" destination="CJp-BV-o12" id="Gvt-Te-sPg"/>
@@ -1845,26 +1834,27 @@
         <image name="child1.png" width="24" height="24"/>
         <image name="down4-32.png" width="32" height="32"/>
         <image name="eye110.png" width="32" height="32"/>
+        <image name="greem-tag.png" width="141" height="60"/>
         <image name="mark1.png" width="32" height="32"/>
         <image name="menu-32.png" width="32" height="32"/>
-        <image name="message.png" width="32" height="32"/>
         <image name="move9.png" width="32" height="32"/>
         <image name="plus-32.png" width="32" height="32"/>
-        <image name="settings48.png" width="32" height="32"/>
+        <image name="send-message.png" width="115" height="60"/>
         <image name="up4-32.png" width="32" height="32"/>
+        <image name="white-tag.png" width="141" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dmP-y8-1gh"/>
-        <segue reference="x3p-uV-IHe"/>
-        <segue reference="zlR-QY-YZy"/>
-        <segue reference="hPV-is-y6G"/>
-        <segue reference="g3P-Gf-qaj"/>
-        <segue reference="j9r-YK-ysW"/>
-        <segue reference="jdO-yh-WYz"/>
-        <segue reference="pXd-z1-64T"/>
-        <segue reference="wbe-Bg-hYN"/>
+        <segue reference="Xg7-7q-VeD"/>
+        <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>
-        <segue reference="5Em-mt-R6W"/>
+        <segue reference="uQv-Ln-Urv"/>
+        <segue reference="jdO-yh-WYz"/>
+        <segue reference="x3p-uV-IHe"/>
+        <segue reference="j9r-YK-ysW"/>
+        <segue reference="g3P-Gf-qaj"/>
+        <segue reference="hPV-is-y6G"/>
+        <segue reference="Mye-8z-EVr"/>
+        <segue reference="84w-cX-ZdW"/>
     </inferredMetricsTieBreakers>
 </document>

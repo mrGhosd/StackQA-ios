@@ -1444,7 +1444,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="iCF-7w-aPY">
                                 <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6g9-Y7-Lq4">
@@ -1886,17 +1886,17 @@
         <image name="white-tag.png" width="141" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jdO-yh-WYz"/>
-        <segue reference="dmP-y8-1gh"/>
+        <segue reference="Ogc-fD-TQd"/>
+        <segue reference="4oy-yi-Vs6"/>
+        <segue reference="hPV-is-y6G"/>
         <segue reference="x3p-uV-IHe"/>
         <segue reference="uQv-Ln-Urv"/>
+        <segue reference="dmP-y8-1gh"/>
+        <segue reference="jdO-yh-WYz"/>
+        <segue reference="j2K-an-z6G"/>
         <segue reference="g3P-Gf-qaj"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="Mye-8z-EVr"/>
-        <segue reference="q9u-UF-HeO"/>
         <segue reference="84w-cX-ZdW"/>
-        <segue reference="j2K-an-z6G"/>
-        <segue reference="4oy-yi-Vs6"/>
-        <segue reference="Ogc-fD-TQd"/>
     </inferredMetricsTieBreakers>
 </document>

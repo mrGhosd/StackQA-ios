@@ -56,7 +56,8 @@
     refreshControl.tintColor = [UIColor whiteColor];
     refreshControl.backgroundColor = [UIColor grayColor];
     [refreshView addSubview:refreshControl];
-    [refreshControl addTarget:self action:@selector(loadProfile) forControlEvents:UIControlEventValueChanged];
+    [refreshControl addTarget:self action:@selector(loadProfile
+                                                    ) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void) loadProfile{
