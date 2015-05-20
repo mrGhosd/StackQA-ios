@@ -571,7 +571,7 @@
                                         <color key="backgroundColor" red="0.31467074969999997" green="1" blue="0.30157442699999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="58" id="5UX-fW-RP0"/>
-                                            <constraint firstAttribute="height" constant="32" id="BzW-mm-zAh"/>
+                                            <constraint firstAttribute="height" constant="32" id="DSt-Q2-DJc"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="send-message.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -647,10 +647,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="ZoJ-di-PoA" secondAttribute="trailing" id="aAG-Sb-RXV"/>
-                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="top" secondItem="R1g-dp-HKs" secondAttribute="top" id="bAc-K6-xUd"/>
-                                            <constraint firstAttribute="bottom" secondItem="ZoJ-di-PoA" secondAttribute="bottom" constant="30" id="g0s-SJ-cGD"/>
-                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="leading" secondItem="R1g-dp-HKs" secondAttribute="leading" id="lry-QZ-l2y"/>
+                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="leading" secondItem="R1g-dp-HKs" secondAttribute="leading" constant="8" id="6P4-mm-oVe"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZoJ-di-PoA" secondAttribute="bottom" constant="30" id="7PL-hd-sfn"/>
+                                            <constraint firstItem="ZoJ-di-PoA" firstAttribute="top" secondItem="R1g-dp-HKs" secondAttribute="top" constant="30" id="S2D-tI-fSx"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZoJ-di-PoA" secondAttribute="trailing" constant="8" id="Zec-tm-uy0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -696,7 +696,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Mt7-zn-BHm" firstAttribute="leading" secondItem="03i-qZ-Vnv" secondAttribute="leading" constant="8" id="6Fq-Wi-tqV"/>
                                     <constraint firstAttribute="bottom" secondItem="VkS-vx-e3i" secondAttribute="bottom" constant="10" id="CB0-D2-2Y8"/>
@@ -816,10 +816,11 @@
                             <view tag="2" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0z-3g-isZ">
                                 <rect key="frame" x="0.0" y="132" width="600" height="44"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-9W-VAa">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzR-9W-VAa">
                                         <rect key="frame" x="528" y="6" width="58" height="32"/>
                                         <color key="backgroundColor" red="0.31467074969999997" green="1" blue="0.30157442699999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="4sv-yT-Zjg"/>
                                             <constraint firstAttribute="width" constant="58" id="HCz-pO-ZBz"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="send-message.png">
@@ -829,7 +830,7 @@
                                             <action selector="createAnswer:" destination="8TF-aP-r7l" eventType="touchUpInside" id="V6B-cq-haJ"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iyz-1J-Xgt">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iyz-1J-Xgt">
                                         <rect key="frame" x="8" y="6" width="512" height="32"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1853,7 +1854,7 @@
         <segue reference="x3p-uV-IHe"/>
         <segue reference="j9r-YK-ysW"/>
         <segue reference="g3P-Gf-qaj"/>
-        <segue reference="hPV-is-y6G"/>
+        <segue reference="q9u-UF-HeO"/>
         <segue reference="Mye-8z-EVr"/>
         <segue reference="84w-cX-ZdW"/>
     </inferredMetricsTieBreakers>

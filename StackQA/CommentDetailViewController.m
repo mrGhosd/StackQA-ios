@@ -26,9 +26,16 @@
     [self setActionView];
     self.comment.commentDelegate = self;
     auth = [AuthorizationManager sharedInstance];
+    [self styleTextView];
     self.commentText.text = self.comment.text;
     self.commentText.autocorrectionType = UITextAutocorrectionTypeNo;
     // Do any additional setup after loading the view.
+}
+- (void) styleTextView{
+    self.commentText.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:0.5] CGColor];
+    self.commentText.layer.borderWidth = 2.0f;
+    self.commentText.layer.cornerRadius = 5.0;
+    self.commentText.clipsToBounds = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{

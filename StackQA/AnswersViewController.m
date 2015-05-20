@@ -503,7 +503,6 @@
 }
 - (void) viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 - (void) complaintToAnswerWithSuccess: (BOOL) success andIndexPath: (NSIndexPath *) path{
     if(success){
