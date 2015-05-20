@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     self.answerDismissButton.layer.cornerRadius = 5.0;
     self.answerSaveButton.layer.cornerRadius = 5.0;
+    [self styleTextView];
     self.answerDetailTextView.text = self.answer.text;
     self.answerDetailTextView.autocorrectionType = UITextAutocorrectionTypeNo;
 
@@ -41,6 +42,13 @@
     }
 
     self.answerDetailTextViewHeightConstraint.constant = viewHeight;
+}
+
+- (void) styleTextView{
+    self.answerDetailTextView.layer.borderColor = [[[UIColor lightGrayColor] colorWithAlphaComponent:0.5] CGColor];
+    self.answerDetailTextView.layer.borderWidth = 2.0f;
+    self.answerDetailTextView.layer.cornerRadius = 5.0;
+    self.answerDetailTextView.clipsToBounds = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated{

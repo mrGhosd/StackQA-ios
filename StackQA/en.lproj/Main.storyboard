@@ -933,7 +933,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="hDV-zT-XcO" secondAttribute="trailing" constant="8" id="NON-Pr-tSB"/>
                                             <constraint firstAttribute="bottom" secondItem="hDV-zT-XcO" secondAttribute="bottom" constant="30" id="WrR-sU-uxe"/>
-                                            <constraint firstItem="hDV-zT-XcO" firstAttribute="top" secondItem="8fu-Nc-eme" secondAttribute="top" constant="50" id="k5f-hW-snM"/>
+                                            <constraint firstItem="hDV-zT-XcO" firstAttribute="top" secondItem="8fu-Nc-eme" secondAttribute="top" constant="30" id="k5f-hW-snM"/>
                                             <constraint firstItem="hDV-zT-XcO" firstAttribute="leading" secondItem="8fu-Nc-eme" secondAttribute="leading" constant="8" id="mt2-LV-XvL"/>
                                         </constraints>
                                     </view>

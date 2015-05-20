@@ -1892,11 +1892,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswerDetailViewController.m"
-            timestampString = "453662485.464899"
+            timestampString = "453856787.581894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -1908,11 +1908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StackQA/AnswerDetailViewController.m"
-            timestampString = "453662485.464899"
+            timestampString = "453856787.581894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
