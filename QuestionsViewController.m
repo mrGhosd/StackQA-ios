@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "QuestionDetailViewController.h"
 #import "QuestionsFormViewController.h"
+#import "CommentsListViewController.h"
 #import "CategoryDetailViewController.h"
 #import <CoreData+MagicalRecord.h>
 #import "QuestionsTableViewCell.h"
@@ -50,6 +51,7 @@
     self.questions = [NSMutableArray new];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(currentUserValue) name:@"getCurrentUser" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(answersListForQuestion:) name:@"answersListForQuestion" object:currentQuestion];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commentsListForQuestion:) name:@"commentsListForQuestion" object:currentQuestion];
     auth = [AuthorizationManager sharedInstance];
     defaultQuestionURL = @"/questions";
     filter = @"";
@@ -70,6 +72,10 @@
 - (void) answersListForQuestion:(NSNotification *) notification{
     currentQuestion = notification.object;
     [self performSegueWithIdentifier:@"showAnswersListForQuestion" sender:self];
+}
+- (void) commentsListForQuestion: (NSNotification *) notification{
+    currentQuestion = notification.object;
+    [self performSegueWithIdentifier:@"comments_list" sender:self];
 }
 - (void) pageType{
     if(self.user_page){
@@ -335,6 +341,10 @@
     if([[segue identifier] isEqualToString:@"categoryDetail"]){
         CategoryDetailViewController *view = segue.destinationViewController;
         view.category = self.category;
+    }
+    if([[segue identifier] isEqualToString:@"comments_list"]){
+        CommentsListViewController *view = segue.destinationViewController;
+        view.question = currentQuestion;
     }
 }
 

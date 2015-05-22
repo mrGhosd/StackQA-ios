@@ -212,6 +212,7 @@
                         <segue destination="L2G-jD-e0s" kind="presentation" identifier="showQuestionForm" id="Zma-F1-cBs"/>
                         <segue destination="8TF-aP-r7l" kind="show" identifier="showAnswersListForQuestion" id="1uy-uL-sgR"/>
                         <segue destination="cL6-eH-Cbk" kind="show" identifier="categoryDetail" id="ZLp-YM-B5i"/>
+                        <segue destination="cyX-9e-sgK" kind="show" identifier="comments_list" id="31I-FQ-iOf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YUx-wJ-w8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1850,12 +1851,12 @@
         <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>
-        <segue reference="uQv-Ln-Urv"/>
         <segue reference="jdO-yh-WYz"/>
+        <segue reference="uQv-Ln-Urv"/>
+        <segue reference="Zma-F1-cBs"/>
+        <segue reference="1uy-uL-sgR"/>
         <segue reference="x3p-uV-IHe"/>
-        <segue reference="j9r-YK-ysW"/>
-        <segue reference="g3P-Gf-qaj"/>
-        <segue reference="q9u-UF-HeO"/>
+        <segue reference="31I-FQ-iOf"/>
         <segue reference="Mye-8z-EVr"/>
         <segue reference="84w-cX-ZdW"/>
     </inferredMetricsTieBreakers>

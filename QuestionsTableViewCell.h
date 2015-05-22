@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *dict;
 @property (strong, nonatomic) IBOutlet UIButton *answersCount;
 @property (strong, nonatomic) IBOutlet UIButton *commentsCount;
+- (IBAction)showCommentsList:(id)sender;
 - (IBAction)showAnswersList:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *viewsCount;
 - (void) setQuestionData: (Question *) question;

@@ -26,6 +26,12 @@
 - (void) setQuestionData: (Question *) question{
     self.question = question ;
 }
+- (IBAction)showCommentsList:(id)sender {
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"commentsListForQuestion"
+     object:self.question];
+}
+
 - (IBAction)showAnswersList:(id)sender {
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"answersListForQuestion"
