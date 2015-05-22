@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFNetworking.h>
+#import <AFNetworking/AFNetworking.h>
 
 typedef void(^ResponseCopmlition)(id data, BOOL success);
 typedef void (^requestCompletedBlock)(id);

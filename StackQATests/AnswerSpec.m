@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <XCTest/XCTest.h>
+//#import <XCTest/XCTest.h>
 #import <Kiwi.h>
 #import "Answer.h"
 #import "Question.h"

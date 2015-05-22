@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "770325537771D802062DA36C"
-               BuildableName = "libPods-StackQA-BENTagsView.a"
-               BlueprintName = "Pods-StackQA-BENTagsView"
+               BlueprintIdentifier = "5CC6A78AA889D2883793EF41"
+               BuildableName = "libPods-stackqatest.a"
+               BlueprintName = "Pods-stackqatest"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

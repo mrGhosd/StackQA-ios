@@ -16,7 +16,7 @@ target 'StackQA' do
     pod 'UIScrollView-InfiniteScroll'
 end
 
-target 'StackQATests' do
+target 'stackqatest' do
     pod 'OCMockito'
     pod 'Nocilla'
     pod 'Kiwi'

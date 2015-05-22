@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64C69EB41A6C4F01006AB0AC"
-               BuildableName = "StackQA.app"
+               BuildableName = "stackqa.app"
                BlueprintName = "StackQA"
                ReferencedContainer = "container:StackQA.xcodeproj">
             </BuildableReference>
@@ -29,8 +29,22 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64C69ED01A6C4F01006AB0AC"
-               BuildableName = "StackQATests.xctest"
+               BuildableName = "stackqatests.xctest"
                BlueprintName = "StackQATests"
+               ReferencedContainer = "container:StackQA.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "64DE3CB71B0EA53F00320AF7"
+               BuildableName = "stackqatest.xctest"
+               BlueprintName = "stackqatest"
                ReferencedContainer = "container:StackQA.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +61,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "64C69ED01A6C4F01006AB0AC"
-               BuildableName = "StackQATests.xctest"
+               BuildableName = "stackqatests.xctest"
                BlueprintName = "StackQATests"
+               ReferencedContainer = "container:StackQA.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "64DE3CB71B0EA53F00320AF7"
+               BuildableName = "stackqatest.xctest"
+               BlueprintName = "stackqatest"
                ReferencedContainer = "container:StackQA.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64C69EB41A6C4F01006AB0AC"
-            BuildableName = "StackQA.app"
+            BuildableName = "stackqa.app"
             BlueprintName = "StackQA"
             ReferencedContainer = "container:StackQA.xcodeproj">
          </BuildableReference>
@@ -71,14 +95,13 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-      allowLocationSimulation = "YES"
-      language = "ru">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64C69EB41A6C4F01006AB0AC"
-            BuildableName = "StackQA.app"
+            BuildableName = "stackqa.app"
             BlueprintName = "StackQA"
             ReferencedContainer = "container:StackQA.xcodeproj">
          </BuildableReference>
@@ -97,7 +120,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "64C69EB41A6C4F01006AB0AC"
-            BuildableName = "StackQA.app"
+            BuildableName = "stackqa.app"
             BlueprintName = "StackQA"
             ReferencedContainer = "container:StackQA.xcodeproj">
          </BuildableReference>
@@ -108,6 +131,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "StackQA"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
