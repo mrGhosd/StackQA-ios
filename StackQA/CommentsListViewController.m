@@ -150,6 +150,8 @@
     }
 }
 - (void) loadCommentsData{
+    [MBProgressHUD showHUDAddedTo:self.view
+                         animated:YES];
     [[Api sharedManager] sendDataToURL:url parameters:@{@"page": pageNumber} requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
             errorButton.hidden = YES;
@@ -181,7 +183,7 @@
         [self.tableView reloadData];
         [refreshControl endRefreshing];
     }
-    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

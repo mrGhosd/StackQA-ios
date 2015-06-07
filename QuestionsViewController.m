@@ -252,7 +252,9 @@
     cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
     [self setQuestionRateViewForCell:cell andItem:questionItem];
     [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
+    [cell.viewsCount addTarget:self action:@selector(viewsClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answersCount] forState:UIControlStateNormal];
+    [cell.commentsCount addTarget:self action:@selector(commentsClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.commentsCount] forState:UIControlStateNormal];
     
     if(auth.currentUser && [questionItem.userId integerValue] == [auth.currentUser.objectId integerValue]){
@@ -266,6 +268,17 @@
         cell.delegate = self;
     }
     return cell;
+}
+- (void) viewsClick: (UIButton *) sender{
+    QuestionsTableViewCell *cell = [[[[sender superview] superview] superview] superview];
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    [self tableView:self.tableView didSelectRowAtIndexPath:path];
+}
+- (void) commentsClick: (UIButton *) sender{
+    QuestionsTableViewCell *cell = [[[[sender superview] superview] superview] superview];
+    NSIndexPath *path = [self.tableView indexPathForCell:cell];
+    currentQuestion = self.questions[path.row];
+    [self performSegueWithIdentifier:@"comments_list" sender:self];
 }
 
 - (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
