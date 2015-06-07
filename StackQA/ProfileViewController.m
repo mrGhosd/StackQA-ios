@@ -197,6 +197,9 @@
     [store removeItemForKey:@"email"];
     [store removeItemForKey:@"password"];
     [store removeItemForKey:@"access_token"];
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"signedOut"
+     object:self];
     [self performSegueWithIdentifier:@"logOut" sender:self];
 }
 

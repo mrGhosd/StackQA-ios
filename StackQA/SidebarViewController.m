@@ -27,15 +27,40 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedIn) name:@"getCurrentUser" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(signedOut) name:@"signedOut" object:nil];
     [self.tableView registerClass:[ProfileSidebarTableViewCell class] forCellReuseIdentifier:@"profileCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"ProfileSidebarTableViewCell" bundle:nil]
          forCellReuseIdentifier:@"profileCell"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorColor = [UIColor clearColor];
+    [self setTableData];
+//    [self.tableView reloadData];
 //    self.tableView.backgroundColor = [UIColor redColor];
     // Do any additional setup after loading the view.
 }
+- (void) signedIn{
+    [self setTableData];
+    [self.tableView reloadData];
+}
 
+- (void) signedOut{
+    [self setTableData];
+    [self.tableView reloadData];
+}
+- (void) setTableData{
+    auth = [AuthorizationManager sharedInstance];
+    if(auth.currentUser){
+        menuID = @[@"logo", @"profile", @"questions", @"categories"];
+        menuItems = @[@"StackQ&A", @"Профиль", NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
+        menuIcons = @[@"", @"user7.png", @"ask_question-32.png", @"category.png"];
+    } else {
+        menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories"];
+        menuItems = @[@"StackQ&A", NSLocalizedString(@"sidebar-sign-in", nil), NSLocalizedString(@"sidebar-sign-up", nil), NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
+        menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png"];
+    }
+//    [self.tableView reloadData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -105,17 +130,8 @@
    
 }
 - (void) viewWillAppear:(BOOL)animated{
-    auth = [AuthorizationManager sharedInstance];
-    if(auth.currentUser){
-        menuID = @[@"logo", @"profile", @"questions", @"categories"];
-        menuItems = @[@"StackQ&A", @"Профиль", NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
-        menuIcons = @[@"", @"user7.png", @"ask_question-32.png", @"category.png"];
-    } else {
-        menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories"];
-        menuItems = @[@"StackQ&A", NSLocalizedString(@"sidebar-sign-in", nil), NSLocalizedString(@"sidebar-sign-up", nil), NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
-        menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png"];
-    }
-    [self.tableView reloadData];
+//    if(!auth.currentUser){
+//    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 1 && auth.currentUser){
@@ -123,6 +139,9 @@
     } else {
         return 49;
     }
+}
+- (void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 /*
 #pragma mark - Navigation

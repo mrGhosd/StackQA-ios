@@ -13,6 +13,8 @@
 #import "ServerError.h"
 
 #define MAIN_URL @"http://178.62.198.57"
+//#define MAIN_URL @"http://localhost:3000"
+
 @implementation Api{
     AuthorizationManager *auth;
     UICKeyChainStore *store;
@@ -68,11 +70,11 @@ static Api *sharedSingleton_ = nil;
     store = [UICKeyChainStore keyChainStore];
     if([store objectForKeyedSubscript:@"access_token"]){
         NSMutableDictionary *accessToken = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
-        [params addEntriesFromDictionary:copiedParams];
         [params addEntriesFromDictionary:accessToken];
     }
     NSString *userLocale = [[NSLocale preferredLanguages] objectAtIndex:0];
     [params addEntriesFromDictionary:@{@"device_locale": userLocale}];
+    [params addEntriesFromDictionary:copiedParams];
     NSMutableURLRequest *request = [[[AFJSONRequestSerializer new] requestWithMethod:type
                                                                            URLString:[NSString stringWithFormat: @"%@/api/v1%@", MAIN_URL, url]
                                                                           parameters: params

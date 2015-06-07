@@ -17,74 +17,98 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N4u-K3-JU4">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                            </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cob-e8-sIx">
-                                <rect key="frame" x="16" y="82" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPW-mY-QYy">
-                                <rect key="frame" x="484" y="27" width="100" height="30"/>
-                                <state key="normal" title="Сохранить">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveQuestion:" destination="L2G-jD-e0s" eventType="touchUpInside" id="67C-Vo-yQd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-Oq-nAs">
-                                <rect key="frame" x="16" y="27" width="55" height="30"/>
-                                <state key="normal" title="Отмена">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="hideForm:" destination="L2G-jD-e0s" eventType="touchUpInside" id="uy0-w5-eMn"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="Текст вопроса" translatesAutoresizingMaskIntoConstraints="NO" id="QPr-7g-SDj">
-                                <rect key="frame" x="16" y="196" width="288" height="460"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Категория" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2yt-cd-ZlU">
-                                <rect key="frame" x="16" y="158" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Теги" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mWc-nm-VWS">
-                                <rect key="frame" x="16" y="120" width="288" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="51O-08-4NX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem title="Отмена" id="HtO-xd-QJF">
+                                        <connections>
+                                            <action selector="hideForm:" destination="L2G-jD-e0s" id="Ebt-9c-BKC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Uz1-3p-4VQ"/>
+                                    <barButtonItem title="Сохранить" id="Ih5-PV-fan">
+                                        <connections>
+                                            <action selector="saveQuestion:" destination="L2G-jD-e0s" id="u90-41-nio"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOt-gn-GjC">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qYE-PR-rYd">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Заголовок" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q3x-qw-bSZ">
+                                                <rect key="frame" x="8" y="8" width="241" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Категория" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMl-va-0Jb">
+                                                <rect key="frame" x="8" y="46" width="241" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Теги" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xBD-bv-4qg">
+                                                <rect key="frame" x="8" y="84" width="241" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4yo-uU-P2q">
+                                                <rect key="frame" x="9" y="122" width="240" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="gMl-va-0Jb" firstAttribute="top" secondItem="Q3x-qw-bSZ" secondAttribute="bottom" constant="8" id="3h7-3X-D6a"/>
+                                            <constraint firstAttribute="trailing" secondItem="Q3x-qw-bSZ" secondAttribute="trailing" constant="8" id="5Ig-tM-L30"/>
+                                            <constraint firstItem="4yo-uU-P2q" firstAttribute="top" secondItem="xBD-bv-4qg" secondAttribute="bottom" constant="8" id="5RJ-BV-iAr"/>
+                                            <constraint firstItem="gMl-va-0Jb" firstAttribute="leading" secondItem="qYE-PR-rYd" secondAttribute="leading" constant="8" id="5oY-Bv-8PJ"/>
+                                            <constraint firstItem="Q3x-qw-bSZ" firstAttribute="top" secondItem="qYE-PR-rYd" secondAttribute="top" constant="8" id="Aus-c5-Gyy"/>
+                                            <constraint firstItem="xBD-bv-4qg" firstAttribute="leading" secondItem="qYE-PR-rYd" secondAttribute="leading" constant="8" id="M8i-vO-qHh"/>
+                                            <constraint firstAttribute="trailing" secondItem="4yo-uU-P2q" secondAttribute="trailing" constant="8" id="Teu-QN-po1"/>
+                                            <constraint firstItem="4yo-uU-P2q" firstAttribute="leading" secondItem="qYE-PR-rYd" secondAttribute="leading" constant="8" id="X9M-Fw-T2G"/>
+                                            <constraint firstAttribute="trailing" secondItem="gMl-va-0Jb" secondAttribute="trailing" constant="8" id="XYN-rh-Our"/>
+                                            <constraint firstAttribute="trailing" secondItem="xBD-bv-4qg" secondAttribute="trailing" constant="8" id="kkb-1S-1PC"/>
+                                            <constraint firstItem="Q3x-qw-bSZ" firstAttribute="leading" secondItem="qYE-PR-rYd" secondAttribute="leading" constant="8" id="mqn-zE-LqQ"/>
+                                            <constraint firstItem="xBD-bv-4qg" firstAttribute="top" secondItem="gMl-va-0Jb" secondAttribute="bottom" constant="8" id="vYW-Qu-KQP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qYE-PR-rYd" firstAttribute="top" secondItem="YOt-gn-GjC" secondAttribute="top" id="8ex-nd-hsx"/>
+                                    <constraint firstItem="qYE-PR-rYd" firstAttribute="width" secondItem="YOt-gn-GjC" secondAttribute="width" id="EKl-KF-SHn"/>
+                                    <constraint firstItem="qYE-PR-rYd" firstAttribute="leading" secondItem="YOt-gn-GjC" secondAttribute="leading" id="R3t-dw-hSL"/>
+                                    <constraint firstAttribute="trailing" secondItem="qYE-PR-rYd" secondAttribute="trailing" id="Wlw-y4-Not"/>
+                                    <constraint firstAttribute="bottom" secondItem="qYE-PR-rYd" secondAttribute="bottom" id="c2x-Dt-jpf"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Cob-e8-sIx" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="4wd-r2-HLr"/>
-                            <constraint firstItem="QPr-7g-SDj" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="8IP-00-cJc"/>
-                            <constraint firstItem="mWc-nm-VWS" firstAttribute="top" secondItem="Cob-e8-sIx" secondAttribute="bottom" constant="20" id="8N2-0e-aXU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2yt-cd-ZlU" secondAttribute="trailing" constant="10" id="AsL-h0-7MA"/>
-                            <constraint firstItem="QPr-7g-SDj" firstAttribute="top" secondItem="2yt-cd-ZlU" secondAttribute="bottom" constant="8" id="Idw-ds-dW0"/>
-                            <constraint firstItem="2yt-cd-ZlU" firstAttribute="top" secondItem="mWc-nm-VWS" secondAttribute="bottom" constant="20" id="Juh-bG-JQV"/>
-                            <constraint firstItem="2yt-cd-ZlU" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="MLn-Yg-US0"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mWc-nm-VWS" secondAttribute="trailing" constant="10" id="NwH-eP-eE3"/>
-                            <constraint firstItem="Y4w-Oq-nAs" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" id="P8d-hH-r96"/>
-                            <constraint firstItem="JPW-mY-QYy" firstAttribute="top" secondItem="R4S-3y-hTy" secondAttribute="bottom" id="bnk-qO-cJ4"/>
-                            <constraint firstItem="Y4w-Oq-nAs" firstAttribute="top" secondItem="R4S-3y-hTy" secondAttribute="bottom" id="fDQ-hv-gRv"/>
-                            <constraint firstItem="JPW-mY-QYy" firstAttribute="trailing" secondItem="mXu-pO-DtV" secondAttribute="trailingMargin" id="mcI-r4-C8d"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="QPr-7g-SDj" secondAttribute="trailing" constant="10" id="mcx-Fp-NWr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Cob-e8-sIx" secondAttribute="trailing" constant="10" id="ney-OF-Q1Y"/>
-                            <constraint firstItem="mWc-nm-VWS" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="10" id="wyl-Wy-cUf"/>
-                            <constraint firstItem="Cob-e8-sIx" firstAttribute="top" secondItem="N4u-K3-JU4" secondAttribute="bottom" constant="20" id="xVA-sp-TXl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YOt-gn-GjC" secondAttribute="trailing" constant="-16" id="0Zl-Nn-Qog"/>
+                            <constraint firstItem="YOt-gn-GjC" firstAttribute="top" secondItem="51O-08-4NX" secondAttribute="bottom" id="AXa-7Y-ia8"/>
+                            <constraint firstItem="51O-08-4NX" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="-16" id="NHa-V0-5vG"/>
+                            <constraint firstItem="Ydx-BE-N4g" firstAttribute="top" secondItem="YOt-gn-GjC" secondAttribute="bottom" id="YP5-du-IHC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="51O-08-4NX" secondAttribute="trailing" constant="-16" id="ew2-1g-omg"/>
+                            <constraint firstItem="Ydx-BE-N4g" firstAttribute="top" secondItem="YOt-gn-GjC" secondAttribute="bottom" id="giJ-y3-KbC"/>
+                            <constraint firstItem="YOt-gn-GjC" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="-16" id="pef-xH-9LX"/>
+                            <constraint firstItem="YOt-gn-GjC" firstAttribute="top" secondItem="51O-08-4NX" secondAttribute="bottom" id="pqm-7V-UUk"/>
+                            <constraint firstItem="51O-08-4NX" firstAttribute="top" secondItem="mXu-pO-DtV" secondAttribute="topMargin" id="qnP-d5-Wzv"/>
+                            <constraint firstItem="YOt-gn-GjC" firstAttribute="leading" secondItem="mXu-pO-DtV" secondAttribute="leadingMargin" constant="-16" id="sEh-zt-xij"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YOt-gn-GjC" secondAttribute="trailing" constant="-16" id="xnb-WI-yVe"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="questionCategory" destination="2yt-cd-ZlU" id="kAb-a2-l14"/>
-                        <outlet property="questionTags" destination="mWc-nm-VWS" id="iuN-SL-A8V"/>
-                        <outlet property="questionText" destination="QPr-7g-SDj" id="hgT-TA-CmC"/>
-                        <outlet property="questionTitle" destination="Cob-e8-sIx" id="4H9-Pt-T9H"/>
+                        <outlet property="dismissFormButton" destination="HtO-xd-QJF" id="eDz-jk-BK0"/>
+                        <outlet property="questionCategory" destination="gMl-va-0Jb" id="sWc-eE-kPe"/>
+                        <outlet property="questionTags" destination="xBD-bv-4qg" id="W1v-Ix-lcq"/>
+                        <outlet property="questionText" destination="4yo-uU-P2q" id="KSB-Bo-cgc"/>
+                        <outlet property="questionTitle" destination="Q3x-qw-bSZ" id="fVC-FF-hEs"/>
+                        <outlet property="saveQuestionButton" destination="Ih5-PV-fan" id="wRa-0R-HQz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIy-iO-urh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1198,24 +1222,28 @@
                                             <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McY-mg-Gcn" userLabel="RegistrationView">
                                                 <rect key="frame" x="0.0" y="44" width="600" height="485"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlL-i8-gge">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Электронная почта" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wlL-i8-gge">
                                                         <rect key="frame" x="33" y="8" width="535" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ib0-cY-Sdt">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ib0-cY-Sdt">
                                                         <rect key="frame" x="33" y="69" width="535" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4j-7p-FDp">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Подверждение пароля" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N4j-7p-FDp">
                                                         <rect key="frame" x="33" y="131" width="535" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cym-gz-Yzp">
                                                         <rect key="frame" x="197" y="205" width="206" height="30"/>
-                                                        <state key="normal" title="Отправить">
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="ABk-Vd-Eig"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Отправить" backgroundImage="green-round-button.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -1242,19 +1270,23 @@
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TxU-Od-UJR" userLabel="loginView">
                                                 <rect key="frame" x="0.0" y="44" width="600" height="493"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-qh-Lhj">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Электронная почта" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YyG-qh-Lhj">
                                                         <rect key="frame" x="99" y="58" width="404" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-sy-Gvk">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTy-sy-Gvk">
                                                         <rect key="frame" x="99" y="68" width="404" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6Y-x2-Vck">
                                                         <rect key="frame" x="225" y="127" width="150" height="30"/>
-                                                        <state key="normal" title="Войти">
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="BsM-c7-1xw"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Войти" backgroundImage="green-round-button.png">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
@@ -1838,6 +1870,7 @@
         <image name="down4-32.png" width="32" height="32"/>
         <image name="eye110.png" width="32" height="32"/>
         <image name="greem-tag.png" width="141" height="60"/>
+        <image name="green-round-button.png" width="310" height="80"/>
         <image name="mark1.png" width="32" height="32"/>
         <image name="menu-32.png" width="32" height="32"/>
         <image name="move9.png" width="32" height="32"/>
@@ -1847,17 +1880,17 @@
         <image name="white-tag.png" width="141" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xg7-7q-VeD"/>
-        <segue reference="5Em-mt-R6W"/>
         <segue reference="4oy-yi-Vs6"/>
         <segue reference="Ogc-fD-TQd"/>
-        <segue reference="jdO-yh-WYz"/>
+        <segue reference="84w-cX-ZdW"/>
+        <segue reference="31I-FQ-iOf"/>
         <segue reference="uQv-Ln-Urv"/>
-        <segue reference="Zma-F1-cBs"/>
+        <segue reference="Xg7-7q-VeD"/>
+        <segue reference="j2K-an-z6G"/>
+        <segue reference="jdO-yh-WYz"/>
         <segue reference="1uy-uL-sgR"/>
         <segue reference="x3p-uV-IHe"/>
-        <segue reference="31I-FQ-iOf"/>
+        <segue reference="Zma-F1-cBs"/>
         <segue reference="Mye-8z-EVr"/>
-        <segue reference="84w-cX-ZdW"/>
     </inferredMetricsTieBreakers>
 </document>

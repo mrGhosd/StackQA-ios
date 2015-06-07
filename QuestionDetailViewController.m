@@ -45,6 +45,7 @@
     auth = [AuthorizationManager sharedInstance];
     [self initMiddleControlButton];
     [self designControlView];
+    [self uploadQuestionData];
     [self refreshInit];
     [self resizeView];
 }
@@ -94,9 +95,7 @@
 -(void) viewDidAppear:(BOOL)animated{
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self uploadQuestionData];
-}
+
 
 - (void) parseQuestionData:(id) data{
     [self.question update:data];
@@ -340,6 +339,21 @@
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [refreshControl endRefreshing];
 }
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+    }
+    [super viewWillDisappear:animated];
+}
+- (void)viewWillAppear:(BOOL)animated {
+    NSArray *controllers = self.navigationController.viewControllers;
+    if([controllers lastObject] == self){
+        
+    }
+    
+}
+
 
 - (void) sendRequest{
     [self uploadQuestionData];
