@@ -10,6 +10,7 @@
 #import <CoreData+MagicalRecord.h>
 #import <UICKeyChainStore.h>
 #import "AuthorizationManager.h"
+#import "SidebarViewController.h"
 #import "Api.h"
 @interface AppDelegate (){
     UICKeyChainStore *store;

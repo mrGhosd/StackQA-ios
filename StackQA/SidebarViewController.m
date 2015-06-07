@@ -48,6 +48,7 @@
     [self setTableData];
     [self.tableView reloadData];
 }
+
 - (void) setTableData{
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
@@ -59,7 +60,6 @@
         menuItems = @[@"StackQ&A", NSLocalizedString(@"sidebar-sign-in", nil), NSLocalizedString(@"sidebar-sign-up", nil), NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
         menuIcons = @[@"", @"login17.png", @"create1.png", @"ask_question-32.png", @"category.png"];
     }
-//    [self.tableView reloadData];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -129,10 +129,8 @@
 - (void) viewDidAppear:(BOOL)animated{
    
 }
-- (void) viewWillAppear:(BOOL)animated{
-//    if(!auth.currentUser){
-//    }
-}
+//- (void) viewWillAppear:(BOOL)animated{
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 1 && auth.currentUser){
         return 85;
