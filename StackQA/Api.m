@@ -86,17 +86,10 @@ static Api *sharedSingleton_ = nil;
                                                                                error:nil] mutableCopy];
     
     AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
-    if([type isEqualToString:@"GET"] && cache.cachedData[requestAPI.request.URL] != nil){
-        response(cache.cachedData[requestAPI.request.URL], YES);
-        return;
-    }
     AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
     serializer.readingOptions = NSJSONReadingAllowFragments;
     requestAPI.responseSerializer = serializer;
     [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        if([type isEqualToString:@"GET"]){
-            cache.cachedData[requestAPI.request.URL] = responseObject;
-        }
         response(responseObject, YES);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSDictionary *errorDict = @{@"operation": operation, @"error": error};
