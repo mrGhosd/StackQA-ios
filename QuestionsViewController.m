@@ -254,16 +254,8 @@
     static NSString *CellIdentifier = @"questionCell";
     QuestionsTableViewCell *cell = (QuestionsTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     [cell setQuestionData:questionItem];
-    cell.questionTitle.text = questionItem.title;
-    cell.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)questionItem.createdAt];
-    cell.questionRate.text = [NSString stringWithFormat:@"%@", questionItem.rate];
-    [self setQuestionRateViewForCell:cell andItem:questionItem];
-    [cell.viewsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.views] forState:UIControlStateNormal];
-    [cell.viewsCount addTarget:self action:@selector(viewsClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.answersCount setTitle:[NSString stringWithFormat:@"%@", questionItem.answersCount] forState:UIControlStateNormal];
     [cell.commentsCount addTarget:self action:@selector(commentsClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.commentsCount setTitle:[NSString stringWithFormat:@"%@", questionItem.commentsCount] forState:UIControlStateNormal];
-    
+    [cell.viewsCount addTarget:self action:@selector(viewsClick:) forControlEvents:UIControlEventTouchUpInside];
     if(auth.currentUser && [questionItem.userId integerValue] == [auth.currentUser.objectId integerValue]){
         NSMutableArray *rightUtilityButtons = [NSMutableArray new];
 
@@ -313,16 +305,7 @@
 }
 
 
-- (void) setQuestionRateViewForCell:(QuestionsTableViewCell *) cell andItem: (Question *) question{
-    if(question.isClosed){
-        cell.questionRate.backgroundColor = [UIColor greenColor];
-    } else {
-        cell.questionRate.backgroundColor = [UIColor lightGrayColor];
-    }
-    cell.questionRate.textColor = [UIColor whiteColor];
-    cell.questionRate.clipsToBounds = YES;
-    cell.questionRate.layer.cornerRadius = 30;
-}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 100;

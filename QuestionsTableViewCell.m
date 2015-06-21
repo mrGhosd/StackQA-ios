@@ -25,6 +25,24 @@
 }
 - (void) setQuestionData: (Question *) question{
     self.question = question ;
+    self.questionTitle.text = question.title;
+    self.questionDate.text = [NSString stringWithFormat:@"%@", (Question *)question.createdAt];
+    self.questionRate.text = [NSString stringWithFormat:@"%@", question.rate];
+    [self setQuestionRate];
+    [self.viewsCount setTitle:[NSString stringWithFormat:@"%@", question.views] forState:UIControlStateNormal];
+    [self.answersCount setTitle:[NSString stringWithFormat:@"%@", question.answersCount] forState:UIControlStateNormal];
+
+    [self.commentsCount setTitle:[NSString stringWithFormat:@"%@", question.commentsCount] forState:UIControlStateNormal];
+}
+- (void) setQuestionRate{
+    if(self.question.isClosed){
+        self.questionRate.backgroundColor = [UIColor greenColor];
+    } else {
+        self.questionRate.backgroundColor = [UIColor lightGrayColor];
+    }
+    self.questionRate.textColor = [UIColor whiteColor];
+    self.questionRate.clipsToBounds = YES;
+    self.questionRate.layer.cornerRadius = 30;
 }
 - (IBAction)showCommentsList:(id)sender {
     [[NSNotificationCenter defaultCenter]
