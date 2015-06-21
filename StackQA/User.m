@@ -37,6 +37,9 @@
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.avatarUrl]]]];
     return img;
 }
+- (NSURL *) profileImageURL{
+    return [NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.avatarUrl] ];
+}
 - (NSString *) getCorrectNaming{
     NSString *trimSurname  = [self.surname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *trimName  = [self.name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];

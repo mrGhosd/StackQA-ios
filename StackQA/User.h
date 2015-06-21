@@ -27,5 +27,6 @@
 @property (nonatomic, strong) SStatistic * statistic;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (UIImage *) profileImage;
+- (NSURL *) profileImageURL;
 - (NSString *) getCorrectNaming;
 @end

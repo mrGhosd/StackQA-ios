@@ -13,6 +13,7 @@
 #import "ProfileViewController.h"
 #import "ProfileSidebarTableViewCell.h"
 #import "SidebarTableViewCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface SidebarViewController (){
     AuthorizationManager *auth;
@@ -53,7 +54,7 @@
     auth = [AuthorizationManager sharedInstance];
     if(auth.currentUser){
         menuID = @[@"logo", @"profile", @"questions", @"categories"];
-        menuItems = @[@"StackQ&A", @"Профиль", NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
+        menuItems = @[@"StackQ&A", [auth.currentUser getCorrectNaming], NSLocalizedString(@"sidebar-questions", nil), NSLocalizedString(@"sidebar-categories", nil)];
         menuIcons = @[@"", @"user7.png", @"ask_question-32.png", @"category.png"];
     } else {
         menuID = @[@"logo", @"login", @"registration", @"questions",  @"categories"];
@@ -79,32 +80,30 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == 1 && auth.currentUser){
-        static NSString *profileCell = @"profileCell";
-        ProfileSidebarTableViewCell *cell = (ProfileSidebarTableViewCell *) [tableView dequeueReusableCellWithIdentifier:profileCell forIndexPath:indexPath];
-        cell.profileImage.image = [auth.currentUser profileImage];
-        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.height / 2;
-        cell.profileImage.layer.masksToBounds = YES;
-        cell.profileImage.layer.borderColor = [[UIColor blackColor] CGColor];
-        cell.profileImage.layer.borderWidth = 1.0;
-        cell.profileName.text = [auth.currentUser getCorrectNaming];
-        cell.backgroundColor = [UIColor clearColor];
-        [cell.profileRate setTitle:[NSString stringWithFormat:@"%@", auth.currentUser.rate ] forState:UIControlStateNormal];
-        return cell;
-    } else {
-        static NSString *CellIdentifier = @"Cell";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        if(indexPath.row == 0){
-            [cell.textLabel setFont:[UIFont fontWithName:@"System" size:22.0]];
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
-        }else {
-            cell.textLabel.text = menuItems[indexPath.row];
-            cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
-            cell.backgroundColor = [UIColor clearColor];
-        }
-//        cell.backgroundColor = [UIColor colorWithRed:.28 green:.28 blue:.28 alpha:1];
-        return cell;
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.textLabel.text = menuItems[indexPath.row];
+    cell.imageView.frame = CGRectMake(0, 0, 32, 32);
+    if(indexPath.row == 0){
+        [cell.textLabel setFont:[UIFont fontWithName:@"System" size:22.0]];
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }
+    
+    if (auth.currentUser && indexPath.row == 1) {
+        NSURL *url = [auth.currentUser profileImageURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"user7.png"];
+        [cell.imageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+
+            cell.imageView.image = image;
+            cell.imageView.layer.cornerRadius = cell.imageView.frame.size.height / 2;
+        } failure:nil];
+        cell.imageView.clipsToBounds = YES;
+    } else {
+        cell.imageView.image = [UIImage imageNamed:menuIcons[indexPath.row]];
+    }
+    
+    return cell;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"login"]){
