@@ -155,7 +155,21 @@
         }
     }
 }
+- (void) getCategoryID{
+    for(NSDictionary *category in categories){
+        if([self.questionCategory.text isEqualToString:category[@"title"]]){
+            selectedCategory = category;
+            return;
+        } else {
+            selectedCategory = @{@"id": @""};
+        }
+    }
+}
 - (void) sendQuestionToServerWithURL:(NSString *) url andType: (NSString *) type{
+    if([selectedCategory[@"id"] isEqualToString:@""] && self.question){
+//       selectedCategory[@"id"] =
+        [self getCategoryID];
+    }
         NSMutableDictionary *questionParams =[NSMutableDictionary dictionaryWithDictionary: @{@"title": self.questionTitle.text, @"text": self.questionText.text, @"user_id": auth.currentUser.objectId, @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text }];
     [[Api sharedManager] sendDataToURL:url parameters:@{@"question": questionParams} requestType:type
                          andComplition:^(id data, BOOL success){
