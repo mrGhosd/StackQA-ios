@@ -23,6 +23,7 @@
 #import <UIScrollView+InfiniteScroll.h>
 #import "QuestionFilter.h"
 #import "ServerError.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface QuestionsViewController (){
     Question *currentQuestion;
@@ -127,6 +128,12 @@
         view.categoryWebView.scrollView.scrollEnabled = NO;
         view.categoryTitle.text = self.category.title;
         [view.categoryWebView loadHTMLString:self.category.desc baseURL:nil];
+        NSURL *url = [self.category profileImageURL];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"category.png"];
+        [view.categoryImageView setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            view.categoryImageView.image = image;
+        } failure:nil];
         UITapGestureRecognizer *singleFingerTap =
         [[UITapGestureRecognizer alloc] initWithTarget:self
                                                 action:@selector(handleSingleTap:)];

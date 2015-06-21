@@ -73,7 +73,7 @@ static AuthorizationManager *sharedSingleton_ = nil;
     }];
 }
 - (void) getCurrentUserProfileWithEmail:(NSString *)email andPassword: (NSString *)password{
-    [[Api sharedManager] getData:@"/profiles/me" andComplition:^(id data, BOOL success){
+    [[Api sharedManager] sendDataToURL:@"/profiles/me" parameters:nil requestType:@"GET" andComplition:^(id data, BOOL success){
         if(success){
                 self.currentUser = [[User alloc] initWithParams:data];
                 [[NSNotificationCenter defaultCenter]

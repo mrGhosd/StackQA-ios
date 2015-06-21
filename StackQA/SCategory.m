@@ -23,4 +23,7 @@
     UIImage *img  =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.imageUrl]]]];
     return img;
 }
+- (NSURL *) profileImageURL{
+    return [NSURL URLWithString:[[Api sharedManager] returnCorrectUrlPrefix:self.imageUrl] ];
+}
 @end

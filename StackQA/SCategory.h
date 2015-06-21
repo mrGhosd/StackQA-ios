@@ -17,4 +17,5 @@
 @property (nonatomic, retain) NSMutableArray *questions;
 - (instancetype) initWithParams: (NSDictionary *) params;
 - (UIImage *) categoryImage;
+- (NSURL *) profileImageURL;
 @end

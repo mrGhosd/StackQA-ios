@@ -11,6 +11,7 @@
 #import "AuthorizationManager.h"
 #import <UICKeyChainStore.h>
 #import "ServerError.h"
+#import "CacheRequest.h"
 
 #define MAIN_URL @"http://178.62.198.57"
 //#define MAIN_URL @"http://localhost:3000"
@@ -18,6 +19,7 @@
 @implementation Api{
     AuthorizationManager *auth;
     UICKeyChainStore *store;
+    CacheRequest *cache;
 }
 
 static Api *sharedSingleton_ = nil;
@@ -64,10 +66,13 @@ static Api *sharedSingleton_ = nil;
 }
 
 - (void) sendDataToURL:(NSString *) url parameters: (NSMutableDictionary *)params requestType:(NSString *)type andComplition:(ResponseCopmlition) complition{
+    
     NSMutableDictionary *copiedParams = [params mutableCopy];
     params = [[NSMutableDictionary alloc] init];
     ResponseCopmlition response = [complition copy];
     store = [UICKeyChainStore keyChainStore];
+    cache = [CacheRequest sharedInstance];
+    
     if([store objectForKeyedSubscript:@"access_token"]){
         NSMutableDictionary *accessToken = @{@"access_token": [store objectForKeyedSubscript:@"access_token"]};
         [params addEntriesFromDictionary:accessToken];
@@ -81,13 +86,18 @@ static Api *sharedSingleton_ = nil;
                                                                                error:nil] mutableCopy];
     
     AFHTTPRequestOperation *requestAPI = [[AFHTTPRequestOperation alloc]initWithRequest:request];
+    if([type isEqualToString:@"GET"] && cache.cachedData[requestAPI.request.URL] != nil){
+        response(cache.cachedData[requestAPI.request.URL], YES);
+        return;
+    }
     AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer new];
     serializer.readingOptions = NSJSONReadingAllowFragments;
     requestAPI.responseSerializer = serializer;
-    
     [requestAPI setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if([type isEqualToString:@"GET"]){
+            cache.cachedData[requestAPI.request.URL] = responseObject;
+        }
         response(responseObject, YES);
-        self.lastSyncDate = [NSDate date];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSDictionary *errorDict = @{@"operation": operation, @"error": error};
         response(errorDict, NO);

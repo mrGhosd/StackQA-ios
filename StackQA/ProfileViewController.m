@@ -18,6 +18,7 @@
 #import "ServerError.h"
 #import "Api.h"
 #import <MBProgressHUD.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface ProfileViewController (){
     AuthorizationManager *auth;
@@ -79,10 +80,6 @@
     paramsIDs = @[@"user_questions", @"userAnswers", @"user_comments"];
     userParams= @[NSLocalizedString(@"questions-count", nil), NSLocalizedString(@"answers-count", nil), NSLocalizedString(@"comments-count", nil)];
     userValues = @[self.user.questionsCount, self.user.answersCount, self.user.commentsCount];
-    self.userAvatar.image = [self.user profileImage];
-    self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
-    self.userAvatar.layer.masksToBounds = YES;
-    self.userAvatar.layer.borderWidth = 0;
     self.userFullName.text = [self.user getCorrectNaming];
     [self.userRate setTitle:[NSString stringWithFormat:@"%@", self.user.rate] forState:UIControlStateNormal];
     if(auth.currentUser && [auth.currentUser.objectId isEqual: self.user.objectId ]){
@@ -90,6 +87,14 @@
     } else {
         self.signOutButton.hidden = YES;
     }
+    NSURL *url = [self.user profileImageURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"user7.png"];
+    [self.userAvatar setImageWithURLRequest:request placeholderImage:placeholderImage success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        self.userAvatar.image = image;
+        self.userAvatar.layer.cornerRadius = self.userAvatar.frame.size.height / 2;
+    } failure:nil];
+    self.userAvatar.clipsToBounds = YES;
     [refreshControl endRefreshing];
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.userParamsTable reloadData];
