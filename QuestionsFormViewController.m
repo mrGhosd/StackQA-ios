@@ -166,8 +166,7 @@
     }
 }
 - (void) sendQuestionToServerWithURL:(NSString *) url andType: (NSString *) type{
-    if([selectedCategory[@"id"] isEqualToString:@""] && self.question){
-//       selectedCategory[@"id"] =
+    if(selectedCategory[@"id"] != nil && self.question != nil){
         [self getCategoryID];
     }
         NSMutableDictionary *questionParams =[NSMutableDictionary dictionaryWithDictionary: @{@"title": self.questionTitle.text, @"text": self.questionText.text, @"user_id": auth.currentUser.objectId, @"category_id": selectedCategory[@"id"], @"tag_list": self.questionTags.text }];

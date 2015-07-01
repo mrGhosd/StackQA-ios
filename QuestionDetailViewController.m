@@ -72,7 +72,7 @@
     CGSize size = [self.question.text sizeWithAttributes:nil];
     float viewHeight;
     CGSize fittingSize = [self.webView sizeThatFits:CGSizeZero];
-    viewHeight = size.width / 10.0;
+    viewHeight = size.width / 5.0;
     if(size.width >= 200){
         self.questionTextHeight.constant = viewHeight;
     }
